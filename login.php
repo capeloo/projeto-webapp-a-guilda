@@ -4,7 +4,7 @@ session_start();
  
 // Verifique se o usuário já está logado, em caso afirmativo, redirecione-o para a página de boas-vindas
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-    header("location: home.php");
+    header("location: welcome.php");
     exit;
 }
  
@@ -12,37 +12,37 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
 require_once "config.php";
  
 // Defina variáveis e inicialize com valores vazios
-$login = $senha = "";
-$login_err = $senha_err = $logar_err = "";
+$username = $password = "";
+$username_err = $password_err = $login_err = "";
  
 // Processando dados do formulário quando o formulário é enviado
 if($_SERVER["REQUEST_METHOD"] == "POST"){
  
     // Verifique se o nome de usuário está vazio
-    if(empty(trim($_POST["login"]))){
-        $login_err = "Por favor, insira o nome de usuário.";
+    if(empty(trim($_POST["username"]))){
+        $username_err = "Por favor, insira o nome de usuário.";
     } else{
-        $login = trim($_POST["login"]);
+        $username = trim($_POST["username"]);
     }
     
     // Verifique se a senha está vazia
-    if(empty(trim($_POST["senha"]))){
-        $senha_err = "Por favor, insira sua senha.";
+    if(empty(trim($_POST["password"]))){
+        $password_err = "Por favor, insira sua senha.";
     } else{
-        $senha = trim($_POST["senha"]);
+        $password = trim($_POST["password"]);
     }
     
     // Validar credenciais
-    if(empty($login_err) && empty($senha_err)){
+    if(empty($username_err) && empty($password_err)){
         // Prepare uma declaração selecionada
-        $sql = "SELECT id, login, senha FROM usuarios WHERE login = :login";
+        $sql = "SELECT id, username, password FROM usuarios WHERE username = :username";
         
         if($stmt = $pdo->prepare($sql)){
             // Vincule as variáveis à instrução preparada como parâmetros
-            $stmt->bindParam(":login", $param_login, PDO::PARAM_STR);
+            $stmt->bindParam(":username", $param_username, PDO::PARAM_STR);
             
             // Definir parâmetros
-            $param_login = trim($_POST["login"]);
+            $param_username = trim($_POST["username"]);
             
             // Tente executar a declaração preparada
             if($stmt->execute()){
@@ -50,27 +50,27 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 if($stmt->rowCount() == 1){
                     if($row = $stmt->fetch()){
                         $id = $row["id"];
-                        $login = $row["login"];
-                        $hashed_password = $row["senha"];
-                        if(password_verify($senha, $hashed_password)){
+                        $username = $row["username"];
+                        $hashed_password = $row["password"];
+                        if(password_verify($password, $hashed_password)){
                             // A senha está correta, então inicie uma nova sessão
                             session_start();
                             
                             // Armazene dados em variáveis de sessão
                             $_SESSION["loggedin"] = true;
                             $_SESSION["id"] = $id;
-                            $_SESSION["login"] = $login;                            
+                            $_SESSION["username"] = $username;                            
                             
                             // Redirecionar o usuário para a página de boas-vindas
-                            header("location: home.php");
+                            header("location: welcome.php");
                         } else{
                             // A senha não é válida, exibe uma mensagem de erro genérica
-                            $logar_err = "Nome de usuário ou senha inválidos.";
+                            $login_err = "Nome de usuário ou senha inválidos.";
                         }
                     }
                 } else{
                     // O nome de usuário não existe, exibe uma mensagem de erro genérica
-                    $logar_err = "Nome de usuário ou senha inválidos.";
+                    $login_err = "Nome de usuário ou senha inválidos.";
                 }
             } else{
                 echo "Ops! Algo deu errado. Por favor, tente novamente mais tarde.";
@@ -90,37 +90,40 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="estilos/style.css">
-    <link rel="stylesheet" href="estilos/media-queries.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body{ font: 14px sans-serif; }
+        .wrapper{ width: 360px; padding: 20px; }
+    </style>
 </head>
 <body>
-    <main>
-        <h1>Login</h1>
+    <div class="wrapper">
+        <h2>Login</h2>
+        <p>Por favor, preencha os campos para fazer o login.</p>
 
         <?php 
-        if(!empty($logar_err)){
-            echo '<div class="alert alert-danger">' . $logar_err . '</div>';
+        if(!empty($login_err)){
+            echo '<div class="alert alert-danger">' . $login_err . '</div>';
         }        
         ?>
 
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                <label>Nome do usuário</label> 
-                <input type="text" name="login" class="form-control <?php echo (!empty($login_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $login; ?>">
-                <span class="invalid-feedback"><?php echo $login_err; ?></span>
-
-                <label>Senha</label> 
-                <input type="password" name="senha" class="form-control <?php echo (!empty($senha_err)) ? 'is-invalid' : ''; ?>">
-                <span class="invalid-feedback"><?php echo $senha_err; ?></span>
-            
-                <input type="submit" value="Entrar" id="btn">
-
-                <p>
-                    Não tem uma conta? <a href="cadastro.php">Inscreva-se agora</a>.
-                </p>
+            <div class="form-group">
+                <label>Nome do usuário</label>
+                <input type="text" name="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
+                <span class="invalid-feedback"><?php echo $username_err; ?></span>
+            </div>    
+            <div class="form-group">
+                <label>Senha</label>
+                <input type="password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>">
+                <span class="invalid-feedback"><?php echo $password_err; ?></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" value="Entrar">
+            </div>
+            <p>Não tem uma conta? <a href="register.php">Inscreva-se agora</a>.</p>
         </form>
-    </main>
+    </div>
 </body>
 </html>

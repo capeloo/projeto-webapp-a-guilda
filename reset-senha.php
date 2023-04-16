@@ -12,43 +12,43 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 require_once "config.php";
  
 // Defina variáveis e inicialize com valores vazios
-$new_senha= $confirmar_senha = "";
-$new_senha_err = $confirmar_senha_err = "";
+$new_password = $confirm_password = "";
+$new_password_err = $confirm_password_err = "";
  
 // Processando dados do formulário quando o formulário é enviado
 if($_SERVER["REQUEST_METHOD"] == "POST"){
  
     // Validar nova senha
-    if(empty(trim($_POST["new_senha"]))){
-        $new_senha_err = "Por favor insira a nova senha.";     
-    } elseif(strlen(trim($_POST["new_senha"])) < 6){
-        $new_senha_err = "A senha deve ter pelo menos 6 caracteres.";
+    if(empty(trim($_POST["new_password"]))){
+        $new_password_err = "Por favor insira a nova senha.";     
+    } elseif(strlen(trim($_POST["new_password"])) < 6){
+        $new_password_err = "A senha deve ter pelo menos 6 caracteres.";
     } else{
-        $new_senha = trim($_POST["new_senha"]);
+        $new_password = trim($_POST["new_password"]);
     }
     
     // Validar e confirmar a senha
-    if(empty(trim($_POST["confirmar_senha"]))){
-        $confirmar_senha_err = "Por favor, confirme a senha.";
+    if(empty(trim($_POST["confirm_password"]))){
+        $confirm_password_err = "Por favor, confirme a senha.";
     } else{
-        $confirmar_senha = trim($_POST["confirmar_senha"]);
-        if(empty($new_senha_err) && ($new_senha != $confirmar_senha)){
-            $confirmar_senha_err = "A senha não confere.";
+        $confirm_password = trim($_POST["confirm_password"]);
+        if(empty($new_password_err) && ($new_password != $confirm_password)){
+            $confirm_password_err = "A senha não confere.";
         }
     }
         
     // Verifique os erros de entrada antes de atualizar o banco de dados
-    if(empty($new_senha_err) && empty($confirmar_senha_err)){
+    if(empty($new_password_err) && empty($confirm_password_err)){
         // Prepare uma declaração de atualização
-        $sql = "UPDATE usuarios SET senha = :senha WHERE id = :id";
+        $sql = "UPDATE usuarios SET password = :password WHERE id = :id";
         
         if($stmt = $pdo->prepare($sql)){
             // Vincule as variáveis à instrução preparada como parâmetros
-            $stmt->bindParam(":senha", $param_senha, PDO::PARAM_STR);
+            $stmt->bindParam(":password", $param_password, PDO::PARAM_STR);
             $stmt->bindParam(":id", $param_id, PDO::PARAM_INT);
             
             // Definir parâmetros
-            $param_senha = password_hash($new_senha, PASSWORD_DEFAULT);
+            $param_password = password_hash($new_password, PASSWORD_DEFAULT);
             $param_id = $_SESSION["id"];
             
             // Tente executar a declaração preparada
@@ -70,32 +70,38 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     unset($pdo);
 }
 ?>
-
+ 
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redefinir senha</title>
-    <link rel="stylesheet" href="estilos/style.css">
-    <link rel="stylesheet" href="estilos/media-queries.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body{ font: 14px sans-serif; }
+        .wrapper{ width: 360px; padding: 20px; }
+    </style>
 </head>
 <body>
-    <main>
-        <h1>Redefinir senha</h1>
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                <label>Nova senha</label> 
-                <input type="password" name="new_senha" class="form-control <?php echo (!empty($new_senha_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $new_senha; ?>">
-                <span class="invalid-feedback"><?php echo $new_senha_err; ?></span>
-
-                <label>Confirme a senha</label> 
-                <input type="password" name="confirmar_senha" class="form-control <?php echo (!empty($confirmar_senha_err)) ? 'is-invalid' : ''; ?>">
-                <span class="invalid-feedback"><?php echo $confirmar_senha_err; ?></span>
-            
-                <input type="submit" value="Redefinir" id="btn">
-                <a href="home.php">Cancelar</a>
+    <div class="wrapper">
+        <h2>Redefinir senha</h2>
+        <p>Por favor, preencha este formulário para redefinir sua senha.</p>
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post"> 
+            <div class="form-group">
+                <label>Nova senha</label>
+                <input type="password" name="new_password" class="form-control <?php echo (!empty($new_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $new_password; ?>">
+                <span class="invalid-feedback"><?php echo $new_password_err; ?></span>
+            </div>
+            <div class="form-group">
+                <label>Confirme a senha</label>
+                <input type="password" name="confirm_password" class="form-control <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>">
+                <span class="invalid-feedback"><?php echo $confirm_password_err; ?></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" value="Redefinir">
+                <a class="btn btn-link ml-2" href="welcome.php">Cancelar</a>
+            </div>
         </form>
-    </main>
+    </div>    
 </body>
 </html>
