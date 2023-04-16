@@ -35,7 +35,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Validar credenciais
     if(empty($username_err) && empty($password_err)){
         // Prepare uma declaração selecionada
-        $sql = "SELECT id, username, password FROM usuarios WHERE username = :username";
+        $sql = "SELECT id, username, password FROM users WHERE username = :username";
         
         if($stmt = $pdo->prepare($sql)){
             // Vincule as variáveis à instrução preparada como parâmetros

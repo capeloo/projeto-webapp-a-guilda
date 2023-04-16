@@ -40,7 +40,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Verifique os erros de entrada antes de atualizar o banco de dados
     if(empty($new_password_err) && empty($confirm_password_err)){
         // Prepare uma declaração de atualização
-        $sql = "UPDATE usuarios SET password = :password WHERE id = :id";
+        $sql = "UPDATE users SET password = :password WHERE id = :id";
         
         if($stmt = $pdo->prepare($sql)){
             // Vincule as variáveis à instrução preparada como parâmetros

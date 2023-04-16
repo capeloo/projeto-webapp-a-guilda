@@ -16,7 +16,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $username_err = "O nome de usuário pode conter apenas letras, números e sublinhados.";
     } else{
         // Prepare uma declaração selecionada
-        $sql = "SELECT id FROM usuarios WHERE username = :username";
+        $sql = "SELECT id FROM users WHERE username = :username";
         
         if($stmt = $pdo->prepare($sql)){
             // Vincule as variáveis à instrução preparada como parâmetros
@@ -64,7 +64,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(empty($username_err) && empty($password_err) && empty($confirm_password_err)){
         
         // Prepare uma declaração de inserção
-        $sql = "INSERT INTO usuarios (username, password) VALUES (:username, :password)";
+        $sql = "INSERT INTO users (username, password) VALUES (:username, :password)";
          
         if($stmt = $pdo->prepare($sql)){
             // Vincule as variáveis à instrução preparada como parâmetros
