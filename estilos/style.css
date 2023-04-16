@@ -24,7 +24,7 @@ main > form {
     background-color: lightseagreen;
     margin: auto;
     width: 350px;
-    height: 250px;
+    height: 330px;
     padding: 20px;
     border-radius: 15px;
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.365);
@@ -41,7 +41,7 @@ main > form > input {
     border-radius: 5px;
 }
 
-main > form > input#cadastrar {
+main > form > input#btn {
     width: 354px;
     height: 35px;
     border: none;
@@ -54,7 +54,7 @@ main > form > input#cadastrar {
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.365);
 }
 
-main > form > input#cadastrar:hover {
+main > form > input#btn:hover {
     background-color: rgb(106, 210, 3);
 }
 
