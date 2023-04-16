@@ -7,9 +7,9 @@
 }
 
 main {
-    background-color: brown;
     width: 100vw;
     height: 100vh;
+    background: linear-gradient(lightseagreen, chartreuse);
     margin: auto;
 }
 
@@ -21,10 +21,10 @@ main > h1 {
 
 main > form {
     text-align: center;
-    background-color: rgb(255, 171, 171);
+    background-color: lightseagreen;
     margin: auto;
     width: 350px;
-    height: 240px;
+    height: 250px;
     padding: 20px;
     border-radius: 15px;
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.365);
@@ -48,18 +48,35 @@ main > form > input#cadastrar {
     border-radius: 5px;
     font-size: 1em;
     margin-top: 15px;
-    background-color: crimson;
-    color: rgb(255, 255, 255);
+    background-color: chartreuse;
+    color: white;
     cursor: pointer;
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.365);
 }
 
 main > form > input#cadastrar:hover {
-    background-color: brown;
+    background-color: rgb(106, 210, 3);
 }
 
 main > form > label {
     display: block;
     text-align: left;
     color: white;
+}
+
+a {
+    color: chartreuse;
+    text-decoration: none;
+}
+
+a:hover {
+    color: rgb(106, 210, 3);
+}
+
+p {
+    margin-bottom: 10px;
+    padding: 7px;
+    color: white;
+    font-size: 1em;
+    text-align: center;
 }
