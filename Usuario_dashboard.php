@@ -15,7 +15,7 @@
     <title>Dashboard</title>
 </head>
 <body>
-    <h1>Seja bem vindo <?php echo $_SESSION['nome'] ." ". $_SESSION['sobrenome']; ?>!</h1>
+    <h1>Seja bem vindo <?php echo $_SESSION['apelido'] ?>!</h1>
     <a href="logout.php">Sair</a>
 </body>
 </html>

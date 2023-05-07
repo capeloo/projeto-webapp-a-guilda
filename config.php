@@ -4,5 +4,5 @@
     define('PASSWORD', '');
     define('DATABASE', 'taverna');
 
-    $connection = new mysqli(HOST, USER, PASSWORD, DATABASE);
+    $mysqli = new mysqli(HOST, USER, PASSWORD, DATABASE);
 ?>
