@@ -111,31 +111,31 @@
   </div>
 </nav>
     <div class="container-fluid text-center mt-4">
-    <h1 class="display-4 p-3">Criar conta</h1>
-    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-        <div class="input-group mx-auto p-2" style="width: 400px;">
-            <span class="input-group-text">Apelido</span>
-            <input type="text" class="form-control" aria-label="Apelido" name="apelido">
-            <span><?php echo $apelido_erro; ?></span>
-        </div>
-        <div class="input-group mx-auto p-2" style="width: 400px;">
-            <span class="input-group-text">Senha</span>
-            <input type="password" class="form-control" aria-label="Senha" name="senha">
-            <span><?php echo $senha_erro ?></span>
-        </div>
-        <div class="input-group mx-auto p-2" style="width: 400px;">
-            <span class="input-group-text">Confirmar senha</span>
-            <input type="password" class="form-control" aria-label="Confirmar senha" name="confirmar_senha">
-            <span><?php echo $confirmar_senha_erro ?></span>
-        </div>
-        <div class="p-4">
-            <button class="btn btn-success" type="submit">Cadastrar</button>
-            <button class="btn btn-danger" type="reset">Apagar dados</button>
-        </div>
-        <p>
-            Já tem uma conta? <a href="Login.php">Entre aqui</a>.
-        </p>
-    </form>
+        <h1 class="display-4 p-3">Criar conta</h1>
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+            <div class="input-group mx-auto p-2" style="width: 300px;">
+                <span class="input-group-text">Apelido</span>
+                <input type="text" name="apelido" class="form-control <?php echo (!empty($apelido_erro)) ? 'is-invalid' : ''; ?>" value="<?php echo $apelido; ?>">
+                <span class="invalid-feedback"><?php echo $apelido_erro; ?></span>
+            </div>
+            <div class="input-group mx-auto p-2" style="width: 300px;">
+                <span class="input-group-text">Senha</span>
+                <input type="password" name="senha" class="form-control <?php echo (!empty($senha_erro)) ? 'is-invalid' : ''; ?>" value="<?php echo $senha; ?>">
+                <span class="invalid-feedback"><?php echo $senha_erro; ?></span>
+            </div>
+            <div class="input-group mx-auto p-2" style="width: 300px;">
+                <span class="input-group-text">Confirmar senha</span>
+                <input type="password" name="confirmar_senha" class="form-control <?php echo (!empty($confirmar_senha_erro)) ? 'is-invalid' : ''; ?>" value="<?php echo $confirmar_senha; ?>">
+                <span class="invalid-feedback"><?php echo $confirmar_senha_erro; ?></span>
+            </div>
+            <div class="p-4">
+                <button class="btn btn-success" type="submit">Cadastrar</button>
+                <button class="btn btn-danger" type="reset">Apagar dados</button>
+            </div>
+            <p>
+                Já tem uma conta? <a href="Login.php">Entre aqui</a>.
+            </p>
+        </form>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

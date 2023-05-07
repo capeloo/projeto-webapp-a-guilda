@@ -105,31 +105,31 @@
     </div>
 </nav>
     <div class="container-fluid text-center mt-4">
-    <h1 class="display-4 p-3">Login</h1>
-    <p>Por favor, preencha os campos para fazer o login.</p>
+        <h1 class="display-4 p-3">Login</h1>
+        <p>Por favor, preencha os campos para fazer o login.</p>
 
-    <?php 
-        if(!empty($login_erro)){
-            echo '<div>' . $login_erro . '</div>';
-        }        
+        <?php 
+            if(!empty($login_erro)){
+                echo '<div class="text-danger">' . $login_erro . '</div>';
+            }        
         ?>
 
-    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-        <div class="input-group mx-auto p-2" style="width: 400px;">
-            <span class="input-group-text">Apelido</span>
-            <input type="text" class="form-control" aria-label="Apelido">
-            <span><?php echo $apelido_erro; ?></span>
-        </div>
-        <div class="input-group mx-auto p-2" style="width: 400px;">
-            <span class="input-group-text">Senha</span>
-            <input type="password" class="form-control" aria-label="Senha">
-            <span><?php echo $senha_erro; ?></span>
-        </div>
-        <div class="p-4">
-            <button class="btn btn-success" style="width: 100px;" type="submit">Entrar</button>
-        </div>
-        <p>Não tem uma conta? <a href="Cadastro.php">Inscreva-se agora</a>.</p>
-    </form>
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+            <div class="input-group mx-auto p-2" style="width: 300px;">
+                <span class="input-group-text">Apelido</span>
+                <input type="text" name="apelido" class="form-control <?php echo (!empty($apelido_erro)) ? 'is-invalid' : ''; ?>" value="<?php echo $apelido; ?>">
+                <span class="invalid-feedback"><?php echo $apelido_erro; ?></span>
+            </div>
+            <div class="input-group mx-auto p-2" style="width: 300px;">
+                <span class="input-group-text">Senha</span>
+                <input type="password" name="senha" class="form-control <?php echo (!empty($senha_erro)) ? 'is-invalid' : ''; ?>" value="<?php echo $senha; ?>">
+                <span class="invalid-feedback"><?php echo $senha_erro; ?></span>
+            </div>
+            <div class="p-4">
+                <button class="btn btn-success" style="width: 100px;" type="submit">Entrar</button>
+            </div>
+            <p>Não tem uma conta? <a href="Cadastro.php">Inscreva-se agora</a>.</p>
+        </form>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
