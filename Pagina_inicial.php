@@ -7,11 +7,11 @@
     <title>Página Inicial</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body class="text-bg-info">
-<nav class="navbar bg-body-tertiary sticky-top">
+<body class="bg-light">
+<nav class="navbar bg-dark sticky-top">
   <div class="container-fluid">
-    <a class="navbar-brand" href="Pagina_inicial.php">Página Inicial</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+    <a class="navbar-brand text-light" href="Pagina_inicial.php">Página Inicial</a>
+    <button class="navbar-toggler bg-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
@@ -35,17 +35,17 @@
     </div>
   </div>
 </nav>
-    <div class="container text-left p-3" style="width: 500px; height: 100vh">
-        <div>
-        <h1>
-            Taverna
-        </h1>
-        <h3>
-            A sua plataforma web segura e inclusiva
-        </h3>
-        <p class="text-light">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non corporis hic officiis soluta doloribus suscipit blanditiis sunt vero quasi optio, asperiores alias ab dolore in sit modi maiores aliquam a. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Libero minus ea quos excepturi earum voluptatum dolor, nostrum nulla numquam dolorem inventore blanditiis vitae velit facere magnam porro quia consequatur! Est! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur, omnis in. Accusantium excepturi a impedit recusandae esse illo voluptates! Explicabo quas debitis vel perferendis voluptate, ut repudiandae tempora adipisci consectetur? Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        </p>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col text-center ms-5 p-3">
+                <h1 class="display-1">Taverna</h1>
+                <h3 class="h1">A sua plataforma web segura e inclusiva</h3>
+                <p class="text-dark text-center mt-4">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non corporis hic officiis soluta doloribus suscipit blanditiis sunt vero quasi optio, asperiores alias ab dolore in sit modi maiores aliquam a. Lorem ipsum dolor, sit amet  consectetur adipisicing elit. Libero minus ea quos excepturi earum voluptatum dolor, nostrum nulla numquam dolorem inventore blanditiis vitae velit facere magnam porro quia consequatur! Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi vel nesciunt numquam debitis, minima inventore fugiat consequatur atque qui, corrupti itaque minus repellendus id alias labore suscipit sapiente fugit sed.
+            </div>
+            <div class="col text-center mt-5 col-6">
+                <img src="./Imagens/icon.png" alt="Taverna">
+            </div>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
