@@ -115,17 +115,17 @@
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
         <div class="input-group mx-auto p-2" style="width: 400px;">
             <span class="input-group-text">Apelido</span>
-            <input type="text" class="form-control" aria-label="Apelido">
+            <input type="text" class="form-control" aria-label="Apelido" name="apelido">
             <span><?php echo $apelido_erro; ?></span>
         </div>
         <div class="input-group mx-auto p-2" style="width: 400px;">
             <span class="input-group-text">Senha</span>
-            <input type="password" class="form-control" aria-label="Senha">
+            <input type="password" class="form-control" aria-label="Senha" name="senha">
             <span><?php echo $senha_erro ?></span>
         </div>
         <div class="input-group mx-auto p-2" style="width: 400px;">
             <span class="input-group-text">Confirmar senha</span>
-            <input type="password" class="form-control" aria-label="Confirmar senha">
+            <input type="password" class="form-control" aria-label="Confirmar senha" name="confirmar_senha">
             <span><?php echo $confirmar_senha_erro ?></span>
         </div>
         <div class="p-4">
