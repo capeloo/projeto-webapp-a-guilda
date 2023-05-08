@@ -10,7 +10,7 @@
         } else if(!preg_match('/^[a-zA-Z0-9_]+$/', trim($_POST["apelido"]))){
             $apelido_erro = "O apelido pode conter apenas letras, números e sublinhados.";
         } else {
-            $sql = "SELECT id FROM usuarios WHERE apelido = (?)";
+            $sql = "SELECT id FROM usuario WHERE apelido = (?)";
 
             if($stmt = $mysqli->prepare($sql)){
                 $stmt->bind_param('s', $param_apelido);
@@ -50,7 +50,7 @@
         }
 
         if(empty($apelido_erro) && empty($senha_erro) && empty($confirmar_senha_erro)){
-            $sql = "INSERT INTO usuarios (apelido, senha) VALUES (?, ?)";
+            $sql = "INSERT INTO usuario (apelido, senha) VALUES (?, ?)";
 
             if($stmt = $mysqli->prepare($sql)){
                 $stmt->bind_param("ss", $param_apelido, $param_senha);

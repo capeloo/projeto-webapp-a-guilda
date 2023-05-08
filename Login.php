@@ -25,7 +25,7 @@
         }
 
         if(empty($apelido_erro) && empty($senha_erro)){
-            $sql = "SELECT id, apelido, senha FROM usuarios WHERE apelido = (?)";
+            $sql = "SELECT id, apelido, senha FROM usuario WHERE apelido = (?)";
 
             if($stmt = $mysqli->prepare($sql)){
                 $stmt->bind_param("s", $param_apelido);
