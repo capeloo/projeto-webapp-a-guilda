@@ -6,6 +6,61 @@
     }
 ?>
 
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="Usuario_dashboard.php">A Taverna</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="?page=edita">Editar perfil</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Mais
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="cadastra-mesa.php">Cadastrar mesa</a></li>
+            <li><a class="dropdown-item" href="?page=mostraMesasU">Minhas mesas</a></li>
+            <li><a class="dropdown-item" href="todas-mesas.php">Todas as mesas</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="fale-conosco.php">Fale conosco</a></li>
+          </ul>
+        </li>
+      </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Pesquisar Usuário" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Pesquisar</button>
+      </form>
+    </div>
+  </div>
+</nav>  
+
+
+<div class="container">
+  <div class="row">
+    <div class="col mt-5">
+      <?php
+        switch(@$_REQUEST["page"]){
+        case"edita":
+          include("Editar_perfil.php");
+        break;  
+        case"mostraMesasU":
+          include("mesas-usuario.php");
+        break;  
+        default: 
+          
+        }
+
+      ?>
+    </div>    
+  </div>
+</div>
+
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
