@@ -1,73 +1,36 @@
 <?php
+// estabelece conexão com o banco de dados MySQL
+require_once "config.php";
 
-/*
-session_start();
- include "config.php";
- if(isset($_POST['edita']))
- {
-    $id=$_SESSION['id'];
-    $apelido=$_POST['apelido'];
-    
-    $senha=$_POST['senha'];
-    $select= "select * from users where id='$id'";
-    $sql = mysqli_query($conn,$select);
-    $row = mysqli_fetch_assoc($sql);
-    $res= $row['id'];
-    if($res === $id)
-    {
-   
-       $update = "update users set apelido='$apelido',senha='$senha' where id='$id'";
-       $sql2=mysqli_query($conn,$update);
-if($sql2)
-       { 
-           /*Successful*/ /*
-           header('location:Usuario_dashboard.php');
-       }
-       else
-       {
-           /*sorry your profile is not update*//*
-           header('Editar_perfil.php');
-       }
-    }
-    else
-    {
-        /*sorry your id is not match*//*
-        header('location:Editar_perfil.php');
-    }
- }
+// verifica se a conexão foi bem-sucedida
+if (!$mysqli) {
+  die("Conexão falhou: " . mysqli_connect_error());
+}
 
-*/
+// obtém as informações do formulário HTML
+$apelido = $_POST["apelido"];
+$senha = $_POST["senha"];
+$confirmar_senha = $_POST["confirmar_senha"];
 
-/*
-case 'editar':
-        $apelido = $_POST["apelido"];
-        
-        $senha = md5($_POST["senha"]);
-        
+// verifica se a senha e a confirmação de senha são iguais
+if ($senha != $confirmar_senha) {
+  echo "As senhas não correspondem.";
+} else {
+  // cria a consulta SQL para atualizar as informações do usuário
+  $sql = "UPDATE usuarios SET senha='$senha' WHERE apelido='$apelido'";
 
-        $sql = "UPDATE usuarios SET
-                    apelido='{$apelido}',
-                    
-                    senha='{$senha}',
-                    
-                WHERE 
-                    id = ".$_REQUEST["id"];      
+  // executa a consulta SQL
+  if (mysqli_query($mysqli, $sql)) {
+    echo "As informações do usuário foram atualizadas com sucesso!";
+  } else {
+    echo "Erro ao atualizar as informações do usuário: " . mysqli_error($mysqli);
+  }
+}
 
-        $res = $mysqli->query($sql);
-
-        if ($res==true) {
-            print "<script>alert('Editado com sucesso')</script>";
-            print "<script>location.href='?page=listar'</script>";
-        }else {
-            print "<script>alert('Não foi possível editar')</script>";
-            print "<script>location.href='?page=listar'</script>";
-        }
-        break;
-
-
-
-*/
+// fecha a conexão com o banco de dados MySQL
+mysqli_close($mysqli);
 ?>
+
 
 
 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
