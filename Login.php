@@ -159,6 +159,7 @@
                 <button class="btn btn-success" style="width: 100px;" type="submit">Entrar</button>
             </div>
             <p>Não tem uma conta? <a href="Cadastro.php">Inscreva-se agora</a>.</p>
+            <a href="Redefinir_senha">Esqueceu a senha?</a>
         </form>
     </div>
     <!-- Chamando os scripts do Bootstrap -->
