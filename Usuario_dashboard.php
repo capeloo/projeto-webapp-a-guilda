@@ -29,7 +29,7 @@
             background-size: cover;
             background-attachment: fixed;">
 
-<!-- Cria Navbar e linka as páginas-->
+<!-- Cria Navbar e link das páginas-->
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
         <a class="navbar-brand" href="Usuario_dashboard.php">A Taverna</a>

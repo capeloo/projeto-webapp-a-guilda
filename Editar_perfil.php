@@ -7,7 +7,7 @@ if (!$mysqli) {
   die("Conexão falhou: " . mysqli_connect_error());
 }
 
-// obtém as informações do formulário HTML
+// obtém as informações do formulário HTML  -Dando erro (nn sei pq) 
 $apelido = $_POST["apelido"];
 $senha = $_POST["senha"];
 $confirmar_senha = $_POST["confirmar_senha"];
