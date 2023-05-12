@@ -34,10 +34,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                     if ($stmt = $mysqli->prepare($sql)) {
                         $stmt->bind_param("ssi", $param_nova_senha, $param_recuperar_senha, $id);
-                        $param_nova_senha = $nova_senha;
+                        $param_nova_senha = password_hash($nova_senha, PASSWORD_DEFAULT);
                         $param_recuperar_senha = "NULL";
                         if ($stmt->execute()) {
                             echo "<script>alert('Redefinição realizada com sucesso!');</script>";
+                            echo "<script>location.href='../Login.php';</script>";
 
                         } else {
                             echo "Ops! Algo deu errado. Por favor, tente novamente mais tarde.";
