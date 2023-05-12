@@ -128,7 +128,7 @@
     <!-- Barra de navegação -->
     <nav class="navbar bg-dark sticky-top">
         <div class="container-fluid">
-            <a class="navbar-brand text-light" href="Pagina_inicial.php">Página Inicial</a>
+            <a class="navbar-brand text-light" href="Pagina_inicial.php">Taverna</a>
             <!-- Offcanvas -->
             <button class="navbar-toggler bg-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
