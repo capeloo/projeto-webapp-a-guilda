@@ -1,14 +1,16 @@
 <?php
-session_start();
-
 require_once "config.php";
 
-$chave = $_GET['key'];
+$chv = isset($_GET["key"]) ? $_GET["key"] : "";
 
 $nova_senha = $confirmar_nova_senha = "";
 $nova_senha_erro = $confirmar_nova_senha_erro = $link_erro = "";
 
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $nova_senha = $_POST['nova_senha'];
+    $confirmar_nova_senha = $_POST['confirmar_nova_senha'];
+
     $sql = "SELECT id
             FROM usuario 
             WHERE recuperar_senha = (?)
@@ -16,36 +18,42 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($stmt = $mysqli->prepare($sql)) {
         $stmt->bind_param("s", $chave);
+        $chave = $_POST['key'];
 
         if ($stmt->execute()) {
             $stmt_res = $stmt->get_result();
-
             if ($stmt_res->num_rows == 1) {
                 $row = $stmt_res->fetch_assoc();
+                $id = $row['id'];
 
                     $sql = "UPDATE usuario
-                                SET senha = (?),
-                                recuperar_senha = (?)
-                                WHERE id = (?)
-                                LIMIT 1";
+                            SET senha = (?),
+                            recuperar_senha = (?)
+                            WHERE id = (?)
+                            LIMIT 1";
 
                     if ($stmt = $mysqli->prepare($sql)) {
-                        $stmt->bind_param("ssi", $param_nova_senha, $param_recuperar_senha, $row['id']);
-                        $param_nova_senha = password_hash($nova_senha, PASSWORD_DEFAULT);
+                        $stmt->bind_param("ssi", $param_nova_senha, $param_recuperar_senha, $id);
+                        $param_nova_senha = $nova_senha;
                         $param_recuperar_senha = "NULL";
                         if ($stmt->execute()) {
-                            echo "<script>alert('Senha atualizada com sucesso!');</script>";
-                            header('location: Login.php');
+                            echo "<script>alert('Redefinição realizada com sucesso!');</script>";
+
                         } else {
                             echo "Ops! Algo deu errado. Por favor, tente novamente mais tarde.";
                         }
+
+                        $stmt->close();
                     }
                 } else {
-                    $_SESSION['msg'] = "Link inválido! Tente novamente.";
+                    echo "Link inválido! Tente novamente.";
                     header("location: Esqueceu_senha.php");
                 }
+            } else {
+                echo "Ops! Algo deu errado. Por favor, tente novamente mais tarde.";
             } 
         }
+        $mysqli->close();
     } 
 ?>
 
@@ -97,9 +105,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <!-- Conteúdo da página -->
     <div class="container-fluid text-center mt-4">
         <h1 class="display-4 p-3">Redefinir a senha</h1>
-
         <!-- Formulário -->
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+            <input type="hidden" name="key" value="<?php echo $chv ?>">
             <div class="input-group mx-auto p-2" style="width: 300px;">
                 <span class="input-group-text">Nova senha</span>
                 <input type="password" name="nova_senha"
@@ -115,7 +123,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <span class="invalid-feedback"><?php echo $confirmar_nova_senha_erro; ?></span>
             </div>
             <div class="p-4">
-                <button class="btn btn-success" style="width: 100px;" type="submit">Confirmar</button>
+                <button class="btn btn-success" style="width: 100px;" type="submit">Confirmar</button> 
             </div>
         </form>
     </div>

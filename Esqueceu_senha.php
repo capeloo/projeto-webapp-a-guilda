@@ -1,6 +1,4 @@
 <?php 
-    session_start();
-
     require_once "config.php";
 
     $email = $email_erro = "";
@@ -38,7 +36,7 @@
                             $stmt->bind_param("si", $chave, $row['id']);
                             
                             if($stmt->execute()){
-                                echo "http://localhost/projeto-webapp-taverna/Redefinir_senha.php?key=$chave";
+                                echo "http://localhost/projeto-webapp-taverna/Redefinir_senha.php/?key=$chave";
                             }
 
                         }
@@ -100,13 +98,6 @@
     <div class="container-fluid text-center mt-4">
         <h1 class="display-4 p-3">Encontre sua conta</h1>
         <p>Por favor, preencha o campo para receber um link de redefinição de senha por e-mail.</p>
-        
-        <?php 
-            if(!empty($_SESSION['msg'])){
-                echo '<div class="text-danger">' . $_SESSION['msg'] . '</div>';
-            }        
-        ?>
-
         <!-- Formulário -->
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <div class="input-group mx-auto p-2" style="width: 300px;">
