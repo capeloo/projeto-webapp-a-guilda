@@ -4,11 +4,10 @@
     // PHPMailer
         // Import PHPMailer classes into the global namespace
         use PHPMailer\PHPMailer\PHPMailer;
-        use PHPMailer\PHPMailer\SMTP;
         use PHPMailer\PHPMailer\Exception;
         // Load Composer's autoloader
-        require "lib/vendor/autoload.php";
-        // Create an instance; passing `true` enables exceptions
+        require "./lib/vendor/autoload.php";
+        //Create an instance; passing `true` enables exceptions
         $mail = new PHPMailer(true);
 
     // Traz o arquivo config.php onde foi configurado a ligação com o banco de dados
