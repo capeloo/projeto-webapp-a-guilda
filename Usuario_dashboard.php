@@ -8,9 +8,6 @@
     }
 ?>
 
-
-
-
 <!-- Início do HTML -->
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -23,67 +20,30 @@
     <!-- Chamando as folhas de estilo do Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body class="bg-image" 
-      style="background-image: url('./Imagens/bg.jpg'); 
-            background-position: center center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-attachment: fixed;">
-
-<!-- Cria Navbar e link das páginas-->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="Usuario_dashboard.php">A Taverna</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+<body class="bg-light">
+    <!-- Barra de navegação -->
+  <nav class="navbar bg-dark sticky-top">
+    <div class="container-fluid">
+      <a class="navbar-brand text-light" href="Pagina_inicial.php">Taverna</a>
+      <!-- Offcanvas -->
+      <button class="navbar-toggler bg-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="?page=edita">Editar perfil</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Mais
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Cadastrar mesa</a></li>
-                <li><a class="dropdown-item" href="#">Minhas mesas</a></li>
-                <li><a class="dropdown-item" href="#">Todas as mesas</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Fale conosco</a></li>
-              </ul>
+              <a class="nav-link" href="Editar_perfil.php">Editar perfil</a>
             </li>
           </ul>
-          <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Pesquisar Usuário" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Pesquisar</button>
-          </form>
         </div>
       </div>
-    </nav>  
-
-<!-- cria os casos para mostrar uma tela -->
-    <div class="container">
-      <div class="row">
-        <div class="col mt-5">
-          <?php
-            switch(@$_REQUEST["page"]){
-            case"edita":
-              include("Editar_perfil.php");
-            break;  
-            case"mostraMesasU":
-              include("Mesas_usuario.php");
-            break;  
-            default: 
-              
-            }
-
-          ?>
-        </div>    
-      </div>
     </div>
-    
+  </nav>
     <!-- Conteúdo da página -->
     <div class="container-fluid text-center mt-4 bg-light" style="width: 400px;">
         <h1 class="p-4">Seja bem vindo, <?php echo $_SESSION['apelido'] ?>!</h1>
