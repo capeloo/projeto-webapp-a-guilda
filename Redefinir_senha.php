@@ -1,76 +1,100 @@
 <?php
-require_once "config.php";
+    // Script do redefinir_senha
 
-$chv = isset($_GET["key"]) ? $_GET["key"] : "";
+    // Traz o arquivo config.php onde foi configurado a ligação com o banco de dados
+    require_once "config.php";
 
-$nova_senha = $confirmar_nova_senha = "";
-$nova_senha_erro = $confirmar_nova_senha_erro = $link_erro = "";
+    // Variável que guarda a chave passada pela url da página
+    $chv = isset($_GET["key"]) ? $_GET["key"] : "";
 
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $nova_senha = $_POST['nova_senha'];
-    $confirmar_nova_senha = $_POST['confirmar_nova_senha'];
-
+    // Validação para caso o usuário acesse o link gerado mais de uma vez
+    // Guarda a requisição em uma variável
     $sql = "SELECT id
             FROM usuario 
             WHERE recuperar_senha = (?)
             LIMIT 1";
-
+    // Prepara a requisição
     if ($stmt = $mysqli->prepare($sql)) {
+        // Valida o input do usuário (Evita injeção de código sql no banco)
         $stmt->bind_param("s", $chave);
+        // Variável que guarda a chava passada pela url da página e atribuida a um input
         $chave = $_POST['key'];
 
+        // Executa a requisição
         if ($stmt->execute()) {
+            // Guarda os resultados
             $stmt_res = $stmt->get_result();
+            // Se existir apenas um registro na tabela no banco, prossiga
             if ($stmt_res->num_rows == 1) {
+                // Traz os valores e atribui eles a variáveis
                 $row = $stmt_res->fetch_assoc();
                 $id = $row['id'];
 
+                // Inicializa variáveis vazias
+                $nova_senha = $confirmar_nova_senha = "";
+                $nova_senha_erro = $confirmar_nova_senha_erro = $link_erro = "";
+
+                // Ao receber os dados do formulário
+                if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                    // A fazer:
+                    // 1. Validação caso não coloque senha; 
+                    // 2. Validação caso a senha seja igual a antiga;
+                    $nova_senha = $_POST['nova_senha'];
+                    // 1. Validação caso não coloque senha;
+                    // 2. Validação caso a confirmação da senha não seja igual a nova senha;
+                    $confirmar_nova_senha = $_POST['confirmar_nova_senha'];
+
+                    // Após o tratamento e a atribuição dos valores em variáveis
+                    // Caso não tenha dado erro algum, inicia a requisição ao banco
+                    // Guarda a requisição em uma variável
                     $sql = "UPDATE usuario
                             SET senha = (?),
                             recuperar_senha = (?)
                             WHERE id = (?)
                             LIMIT 1";
-
+                    // Prepara a requisição
                     if ($stmt = $mysqli->prepare($sql)) {
+                        // Valida o input do usuário (Evita injeção de código sql no banco) 
                         $stmt->bind_param("ssi", $param_nova_senha, $param_recuperar_senha, $id);
                         $param_nova_senha = password_hash($nova_senha, PASSWORD_DEFAULT);
                         $param_recuperar_senha = "NULL";
+                        // Executa a requisição
                         if ($stmt->execute()) {
                             echo "<script>alert('Redefinição realizada com sucesso!');</script>";
+                            // Redireciona para o login
                             echo "<script>location.href='../Login.php';</script>";
 
                         } else {
                             echo "Ops! Algo deu errado. Por favor, tente novamente mais tarde.";
                         }
-
-                        $stmt->close();
+                    // Fecha a conexão com o banco    
+                    $stmt->close();
                     }
-                } else {
-                    echo "Link inválido! Tente novamente.";
-                    header("location: Esqueceu_senha.php");
-                }
+                } 
             } else {
-                echo "Ops! Algo deu errado. Por favor, tente novamente mais tarde.";
-            } 
+                echo "Link inválido! Tente novamente.";
+                header("location:../Esqueceu_senha.php"); 
+            }     
+        } else {
+            echo "Ops! Algo deu errado. Por favor, tente novamente mais tarde.";
         }
-        $mysqli->close();
-    } 
+    // Fecha a conexão com o banco
+    $mysqli->close(); 
+    }     
 ?>
 
 <!-- Início do HTML -->
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redefinir a senha</title>
+    <link rel="shortcut icon" href="./Imagens/fav.png" type="image/x-icon">
     <!-- Chamando as folhas de estilo do Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-
 <body class="bg-light">
     <!-- Barra de navegação -->
     <nav class="navbar bg-dark sticky-top">
@@ -131,5 +155,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <!-- Chamando os scripts do Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>

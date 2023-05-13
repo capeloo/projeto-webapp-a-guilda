@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página Inicial</title>
+    <link rel="shortcut icon" href="./Imagens/fav.png" type="image/x-icon">
     <!-- Chamando as folhas de estilo do Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
@@ -50,7 +51,7 @@
                     Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non corporis hic officiis soluta doloribus suscipit blanditiis sunt vero quasi optio, asperiores alias ab dolore in sit modi maiores aliquam a. Lorem ipsum dolor, sit amet  consectetur adipisicing elit. Libero minus ea quos excepturi earum voluptatum dolor, nostrum nulla numquam dolorem inventore blanditiis vitae velit facere magnam porro quia consequatur! Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi vel nesciunt numquam debitis, minima inventore fugiat consequatur atque qui, corrupti itaque minus repellendus id alias labore suscipit sapiente fugit sed.
             </div>
             <div class="col text-center mt-5 col-6">
-                <img src="./Imagens/icon.png" alt="Taverna">
+                <img src="./Imagens/asset-01.png" alt="Taverna">
             </div>
         </div>
     </div>
