@@ -22,11 +22,11 @@ session_start();
 require_once "config.php";
 
 $nome = $sistema = "";
-$nome_error = $sistema_error = "";
+$nome_erro = $sistema_erro = "";
 
 if($_SERVER["REQUEST_METHOD"] == "POST") {
     if(empty(trim($_POST["nome"]))) {
-        $nome_error = "Por favor, dê um nome para a sua campanha.";
+        $nome_erro = "Por favor, dê um nome para a sua campanha.";
     } else {
         // Essa query deveria ser para validar se já existe uma mesa com o nome solicitado?
         // Se sim, tem que refatorar. Além disso, estamos utilizando o objeto mySQLi para fazer
@@ -35,56 +35,46 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
         //Trocar para selecionar o id do usuário de acordo com o seu LOGIN
         $sql = "SELECT id from usuario WHERE nome = (?)";
-        if($stmt = $pdo->prepare($sql)) {
-            $stmt->bind_param(":nome", $parametro_nome, PDO::PARAM_STR);
+
+        if($stmt = $mysqli->prepare($sql)) {
+            $stmt->bind_param('s', $parametro_nome);
             $parametro_nome = trim($_POST["nome"]);
             if($stmt->execute()) {
-                if($stmt->rowCount() == 1) {
-                    $nome_error = "Esse nome de campanha já existe.";
+                $stmt_res =  $stmt->get_result();
+                if($stmt_res->num_rows == 1) {
+                    $nome_erro = "Esse nome de campanha já existe.";
                 } else {
-                    echo "Algo deu errado, por favor, tente novamente.";
+                    $nome = trim($_POST["nome"]);
                 }
-                unset($stmt);
+            } else {
+                echo "Ops! Algo deu errado. Por favor tente novamente mais tarde.";
             }
+            $stmt->close();
         }
+    }
         if(empty(trim($_POST["sistema"]))) {
-            $sistema_error = "Por favor, determine um sistema de jogo para a sua campanha.";
+            $sistema_erro = "Por favor, determine um sistema de jogo para a sua campanha.";
         } else {
             $sistema = trim($_POST["sistema"]);
         }
     }
         if(empty($nome_error) && empty($sistema_error)) {
-            $sql = "INSET INTO mesas (nome, sistema) VALUES (:nome, :sistema)";
-            if($stmt = $pdo->prepare($sql)) {
-            $stmt->bindParam(":nome", $param_nome, PDO::PARAM_STR);
-            $stmt->bindParam(":sistema", $parametro_sistema, PDO::PARAM_STR);
+            $sql = "INSERT INTO mesas (nome, sistema) VALUES (?, ?)";
+            if($stmt = $mysqli->prepare($sql)) {
+            $stmt->bindParam("ss", $parametro_nome);
             $parametro_nome = $nome;
             $parametro_sistema = $sistema;
             if($stmt->execute()) {
-                // Aqui precisamos decidir para onde o usuário será redirecionado após o cadastro
-                // de mesa. A princípio eu prefiro que leve ou para minhas mesas ou para lista de
-                // mesas. 
-                header("location: login.php");
+                echo "<script>alert('Cadastro realizado com sucesso!');</script>";
+                echo "<script>location.href='Login.php';</script>";
             } else {
-                echo "Algo deu errado, por favor tente novamente.";
+                echo "Ops! Algo deu errado. Por favor, tente novamente mais tarde.";
             }
-            unset($stmt);
-        }
+            $stmt->close();
     }
-    unset($pdo);
+   $mysqli->close();
 }
 ?>
-
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de mesa | A Taverna</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
-<body>
 <!-- 
     Está faltando a tag <form action="" method=""></form> que é necessária para receber
     o input do usuário e dizer como (method) e para onde (action) essas dados serão envi-
@@ -93,28 +83,37 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     Por fim, precisamos nos reunir para pensarmos melhor como será feito o backend das mesas.
     Os campos da tabela e a forma que ela vai se conectar com a tabela usuário.
 -->
-    <div class="wrapper">
-        <h2>Cadastro de mesa</h2>
-        <p>Por favor, preencha as informações básicas sobre a sua mesa abaixo.<p>
-            <div>
-                <div>
-                    <div class="form-group">
-                    <label>Nome da campanha</label>
-                <input type="text" name="nome" class="form-control <?php echo (!empty($nome_error)) ? 'is-invalid' : ''; ?>" value="<?php echo $nome; ?>">
-                <span class="invalid-feedback"><?php echo $nome_error; ?></span>
-                    </div>
-                </div>
-                <div>
-                    <div class="form-group">
-                    <input type="text" name="sistema" class="form-control <?php echo (!empty($sistema_error)) ? 'is-invalid' : ''; ?>" value="<?php echo $sistema; ?>">
-                <span class="invalid-feedback"><?php echo $sistema_error; ?></span>
-                    </div>
-                </div>
-                <div class="form-group">
-                <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="Criar mesa">
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de mesa | A Taverna</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container-fluid text-center mt-4">
+        <h1 class="display-4 p-3">Criar uma nova mesa</h1>
+        <!-- Formulário -->
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+            <div class="input-group mx-auto p-2" style="width: 300px;">
+                <span class="input-group-text">Nome da mesa</span>
+                <input type="text" name="nome" class="form-control <?php echo (!empty($nome_erro)) ? 'is-invalid' : ''; ?>" value="<?php echo $nome; ?>">
+                <span class="invalid-feedback"><?php echo $nome_erro; ?></span>
             </div>
-                </div>
-</div>
+            <div class="input-group mx-auto p-2" style="width: 300px;">
+                <span class="input-group-text">Sistema</span>
+                <input type="password" name="sistema" class="form-control <?php echo (!empty($sistema_erro)) ? 'is-invalid' : ''; ?>" value="<?php echo $sistema; ?>">
+                <span class="invalid-feedback"><?php echo $sistema_erro; ?></span>
+            </div>
+            <div class="p-4">
+                <button class="btn btn-success" type="submit">Cadastrar nova mesa</button>
+                <button class="btn btn-danger" type="reset">Apagar dados da mesa</button>
+            </div>
+        </form>
+    </div>
+    <!-- Chamando os scripts do Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
