@@ -39,8 +39,49 @@
     }
 
     if($_SERVER["REQUEST_METHOD"] == "POST"){
-        $sql = "UPDATE foto, nome, bio, email, celular, discord, matricula
-                FROM usuario";
+        //A fazer:
+        //  Validar inputs.
+        $foto = trim($_POST["foto"]);
+        $nome = trim($_POST["nome"]);
+        $bio = trim($_POST["bio"]);
+        $email = trim($_POST["email"]);
+        $celular = trim($_POST["celular"]);
+        $discord = trim($_POST["discord"]);
+        $matricula = trim($_POST["matricula"]);
+
+        $sql = "UPDATE usuario
+                SET foto = (?), 
+                    nome = (?), 
+                    bio = (?), 
+                    email = (?), 
+                    celular = (?), 
+                    discord = (?), 
+                    matricula = (?)
+                WHERE id = (?)
+                LIMIT 1";
+        
+        if($stmt = $mysqli->prepare($sql)){
+            $stmt->bind_param("bsssssii", $param_foto, $param_nome, $param_bio, $param_email, $param_celular, $param_discord, $param_matricula, $param_id);
+            $param_foto = $foto;
+            $param_nome = $nome;
+            $param_bio = $bio;
+            $param_email = $email;
+            $param_celular = $celular;
+            $param_discord = $discord;
+            $param_matricula = $matricula;
+            $param_id = $_SESSION["id"];
+
+            if($stmt->execute()){
+                echo "<script>alert('Edição realizada com sucesso!');</script>";
+                echo "<script>location.href='Usuario_dashboard.php';</script>";
+            } else {
+                echo "Ops! Algo deu errado. (2)";
+            }
+            // Fecha a conexão com o banco
+            $stmt->close();
+        }
+        // Fecha a conexão com o banco (de novo)
+        $mysqli->close();
     }
 ?>
 
