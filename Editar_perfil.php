@@ -3,14 +3,16 @@
 
 //Inicializa variáveis vazias
 $apelido_erro = $senha_erro = $login_erro = "";
-$apelido = $senha = "";
+$apelido = $senha = $id = "";
+
+require_once "config.php";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Obter os dados enviados pelo formulário
     $apelido = $_POST['apelido'];
     $senha = $_POST['senha'];
+    $id = $_POST['id'];
     
-    require_once "config.php";
     // Conexão com o banco de dados
     $servername = "localhost";
     $username = "root";
@@ -24,8 +26,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         die("Falha na conexão: " . $conn->connect_error);
     }
 
-    // Atualizar os dados na tabela 'usuario'
-    $sql = "UPDATE usuario SET senha='$senha' WHERE apelido='$apelido'";
+    // Atualizar os dados na tabela 'usuario' ********
+    $sql = "UPDATE usuario SET apelido='$apelido' and senha='$senha' WHERE id='$id'";
     if ($conn->query($sql) === TRUE) {
         echo "<script>alert('Edição concluída com sucesso');</script>";
         header("Location: Usuario_dashboard.php"); // Redirecionar para a página de dashboard após a edição
@@ -37,6 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $conn->close();
 
 }
+
 ?>
 
 
