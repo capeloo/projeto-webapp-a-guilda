@@ -104,7 +104,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
             <div class="input-group mx-auto p-2" style="width: 300px;">
                 <span class="input-group-text">Sistema</span>
-                <input type="password" name="sistema" class="form-control <?php echo (!empty($sistema_erro)) ? 'is-invalid' : ''; ?>" value="<?php echo $sistema; ?>">
+                <input type="text" name="sistema" class="form-control <?php echo (!empty($sistema_erro)) ? 'is-invalid' : ''; ?>" value="<?php echo $sistema; ?>">
                 <span class="invalid-feedback"><?php echo $sistema_erro; ?></span>
             </div>
             <div class="p-4">
