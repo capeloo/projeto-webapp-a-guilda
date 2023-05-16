@@ -1,3 +1,50 @@
+<?php 
+    //Inicia a sessão (necessário ter em todas as páginas que o usuário estiver logado)
+    session_start();
+
+    //Validação para impedir que o usuário que não logou entre no Editar_perfil
+    if(empty($_SESSION)){
+        echo "<script>location.href='Login.php';</script>";
+    }
+
+    //Traz o arquivo config.php onde foi configurado a ligação com o banco de dados
+    require_once "config.php";
+
+    //Inicializa variáveis vazias
+    $foto = $nome = $bio = $email = $celular = $discord = $matricula = "";
+    $foto_erro = $nome_erro = $bio_erro = $email_erro = $celular_erro = $discord_erro = $matricula_erro = "";
+
+    $sql = "SELECT foto, nome, bio, email, celular, discord, matricula
+            FROM usuario
+            WHERE id = (?)
+            LIMIT 1";
+
+    if($stmt = $mysqli->prepare($sql)){
+        $stmt->bind_param("i", $param_id);
+        $param_id = $_SESSION["id"];
+
+        if($stmt->execute()){
+            $stmt_res = $stmt->get_result();
+
+            if($stmt_res->num_rows == 1){
+                $row = $stmt_res->fetch_assoc();
+            } else {
+                echo "Ops! Algo deu errado (0)";
+            }
+        } else {
+            echo "Ops! Algo deu errado. (1)";
+        }
+        // Fecha a conexão com o banco
+        $stmt->close();
+    }
+
+    if($_SERVER["REQUEST_METHOD"] == "POST"){
+        $sql = "UPDATE foto, nome, bio, email, celular, discord, matricula
+                FROM usuario";
+    }
+?>
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -16,25 +63,33 @@
         </div>
         <div>
             <span>Nome Completo</span>
-            <input type="text" name="nome">
+            <input type="text" name="nome" value="<?php echo $row["nome"]; ?>">
             <span></span>
         </div>
         <div>
             <span>Bio</span>
-            <textarea name="bio" cols="30" rows="10"></textarea>
+            <textarea name="bio" cols="30" rows="10" placeholder="<?php echo $row["bio"]; ?>"></textarea>
             <span></span>
         </div>
         <div>
-            email
+            <span>E-mail</span>
+            <input type="email" name="email" value="<?php echo $row["email"]; ?>">
+            <span></span>
         </div>
         <div>
-            celular
+            <span>Celular</span>
+            <input type="text" name="celular" placeholder="(xx) x xxxx-xxxx" value="<?php echo $row["celular"]; ?>">
+            <span></span>
         </div>
         <div>
-            discord
+            <span>Discord</span>
+            <input type="text" name="discord" placeholder="nome#xxxx" value="<?php echo $row["discord"]; ?>">
+            <span></span>
         </div>
         <div>
-            matricula
+            <span>Matrícula UFC</span>
+            <input type="number" name="matricula" value="<?php echo $row["matricula"]; ?>">
+            <span></span>
         </div>
         <div>
         <button class="btn btn-success" type="submit">Salvar</button>
