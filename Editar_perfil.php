@@ -93,48 +93,89 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar perfil</title>
+    <link rel="shortcut icon" href="./Imagens/fav.png" type="image/x-icon">
+    <!-- Chamando as folhas de estilo do Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <h1>Editar perfil</h1>
-    <form action="" method="post">
-        <div>
-            <span>Foto</span>  
-            <input type="file" name="foto">
-            <span></span>
+    <!-- Barra de navegação -->
+    <nav class="navbar bg-dark sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand text-light" href="Pagina_inicial.php">Taverna</a>
+            <!-- Offcanvas -->
+            <button class="navbar-toggler bg-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                        <li class="nav-item">
+                            <a class="nav-link" href="Meu_perfil.php">Meu perfil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Usuario_dashboard.php">Dashboard</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
-        <div>
-            <span>Nome Completo</span>
-            <input type="text" name="nome" value="<?php echo $row["nome"]; ?>">
-            <span></span>
-        </div>
-        <div>
-            <span>Bio</span>
-            <textarea name="bio" cols="30" rows="10" placeholder="<?php echo $row["bio"]; ?>"></textarea>
-            <span></span>
-        </div>
-        <div>
-            <span>E-mail</span>
-            <input type="email" name="email" value="<?php echo $row["email"]; ?>">
-            <span></span>
-        </div>
-        <div>
-            <span>Celular</span>
-            <input type="text" name="celular" placeholder="(xx) x xxxx-xxxx" value="<?php echo $row["celular"]; ?>">
-            <span></span>
-        </div>
-        <div>
-            <span>Discord</span>
-            <input type="text" name="discord" placeholder="nome#xxxx" value="<?php echo $row["discord"]; ?>">
-            <span></span>
-        </div>
-        <div>
-            <span>Matrícula UFC</span>
-            <input type="number" name="matricula" value="<?php echo $row["matricula"]; ?>">
-            <span></span>
-        </div>
-        <div>
-        <button class="btn btn-success" type="submit">Salvar</button>
-        </div>
-    </form>
+    </nav>
+    <div class="container-fluid text-center mt-4">
+        <!-- Conteúdo da página -->
+        <h1 class="display-4 p-3">Editar perfil</h1>
+        <!-- Formulário -->
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+            <div class="row">
+                <div class="col">
+                    <div class="input-group mx-auto p-2" style="width: 500px;">
+                        <span class="input-group-text">Foto</span>  
+                        <input type="file" name="foto" class="form-control">
+                        <span class="invalid-feedback"></span>
+                    </div>
+                    <div class="input-group mx-auto p-2" style="width: 500px;">   
+                        <span class="input-group-text">Nome Completo</span>
+                        <input type="text" name="nome" value="<?php echo $row["nome"]; ?>" class="form-control">
+                        <span class="invalid-feedback"></span>
+                    </div>
+                    <div class="input-group mx-auto p-2" style="width: 500px;">
+                        <span class="input-group-text">Bio</span>
+                        <textarea name="bio" cols="30" rows="10" placeholder="<?php echo $row["bio"]; ?>" class="form-control"></textarea>
+                        <span class="invalid-feedback"></span>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="input-group mx-auto p-2" style="width: 500px;">
+                        <span class="input-group-text">E-mail</span>
+                        <input type="email" name="email" value="<?php echo $row["email"]; ?>" class="form-control">
+                        <span class="invalid-feedback"></span>
+                    </div>
+                    <div class="input-group mx-auto p-2" style="width: 500px;">
+                        <span class="input-group-text">Celular</span>
+                        <input type="text" name="celular" placeholder="(xx) x xxxx-xxxx" value="<?php echo $row["celular"]; ?>" class="form-control">
+                        <span class="invalid-feedback"></span>
+                    </div>
+                    <div class="input-group mx-auto p-2" style="width: 500px;">
+                        <span class="input-group-text">Discord</span>
+                        <input type="text" name="discord" placeholder="nome#xxxx" value="<?php echo $row["discord"]; ?>" class="form-control">
+                        <span class="invalid-feedback"></span>
+                    </div>
+                    <div class="input-group mx-auto p-2" style="width: 500px;">
+                        <span class="input-group-text">Matrícula UFC</span>
+                        <input type="number" name="matricula" value="<?php echo $row["matricula"]; ?>" class="form-control">
+                        <span class="invalid-feedback"></span>
+                    </div>
+                </div>
+            </div>   
+            <div class="p-4">
+                <button class="btn btn-success" style="width: 150px;" type="submit">Salvar</button>
+            </div>
+        </form>
+    </div>
+    <!-- Chamando os scripts do Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

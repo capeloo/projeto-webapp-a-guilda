@@ -46,7 +46,7 @@
   </nav>
     <!-- Conteúdo da página -->
     <div class="container-fluid text-center mt-4 bg-light" style="width: 400px;">
-        <h1 class="p-4">Seja bem vindo, <?php echo $_SESSION['apelido'] ?>!</h1>
+        <h1 class="p-4">Seja bem-vinde, <?php echo $_SESSION['apelido'] ?>!</h1>
         <div class="p-4">
             <a href="logout.php" class="btn btn-danger" style="width: 100px;">Sair</a>
         </div>
