@@ -10,13 +10,19 @@
     <h1>Editar perfil</h1>
     <form action="" method="post">
         <div>
-            foto    
+            <span>Foto</span>  
+            <input type="file" name="foto">
+            <span></span>
         </div>
         <div>
-            nome
+            <span>Nome Completo</span>
+            <input type="text" name="nome">
+            <span></span>
         </div>
         <div>
-            bio
+            <span>Bio</span>
+            <textarea name="bio" cols="30" rows="10"></textarea>
+            <span></span>
         </div>
         <div>
             email
