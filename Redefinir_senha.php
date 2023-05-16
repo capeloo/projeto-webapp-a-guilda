@@ -4,9 +4,6 @@
     // Traz o arquivo config.php onde foi configurado a ligação com o banco de dados
     require_once "config.php";
 
-    // Variável que guarda a chave passada pela url da página
-    $chv = isset($_GET["key"]) ? $_GET["key"] : "";
-
     // Validação para caso o usuário acesse o link gerado mais de uma vez
     // Guarda a requisição em uma variável
     $sql = "SELECT id
@@ -16,9 +13,9 @@
     // Prepara a requisição
     if ($stmt = $mysqli->prepare($sql)) {
         // Valida o input do usuário (Evita injeção de código sql no banco)
-        $stmt->bind_param("s", $chave);
-        // Variável que guarda a chava passada pela url da página e atribuida a um input
-        $chave = $_POST['key'];
+        $stmt->bind_param("s", $chv);
+        // Variável que guarda a chave passada pela url da página
+        $chv = isset($_GET["key"]) ? $_GET["key"] : "";
 
         // Executa a requisição
         if ($stmt->execute()) {
@@ -73,7 +70,7 @@
                 } 
             } else {
                 echo "Link inválido! Tente novamente.";
-                header("location:../Esqueceu_senha.php"); 
+                //header("location:../Esqueceu_senha.php"); 
             }     
         } else {
             echo "Ops! Algo deu errado. Por favor, tente novamente mais tarde.";
