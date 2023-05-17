@@ -50,6 +50,8 @@
         $discord = trim($_POST["discord"]);
         $matricula = trim($_POST["matricula"]);
 
+        //Valida a foto
+
         //Valida o nome
         if (empty(trim($_POST["nome"]))) {
             $nome_erro = "Por favor coloque um nome.";
@@ -57,6 +59,7 @@
             $nome_erro = "O nome pode conter apenas letras.";
         }
 
+        //Valida a bio
         if (empty(trim($_POST["bio"]))) {
             $bio_erro = "Por favor escreva um pouco sobre você!";
         }   
@@ -73,13 +76,15 @@
             $calular_erro = "Por favor coloque um número válido.";
         }
 
+        //Valida discord
+
+
         //Valida a matricula
         if(strlen(trim($_POST["matricula"])) < 6){
             $matricula_erro = "Por favor coloque uma matrícula válida.";
         }
             
 
-        //$foto_erro = $nome_erro = $bio_erro = $email_erro = $celular_erro = $discord_erro = $matricula_erro
 
         if(empty($foto_erro) && empty($nome_erro) && empty($bio_erro) && empty($email_erro) && empty($celular_erro) && empty($discord_erro) && empty($matricula_erro)){
         $sql = "UPDATE usuario
