@@ -38,77 +38,67 @@
         $stmt->close();
     }
 
-    if($_SERVER["REQUEST_METHOD"] == "POST"){
-        //A fazer:
-        //  Validar inputs.
-        
-        $foto = trim($_POST["foto"]);
-        $nome = trim($_POST["nome"]);
-        $bio = trim($_POST["bio"]);
-        $email = trim($_POST["email"]);
-        $celular = trim($_POST["celular"]);
-        $discord = trim($_POST["discord"]);
-        $matricula = trim($_POST["matricula"]);
-
+    if($_SERVER["REQUEST_METHOD"] == "POST"){    
         //Valida a foto
+        $foto = trim($_POST["foto"]);
 
         //Valida o nome
         if (empty(trim($_POST["nome"]))) {
             $nome_erro = "Por favor coloque um nome.";
-        } else if(!preg_match('/^[a-zA-Z]+$/', trim($_POST["nome"]))){
-            $nome_erro = "O nome pode conter apenas letras.";
+        } else {
+            $nome = trim($_POST["nome"]);
         }
 
         //Valida a bio
         if (empty(trim($_POST["bio"]))) {
             $bio_erro = "Por favor escreva um pouco sobre você!";
-        }   
+        } else {
+            $bio = trim($_POST["bio"]);
+        }
 
          //Valida o email
          if (empty(trim($_POST["email"]))) {
-            $email_erro = "Por favor coloque um email.";
-        } 
-
-        //Valida os caracteres do numero
-        if(!preg_match('/^[0-9]+$/', trim($_POST["celular"]))){
-            $celular_erro = "Por favor coloque um número válido.";
-        } else if(strlen(trim($_POST["celular"])) < 11){
-            $calular_erro = "Por favor coloque um número válido.";
+            $email_erro = "Por favor coloque um e-mail.";
+        } else {
+            $email = trim($_POST["email"]);
         }
 
-        //Valida discord
+        //Valida o celular
+        $celular = trim($_POST["celular"]);
 
+        //Valida discord
+        $discord = trim($_POST["discord"]);
 
         //Valida a matricula
         if(strlen(trim($_POST["matricula"])) < 6){
             $matricula_erro = "Por favor coloque uma matrícula válida.";
+        } else {
+            $matricula = trim($_POST["matricula"]);
         }
-            
-
 
         if(empty($foto_erro) && empty($nome_erro) && empty($bio_erro) && empty($email_erro) && empty($celular_erro) && empty($discord_erro) && empty($matricula_erro)){
-        $sql = "UPDATE usuario
-                SET foto = (?), 
-                    nome = (?), 
-                    bio = (?), 
-                    email = (?), 
-                    celular = (?), 
-                    discord = (?), 
-                    matricula = (?)
-                WHERE id = (?)
-                LIMIT 1";
+            $sql = "UPDATE usuario
+                    SET foto = (?), 
+                        nome = (?), 
+                        bio = (?), 
+                        email = (?), 
+                        celular = (?), 
+                        discord = (?), 
+                        matricula = (?)
+                    WHERE id = (?)
+                    LIMIT 1";
 
 
-        if($stmt = $mysqli->prepare($sql)){
-            $stmt->bind_param("bsssssii", $param_foto, $param_nome, $param_bio, $param_email, $param_celular, $param_discord, $param_matricula, $param_id);
-            $param_foto = $foto;
-            $param_nome = $nome;
-            $param_bio = $bio;
-            $param_email = $email;
-            $param_celular = $celular;
-            $param_discord = $discord;
-            $param_matricula = $matricula;
-            $param_id = $_SESSION["id"];
+            if($stmt = $mysqli->prepare($sql)){
+                $stmt->bind_param("bsssssii", $param_foto, $param_nome, $param_bio, $param_email,   $param_celular, $param_discord, $param_matricula, $param_id);
+                $param_foto = $foto;
+                $param_nome = $nome;
+                $param_bio = $bio;
+                $param_email = $email;
+                $param_celular = $celular;
+                $param_discord = $discord;
+                $param_matricula = $matricula;
+                $param_id = $_SESSION["id"];
 
             if($stmt->execute()){
                 echo "<script>alert('Edição realizada com sucesso!');</script>";
@@ -123,13 +113,6 @@
         // Fecha a conexão com o banco (de novo)
         $mysqli->close();
     }
-
-
-
-
-
-
-
 ?>
 
 
