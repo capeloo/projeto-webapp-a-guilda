@@ -41,6 +41,7 @@
     if($_SERVER["REQUEST_METHOD"] == "POST"){
         //A fazer:
         //  Validar inputs.
+        
         $foto = trim($_POST["foto"]);
         $nome = trim($_POST["nome"]);
         $bio = trim($_POST["bio"]);
@@ -49,6 +50,38 @@
         $discord = trim($_POST["discord"]);
         $matricula = trim($_POST["matricula"]);
 
+        //Valida o nome
+        if (empty(trim($_POST["nome"]))) {
+            $nome_erro = "Por favor coloque um nome.";
+        } else if(!preg_match('/^[a-zA-Z]+$/', trim($_POST["nome"]))){
+            $nome_erro = "O nome pode conter apenas letras.";
+        }
+
+        if (empty(trim($_POST["bio"]))) {
+            $bio_erro = "Por favor escreva um pouco sobre você!";
+        }   
+
+         //Valida o email
+         if (empty(trim($_POST["email"]))) {
+            $email_erro = "Por favor coloque um email.";
+        } 
+
+        //Valida os caracteres do numero
+        if(!preg_match('/^[0-9]+$/', trim($_POST["celular"]))){
+            $celular_erro = "Por favor coloque um número válido.";
+        } else if(strlen(trim($_POST["celular"])) < 11){
+            $calular_erro = "Por favor coloque um número válido.";
+        }
+
+        //Valida a matricula
+        if(strlen(trim($_POST["matricula"])) < 6){
+            $matricula_erro = "Por favor coloque uma matrícula válida.";
+        }
+            
+
+        //$foto_erro = $nome_erro = $bio_erro = $email_erro = $celular_erro = $discord_erro = $matricula_erro
+
+        if(empty($foto_erro) && empty($nome_erro) && empty($bio_erro) && empty($email_erro) && empty($celular_erro) && empty($discord_erro) && empty($matricula_erro)){
         $sql = "UPDATE usuario
                 SET foto = (?), 
                     nome = (?), 
@@ -59,7 +92,8 @@
                     matricula = (?)
                 WHERE id = (?)
                 LIMIT 1";
-        
+
+
         if($stmt = $mysqli->prepare($sql)){
             $stmt->bind_param("bsssssii", $param_foto, $param_nome, $param_bio, $param_email, $param_celular, $param_discord, $param_matricula, $param_id);
             $param_foto = $foto;
@@ -79,10 +113,18 @@
             }
             // Fecha a conexão com o banco
             $stmt->close();
+            }
         }
         // Fecha a conexão com o banco (de novo)
         $mysqli->close();
     }
+
+
+
+
+
+
+
 ?>
 
 
@@ -138,35 +180,35 @@
                     </div>
                     <div class="input-group mx-auto p-2" style="width: 500px;">   
                         <span class="input-group-text">Nome Completo</span>
-                        <input type="text" name="nome" value="<?php echo $row["nome"]; ?>" class="form-control">
-                        <span class="invalid-feedback"></span>
+                        <input type="text" name="nome" value="<?php echo $row["nome"]; ?>" class="form-control <?php echo (!empty($nome_erro)) ? 'is-invalid' : ''; ?>">
+                        <span class="invalid-feedback"><?php echo $nome_erro; ?></span>
                     </div>
                     <div class="input-group mx-auto p-2" style="width: 500px;">
                         <span class="input-group-text">Bio</span>
-                        <textarea name="bio" cols="30" rows="10" placeholder="<?php echo $row["bio"]; ?>" class="form-control"></textarea>
-                        <span class="invalid-feedback"></span>
+                        <textarea name="bio" cols="30" rows="10" placeholder="<?php echo $row["bio"]; ?>" class="form-control <?php echo (!empty($bio_erro)) ? 'is-invalid' : ''; ?>"></textarea>
+                        <span class="invalid-feedback"><?php echo $bio_erro; ?></span>
                     </div>
                 </div>
                 <div class="col">
                     <div class="input-group mx-auto p-2" style="width: 500px;">
                         <span class="input-group-text">E-mail</span>
-                        <input type="email" name="email" value="<?php echo $row["email"]; ?>" class="form-control">
-                        <span class="invalid-feedback"></span>
+                        <input type="email" name="email" value="<?php echo $row["email"]; ?>" class="form-control <?php echo (!empty($email_erro)) ? 'is-invalid' : ''; ?>">
+                        <span class="invalid-feedback"><?php echo $email_erro; ?></span>
                     </div>
                     <div class="input-group mx-auto p-2" style="width: 500px;">
                         <span class="input-group-text">Celular</span>
-                        <input type="text" name="celular" placeholder="(xx) x xxxx-xxxx" value="<?php echo $row["celular"]; ?>" class="form-control">
-                        <span class="invalid-feedback"></span>
+                        <input type="text" name="celular" placeholder="(xx) x xxxx-xxxx" value="<?php echo $row["celular"]; ?>" class="form-control <?php echo (!empty($celular_erro)) ? 'is-invalid' : ''; ?>">
+                        <span class="invalid-feedback"><?php echo $celular_erro; ?></span>
                     </div>
                     <div class="input-group mx-auto p-2" style="width: 500px;">
                         <span class="input-group-text">Discord</span>
                         <input type="text" name="discord" placeholder="nome#xxxx" value="<?php echo $row["discord"]; ?>" class="form-control">
-                        <span class="invalid-feedback"></span>
+                        <span class="invalid-feedback"><?php echo $discord_erro; ?></span>
                     </div>
                     <div class="input-group mx-auto p-2" style="width: 500px;">
                         <span class="input-group-text">Matrícula UFC</span>
-                        <input type="number" name="matricula" value="<?php echo $row["matricula"]; ?>" class="form-control">
-                        <span class="invalid-feedback"></span>
+                        <input type="number" name="matricula" value="<?php echo $row["matricula"]; ?>" class="form-control <?php echo (!empty($matricula_erro)) ? 'is-invalid' : ''; ?>">
+                        <span class="invalid-feedback"><?php echo $matricula_erro; ?></span>
                     </div>
                 </div>
             </div>   
