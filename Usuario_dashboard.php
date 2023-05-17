@@ -39,6 +39,9 @@
             <li class="nav-item">
               <a class="nav-link" href="Editar_perfil.php">Editar perfil</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Cadastro_mesa.php">Cadastro de mesa</a>
+            </li>
           </ul>
         </div>
       </div>

@@ -57,11 +57,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             $sistema = trim($_POST["sistema"]);
         }
-    }
+
         if(empty($nome_error) && empty($sistema_error)) {
-            $sql = "INSERT INTO mesas (nome, sistema) VALUES (?, ?)";
+            $sql = "INSERT INTO mesa (nome_mestre, sistema) VALUES (?, ?)";
             if($stmt = $mysqli->prepare($sql)) {
-            $stmt->bindParam("ss", $parametro_nome);
+            $stmt->bind_param("ss", $parametro_nome, $parametro_sistema);
             $parametro_nome = $nome;
             $parametro_sistema = $sistema;
             if($stmt->execute()) {
@@ -71,6 +71,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                 echo "Ops! Algo deu errado. Por favor, tente novamente mais tarde.";
             }
             $stmt->close();
+    }    
     }
    $mysqli->close();
 }
