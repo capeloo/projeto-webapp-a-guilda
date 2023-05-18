@@ -21,7 +21,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="bg-light">
-    <!-- Barra de navegação -->
+  <!-- Barra de navegação -->
   <nav class="navbar bg-dark sticky-top">
     <div class="container-fluid">
       <a class="navbar-brand text-light" href="Pagina_inicial.php">Taverna</a>
