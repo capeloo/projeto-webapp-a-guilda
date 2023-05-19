@@ -48,8 +48,8 @@
     </div>
   </nav>
     <!-- Conteúdo da página -->
-    <div class="container-fluid text-center mt-4 bg-light" style="width: 400px;">
-        <h1 class="p-4">Seja bem-vinde, <?php echo $_SESSION['apelido'] ?>!</h1>
+    <div class="container-fluid text-center mt-4 bg-light" style="width: 500px;">
+        <h1 class="p-4">Olá, <?php echo $_SESSION['apelido'] ?>! Sua nova aventura começa aqui.</h1>
         <div class="p-4">
             <a href="login/logout.php" class="btn btn-danger" style="width: 100px;">Sair</a>
         </div>

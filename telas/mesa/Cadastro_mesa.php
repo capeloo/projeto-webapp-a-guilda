@@ -3,8 +3,39 @@
 
     require_once 'C:\xampp\htdocs\projeto-webapp-taverna\db\config.php';
 
-    //A fazer:
-    //  1. Trazer os dados do mestre;
+    // A fazer:
+    //   Atualizar os campos na tabela usuario;
+    $mestre = $id_mesa = "";
+
+    $email_mestre = $nome_mestre = $matricula_mestre = $celular_mestre = "";
+
+    $sql = "SELECT nome, 
+                   matricula,
+                   email,
+                   celular,
+                   mestre,
+                   id_mesa
+            FROM usuario
+            WHERE id = (?)";
+    
+    if($stmt = $mysqli->prepare($sql)){
+        $stmt->bind_param("i", $param_id);
+        $param_id = $_SESSION["id"];
+
+        if($stmt->execute()){
+            $stmt_res = $stmt->get_result();
+
+            if($stmt_res->num_rows == 1){
+                $row = $stmt_res->fetch_assoc();
+            } else {
+                echo "Ops! Algo deu errado (0)";
+            }
+        } else {
+            echo "Ops! Algo deu errado. (1)";
+        }
+        // Fecha a conexão com o banco
+        $stmt->close();
+    }
 
     $foto = $tema = $nome_campanha = $sistema = $sinopse = $requisitos = $duracao = $classificacao = $vagas = $nivel = $data = $hora = "";
 
@@ -15,6 +46,15 @@
         //  1. Decidir as validações dos campos;
         //  2. Codar as validações;
 
+        $email_mestre = $row["email"];
+
+        $nome_mestre = $row["nome"];
+
+        $matricula_mestre = $row["matricula"];
+
+        $celular_mestre = $row["celular"];
+
+        //errado
         $foto = trim($_POST["foto"]);
 
         if(isset($_POST["tema"]) == null){
@@ -31,16 +71,17 @@
         $classificacao = trim($_POST["classificacao"]);
         $vagas = trim($_POST["vagas"]);
         $nivel = trim($_POST["nivel"]);
+        //Refatorar a data para mostrar dd/mm/aaaa
         $data = trim($_POST["data"]);
         $hora = trim($_POST["hora"]);
 
         if(empty($foto_erro) && empty($tema_erro) && empty($nome_campanha_erro) && empty($sistema_erro) && empty($sinopse_erro) && empty($requisitos_erro) && empty($duracao_erro) && empty($classificacao_erro) && empty($vagas_erro) && empty($nivel_erro) && empty($data_erro) && empty($hora_erro)) {
             // A fazer:
             //  1. Incluir os dados do mestre na query;
-            $sql = "INSERT INTO mesa (foto, tema, nome_campanha, sistema, sinopse, requisitos, duracao, classificacao, vagas, nivel, 'data', hora) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $sql = "INSERT INTO mesa (email_mestre, nome_mestre, matricula_mestre, celular_mestre,foto, tema, nome_campanha, sistema, sinopse, requisitos, duracao, classificacao_indicativa, numero_vagas, nivel_jogadores, data, hora) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
             if($stmt = $mysqli->prepare($sql)) {
-                $stmt->bind_param("bsssssssisss", $param_foto, $param_tema, $param_nome_campanha, $param_sistema, $param_sinopse, $param_requisitos, $param_duracao, $param_classificacao, $param_vagas, $param_nivel, $param_data, $param_hora);
+                $stmt->bind_param("ssisbsssssssisss", $email_mestre, $nome_mestre, $matricula_mestre, $celular_mestre, $param_foto, $param_tema, $param_nome_campanha, $param_sistema, $param_sinopse, $param_requisitos, $param_duracao, $param_classificacao, $param_vagas, $param_nivel, $param_data, $param_hora);
 
                 $param_foto = $foto;
                 $param_tema = $tema;
@@ -112,6 +153,9 @@
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <div class="row">
                 <div class="col">
+                    <!-- A fazer: 
+                            Codar para permitir a entrada de fotos no banco;
+                    -->
                     <div class="input-group mx-auto p-2" style="width: 300px;">
                         <span class="input-group-text">Foto</span>  
                         <input type="file" name="foto" class="form-control">
@@ -196,7 +240,7 @@
                     </div>
                     <div class="input-group mx-auto p-2" style="width: 300px;">
                         <span class="input-group-text">Data</span>
-                        <input type="data" class="form-control" name="data">
+                        <input type="date" class="form-control" name="data">
                         <span class="invalid-feedback"></span>
                     </div>
                     <div class="input-group mx-auto p-2" style="width: 300px;">
