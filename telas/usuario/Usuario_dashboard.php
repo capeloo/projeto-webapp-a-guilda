@@ -40,7 +40,7 @@
               <strong>Perfil</strong>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="./perfil/Editar_perfil.php">Meu perfil</a>
+              <a class="nav-link" href="../usuario/perfil/Meu_perfil.php">Meu perfil</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="./perfil/Editar_perfil.php">Editar perfil</a>
