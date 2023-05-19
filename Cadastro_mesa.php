@@ -125,7 +125,7 @@
                 <div class="col">
                     <div class="input-group mx-auto p-2" style="width: 300px;">
                         <span class="input-group-text">Nome da campanha</span>
-                        <input type="text" name="nome_campanha" class="form-control <?php echo (!empty($nome_erro)) ? 'is-invalid' : ''; ?>" value="<?php echo $nome; ?>">
+                        <input type="text" name="nome_campanha" class="form-control <?php echo (!empty($nome_campanha_erro)) ? 'is-invalid' : ''; ?>">
                         <span class="invalid-feedback"><?php echo $nome_erro; ?></span>
                     </div>
                     <div class="input-group mx-auto p-2" style="width: 300px;">
