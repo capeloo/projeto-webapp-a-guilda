@@ -57,6 +57,7 @@
         //errado
         $foto = trim($_POST["foto"]);
 
+        //errado, tá passando só o primeiro option!
         if(isset($_POST["tema"]) == null){
             "";
         } else {
