@@ -55,8 +55,8 @@
         $celular_mestre = $row["celular"];
 
         //errado
-        $foto = trim($_POST["foto"]);
-
+        $foto = $_POST["foto"];
+        
         //errado, tá passando só o primeiro option!
         if(isset($_POST["tema"]) == null){
             "";
