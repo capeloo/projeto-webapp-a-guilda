@@ -86,7 +86,6 @@
                 <div class="col">
                     <div class="input-group mx-auto p-2" style="width: 300px;">
                         <span class="input-group-text">Foto</span>  
-                        <!--<input type="file" name="foto" class="form-control">-->
                         <img src="../../../assets/fav.png" alt="foto-perfil" name="foto" class="img">
                     </div>
                 </div>

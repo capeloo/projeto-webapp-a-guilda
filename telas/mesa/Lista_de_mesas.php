@@ -84,7 +84,7 @@
             echo "<td>" . $row->classificacao_indicativa . "</td>";
             echo "<td>" . $row->numero_vagas . "</td>";
             echo "<td>
-                    <button class='btn btn-success' onclick='redirecionar()'>Acesse</button>
+                    <button class='btn btn-success' onclick=\"location.href='Mesa_dashboard.php?id=".$row->id."';\">Acesse</button>
                   </td>";        
             echo "</tr>";
         }
