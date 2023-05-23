@@ -10,7 +10,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Mesa dashboard</title>
     <link rel="shortcut icon" href="./../../assets/fav.png" type="image/x-icon">
     <!-- Chamando as folhas de estilo do Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -33,6 +33,12 @@
           <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
             <li class="nav-item">
               <a class="nav-link" href="Minhas_mesas.php">Minhas mesas</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Lista_de_mesas.php">Lista de mesas</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../usuario/Usuario_dashboard.php">Dashboard</a>
             </li>
           </ul>
         </div>

@@ -32,6 +32,9 @@
             <li class="nav-item">
               <a class="nav-link" href="Cadastro_mesa.php">Cadastro de mesa</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Minhas_mesas.php">Minhas mesas</a>
+            </li>
           </ul>
         </div>
       </div>
@@ -81,7 +84,7 @@
             echo "<td>" . $row->classificacao_indicativa . "</td>";
             echo "<td>" . $row->numero_vagas . "</td>";
             echo "<td>
-                    <button class='btn btn-success'>Inscrever-se</button>
+                    <button class='btn btn-success' onclick='redirecionar()'>Acesse</button>
                   </td>";        
             echo "</tr>";
         }
@@ -93,5 +96,10 @@
 
     <!-- Chamando os scripts do Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      function redirecionar(){
+        window.location.href="Mesa_dashboard.php";
+      }
+    </script>
 </body>
 </html>

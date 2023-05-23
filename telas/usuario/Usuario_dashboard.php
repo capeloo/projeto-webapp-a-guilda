@@ -54,6 +54,9 @@
             <li class="nav-item">
               <a class="nav-link" href="../mesa/Cadastro_mesa.php">Cadastro de mesa</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../mesa/Minhas_mesas.php">Minhas mesas</a>
+            </li>
           </ul>
         </div>
       </div>
