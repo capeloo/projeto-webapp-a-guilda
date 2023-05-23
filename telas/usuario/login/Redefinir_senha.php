@@ -125,8 +125,8 @@
         </div>
     </nav>
     <!-- Conteúdo da página -->
-    <div class="container-fluid text-center mt-4">
-        <h1 class="display-4 p-3">Redefinir a senha</h1>
+    <div class="container-fluid text-center mt-3">
+        <h1 class="p-3">Redefinir a senha</h1>
         <!-- Formulário -->
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <input type="hidden" name="key" value="<?php echo $chv ?>">

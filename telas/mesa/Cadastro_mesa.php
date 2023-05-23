@@ -1,20 +1,23 @@
 <?php
+    //Script do cadastro de mesa
+
+    //Inicia a sessão (necessário ter em todas as páginas que o usuário estiver logado)
     session_start();
 
+    //Traz o arquivo config.php onde foi configurado a ligação com o banco de dados
     require_once 'C:\xampp\htdocs\projeto-webapp-taverna\db\config.php';
 
     // A fazer:
-    //   Atualizar os campos na tabela usuario;
-    $mestre = $id_mesa = "";
+    //   Levar em consideração as pontuações do prof Wellington;
 
+    //Inicializando variáveis vazias
     $email_mestre = $nome_mestre = $matricula_mestre = $celular_mestre = "";
 
+    //Preparando a requisição ao banco para trazer os dados do mestre
     $sql = "SELECT nome, 
                    matricula,
                    email,
-                   celular,
-                   mestre,
-                   id_mesa
+                   celular
             FROM usuario
             WHERE id = (?)";
     
@@ -37,10 +40,12 @@
         $stmt->close();
     }
 
+    //Inicializando variáveis vazias (1)
     $foto = $tema = $nome_campanha = $sistema = $sinopse = $requisitos = $duracao = $classificacao = $vagas = $nivel = $data = $hora = "";
 
     $foto_erro = $tema_erro = $nome_campanha_erro = $sistema_erro = $sinopse_erro = $requisitos_erro = $duracao_erro = $classificacao_erro = $vagas_erro = $nivel_erro = $data_erro = $hora_erro = "";
 
+    //Ao receber os dados dos formulários
     if($_SERVER["REQUEST_METHOD"] == "POST") {
         //A fazer:
         //  1. Decidir as validações dos campos;
@@ -54,7 +59,8 @@
 
         $celular_mestre = $row["celular"];
 
-        //errado
+        //A fazer
+        //   Descobrir como cadastrar foto no banco.
         $foto = $_POST["foto"];
         
         //errado, tá passando só o primeiro option!
@@ -76,9 +82,11 @@
         $data = trim($_POST["data"]);
         $hora = trim($_POST["hora"]);
 
+        //Caso nenhum erro ocorra na validação
         if(empty($foto_erro) && empty($tema_erro) && empty($nome_campanha_erro) && empty($sistema_erro) && empty($sinopse_erro) && empty($requisitos_erro) && empty($duracao_erro) && empty($classificacao_erro) && empty($vagas_erro) && empty($nivel_erro) && empty($data_erro) && empty($hora_erro)) {
             // A fazer:
             //  1. Incluir os dados do mestre na query;
+            //Prepara a requisição ao banco
             $sql = "INSERT INTO mesa (email_mestre, nome_mestre, matricula_mestre, celular_mestre,foto, tema, nome_campanha, sistema, sinopse, requisitos, duracao, classificacao_indicativa, numero_vagas, nivel_jogadores, data, hora) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
             if($stmt = $mysqli->prepare($sql)) {
@@ -97,19 +105,24 @@
                 $param_data = $data;
                 $param_hora = $hora;
             
+            //Executa a requisição
             if($stmt->execute()) {
                 echo "<script>alert('Cadastro realizado com sucesso!');</script>";
+                //Redireciona para o dashboard da mesa
                 echo "<script>location.href='Mesa_dashboard.php';</script>";
             } else {
                 echo "Ops! Algo deu errado. (1)";
             }
+            // Fecha a conexão com o banco
             $stmt->close();
         }    
     }
+    // Fecha a conexão com o banco (de novo)
    $mysqli->close();
 }
 ?>
 
+<!-- Início do HTML -->
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -148,8 +161,8 @@
         </div>
     </nav>
     <!-- Conteúdo da página -->
-    <div class="container-fluid text-center mt-4">
-        <h1 class="display-4 p-3">Criar uma nova mesa</h1>
+    <div class="container-fluid text-center mt-3">
+        <h1 class="p-3">Criar uma nova mesa</h1>
         <!-- Formulário -->
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <div class="row">

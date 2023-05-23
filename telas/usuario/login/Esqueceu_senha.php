@@ -164,8 +164,8 @@
     </div>
 </nav>
     <!-- Conteúdo da página -->
-    <div class="container-fluid text-center mt-4">
-        <h1 class="display-4 p-3">Encontre sua conta</h1>
+    <div class="container-fluid text-center mt-3">
+        <h1 class="p-3">Encontre sua conta</h1>
         <p>Por favor, preencha o campo para receber um link de redefinição de senha por e-mail.</p>
         <!-- Formulário -->
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">

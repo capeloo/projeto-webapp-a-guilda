@@ -157,8 +157,8 @@
     </nav>
 
     <!-- Conteúdo da página -->
-    <div class="container-fluid text-center mt-4">
-        <h1 class="display-4 p-3">Criar conta</h1>
+    <div class="container-fluid text-center mt-3">
+        <h1 class="p-3">Criar conta</h1>
         <!-- Formulário -->
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <div class="input-group mx-auto p-2" style="width: 300px;">

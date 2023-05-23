@@ -1,11 +1,8 @@
 <?php 
+    //Script do editar perfil
+
     //Inicia a sessão (necessário ter em todas as páginas que o usuário estiver logado)
     session_start();
-
-    //Validação para impedir que o usuário que não logou entre no Editar_perfil
-    if(empty($_SESSION)){
-        echo "<script>location.href='../login/Login.php';</script>";
-    }
 
     //Traz o arquivo config.php onde foi configurado a ligação com o banco de dados
     require_once 'C:\xampp\htdocs\projeto-webapp-taverna\db\config.php';
@@ -14,6 +11,7 @@
     $foto = $nome = $bio = $email = $celular = $discord = $matricula = "";
     $foto_erro = $nome_erro = $bio_erro = $email_erro = $celular_erro = $discord_erro = $matricula_erro = "";
 
+    //Preparando a requisição ao banco
     $sql = "SELECT foto, nome, bio, email, celular, discord, matricula
             FROM usuario
             WHERE id = (?)
@@ -23,6 +21,7 @@
         $stmt->bind_param("i", $param_id);
         $param_id = $_SESSION["id"];
 
+        //Executando a requisição ao banco
         if($stmt->execute()){
             $stmt_res = $stmt->get_result();
 
@@ -38,9 +37,12 @@
         $stmt->close();
     }
 
-    if($_SERVER["REQUEST_METHOD"] == "POST"){    
-        //Valida a foto
-        $foto = trim($_POST["foto"]);
+    //Ao receber os dados do formulário
+    if($_SERVER["REQUEST_METHOD"] == "POST"){   
+        //A fazer: 
+        //  Descobrir como armazenar fotos no banco;
+        //  Validar a foto (ex: tamanho máximo)
+        $foto = $_POST["foto"];
 
         //Valida o nome
         if (empty(trim($_POST["nome"]))) {
@@ -64,10 +66,10 @@
         }
 
         //Valida o celular
-        $celular = trim($_POST["celular"]);
+        $celular = $_POST["celular"];
 
         //Valida discord
-        $discord = trim($_POST["discord"]);
+        $discord = $_POST["discord"];
 
         //Valida a matricula
         if(strlen(trim($_POST["matricula"])) < 6){
@@ -76,7 +78,9 @@
             $matricula = trim($_POST["matricula"]);
         }
 
+        //Se não houver nenhum erro de validação
         if(empty($foto_erro) && empty($nome_erro) && empty($bio_erro) && empty($email_erro) && empty($celular_erro) && empty($discord_erro) && empty($matricula_erro)){
+            //Prepara a requisição para atualizar tabela usuario no banco
             $sql = "UPDATE usuario
                     SET foto = (?), 
                         nome = (?), 
@@ -99,9 +103,11 @@
                 $param_discord = $discord;
                 $param_matricula = $matricula;
                 $param_id = $_SESSION["id"];
-
+            
+            //Executa a requisição
             if($stmt->execute()){
                 echo "<script>alert('Edição realizada com sucesso!');</script>";
+                //Redireciona para o dashboard
                 echo "<script>location.href='../Usuario_dashboard.php';</script>";
             } else {
                 echo "Ops! Algo deu errado. (2)";
@@ -115,7 +121,7 @@
     }
 ?>
 
-
+<!-- Início do HTML -->
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -154,9 +160,9 @@
             </div>
         </div>
     </nav>
-    <div class="container-fluid text-center mt-4">
+    <div class="container-fluid text-center mt-3">
         <!-- Conteúdo da página -->
-        <h1 class="display-4 p-3">Editar perfil</h1>
+        <h1 class="p-3">Editar perfil</h1>
         <!-- Formulário -->
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <div class="row">

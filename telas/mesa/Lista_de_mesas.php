@@ -38,21 +38,27 @@
     </div>
   </nav>
     <!-- Conteúdo da página -->
-    <div class="container-fluid text-center mt-4 bg-light" style="width: 500px;">
+    <div class="container-fluid text-center mt-3 bg-light" style="width: 500px;">
         <h1 class="p-4">Lista de mesas</h1>
     </div>
 
     <?php 
+    //Script da lista de mesas
+
+    //Inicia a sessão (necessário ter em todas as páginas que o usuário estiver logado)
     session_start();
 
+    //Traz o arquivo config.php onde foi configurado a ligação com o banco de dados
     require 'C:\xampp\htdocs\projeto-webapp-taverna\db\config.php';
 
+    //Prepara a requisição ao banco
     $sql = "SELECT * FROM mesa";
 
     $stmt = $mysqli->query($sql);
 
     $qtd = $stmt->num_rows;
 
+    //Renderiza os dados na forma de tabela
     if($qtd > 0){
         echo "<table class='table table-hover table-striped table-bordered' style='width: 900px; margin: auto;'>";
             echo "<tr>";
