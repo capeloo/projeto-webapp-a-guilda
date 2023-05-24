@@ -167,7 +167,7 @@
       </div>    
     </form>
     <div class="p-4">
-      <a href="" class="btn btn-success">Inscrever-se</a>
+      <a href="inscrever.php?id=<?php echo $row['id'] ?>" class="btn btn-success">Inscrever-se</a>
     </div> 
   </div>
   <!-- Chamando os scripts do Bootstrap -->
