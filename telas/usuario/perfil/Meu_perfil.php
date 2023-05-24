@@ -92,29 +92,29 @@
                 <div class="col">
                     <div class="input-group mx-auto p-2" style="width: 400px;">   
                         <span class="input-group-text">Nome Completo</span>
-                        <input type="text" name="nome" value="<?php echo $row["nome"]; ?>" class="form-control" readonly>
+                        <input type="text" name="nome" value="<?php echo $row["nome"]; ?>" class="form-control" disabled>
                     </div>
                     <div class="input-group mx-auto p-2" style="width: 400px;">
                         <span class="input-group-text">Bio</span>
-                        <textarea name="bio" cols="30" rows="10" placeholder="<?php echo $row["bio"]; ?>" class="form-control" readonly></textarea>
+                        <textarea name="bio" cols="30" rows="10" class="form-control" disabled><?php echo $row["bio"]; ?></textarea>
                     </div>
                 </div>
                 <div class="col">
                     <div class="input-group mx-auto p-2" style="width: 350px;">
                         <span class="input-group-text">E-mail</span>
-                        <input type="email" name="email" value="<?php echo $row["email"]; ?>" class="form-control" readonly>
+                        <input type="email" name="email" value="<?php echo $row["email"]; ?>" class="form-control" disabled>
                     </div>
                     <div class="input-group mx-auto p-2" style="width: 350px;">
                         <span class="input-group-text">Celular</span>
-                        <input type="text" name="celular" placeholder="(xx) x xxxx-xxxx" value="<?php echo $row["celular"]; ?>" class="form-control" readonly>
+                        <input type="text" name="celular" placeholder="(xx) x xxxx-xxxx" value="<?php echo $row["celular"]; ?>" class="form-control" disabled>
                     </div>
                     <div class="input-group mx-auto p-2" style="width: 350px;">
                         <span class="input-group-text">Discord</span>
-                        <input type="text" name="discord" placeholder="nome#xxxx" value="<?php echo $row["discord"]; ?>" class="form-control" readonly>
+                        <input type="text" name="discord" placeholder="nome#xxxx" value="<?php echo $row["discord"]; ?>" class="form-control" disabled>
                     </div>
                     <div class="input-group mx-auto p-2" style="width: 350px;">
                         <span class="input-group-text">Matrícula UFC</span>
-                        <input type="number" name="matricula" value="<?php echo $row["matricula"]; ?>" class="form-control" readonly>
+                        <input type="number" name="matricula" value="<?php echo $row["matricula"]; ?>" class="form-control" disabled>
                     </div>
                 </div>
             </div>   

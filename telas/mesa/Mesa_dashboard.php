@@ -82,6 +82,7 @@
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
       <div class="row">
         <div class="col">
+          <!-- Consertar tema e foto -->
           <div class="input-group mx-auto p-2" style="width: 300px;">
             <span class="input-group-text" style="width: 283px; border-radius: 5px;justify-content:center;">Tema</span>
             <select name="tema" id="theme" multiple>
@@ -100,8 +101,8 @@
         <div class="col">
           <div class="input-group mx-auto p-2" style="width: 300px;">
             <span class="input-group-text">Duração</span>
-            <select name="duracao" class="form-control">
-              <option></option>
+            <select name="duracao" class="form-control" disabled>
+              <option ><?php echo $row["duracao"]; ?></option>
               <option>One-shot</option>
               <option>Curta</option>
               <option>Média</option>
@@ -111,8 +112,8 @@
           </div>
           <div class="input-group mx-auto p-2" style="width: 300px;">
             <span class="input-group-text">Classificação Indicativa</span>
-            <select name="classificacao" class="form-control">
-              <option></option>
+            <select name="classificacao" class="form-control" disabled>
+              <option><?php echo $row["classificacao_indicativa"]; ?></option>
               <option>L</option>
               <option>10</option>
               <option>12</option>
@@ -123,12 +124,12 @@
           </div>
           <div class="input-group mx-auto p-2" style="width: 300px;">
             <span class="input-group-text">Número de vagas</span>
-            <input type="number" class="form-control" name="vagas">
+            <input type="number" class="form-control" name="vagas" value="<?php echo $row["numero_vagas"]; ?>" disabled>
           </div>
           <div class="input-group mx-auto p-2" style="width: 300px;">
             <span class="input-group-text">Nível dos jogadores</span>
-            <select name="nivel" class="form-control">
-              <option></option>
+            <select name="nivel" class="form-control" disabled>
+              <option><?php echo $row["nivel_jogadores"]; ?></option>
               <option>Livre</option>
               <option>Iniciante</option>
               <option>Intermediário</option>
@@ -138,36 +139,36 @@
           </div>
           <div class="input-group mx-auto p-2" style="width: 300px;">
             <span class="input-group-text">Data</span>
-            <input type="date" class="form-control" name="data">
+            <input type="date" class="form-control" name="data" value="<?php echo $row["data"]; ?>" disabled>
           </div>
           <div class="input-group mx-auto p-2" style="width: 300px;">
             <span class="input-group-text">Hora</span>
-            <input type="time" class="form-control" name="hora">
+            <input type="time" class="form-control" name="hora" value="<?php echo $row["hora"]; ?>" disabled>
           </div>
         </div>
         <div class="col">
           <div class="input-group mx-auto p-2" style="width:  400px;">
             <span class="input-group-text">Nome da campanha</span>
-            <input type="text" name="nome_campanha" class="form-control" value="<?php echo $row["nome_campanha"]; ?>" readonly>
+            <input type="text" name="nome_campanha" class="form-control" value="<?php echo $row["nome_campanha"]; ?>" disabled>
           </div>
           <div class="input-group mx-auto p-2" style="width: 400px;">
             <span class="input-group-text">Sistema</span>
-            <input type="text" name="sistema" class="form-control <?php echo (!empty($sistema_erro)) ? 'is-invalid' : ''; ?>">
+            <input type="text" name="sistema" class="form-control" value="<?php echo $row["sistema"]; ?>" disabled>
           </div>
           <div class="input-group mx-auto p-2" style="width: 400px;">
             <span class="input-group-text">Sinopse</span>
-            <textarea name="sinopse" class="form-control"></textarea>
+            <textarea name="sinopse" class="form-control" disabled><?php echo $row["sinopse"]; ?></textarea>
           </div>
           <div class="input-group mx-auto p-2" style="width: 400px;">
             <span class="input-group-text">Requisitos</span>
-            <textarea name="requisitos" class="form-control"></textarea>
+            <textarea name="requisitos" class="form-control" disabled><?php echo $row["requisitos"]; ?></textarea>
           </div>
         </div>
-      </div>  
-      <div class="p-4">
-        <button class="btn btn-success" type="submit">Inscrever-se</button>
-      </div>   
+      </div>    
     </form>
+    <div class="p-4">
+      <button class="btn btn-success" type="submit" onclick="inscrever()">Inscrever-se</button>
+    </div> 
   </div>
   <!-- Chamando os scripts do Bootstrap -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
@@ -175,6 +176,16 @@
   <script src="../../js/multi-select-tag.js"></script>
   <script>
     new MultiSelectTag('theme')  // id
+  </script>
+  <script>
+    function inscrever(){
+      //pegar o apelido do usuário por meio da variável de sessão apelido
+      //inserir o valor apelido no campo participantes da tabela mesa (com vírgula!)
+      //selecionar o campo numero_vagas da tabela mesa e guardar o valor
+      //atualizar o campo numero_vagas com o decréscimo de 1 do valor
+      //mostrar na tela o resultado positivo ou negativo
+      //caso o resultado seja positivo, redirecionar o usuário para a tela Minhas mesas
+    }
   </script>
 </body>
 </html>

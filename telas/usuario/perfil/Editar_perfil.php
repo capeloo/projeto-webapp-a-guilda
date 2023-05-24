@@ -179,7 +179,7 @@
                     </div>
                     <div class="input-group mx-auto p-2" style="width: 500px;">
                         <span class="input-group-text">Bio</span>
-                        <textarea name="bio" cols="30" rows="10" placeholder="<?php echo $row["bio"]; ?>" class="form-control <?php echo (!empty($bio_erro)) ? 'is-invalid' : ''; ?>"></textarea>
+                        <textarea name="bio" cols="30" rows="10" class="form-control <?php echo (!empty($bio_erro)) ? 'is-invalid' : ''; ?>"><?php echo $row["bio"]; ?></textarea>
                         <span class="invalid-feedback"><?php echo $bio_erro; ?></span>
                     </div>
                 </div>
