@@ -167,7 +167,7 @@
       </div>    
     </form>
     <div class="p-4">
-      <button class="btn btn-success" type="submit" onclick="inscrever()">Inscrever-se</button>
+      <a href="inscrever.php" class="btn btn-success">Inscrever-se</a>
     </div> 
   </div>
   <!-- Chamando os scripts do Bootstrap -->
@@ -176,16 +176,6 @@
   <script src="../../js/multi-select-tag.js"></script>
   <script>
     new MultiSelectTag('theme')  // id
-  </script>
-  <script>
-    function inscrever(){
-      //pegar o apelido do usuário por meio da variável de sessão apelido
-      //inserir o valor apelido no campo participantes da tabela mesa (com vírgula!)
-      //selecionar o campo numero_vagas da tabela mesa e guardar o valor
-      //atualizar o campo numero_vagas com o decréscimo de 1 do valor
-      //mostrar na tela o resultado positivo ou negativo
-      //caso o resultado seja positivo, redirecionar o usuário para a tela Minhas mesas
-    }
   </script>
 </body>
 </html>
