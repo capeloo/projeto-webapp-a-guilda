@@ -66,12 +66,26 @@
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                         <li class="nav-item">
-                            <a class="nav-link" href="../Usuario_dashboard.php">Dashboard</a>
+                            <strong>Perfil</strong>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Meu_perfil.php">Meu perfil</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="Editar_perfil.php">Editar perfil</a>
                         </li>
-                        
+                        <li class="nav-item" style="margin-top: 10px;">
+                            <strong>Mesas</strong>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../../mesa/Lista_de_mesas.php">Lista de mesas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../../mesa/Cadastro_mesa.php">Cadastro de mesa</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../../mesa/Minhas_mesas.php">Minhas mesas</a>
+                        </li>
                     </ul>
                 </div>
             </div>

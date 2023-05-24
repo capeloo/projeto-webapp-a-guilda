@@ -167,7 +167,7 @@
       </div>    
     </form>
     <div class="p-4">
-      <a href="inscrever.php" class="btn btn-success">Inscrever-se</a>
+      <a href="" class="btn btn-success">Inscrever-se</a>
     </div> 
   </div>
   <!-- Chamando os scripts do Bootstrap -->
