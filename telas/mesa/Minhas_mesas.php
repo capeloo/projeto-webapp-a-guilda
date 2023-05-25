@@ -1,6 +1,11 @@
-<?php 
-    //Inicia a sessão (necessário ter em todas as páginas que o usuário estiver logado)
-    session_start();
+<?php
+//Script das minhas mesas
+
+      //Inicia a sessão (necessário ter em todas as páginas que o usuário estiver logado)
+      session_start();
+
+      //Traz o arquivo config.php onde foi configurado a ligação com o banco de dados
+      require 'C:\xampp\htdocs\projeto-webapp-taverna\db\config.php';
 ?>
 
 <!-- Início do HTML -->
@@ -58,10 +63,62 @@
     </div>
   </nav>
     <!-- Conteúdo da página -->
-    <div class="container-fluid text-center mt-4 bg-light" style="width: 400px;">
-        <h1 class="p-4">Minhas mesas</h1>
+    <div class="container-fluid text-center mt-4 bg-light" style="width: 450px;">
+      <h1 class="p-4">Minhas mesas</h1>
     </div>
+    <div class="row container-fluid text-center mt-4 bg-light">
+      <div class="col">
+        <h1 class="p-4">Mestrando</h1>
+        <?php
+          $id = $_SESSION["id"];
 
+          //Prepara a requisição ao banco
+          $sql = "SELECT * 
+                  FROM mesa
+                  WHERE id_mestre = $id";
+
+          $stmt = $mysqli->query($sql);
+
+          $qtd = $stmt->num_rows;
+
+          //Renderiza os dados na forma de tabela
+          if($qtd > 0){
+            echo "<table class='table table-hover table-striped table-bordered' style='width: 400px; margin: auto;'>";
+            echo "<tr>";
+            echo "<th>Nome</th>";
+            echo "<th>Sistema</th>";
+            echo "<th>Sinopse</th>";
+            echo "<th>Duração</th>";
+            echo "<th>Tema</th>";
+            echo "<th>Classificação Indicativa</th>";
+            echo "<th>Vagas</th>";
+            echo "<th>Ações</th>";
+            echo "</tr>";
+          while($row = $stmt->fetch_object()){
+            echo "<tr>";
+            echo "<td>" . $row->nome_campanha . "</td>";
+            echo "<td>" . $row->sistema . "</td>";
+            echo "<td>" . $row->sinopse . "</td>";
+            echo "<td>" . $row->duracao . "</td>";
+            echo "<td>" . $row->tema . "</td>";
+            echo "<td>" . $row->classificacao_indicativa . "</td>";
+            echo "<td>" . $row->numero_vagas . "</td>";
+            echo "<td>
+                    <button class='btn btn-success' onclick=\"location.href='Mesa_dashboard.php?id=".$row->id."';\">Acesse</button>
+                  </td>";        
+            echo "</tr>";
+          }
+        echo "</table>";
+        } else {
+          echo "<p class='alert-danger'>Não encontrou resultados!</p>";
+        }
+        ?>
+      </div>
+      <div class="col">
+        <h1 class="p-4">Participando</h1>
+        
+      </div>
+    </div>
     <!-- Chamando os scripts do Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

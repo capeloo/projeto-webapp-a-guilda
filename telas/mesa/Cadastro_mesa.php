@@ -11,7 +11,7 @@
     //   Levar em consideração as pontuações do prof Wellington;
 
     //Inicializando variáveis vazias
-    $email_mestre = $nome_mestre = $matricula_mestre = $celular_mestre = "";
+    $id_mestre = $email_mestre = $nome_mestre = $matricula_mestre = $celular_mestre = "";
 
     //Preparando a requisição ao banco para trazer os dados do mestre
     $sql = "SELECT nome, 
@@ -50,6 +50,7 @@
         //A fazer:
         //  1. Decidir as validações dos campos;
         //  2. Codar as validações;
+        $id_mestre = $_SESSION["id"];
 
         $email_mestre = $row["email"];
 
@@ -87,10 +88,10 @@
             // A fazer:
             //  1. Incluir os dados do mestre na query;
             //Prepara a requisição ao banco
-            $sql = "INSERT INTO mesa (email_mestre, nome_mestre, matricula_mestre, celular_mestre,foto, tema, nome_campanha, sistema, sinopse, requisitos, duracao, classificacao_indicativa, numero_vagas, nivel_jogadores, data, hora) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $sql = "INSERT INTO mesa (id_mestre, email_mestre, nome_mestre, matricula_mestre, celular_mestre,foto, tema, nome_campanha, sistema, sinopse, requisitos, duracao, classificacao_indicativa, numero_vagas, nivel_jogadores, data, hora) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
             if($stmt = $mysqli->prepare($sql)) {
-                $stmt->bind_param("ssisbsssssssisss", $email_mestre, $nome_mestre, $matricula_mestre, $celular_mestre, $param_foto, $param_tema, $param_nome_campanha, $param_sistema, $param_sinopse, $param_requisitos, $param_duracao, $param_classificacao, $param_vagas, $param_nivel, $param_data, $param_hora);
+                $stmt->bind_param("issisbsssssssisss", $id_mestre, $email_mestre, $nome_mestre, $matricula_mestre, $celular_mestre, $param_foto, $param_tema, $param_nome_campanha, $param_sistema, $param_sinopse, $param_requisitos, $param_duracao, $param_classificacao, $param_vagas, $param_nivel, $param_data, $param_hora);
 
                 $param_foto = $foto;
                 $param_tema = $tema;
@@ -109,7 +110,7 @@
             if($stmt->execute()) {
                 echo "<script>alert('Cadastro realizado com sucesso!');</script>";
                 //Redireciona para o dashboard da mesa
-                echo "<script>location.href='Mesa_dashboard.php';</script>";
+                echo "<script>location.href='Minhas_mesas.php';</script>";
             } else {
                 echo "Ops! Algo deu errado. (1)";
             }

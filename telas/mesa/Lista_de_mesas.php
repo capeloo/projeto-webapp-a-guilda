@@ -104,14 +104,8 @@
     } else {
         echo "<p class='alert-danger'>Não encontrou resultados!</p>";
     }
-?>
-
+    ?>
     <!-- Chamando os scripts do Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-      function redirecionar(){
-        window.location.href="Mesa_dashboard.php";
-      }
-    </script>
 </body>
 </html>
