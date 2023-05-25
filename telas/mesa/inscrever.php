@@ -3,7 +3,7 @@
     
     require 'C:\xampp\htdocs\projeto-webapp-taverna\db\config.php';
 
-    $sql = "SELECT numero_vagas, participantes
+    $sql = "SELECT id, numero_vagas, participantes
             FROM mesa
             WHERE id = (?)
             ";
@@ -25,6 +25,7 @@
         }
     }
 
+    $JaEntrou = false;
     $row["participantes"];
     $inscritos = explode(";", $row["participantes"]);
     for($i = 0; $i < count($inscritos); $i++ ){
@@ -48,14 +49,28 @@
             $param_id = $_GET["id"];
 
             if($stmt->execute()){
-                echo "<script>alert('Incrição realizada com sucesso!');</script>";
-                echo "<script>location.href='Minhas_mesas.php';</script>";          
+                $id_mesa = $row["id"] . ';';
+                $id_usuario = $_SESSION["id"];
+
+                $sql = "UPDATE usuario 
+                        SET mesas = '$id_mesa' 
+                        WHERE id = $id_usuario
+                        ";
+
+                if($stmt = $mysqli->query($sql)){
+                    echo "<script>alert('Incrição realizada com sucesso!');</script>";
+                    echo "<script>location.href='Minhas_mesas.php';</script>";  
+                }
             } else {
                 echo "Ops! Algo deu errado. (2)";
             }
+
+        } else {
+                echo "Ops! Algo deu errado. (3)";
+            }
+
         // Fecha a conexão com o banco
         $stmt->close();
-        }
     } else {
         echo "<script>alert('Não foi possível concluir a inscrição pois o número de vagas já foi preenchido.')</script>";
         echo "<script>location.href='Lista_de_mesas.php';</script>";

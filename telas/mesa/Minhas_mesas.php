@@ -64,11 +64,11 @@
   </nav>
     <!-- Conteúdo da página -->
     <div class="container-fluid text-center mt-4 bg-light" style="width: 450px;">
-      <h1 class="p-4">Minhas mesas</h1>
+      <h1 class="p-2">Minhas mesas</h1>
     </div>
-    <div class="row container-fluid text-center mt-4 bg-light">
+    <div class="row container-fluid text-center mt-4 bg-light" style="margin:auto;">
       <div class="col">
-        <h1 class="p-4">Mestrando</h1>
+        <h2 class="p-3 text-start">Mestrando</h2>
         <?php
           $id = $_SESSION["id"];
 
@@ -83,7 +83,7 @@
 
           //Renderiza os dados na forma de tabela
           if($qtd > 0){
-            echo "<table class='table table-hover table-striped table-bordered' style='width: 400px; margin: auto;'>";
+            echo "<table class='table table-hover table-striped table-bordered'>";
             echo "<tr>";
             echo "<th>Nome</th>";
             echo "<th>Sistema</th>";
@@ -115,8 +115,64 @@
         ?>
       </div>
       <div class="col">
-        <h1 class="p-4">Participando</h1>
-        
+        <h2 class="p-3 text-start">Participando</h2>
+        <?php
+          $sql = "SELECT mesas
+                  FROM usuario
+                  WHERE id = $id
+                  ";
+
+          $stmt = $mysqli->prepare($sql);
+          $stmt->execute();
+          $stmt_res = $stmt->get_result();
+          $row = $stmt_res->fetch_assoc();
+
+          $row["mesas"];
+          $mesas = explode(";", $row["mesas"]);
+          $mesas_str = implode(",", $mesas);
+
+          $sql = "SELECT *
+                  FROM mesa
+                  WHERE id 
+                  IN ('$mesas_str')
+                  ";
+
+          $stmt = $mysqli->query($sql);
+
+          $qtd = $stmt->num_rows;
+
+          //Renderiza os dados na forma de tabela
+          if($qtd > 0){
+            echo "<table class='table table-hover table-striped table-bordered'>";
+            echo "<tr>";
+            echo "<th>Nome</th>";
+            echo "<th>Sistema</th>";
+            echo "<th>Sinopse</th>";
+            echo "<th>Duração</th>";
+            echo "<th>Tema</th>";
+            echo "<th>Classificação Indicativa</th>";
+            echo "<th>Vagas</th>";
+            echo "<th>Ações</th>";
+            echo "</tr>";
+          while($row = $stmt->fetch_object()){
+            echo "<tr>";
+            echo "<td>" . $row->nome_campanha . "</td>";
+            echo "<td>" . $row->sistema . "</td>";
+            echo "<td>" . $row->sinopse . "</td>";
+            echo "<td>" . $row->duracao . "</td>";
+            echo "<td>" . $row->tema . "</td>";
+            echo "<td>" . $row->classificacao_indicativa . "</td>";
+            echo "<td>" . $row->numero_vagas . "</td>";
+            echo "<td>
+                    <button class='btn btn-success' onclick=\"location.href='Mesa_dashboard.php?id=".$row->id."';\">Acesse</button>
+                  </td>";        
+            echo "</tr>";
+          }
+            echo "</table>";
+          } else {
+              echo "<p class='alert-danger'>Não encontrou resultados!</p>";
+          }         
+        ?>
       </div>
     </div>
     <!-- Chamando os scripts do Bootstrap -->
