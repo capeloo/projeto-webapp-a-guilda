@@ -127,18 +127,15 @@
           $stmt_res = $stmt->get_result();
           $row = $stmt_res->fetch_assoc();
 
-          $row["mesas"];
-          $mesas = explode(";", $row["mesas"]);
-          $mesas_str = implode(",", $mesas);
+          $mesas_str = rtrim($row["mesas"], ",");
 
           $sql = "SELECT *
                   FROM mesa
-                  WHERE id 
-                  IN ('$mesas_str')
+                  WHERE id IN ($mesas_str)
                   ";
 
           $stmt = $mysqli->query($sql);
-
+          
           $qtd = $stmt->num_rows;
 
           //Renderiza os dados na forma de tabela

@@ -3,7 +3,7 @@
     
     require 'C:\xampp\htdocs\projeto-webapp-taverna\db\config.php';
 
-    $sql = "SELECT id, numero_vagas, participantes
+    $sql = "SELECT id, numero_vagas, participantes, id_mestre
             FROM mesa
             WHERE id = (?)
             ";
@@ -35,44 +35,57 @@
             $JaEntrou = true;
         }
     }
-
-    if($row["numero_vagas"] > 0 && !$JaEntrou){
-        $sql = "UPDATE mesa 
-                SET participantes = (?), numero_vagas = (?) 
-                WHERE id = (?) 
-            ";
+    if($_SESSION["id"] != $row["id_mestre"]){
+        if($row["numero_vagas"] > 0 && !$JaEntrou){
+            $sql = "UPDATE mesa 
+                    SET participantes = (?), numero_vagas = (?) 
+                    WHERE id = (?) 
+                ";
+        
+            if($stmt = $mysqli->prepare($sql)){
+                $stmt->bind_param('sii', $param_apelido, $param_vagas, $param_id);
+                $param_apelido = $row["participantes"] . $_SESSION["apelido"] . ';';
+                $param_vagas = $row["numero_vagas"] - 1;
+                $param_id = $_GET["id"];
     
-        if($stmt = $mysqli->prepare($sql)){
-            $stmt->bind_param('sii', $param_apelido, $param_vagas, $param_id);
-            $param_apelido = $row["participantes"] . $_SESSION["apelido"] . ';';
-            $param_vagas = $row["numero_vagas"] - 1;
-            $param_id = $_GET["id"];
-
-            if($stmt->execute()){
-                $id_mesa = $row["id"] . ';';
-                $id_usuario = $_SESSION["id"];
-
-                $sql = "UPDATE usuario 
-                        SET mesas = '$id_mesa' 
-                        WHERE id = $id_usuario
-                        ";
-
-                if($stmt = $mysqli->query($sql)){
-                    echo "<script>alert('Incrição realizada com sucesso!');</script>";
-                    echo "<script>location.href='Minhas_mesas.php';</script>";  
+                if($stmt->execute()){
+                    $id_usuario = $_SESSION["id"];
+    
+                    $sql = "SELECT mesas
+                            FROM usuario
+                            WHERE id = $id_usuario
+                            ";
+                    
+                    $stmt = $mysqli->query($sql);
+                    $row_mesas = $stmt->fetch_assoc();
+    
+                    $id_mesa =  $row_mesas["mesas"] . $row["id"] . ',';
+                    
+                    $sql = "UPDATE usuario 
+                            SET mesas = '$id_mesa' 
+                            WHERE id = $id_usuario
+                            ";
+    
+                    if($stmt = $mysqli->query($sql)){
+                        echo "<script>alert('Incrição realizada com sucesso!');</script>";
+                        echo "<script>location.href='Minhas_mesas.php';</script>";  
+                    }
+                } else {
+                    echo "Ops! Algo deu errado. (2)";
                 }
+    
             } else {
-                echo "Ops! Algo deu errado. (2)";
-            }
-
+                    echo "Ops! Algo deu errado. (3)";
+                }
+    
+            // Fecha a conexão com o banco
+            $stmt->close();
         } else {
-                echo "Ops! Algo deu errado. (3)";
-            }
-
-        // Fecha a conexão com o banco
-        $stmt->close();
+            echo "<script>alert('Não foi possível concluir a inscrição pois o número de vagas já foi preenchido.')</script>";
+            echo "<script>location.href='Lista_de_mesas.php';</script>";
+        }
     } else {
-        echo "<script>alert('Não foi possível concluir a inscrição pois o número de vagas já foi preenchido.')</script>";
+        echo "<script>alert('Ops! Você já é mestre desta mesa. Tente se inscrever em outra.');</script>";
         echo "<script>location.href='Lista_de_mesas.php';</script>";
-    }
+    } 
 ?>
