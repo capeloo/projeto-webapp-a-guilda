@@ -61,9 +61,14 @@
 
         $celular_mestre = $row["celular"];
 
-        //A fazer
-        //   Descobrir como cadastrar foto no banco.
-        $foto = $_POST["foto"];
+        if(isset($_FILES['foto'])){
+            $arquivo = $_FILES['foto']['name'];
+            //Diretório para uploads 
+            $pasta_dir = '../../assets/';
+            $arquivo_nome = $pasta_dir . $arquivo; 
+            // Faz o upload da imagem
+            move_uploaded_file($_FILES['foto']['tmp_name'], $arquivo_nome); 
+        } 
         
         //errado, tá passando só o primeiro option!
         if(isset($_POST["tema"]) == null){
@@ -92,9 +97,9 @@
             $sql = "INSERT INTO mesa (id_mestre, email_mestre, nome_mestre, matricula_mestre, celular_mestre,foto, tema, nome_campanha, sistema, sinopse, requisitos, duracao, classificacao_indicativa, numero_vagas, nivel_jogadores, data, hora) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
             if($stmt = $mysqli->prepare($sql)) {
-                $stmt->bind_param("issisbsssssssisss", $id_mestre, $email_mestre, $nome_mestre, $matricula_mestre, $celular_mestre, $param_foto, $param_tema, $param_nome_campanha, $param_sistema, $param_sinopse, $param_requisitos, $param_duracao, $param_classificacao, $param_vagas, $param_nivel, $param_data, $param_hora);
+                $stmt->bind_param("ississsssssssisss", $id_mestre, $email_mestre, $nome_mestre, $matricula_mestre, $celular_mestre, $param_foto, $param_tema, $param_nome_campanha, $param_sistema, $param_sinopse, $param_requisitos, $param_duracao, $param_classificacao, $param_vagas, $param_nivel, $param_data, $param_hora);
 
-                $param_foto = $foto;
+                $param_foto = $arquivo_nome;
                 $param_tema = $tema;
                 $param_nome_campanha = $nome_campanha; 
                 $param_sistema = $sistema;
@@ -184,7 +189,7 @@
     <div class="container-fluid text-center mt-3">
         <h1 class="p-3">Criar uma nova mesa</h1>
         <!-- Formulário -->
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
             <div class="row">
                 <div class="col">
                     <!-- A fazer: 

@@ -108,7 +108,7 @@
           </div>
           <div class="input-group mx-auto p-2" style="width: 300px;">
             <span class="input-group-text">Foto</span>  
-            <img src="../../assets/fav.png" alt="foto-perfil" name="foto" class="img">
+            <img src="<?php echo $row["foto"]; ?>" alt="foto-perfil" name="foto" class="img" width="300px" height="250px">
           </div>
         </div>  
         <div class="col">

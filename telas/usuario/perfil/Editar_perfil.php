@@ -40,10 +40,14 @@
 
     //Ao receber os dados do formulário
     if($_SERVER["REQUEST_METHOD"] == "POST"){   
-        //A fazer: 
-        //  Descobrir como armazenar fotos no banco;
-        //  Validar a foto (ex: tamanho máximo)
-        $foto = $_POST["foto"];
+        if(isset($_FILES['foto'])){
+            $arquivo = $_FILES['foto']['name'];
+            //Diretório para uploads 
+            $pasta_dir = '../../../assets/';
+            $arquivo_nome = $pasta_dir . $arquivo; 
+            // Faz o upload da imagem
+            move_uploaded_file($_FILES['foto']['tmp_name'], $arquivo_nome); 
+        } 
 
         //Valida o nome
         if (empty(trim($_POST["nome"]))) {
@@ -95,8 +99,8 @@
 
 
             if($stmt = $mysqli->prepare($sql)){
-                $stmt->bind_param("bsssssii", $param_foto, $param_nome, $param_bio, $param_email,   $param_celular, $param_discord, $param_matricula, $param_id);
-                $param_foto = $foto;
+                $stmt->bind_param("ssssssii", $param_foto, $param_nome, $param_bio, $param_email,   $param_celular, $param_discord, $param_matricula, $param_id);
+                $param_foto = $arquivo_nome;
                 $param_nome = $nome;
                 $param_bio = $bio;
                 $param_email = $email;
@@ -180,7 +184,7 @@
         <!-- Conteúdo da página -->
         <h1 class="p-3">Editar perfil</h1>
         <!-- Formulário -->
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
             <div class="row">
                 <div class="col">
                     <div class="input-group mx-auto p-2" style="width: 500px;">
