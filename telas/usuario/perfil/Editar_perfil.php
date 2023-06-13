@@ -187,39 +187,41 @@
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
             <div class="row">
                 <div class="col">
-                    <div class="input-group mx-auto p-2" style="width: 500px;">
+                    <div class="input-group mx-auto p-2" style="width: 400px;">
                         <span class="input-group-text">Foto</span>  
                         <input type="file" name="foto" class="form-control">
                         <span class="invalid-feedback"></span>
                     </div>
-                    <div class="input-group mx-auto p-2" style="width: 500px;">   
+                    <div class="input-group mx-auto p-2" style="width: 400px;">   
                         <span class="input-group-text">Nome Completo</span>
                         <input type="text" name="nome" value="<?php echo $row["nome"]; ?>" class="form-control <?php echo (!empty($nome_erro)) ? 'is-invalid' : ''; ?>">
                         <span class="invalid-feedback"><?php echo $nome_erro; ?></span>
                     </div>
-                    <div class="input-group mx-auto p-2" style="width: 500px;">
+                </div>
+                <div class="col">
+                    <div class="input-group mx-auto p-2" style="width: 400px;">
                         <span class="input-group-text">Bio</span>
                         <textarea name="bio" cols="30" rows="10" class="form-control <?php echo (!empty($bio_erro)) ? 'is-invalid' : ''; ?>"><?php echo $row["bio"]; ?></textarea>
                         <span class="invalid-feedback"><?php echo $bio_erro; ?></span>
                     </div>
                 </div>
                 <div class="col">
-                    <div class="input-group mx-auto p-2" style="width: 500px;">
+                    <div class="input-group mx-auto p-2" style="width: 400px;">
                         <span class="input-group-text">E-mail</span>
                         <input type="email" name="email" value="<?php echo $row["email"]; ?>" class="form-control <?php echo (!empty($email_erro)) ? 'is-invalid' : ''; ?>">
                         <span class="invalid-feedback"><?php echo $email_erro; ?></span>
                     </div>
-                    <div class="input-group mx-auto p-2" style="width: 500px;">
+                    <div class="input-group mx-auto p-2" style="width: 400px;">
                         <span class="input-group-text">Celular</span>
                         <input type="text" name="celular" placeholder="(xx) x xxxx-xxxx" value="<?php echo $row["celular"]; ?>" class="form-control <?php echo (!empty($celular_erro)) ? 'is-invalid' : ''; ?>">
                         <span class="invalid-feedback"><?php echo $celular_erro; ?></span>
                     </div>
-                    <div class="input-group mx-auto p-2" style="width: 500px;">
+                    <div class="input-group mx-auto p-2" style="width: 400px;">
                         <span class="input-group-text">Discord</span>
                         <input type="text" name="discord" placeholder="nome#xxxx" value="<?php echo $row["discord"]; ?>" class="form-control">
                         <span class="invalid-feedback"><?php echo $discord_erro; ?></span>
                     </div>
-                    <div class="input-group mx-auto p-2" style="width: 500px;">
+                    <div class="input-group mx-auto p-2" style="width: 400px;">
                         <span class="input-group-text">Matrícula UFC</span>
                         <input type="number" name="matricula" value="<?php echo $row["matricula"]; ?>" class="form-control <?php echo (!empty($matricula_erro)) ? 'is-invalid' : ''; ?>">
                         <span class="invalid-feedback"><?php echo $matricula_erro; ?></span>
