@@ -206,22 +206,22 @@
                     </div>
                 </div>
                 <div class="col">
-                    <div class="input-group mx-auto p-2" style="width: 400px;">
+                    <div class="input-group mx-auto p-2" style="width: 350px;">
                         <span class="input-group-text">E-mail</span>
                         <input type="email" name="email" value="<?php echo $row["email"]; ?>" class="form-control <?php echo (!empty($email_erro)) ? 'is-invalid' : ''; ?>">
                         <span class="invalid-feedback"><?php echo $email_erro; ?></span>
                     </div>
-                    <div class="input-group mx-auto p-2" style="width: 400px;">
+                    <div class="input-group mx-auto p-2" style="width:350px;">
                         <span class="input-group-text">Celular</span>
                         <input type="text" name="celular" placeholder="(xx) x xxxx-xxxx" value="<?php echo $row["celular"]; ?>" class="form-control <?php echo (!empty($celular_erro)) ? 'is-invalid' : ''; ?>">
                         <span class="invalid-feedback"><?php echo $celular_erro; ?></span>
                     </div>
-                    <div class="input-group mx-auto p-2" style="width: 400px;">
+                    <div class="input-group mx-auto p-2" style="width: 350px;">
                         <span class="input-group-text">Discord</span>
                         <input type="text" name="discord" placeholder="nome#xxxx" value="<?php echo $row["discord"]; ?>" class="form-control">
                         <span class="invalid-feedback"><?php echo $discord_erro; ?></span>
                     </div>
-                    <div class="input-group mx-auto p-2" style="width: 400px;">
+                    <div class="input-group mx-auto p-2" style="width: 350px;">
                         <span class="input-group-text">Matrícula UFC</span>
                         <input type="number" name="matricula" value="<?php echo $row["matricula"]; ?>" class="form-control <?php echo (!empty($matricula_erro)) ? 'is-invalid' : ''; ?>">
                         <span class="invalid-feedback"><?php echo $matricula_erro; ?></span>
