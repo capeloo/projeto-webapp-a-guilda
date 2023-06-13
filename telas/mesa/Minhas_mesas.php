@@ -130,14 +130,24 @@
 
           $mesas_str = rtrim($row["mesas"], ",");
 
-          $sql = "SELECT *
-                  FROM mesa
-                  WHERE id  =  $mesas_str";
-                  
-
-          $stmt = $mysqli->query($sql);
+          if(strlen($mesas_str) > 1){
+            $sql = "SELECT *
+                    FROM mesa
+                    WHERE id 
+                    IN ('$mesas_str')";
+                
+            $stmt = $mysqli->query($sql);
           
-          $qtd = $stmt->num_rows;
+            $qtd = $stmt->num_rows;
+          } else {
+            $sql = "SELECT *
+                    FROM mesa
+                    WHERE id = $mesas_str";
+                  
+            $stmt = $mysqli->query($sql);
+          
+            $qtd = $stmt->num_rows;
+          }
 
           //Renderiza os dados na forma de tabela
           if($qtd > 0){
