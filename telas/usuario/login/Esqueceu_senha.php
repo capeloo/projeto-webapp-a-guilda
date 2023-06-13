@@ -14,7 +14,8 @@
         $mail = new PHPMailer();
 
     // Traz o arquivo config.php onde foi configurado a ligação com o banco de dados
-    set_include_path('db\config.php');
+    set_include_path('C:\xampp\htdocs\projeto-webapp-taverna\db');
+    require_once 'config.php';
 
     // Inicializa variáveis vazias
     $email = $email_erro = "";
