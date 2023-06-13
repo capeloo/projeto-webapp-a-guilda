@@ -2,7 +2,7 @@
     //Script do cadastro
 
     //Traz o arquivo config.php onde foi configurado a ligação com o banco de dados
-    require_once 'C:\xampp\htdocs\projeto-webapp-taverna\db\config.php';
+    set_include_path('db\config.php');
 
     //Inicializa variáveis vazias
     $apelido = $senha = $confirmar_senha = "";
