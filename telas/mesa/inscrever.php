@@ -1,7 +1,7 @@
 <?php
     session_start();
     
-    require 'C:\xampp\htdocs\projeto-webapp-taverna\db\config.php';
+    set_include_path('db\config.php');
 
     $sql = "SELECT id, numero_vagas, participantes, id_mestre
             FROM mesa
