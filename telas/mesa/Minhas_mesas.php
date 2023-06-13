@@ -117,6 +117,7 @@
       <div class="col">
         <h2 class="p-3 text-start">Participando</h2>
         <?php
+        
           $sql = "SELECT mesas
                   FROM usuario
                   WHERE id = $id
@@ -131,8 +132,8 @@
 
           $sql = "SELECT *
                   FROM mesa
-                  WHERE id IN ($mesas_str)
-                  ";
+                  WHERE id  =  $mesas_str";
+                  
 
           $stmt = $mysqli->query($sql);
           
