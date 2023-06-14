@@ -8,9 +8,6 @@
     set_include_path('C:\xampp\htdocs\projeto-webapp-taverna\db');
     require_once 'config.php';
 
-    // A fazer:
-    //   Levar em consideração as pontuações do prof Wellington;
-
     //Inicializando variáveis vazias
     $id_mestre = $email_mestre = $nome_mestre = $matricula_mestre = $celular_mestre = "";
 

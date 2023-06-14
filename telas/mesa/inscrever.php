@@ -1,6 +1,10 @@
 <?php
+    //Script do inscrever-se na mesa
+
+    //Inicia a sessão (necessário ter em todas as páginas que o usuário estiver logado)
     session_start();
     
+    //Traz o arquivo config.php onde foi configurado a ligação com o banco de dados
     set_include_path('C:\xampp\htdocs\projeto-webapp-taverna\db');
     require_once 'config.php';
 
