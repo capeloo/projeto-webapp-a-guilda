@@ -96,7 +96,7 @@
       echo "<strong>Perfil</strong>";
       echo "</li>";
       echo "<li class='nav-item'>";
-      echo "<a class='nav-link' href='#'>Lista de perfis</a>";
+      echo "<a class='nav-link' href='perfil/Lista_perfis.php'>Lista de perfis</a>";
       echo "</li>";
       echo "<li class='nav-item' style='margin-top: 10px;'>";
       echo "<strong>Denúncia</strong>";

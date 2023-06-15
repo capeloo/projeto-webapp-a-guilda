@@ -113,7 +113,7 @@
             if($stmt->execute()){
                 echo "<script>alert('Edição realizada com sucesso!');</script>";
                 //Redireciona para o dashboard
-                echo "<script>location.href='../Usuario_dashboard.php';</script>";
+                echo "<script>location.href='Meu_perfil.php';</script>";
             } else {
                 echo "Ops! Algo deu errado. (2)";
             }
