@@ -113,7 +113,7 @@
             if($stmt->execute()){
                 echo "<script>alert('Edição realizada com sucesso!');</script>";
                 //Redireciona para o dashboard
-                echo "<script>location.href='Meu_perfil.php';</script>";
+                echo "<script>location.href='Perfil.php';</script>";
             } else {
                 echo "Ops! Algo deu errado. (2)";
             }
@@ -143,6 +143,12 @@
     <nav class="navbar bg-dark sticky-top">
         <div class="container-fluid">
             <a class="navbar-brand text-light" href="../Usuario_dashboard.php">Taverna</a>
+            <form class='form-inline' action='../../pesquisar.php' method='post'>
+                <div style='display:flex;'>
+                    <input class='form-control mr-sm-2' type='search' placeholder='Apelido' name='pesquisa'>
+                    <button class='btn btn-outline-light my-2 ms-2 my-sm-0' type='submit'>Pesquisar</button>
+                </div>
+            </form>
             <!-- Offcanvas -->
             <button class="navbar-toggler bg-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -158,7 +164,7 @@
                             <strong>Perfil</strong>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="Meu_perfil.php">Meu perfil</a>
+                            <a class="nav-link" href="Perfil.php">Meu perfil</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="Editar_perfil.php">Editar perfil</a>
