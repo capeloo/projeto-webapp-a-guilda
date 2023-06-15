@@ -71,7 +71,7 @@
 
     //Renderiza os dados na forma de tabela
     if($qtd > 0){
-        echo "<table class='table table-hover table-striped table-bordered bg-light' style='width:1230px; margin:auto;'>";
+        echo "<table class='table table-hover table-striped table-bordered bg-light mb-5' style='width:1230px; margin:auto;'>";
             echo "<tr>";
             echo "<th>Nome</th>";
             echo "<th>Apelido</th>";
