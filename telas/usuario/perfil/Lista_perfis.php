@@ -10,11 +10,11 @@
     <!-- Chamando as folhas de estilo do Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body class="bg-light">
+<body class="bg-dark">
   <!-- Barra de navegação -->
-  <nav class="navbar bg-dark sticky-top">
+  <nav class="navbar bg-light sticky-top">
     <div class="container-fluid">
-      <a class="navbar-brand text-light" href="../usuario/Usuario_dashboard.php">Taverna</a>
+      <a class="navbar-brand text-dark" href="../Usuario_dashboard.php">Taverna</a>
       <!-- Offcanvas -->
       <button class="navbar-toggler bg-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -30,22 +30,19 @@
               <strong>Perfil</strong>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../usuario/perfil/Meu_perfil.php">Meu perfil</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="../usuario/perfil/Editar_perfil.php">Editar perfil</a>
+              <a class="nav-link" href="Lista_perfis.php">Lista de perfis</a>
             </li>
             <li class="nav-item" style="margin-top: 10px;">
-              <strong>Mesas</strong>
+              <strong>Denúncia</strong>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="Lista_de_mesas.php">Lista de mesas</a>
+              <a class="nav-link" href="Lista_de_mesas.php">Tickets de denúncia</a>
+            </li>
+            <li class="nav-item" style="margin-top: 10px;">
+              <strong>Notícias</strong>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="Cadastro_mesa.php">Cadastro de mesa</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="Minhas_mesas.php">Minhas mesas</a>
+              <a class="nav-link" href="#">Escrever Notícia</a>
             </li>
           </ul>
         </div>
@@ -53,10 +50,8 @@
     </div>
   </nav>
     <!-- Conteúdo da página -->
-    <div class="container-fluid text-center mt-3 bg-light" style="width: 500px;">
-        <h1 class="p-4">Lista de perfis</h1>
-    </div>
-
+    <h1 class="pt-5 pb-4 text-light text-center">Lista de perfis</h1>
+    
     <?php 
     //Script da lista de perfis
 
@@ -76,7 +71,7 @@
 
     //Renderiza os dados na forma de tabela
     if($qtd > 0){
-        echo "<table class='table table-hover table-striped table-bordered' style='width:1230px; margin:auto;'>";
+        echo "<table class='table table-hover table-striped table-bordered bg-light' style='width:1230px; margin:auto;'>";
             echo "<tr>";
             echo "<th>Nome</th>";
             echo "<th>Apelido</th>";
@@ -85,7 +80,7 @@
             echo "<th>Celular</th>";
             echo "<th>Discord</th>";
             echo "<th>Matrícula</th>";
-            echo "<th>Ações</th>";
+            echo "<th colspan='2'>Ações</th>";
             echo "</tr>";
         while($row = $stmt->fetch_object()){
             echo "<tr>";
@@ -97,9 +92,11 @@
             echo "<td>" . $row->discord . "</td>";
             echo "<td>" . $row->matricula . "</td>";
             echo "<td>
-                    <button class='btn btn-success' onclick=\"location.href='Mesa_dashboard.php?id=".$row->id."';\">Acesse</button>
-                    <button class='btn btn-danger' onclick=\"location.href='Mesa_dashboard.php?id=".$row->id."';\">Excluir</button>
+                    <button class='btn btn-success' onclick=\"location.href='Meu_perfil.php?id=".$row->id."';\">Acesse</button>
                   </td>";     
+            echo "<td>
+                    <button onclick=\"if(confirm('Tem certeza que deseja excluir?')){location.href='excluir.php?id=".$row->id."';}else{false;}\" class='btn btn-danger'>Excluir</button>
+                 </td>";
             echo "</tr>";
         }
         echo "</table>";

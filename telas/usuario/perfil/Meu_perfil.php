@@ -11,131 +11,247 @@
     //Inicializa variáveis vazias
     $foto = $nome = $bio = $email = $celular = $discord = $matricula = "";
 
-    //Preparando a requisição ao banco
-    $sql = "SELECT foto, nome, bio, email, celular, discord, matricula
-            FROM usuario
-            WHERE id = (?)
-            LIMIT 1";
+    if($_SESSION["admin"] == 0){
+        //Preparando a requisição ao banco
+        $sql = "SELECT foto, nome, bio, email, celular, discord, matricula
+                FROM usuario
+                WHERE id = (?)
+                LIMIT 1";
 
-    if($stmt = $mysqli->prepare($sql)){
-        $stmt->bind_param("i", $param_id);
-        $param_id = $_SESSION["id"];
+        if($stmt = $mysqli->prepare($sql)){
+            $stmt->bind_param("i", $param_id);
+            $param_id = $_SESSION["id"];
 
         //Executando a requisição ao banco
-        if($stmt->execute()){
-            $stmt_res = $stmt->get_result();
+            if($stmt->execute()){
+                $stmt_res = $stmt->get_result();
 
-            if($stmt_res->num_rows == 1){
-                $row = $stmt_res->fetch_assoc();
+                if($stmt_res->num_rows == 1){
+                    $row = $stmt_res->fetch_assoc();
+                } else {
+                    echo "Ops! Algo deu errado (0)";
+                }
             } else {
-                echo "Ops! Algo deu errado (0)";
+                echo "Ops! Algo deu errado. (1)";
             }
-        } else {
-            echo "Ops! Algo deu errado. (1)";
-        }
         // Fecha a conexão com o banco
         $stmt->close();
+        }
+
+        echo '<!DOCTYPE html>';
+        echo '<html lang="pt-br">';
+        echo '<head>';
+        echo '<meta charset="UTF-8">';
+        echo '<meta http-equiv="X-UA-Compatible" content="IE=edge">';
+        echo '<meta name="viewport" content="width=device-width, initial-scale=1.0">';
+        echo '<title>Meu perfil</title>';
+        echo '<link rel="shortcut icon" href="../../../assets/fav.png" type="image/x-icon">';
+        echo '<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">';
+        echo '</head>';
+        echo '<body>';
+        echo '<nav class="navbar bg-dark sticky-top">';
+        echo '<div class="container-fluid">';
+        echo '<a class="navbar-brand text-light" href="../Usuario_dashboard.php">Taverna</a>';
+        echo '<button class="navbar-toggler bg-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">';
+        echo '<span class="navbar-toggler-icon"></span>';
+        echo '</button>';
+        echo '<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">';
+        echo '<div class="offcanvas-header">';
+        echo '<h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>';
+        echo '<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>';
+        echo '</div>';
+        echo '<div class="offcanvas-body">';
+        echo '<ul class="navbar-nav justify-content-end flex-grow-1 pe-3">';
+        echo '<li class="nav-item">';
+        echo '<strong>Perfil</strong>';
+        echo '</li>';
+        echo '<li class="nav-item">';
+        echo '<a class="nav-link" href="Meu_perfil.php">Meu perfil</a>';
+        echo '</li>';
+        echo '<li class="nav-item">';
+        echo '<a class="nav-link" href="Editar_perfil.php">Editar perfil</a>';
+        echo '</li>';
+        echo '<li class="nav-item" style="margin-top: 10px;">';
+        echo '<strong>Mesas</strong>';
+        echo '</li>';
+        echo '<li class="nav-item">';
+        echo '<a class="nav-link" href="../../mesa/Lista_de_mesas.php">Lista de mesas</a>';
+        echo '</li>';
+        echo '<li class="nav-item">';
+        echo '<a class="nav-link" href="../../mesa/Cadastro_mesa.php">Cadastro de mesa</a>';
+        echo '</li>';
+        echo '<li class="nav-item">';
+        echo '<a class="nav-link" href="../../mesa/Minhas_mesas.php">Minhas mesas</a>';
+        echo '</li>';
+        echo '</ul>';
+        echo '</div>';
+        echo '</div>';
+        echo '</div>';
+        echo '</nav>';
+        echo '<div class="container-fluid text-center mt-3">';
+        echo '<h1 class="p-3">Meu perfil</h1>';
+        echo '<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">';
+        echo '<div class="row">';
+        echo '<div class="col">';  
+        echo '<div class="input-group mx-auto p-2" style="width: 300px;">';      
+        echo '<span class="input-group-text">Foto</span> '; 
+        echo '<img src="<?php echo $row["foto"]; ?>" alt="foto-perfil" name="foto" class="img" width="300px" height="250px">'; 
+        echo '</div>'; 
+        echo '</div>'; 
+        echo '<div class="col">'; 
+        echo '<div class="input-group mx-auto p-2" style="width: 400px;">'; 
+        echo '<span class="input-group-text">Nome Completo</span>'; 
+        echo '<input type="text" name="nome" value="<?php echo $row["nome"]; ?>" class="form-control" disabled>'; 
+        echo '</div>'; 
+        echo '<div class="input-group mx-auto p-2" style="width: 400px;">'; 
+        echo '<span class="input-group-text">Bio</span>';
+        echo '<textarea name="bio" cols="30" rows="10" class="form-control" disabled><?php echo $row["bio"]; ?></textarea>';
+        echo '</div>';
+        echo '</div>';
+        echo '<div class="col">';
+        echo '<div class="input-group mx-auto p-2" style="width: 350px;">';
+        echo '<span class="input-group-text">E-mail</span>';
+        echo '<input type="email" name="email" value="<?php echo $row["email"]; ?>" class="form-control" disabled>';
+        echo '</div>';
+        echo '<div class="input-group mx-auto p-2" style="width: 350px;">';
+        echo '<span class="input-group-text">Celular</span>';   
+        echo '<input type="text" name="celular" placeholder="(xx) x xxxx-xxxx" value="<?php echo $row["celular"]; ?>" class="form-control" disabled>';
+        echo '</div>';
+        echo '<div class="input-group mx-auto p-2" style="width: 350px;">';
+        echo '<span class="input-group-text">Discord</span>';
+        echo '<input type="text" name="discord" placeholder="nome#xxxx" value="<?php echo $row["discord"]; ?>" class="form-control" disabled>';
+        echo '</div>';
+        echo '<div class="input-group mx-auto p-2" style="width: 350px;">';
+        echo '<span class="input-group-text">Matrícula UFC</span>';
+        echo '<input type="number" name="matricula" value="<?php echo $row["matricula"]; ?>" class="form-control" disabled>';
+        echo '</div>';
+        echo '</div>';
+        echo '</div>';
+        echo '</form>';
+        echo '</div>';  
+        echo '<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>';  
+        echo '</body>';
+        echo '</html>';
+    } else if($_SESSION["admin"] == 1){
+        //Preparando a requisição ao banco
+        $sql = "SELECT id, foto, nome, bio, email, celular, discord, matricula
+                FROM usuario
+                WHERE id = (?)
+                LIMIT 1";
+
+        if($stmt = $mysqli->prepare($sql)){
+            $stmt->bind_param("i", $param_id);
+            $param_id = $_GET["id"];
+
+        //Executando a requisição ao banco
+            if($stmt->execute()){
+                $stmt_res = $stmt->get_result();
+
+                if($stmt_res->num_rows == 1){
+                    $row = $stmt_res->fetch_assoc();
+                } else {
+                    echo "Ops! Algo deu errado (0)";
+                }
+            } else {
+                echo "Ops! Algo deu errado. (1)";
+            }
+        // Fecha a conexão com o banco
+        $stmt->close();
+        }
+
+        echo '<!DOCTYPE html>';
+        echo '<html lang="pt-br">';
+        echo '<head>';
+        echo '<meta charset="UTF-8">';
+        echo '<meta http-equiv="X-UA-Compatible" content="IE=edge">';
+        echo '<meta name="viewport" content="width=device-width, initial-scale=1.0">';
+        echo '<title>Perfil</title>';
+        echo '<link rel="shortcut icon" href="../../../assets/fav.png" type="image/x-icon">';
+        echo '<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">';
+        echo '</head>';
+        echo '<body class="bg-dark">';
+        echo '<nav class="navbar bg-light sticky-top">';
+        echo '<div class="container-fluid">';
+        echo '<a class="navbar-brand text-dark" href="../Usuario_dashboard.php">Taverna</a>';
+        echo '<button class="navbar-toggler bg-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">';
+        echo '<span class="navbar-toggler-icon"></span>';
+        echo '</button>';
+        echo '<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">';
+        echo '<div class="offcanvas-header">';
+        echo '<h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>';
+        echo '<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>';
+        echo '</div>';
+        echo '<div class="offcanvas-body">';
+        echo '<ul class="navbar-nav justify-content-end flex-grow-1 pe-3">';
+        echo '<li class="nav-item">';
+        echo '<strong>Perfil</strong>';
+        echo '</li>';
+        echo '<li class="nav-item">';
+        echo '<a class="nav-link" href="Lista_perfis.php">Lista de perfis</a>';
+        echo '</li>';
+        echo '<li class="nav-item" style="margin-top: 10px;">';
+        echo '<strong>Denúncia</strong>';
+        echo '</li>';
+        echo '<li class="nav-item">';
+        echo '<a class="nav-link" href="#">Tickets de denúncia</a>';
+        echo '</li>';
+        echo '<li class="nav-item" style="margin-top: 10px;">';
+        echo '<li class="nav-item">';
+        echo '<strong>Notícias</strong>';
+        echo '</li>';
+        echo '<li class="nav-item">';
+        echo '<a class="nav-link" href="#">Escrever notícia</a>';
+        echo '</li>';
+        echo '</ul>';
+        echo '</div>';
+        echo '</div>';
+        echo '</div>';
+        echo '</nav>';
+        echo '<div class="container-fluid text-center mt-3">';
+        echo '<h1 class="mt-5 mb-4 text-light text-center">Perfil</h1>';
+        echo '<form action="'.htmlspecialchars($_SERVER["PHP_SELF"]).'" method="post">';
+        echo '<div class="row">';
+        echo '<div class="col">';  
+        echo '<div class="input-group mx-auto p-2" style="width: 400px;">';      
+        echo '<span class="input-group-text" style="width: 350px; border-radius: 5px 5px 0px 0px;";>Foto</span> '; 
+        echo '<img src="'.  $row["foto"] .'" alt="foto-perfil" name="foto" class="img" width="351px" height="260px" style="border-radius: 0px 0px 5px 5px;">'; 
+        echo '</div>'; 
+        echo '</div>'; 
+        echo '<div class="col">'; 
+        echo '<div class="input-group mx-auto p-2" style="width: 400px;">'; 
+        echo '<span class="input-group-text">Nome Completo</span>'; 
+        echo '<input type="text" name="nome" value="' . $row["nome"] .'" class="form-control" disabled>'; 
+        echo '</div>'; 
+        echo '<div class="input-group mx-auto p-2" style="width: 400px;">'; 
+        echo '<span class="input-group-text">Bio</span>';
+        echo '<textarea name="bio" cols="30" rows="10" class="form-control" disabled>' . $row["bio"] . '</textarea>';
+        echo '</div>';
+        echo '</div>';
+        echo '<div class="col">';
+        echo '<div class="input-group mx-auto p-2" style="width: 350px;">';
+        echo '<span class="input-group-text">E-mail</span>';
+        echo '<input type="email" name="email" value="' . $row["email"] . '" class="form-control" disabled>';
+        echo '</div>';
+        echo '<div class="input-group mx-auto p-2" style="width: 350px;">';
+        echo '<span class="input-group-text">Celular</span>';   
+        echo '<input type="text" name="celular" placeholder="(xx) x xxxx-xxxx" value="' . $row["celular"] .'" class="form-control" disabled>';
+        echo '</div>';
+        echo '<div class="input-group mx-auto p-2" style="width: 350px;">';
+        echo '<span class="input-group-text">Discord</span>';
+        echo '<input type="text" name="discord" placeholder="nome#xxxx" value="' . $row["discord"] .'" class="form-control" disabled>';
+        echo '</div>';
+        echo '<div class="input-group mx-auto p-2" style="width: 350px;">';
+        echo '<span class="input-group-text">Matrícula UFC</span>';
+        echo '<input type="number" name="matricula" value="' . $row["matricula"] . '" class="form-control" disabled>';
+        echo '</div>';
+        echo '</div>';
+        echo '</div>';
+        echo '</form>';
+        echo '<a href="excluir.php?id='.$row["id"].'" onclick="return confirm('."'Tem certeza que deseja excluir esse registro?'".')" class="btn btn-danger mt-4" style="width: 120px;">Excluir</a>';
+        echo '</div>';  
+        echo '<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>';  
+        echo '</body>';
+        echo '</html>';
     }
 ?>
 
-<!-- Início do HTML -->
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu perfil</title>
-    <link rel="shortcut icon" href="../../../assets/fav.png" type="image/x-icon">
-    <!-- Chamando as folhas de estilo do Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-    <!-- Barra de navegação -->
-    <nav class="navbar bg-dark sticky-top">
-        <div class="container-fluid">
-            <a class="navbar-brand text-light" href="../Usuario_dashboard.php">Taverna</a>
-            <!-- Offcanvas -->
-            <button class="navbar-toggler bg-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-                <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                </div>
-                <div class="offcanvas-body">
-                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                        <li class="nav-item">
-                            <strong>Perfil</strong>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="Meu_perfil.php">Meu perfil</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="Editar_perfil.php">Editar perfil</a>
-                        </li>
-                        <li class="nav-item" style="margin-top: 10px;">
-                            <strong>Mesas</strong>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="../../mesa/Lista_de_mesas.php">Lista de mesas</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="../../mesa/Cadastro_mesa.php">Cadastro de mesa</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="../../mesa/Minhas_mesas.php">Minhas mesas</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </nav>
-    <div class="container-fluid text-center mt-3">
-        <!-- Conteúdo da página -->
-        <h1 class="p-3">Meu perfil</h1>
-        <!-- Formulário -->
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-            <div class="row">
-                <div class="col">
-                    <div class="input-group mx-auto p-2" style="width: 300px;">
-                        <span class="input-group-text">Foto</span>  
-                        <img src="<?php echo $row["foto"]; ?>" alt="foto-perfil" name="foto" class="img" width="300px" height="250px">
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="input-group mx-auto p-2" style="width: 400px;">   
-                        <span class="input-group-text">Nome Completo</span>
-                        <input type="text" name="nome" value="<?php echo $row["nome"]; ?>" class="form-control" disabled>
-                    </div>
-                    <div class="input-group mx-auto p-2" style="width: 400px;">
-                        <span class="input-group-text">Bio</span>
-                        <textarea name="bio" cols="30" rows="10" class="form-control" disabled><?php echo $row["bio"]; ?></textarea>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="input-group mx-auto p-2" style="width: 350px;">
-                        <span class="input-group-text">E-mail</span>
-                        <input type="email" name="email" value="<?php echo $row["email"]; ?>" class="form-control" disabled>
-                    </div>
-                    <div class="input-group mx-auto p-2" style="width: 350px;">
-                        <span class="input-group-text">Celular</span>
-                        <input type="text" name="celular" placeholder="(xx) x xxxx-xxxx" value="<?php echo $row["celular"]; ?>" class="form-control" disabled>
-                    </div>
-                    <div class="input-group mx-auto p-2" style="width: 350px;">
-                        <span class="input-group-text">Discord</span>
-                        <input type="text" name="discord" placeholder="nome#xxxx" value="<?php echo $row["discord"]; ?>" class="form-control" disabled>
-                    </div>
-                    <div class="input-group mx-auto p-2" style="width: 350px;">
-                        <span class="input-group-text">Matrícula UFC</span>
-                        <input type="number" name="matricula" value="<?php echo $row["matricula"]; ?>" class="form-control" disabled>
-                    </div>
-                </div>
-            </div>   
-        </form>
-    </div>
-    <!-- Chamando os scripts do Bootstrap -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
