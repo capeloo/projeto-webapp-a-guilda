@@ -22,6 +22,9 @@
                 header("location: usuario/perfil/Perfil.php?id=".$row['id']."");
             }
             
+        } else {
+            echo "<script>alert('Não foi encontrado nenhum usuário com esse apelido! Tente novamente.');</script>";
+            echo "<script>window.history.back();</script>";
         }
     }
 ?>

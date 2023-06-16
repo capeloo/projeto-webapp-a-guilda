@@ -92,7 +92,7 @@
             echo "<td>" . $row->discord . "</td>";
             echo "<td>" . $row->matricula . "</td>";
             echo "<td>
-                    <button class='btn btn-success' onclick=\"location.href='Meu_perfil.php?id=".$row->id."';\">Acesse</button>
+                    <button class='btn btn-success' onclick=\"location.href='Perfil.php?id=".$row->id."';\">Acesse</button>
                   </td>";     
             echo "<td>
                     <button onclick=\"if(confirm('Tem certeza que deseja excluir?')){location.href='excluir.php?id=".$row->id."';}else{false;}\" class='btn btn-danger'>Excluir</button>

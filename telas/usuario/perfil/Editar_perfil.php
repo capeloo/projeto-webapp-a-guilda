@@ -235,7 +235,7 @@
                 </div>
             </div>   
             <div class="p-4">
-                <button class="btn btn-success" style="width: 150px;" type="submit">Salvar</button>
+                <button class="btn btn-success" style="width: 120px;" type="submit">Salvar</button>
             </div>
         </form>
     </div>

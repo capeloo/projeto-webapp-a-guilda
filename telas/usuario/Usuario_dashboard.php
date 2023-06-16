@@ -67,7 +67,7 @@
       echo "<div class='container-fluid text-center mt-4 bg-light' style='width: 500px;'>";
       echo "<h1 class='p-4'>Olá, " . $_SESSION['apelido'] . "! Sua nova aventura começa aqui.</h1>";
       echo "<div class='p-4'>";
-      echo "<a href='login/logout.php' class='btn btn-danger' style='width: 100px;'>Sair</a>";
+      echo "<a href='login/logout.php' class='btn btn-danger' style='width: 120px;'>Sair</a>";
       echo "</div>";
       echo "</div>";
       echo "<script src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js'></script>";
@@ -125,7 +125,7 @@
       echo "<h1 class='pt-5 text-light text-center'>Olá, " . $_SESSION['apelido'] . "!</h1>";
       echo "<h1 class='text-light text-center'>Este é seu perfil de administrador.</h1>";
       echo "<div class='p-4 text-center'>";
-      echo "<a href='login/logout.php' class='btn btn-danger' style='width: 100px;'>Sair</a>";
+      echo "<a href='login/logout.php' class='btn btn-danger' style='width: 120px;'>Sair</a>";
       echo "</div>";
       echo "<script src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js'></script>";
       echo "</body>";

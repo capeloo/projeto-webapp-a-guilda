@@ -15,6 +15,12 @@
   <nav class="navbar bg-dark sticky-top">
     <div class="container-fluid">
       <a class="navbar-brand text-light" href="../usuario/Usuario_dashboard.php">Taverna</a>
+      <form class='form-inline' action='../pesquisar.php' method='post'>
+        <div style='display:flex;'>
+          <input class='form-control mr-sm-2' type='search' placeholder='Apelido' name='pesquisa'>
+          <button class='btn btn-outline-light my-2 ms-2 my-sm-0' type='submit'>Pesquisar</button>
+        </div>
+      </form>
       <!-- Offcanvas -->
       <button class="navbar-toggler bg-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>

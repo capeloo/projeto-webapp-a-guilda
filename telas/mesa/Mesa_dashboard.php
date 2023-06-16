@@ -51,6 +51,12 @@
   <nav class="navbar bg-dark sticky-top">
     <div class="container-fluid">
       <a class="navbar-brand text-light" href="../usuario/Usuario_dashboard.php">Taverna</a>
+      <form class='form-inline' action='../pesquisar.php' method='post'>
+        <div style='display:flex;'>
+          <input class='form-control mr-sm-2' type='search' placeholder='Apelido' name='pesquisa'>
+          <button class='btn btn-outline-light my-2 ms-2 my-sm-0' type='submit'>Pesquisar</button>
+        </div>
+      </form>
       <!-- Offcanvas -->
       <button class="navbar-toggler bg-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -106,9 +112,9 @@
               <option>Body Building</option>
             </select>
           </div>
-          <div class="input-group mx-auto p-2" style="width: 300px;">
-            <span class="input-group-text">Foto</span>  
-            <img src="<?php echo $row["foto"]; ?>" alt="foto-perfil" name="foto" class="img" width="300px" height="250px">
+          <div class="input-group mx-auto p-2" style="width: 350px;">
+            <span class="input-group-text" style="width: 350px; border-radius: 5px 5px 0px 0px;">Foto</span>  
+            <img src="<?php echo $row["foto"]; ?>" alt="foto-perfil" name="foto" class="img" width="335px" height="260px" style="border-radius: 0px 0px 5px 5px;">
           </div>
         </div>  
         <div class="col">
@@ -179,7 +185,7 @@
         </div>
       </div>    
     </form>
-    <div class="p-4">
+    <div>
       <a href="inscrever.php?id=<?php echo $row['id'] ?>" class="btn btn-success">Inscrever-se</a>
     </div> 
   </div>
