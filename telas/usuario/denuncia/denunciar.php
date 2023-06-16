@@ -39,14 +39,21 @@
         }
     
         $motivo_str = implode(";", $motivo);
+
         if(isset($_POST["comentario"])){
             $comentario = $_POST["comentario"];
         }
+
+        if(isset($_POST["titulo"])){
+            $titulo = $_POST["titulo"];
+        }
     
-        $sql = "INSERT INTO denuncia (id_denunciante, apelido_denunciante, id_denunciado, apelido_denunciado, motivo, comentario) VALUES (?,?,?,?,?,?)";
+        $sql = "INSERT INTO denuncia (titulo, id_denunciante, apelido_denunciante, id_denunciado, apelido_denunciado, motivo, comentario) VALUES (?,?,?,?,?,?,?)";
     
         if($stmt = $mysqli->prepare($sql)){
-            $stmt->bind_param("ssssss", $param_id_denunciante, $param_apelido_denunciante, $param_id_denunciado, $param_apelido_denunciado, $param_motivo, $param_comentario);
+            $stmt->bind_param("sssssss", $param_titulo, $param_id_denunciante, $param_apelido_denunciante, $param_id_denunciado, $param_apelido_denunciado, $param_motivo, $param_comentario);
+
+            $param_titulo = $titulo;
             $param_id_denunciante = $_SESSION["id"];
             $param_apelido_denunciante = $_SESSION["apelido"];
             $param_id_denunciado = $id_dnc;

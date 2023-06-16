@@ -63,6 +63,12 @@
         <h1 class="p-3">Ticket de Denúncia</h1>
         <!-- Formulário -->
         <form action="denunciar.php?id=<?php echo $_GET["id"]?>" method="post">
+            <div>
+                <div class="input-group mx-auto p-2" style="width: 400px;">
+                    <span class="input-group-text" style="font-size: 1.2em;">Título</span>
+                    <input type="text" name="titulo" class="form-control">
+                </div>
+            </div> 
             <div class="container-fluid" style="width: 90%; display:flex;">
                 <div>
                     <h1 class="text-start p-3" style="font-size: 2em;">Por que deseja denunciar esse usuário?</h1>
