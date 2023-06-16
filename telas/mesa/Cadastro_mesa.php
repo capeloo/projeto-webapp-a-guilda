@@ -74,7 +74,15 @@
             $tema = $_POST["tema"];
         }
         
-        $nome_campanha = trim($_POST["nome_campanha"]);
+        if (empty(trim($_POST["nome_campanha"]))) {
+            $nome_campanha_erro = "Por favor, determine um nome para a sua campanha.";
+            // Impedindo o uso de caracteres especiais
+        } else if (preg_match('/^[a-zA-Z0-9]+/', $nome_campanha)) { 
+            $nome_campanha = trim($_POST["nome_campanha"]);
+        } else {
+                $nome_campanha_erro = "O nome da campanha tem caracteres inválidos.";
+            }
+            
         $sistema = trim($_POST["sistema"]);
         $sinopse = trim($_POST["sinopse"]);
         $requisitos = trim($_POST["requisitos"]);
