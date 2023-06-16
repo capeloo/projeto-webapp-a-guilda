@@ -36,7 +36,7 @@
               <strong>Denúncia</strong>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="Lista_de_mesas.php">Tickets de denúncia</a>
+              <a class="nav-link" href="../denuncia/Lista_denuncia.php">Tickets de denúncia</a>
             </li>
             <li class="nav-item" style="margin-top: 10px;">
               <strong>Notícias</strong>
@@ -71,7 +71,7 @@
 
     //Renderiza os dados na forma de tabela
     if($qtd > 0){
-        echo "<table class='table table-hover table-striped table-bordered bg-light mb-5' style='width:1230px; margin:auto;'>";
+        echo "<table class='table table-hover table-striped table-bordered bg-light mb-5' style='width:1100px; margin:auto;'>";
             echo "<tr>";
             echo "<th>Nome</th>";
             echo "<th>Apelido</th>";

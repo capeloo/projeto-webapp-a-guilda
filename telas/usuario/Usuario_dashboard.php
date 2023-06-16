@@ -108,7 +108,7 @@
       echo "<strong>Denúncia</strong>";
       echo "</li>";
       echo "<li class='nav-item'>";
-      echo "<a class='nav-link' href='#'>Tickets de Denúncia</a>";
+      echo "<a class='nav-link' href='denuncia/Lista_denuncia.php'>Tickets de Denúncia</a>";
       echo "</li>";
       echo "<li class='nav-item'>";
       echo "<li class='nav-item' style='margin-top: 10px;'>";

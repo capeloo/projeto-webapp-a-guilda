@@ -124,7 +124,7 @@
             echo '</div>';
             echo '</div>';
             echo '</form>';
-            echo '<a href="Ticket_denuncia.php?id='.$_GET["id"].'"class="btn btn-warning mt-4" style="width: 120px;">Denunciar</a>';
+            echo '<a href="../denuncia/Abrir_ticket.php?id='.$_GET["id"].'"class="btn btn-warning mt-4" style="width: 120px;">Denunciar</a>';
             echo '</div>';  
             echo '<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>';  
             echo '</body>';
@@ -319,7 +319,7 @@
         echo '<strong>Denúncia</strong>';
         echo '</li>';
         echo '<li class="nav-item">';
-        echo '<a class="nav-link" href="#">Tickets de denúncia</a>';
+        echo '<a class="nav-link" href="../denuncia/Lista_denuncia.php">Tickets de denúncia</a>';
         echo '</li>';
         echo '<li class="nav-item" style="margin-top: 10px;">';
         echo '<li class="nav-item">';
