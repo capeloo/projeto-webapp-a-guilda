@@ -85,18 +85,21 @@
             echo "<th>Denunciante</th>";
             echo "<th>Denunciado</th>";
             echo "<th>Motivo</th>";
-            echo "<th>Ações</th>";
+            echo "<th colspan='2'>Ações</th>";
             echo "</tr>";
           while($row = $stmt->fetch_object()){
             echo "<tr>";
             echo "<td>" . $row->id . "</td>";
-            echo "<td></td>";
+            echo "<td>" . $row->titulo . "</td>";
             echo "<td>" . $row->apelido_denunciante . "</td>";
             echo "<td>" . $row->apelido_denunciado . "</td>";
             echo "<td>" . $row->motivo . "</td>";
             echo "<td>
                     <button class='btn btn-success' onclick=\"location.href='Ticket_dashboard.php?id=".$row->id."';\">Acesse</button>
                   </td>";        
+            echo "<td>
+                  <button onclick=\"if(confirm('Tem certeza que deseja excluir?')){location.href='excluir.php?id=".$row->id."';}else{false;}\" class='btn btn-danger'>Excluir</button>
+               </td>";
             echo "</tr>";
           }
         echo "</table>";
