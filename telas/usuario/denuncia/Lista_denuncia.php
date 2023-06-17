@@ -97,9 +97,6 @@
             echo "<td>
                     <button class='btn btn-success' onclick=\"location.href='Ticket_dashboard.php?id=".$row->id."';\">Acesse</button>
                   </td>";        
-            echo "<td>
-                  <button onclick=\"if(confirm('Tem certeza que deseja excluir?')){location.href='excluir.php?id=".$row->id."';}else{false;}\" class='btn btn-danger'>Excluir</button>
-               </td>";
             echo "</tr>";
           }
         echo "</table>";

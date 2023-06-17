@@ -2,6 +2,10 @@
     //Inicia a sessão (necessário ter em todas as páginas que o usuário estiver logado)
     session_start();
 
+    //Traz o arquivo config.php onde foi configurado a ligação com o banco de dados
+    set_include_path('C:\xampp\htdocs\projeto-webapp-taverna\db');
+    require_once 'config.php';
+
     //Validação para impedir que o usuário que não logou entre no dashboard
     if(empty($_SESSION)){
         echo "<script>location.href='login/Login.php';</script>";
@@ -60,16 +64,135 @@
       echo "<a class='nav-link' href='../mesa/Minhas_mesas.php'>Minhas mesas</a>";
       echo "</li>";
       echo "</ul>";
+      echo "<div class='p-4 text-center' style='margin-top:130px;'>";
+      echo "<a href='login/logout.php' class='btn btn-danger' style='width: 120px;'>Sair</a>";
+      echo "</div>";
       echo "</div>";
       echo "</div>";
       echo "</div>";
       echo "</nav>";
-      echo "<div class='container-fluid text-center mt-4 bg-light' style='width: 500px;'>";
+      echo "<div class='container-fluid text-center mt-2 bg-light' style='width: 500px;'>";
       echo "<h1 class='p-4'>Olá, " . $_SESSION['apelido'] . "! Sua nova aventura começa aqui.</h1>";
-      echo "<div class='p-4'>";
-      echo "<a href='login/logout.php' class='btn btn-danger' style='width: 120px;'>Sair</a>";
       echo "</div>";
-      echo "</div>";
+
+      //Minhas mesas
+      echo '<div class="row container-fluid text-center mt-4 mb-4 bg-dark" style="margin:auto; width: 1200px; border-radius: 10px;">';
+      echo '<div class="col">';
+      echo '<h1 class="p-2 mt-4 text-light">Minhas mesas</h1>';
+      echo '<h2 class="p-2 ms-3 text-start text-light">Mestrando</h2>';  
+      
+      $id = $_SESSION["id"];
+
+      //Prepara a requisição ao banco
+      $sql = "SELECT * 
+              FROM mesa
+              WHERE id_mestre = $id
+              LIMIT 3";
+
+      $stmt = $mysqli->query($sql);
+
+      $qtd = $stmt->num_rows;
+
+      //Renderiza os dados na forma de tabela
+      if($qtd > 0){
+        echo "<table class='table table-hover table-striped table-bordered bg-light' style='width: 1100px;margin: auto;'>";
+        echo "<tr>";
+        echo "<th>Nome</th>";
+        echo "<th>Sistema</th>";
+        echo "<th>Sinopse</th>";
+        echo "<th>Duração</th>";
+        echo "<th>Tema</th>";
+        echo "<th>Classificação Indicativa</th>";
+        echo "<th>Vagas</th>";
+        echo "<th>Ações</th>";
+        echo "</tr>";
+        while($row = $stmt->fetch_object()){
+          echo "<tr>";
+          echo "<td>" . $row->nome_campanha . "</td>";
+          echo "<td>" . $row->sistema . "</td>";
+          echo "<td>" . $row->sinopse . "</td>";
+          echo "<td>" . $row->duracao . "</td>";
+          echo "<td>" . $row->tema . "</td>";
+          echo "<td>" . $row->classificacao_indicativa . "</td>";
+          echo "<td>" . $row->numero_vagas . "</td>";
+          echo "<td>
+                  <button class='btn btn-success' onclick=\"location.href='../mesa/Mesa_dashboard.php?id=".$row->id."';\">Acesse</button>
+                </td>";        
+          echo "</tr>";
+          }
+        echo "</table>";
+        } else {
+          echo "<p class='alert-danger'>Não encontrou resultados!</p>";
+        }
+      echo '</div>';
+      echo '<div class="col">';
+      echo '<h2 class="p-2 ms-3 mt-4 text-start text-light">Participando</h2>';  
+        
+      $sql = "SELECT mesas
+              FROM usuario
+              WHERE id = $id";
+
+      $stmt = $mysqli->prepare($sql);
+      $stmt->execute();
+      $stmt_res = $stmt->get_result();
+      $row = $stmt_res->fetch_assoc();
+
+      $mesas_str = rtrim($row["mesas"], ",");
+
+      if(strlen($mesas_str) > 1){
+        $sql = "SELECT *
+                FROM mesa
+                WHERE id 
+                IN ('$mesas_str')
+                LIMIT 3";
+                
+        $stmt = $mysqli->query($sql);
+          
+        $qtd = $stmt->num_rows;
+      } else {
+        $sql = "SELECT *
+                FROM mesa
+                WHERE id = $mesas_str";
+                  
+        $stmt = $mysqli->query($sql);
+          
+        $qtd = $stmt->num_rows;
+        }
+
+      //Renderiza os dados na forma de tabela
+      if($qtd > 0){
+        echo "<table class='table table-hover table-striped table-bordered mb-5 bg-light' style='width: 1100px; margin: auto;'>";
+        echo "<tr>";
+        echo "<th>Nome</th>";
+        echo "<th>Sistema</th>";
+        echo "<th>Sinopse</th>";
+        echo "<th>Duração</th>";
+        echo "<th>Tema</th>";
+        echo "<th>Classificação Indicativa</th>";
+        echo "<th>Vagas</th>";
+        echo "<th>Ações</th>";
+        echo "</tr>";
+        while($row = $stmt->fetch_object()){
+          echo "<tr>";
+          echo "<td>" . $row->nome_campanha . "</td>";
+          echo "<td>" . $row->sistema . "</td>";
+          echo "<td>" . $row->sinopse . "</td>";
+          echo "<td>" . $row->duracao . "</td>";
+          echo "<td>" . $row->tema . "</td>";
+          echo "<td>" . $row->classificacao_indicativa . "</td>";
+          echo "<td>" . $row->numero_vagas . "</td>";
+          echo "<td>
+                  <button class='btn btn-success' onclick=\"location.href='Mesa_dashboard.php?id=".$row->id."';\">Acesse</button>
+                </td>";        
+          echo "</tr>";
+          }
+          echo "</table>";
+      } else {
+          echo "<p class='alert-danger'>Não encontrou resultados!</p>";
+        }         
+      echo '</div>';
+      echo '</div>';
+
       echo "<script src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js'></script>";
       echo "</body>";
       echo "</html>";
@@ -118,15 +241,15 @@
       echo "<a class='nav-link' href='#'>Escrever Notícia</a>";
       echo "</li>";
       echo "</ul>";
+      echo "<div class='p-4 text-center' style='margin-top:170px;'>";
+      echo "<a href='login/logout.php' class='btn btn-danger' style='width: 120px;'>Sair</a>";
+      echo "</div>";
       echo "</div>";
       echo "</div>";
       echo "</div>";
       echo "</nav>";
       echo "<h1 class='pt-5 text-light text-center'>Olá, " . $_SESSION['apelido'] . "!</h1>";
       echo "<h1 class='text-light text-center'>Este é seu perfil de administrador.</h1>";
-      echo "<div class='p-4 text-center'>";
-      echo "<a href='login/logout.php' class='btn btn-danger' style='width: 120px;'>Sair</a>";
-      echo "</div>";
       echo "<script src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js'></script>";
       echo "</body>";
       echo "</html>";

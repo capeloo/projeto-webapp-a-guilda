@@ -118,7 +118,7 @@
             if($stmt->execute()) {
                 echo "<script>alert('Cadastro realizado com sucesso!');</script>";
                 //Redireciona para o dashboard da mesa
-                echo "<script>location.href='Minhas_mesas.php';</script>";
+                echo "<script>location.href='../usuario/Usuario_dashboard.php';</script>";
             } else {
                 echo "Ops! Algo deu errado. (1)";
             }
