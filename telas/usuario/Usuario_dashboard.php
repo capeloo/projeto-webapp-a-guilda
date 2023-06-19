@@ -71,16 +71,50 @@
       echo "</div>";
       echo "</div>";
       echo "</nav>";
-      echo "<div class='container-fluid text-center mt-2 bg-light' style='width: 500px;'>";
-      echo "<h1 class='p-4'>Olá, " . $_SESSION['apelido'] . "! Sua nova aventura começa aqui.</h1>";
-      echo "</div>";
+
+      //Anúncios
+      echo '<div class="container-fluid bg-dark p-0" style="width:100%; border-radius: 0px 0px 10px 10px;">';
+      echo '<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">';
+      echo '<ol class="carousel-indicators">';
+      echo '<ul style="display: flex; list-style-type: none;">';
+      echo '<li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></li>';
+      echo '<li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></li>';
+      echo '<li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></li>';
+      echo '</ol>';
+      echo '</ul>';
+      echo '<div class="carousel-inner">';
+      echo '<div class="carousel-item active">';
+      echo '<img class="d-block w-100" style="height: 500px; margin: auto;" src="../../assets/bg-1.jpg" alt="First slide">';
+      echo '<div class="carousel-caption text-start mb-4">';
+      echo '<h1>Terra Mágica</h1>';
+      echo '<h3>Onde sua aventura mágica começa!</h3>';
+      echo '</div>';
+      echo '</div>';
+      echo '<div class="carousel-item">';
+      echo '<img class="d-block w-100" style="height: 500px;" src="../../assets/bg-2.png" alt="Second slide">';
+      echo '<div class="carousel-caption text-start mb-4">';
+      echo '<h1>Trupe Guerreira</h1>';
+      echo '<h3>Junte seus amigos nessa aventura atrapalhada!</h3>';
+      echo '</div>';
+      echo '</div>';
+      echo '<div class="carousel-item">';
+      echo '<img class="d-block w-100" style="height: 500px;" src="../../assets/bg-3.jpg" alt="Third slide">';
+      echo '<div class="carousel-caption text-start mb-4">';
+      echo '<h1>Amatsu</h1>';
+      echo '<h3>Conheça a misteriosa cidade Amatsu e suas lindas flores!</h3>';
+      echo '</div>';
+      echo '</div>';
+      echo '</div>';
+      echo  '<a class="carousel-control-prev" style="background: linear-gradient(to left, #21252900, #212529);" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">';
+      echo '<span class="carousel-control-prev-icon" aria-hidden="true"></span>';
+      echo '</a>';  
+      echo '<a class="carousel-control-next" style="background: linear-gradient(to right, #21252900, #212529);" href="#carouselExampleIndicators" role="button" data-bs-slide="next">';
+      echo '<span class="carousel-control-next-icon" aria-hidden="true"></span>';
+      echo '</a>';
+      echo '</div>';
+      echo '</div>';
 
       //Minhas mesas
-      echo '<div class="row container-fluid text-center mt-4 mb-4 bg-dark" style="margin:auto; width: 1200px; border-radius: 10px;">';
-      echo '<div class="col">';
-      echo '<h1 class="p-2 mt-4 text-light">Minhas mesas</h1>';
-      echo '<h2 class="p-2 ms-3 text-start text-light">Mestrando</h2>';  
-      
       $id = $_SESSION["id"];
 
       //Prepara a requisição ao banco
@@ -89,13 +123,16 @@
               WHERE id_mestre = $id
               LIMIT 3";
 
-      $stmt = $mysqli->query($sql);
+      if($stmt = $mysqli->query($sql)){
+        $qtd = $stmt->num_rows;
 
-      $qtd = $stmt->num_rows;
-
-      //Renderiza os dados na forma de tabela
-      if($qtd > 0){
-        echo "<table class='table table-hover table-striped table-bordered bg-light' style='width: 1100px;margin: auto;'>";
+        //Renderiza os dados na forma de tabela
+        if($qtd > 0){
+        echo '<div class="row container-fluid text-center mt-4 mb-4 bg-dark" style="margin:auto; width: 100%;">';
+        echo '<h1 class="p-2 mt-4 text-light">Minhas mesas</h1>';
+        echo '<div class="col">';
+        echo '<h2 class="p-2 text-start ms-5 mt-3 text-light">Mestrando</h2>';  
+        echo "<table class='table table-hover table-striped table-bordered bg-light mb-3' style='width: 1100px;margin: auto;'>";
         echo "<tr>";
         echo "<th>Nome</th>";
         echo "<th>Sistema</th>";
@@ -122,11 +159,13 @@
           }
         echo "</table>";
         } else {
-          echo "<p class='alert-danger'>Não encontrou resultados!</p>";
+          echo '<div class="row container-fluid text-center mt-4 mb-4 bg-dark" style="margin:auto; width: 100%;">';
+          echo '<h1 class="p-2 mt-4 text-light">Minhas mesas</h1>';
+          echo '<div class="col">';
+          echo '<h2 class="p-2 text-center text-light">Mestrando</h2>';  
+          echo "<h4 class='text-danger text-center p-2 mb-5' style='margin: auto;'>Você ainda não está inscrito em nenhuma mesa!</h4>";
         }
-      echo '</div>';
-      echo '<div class="col">';
-      echo '<h2 class="p-2 ms-3 mt-4 text-start text-light">Participando</h2>';  
+      } 
         
       $sql = "SELECT mesas
               FROM usuario
@@ -137,63 +176,85 @@
       $stmt_res = $stmt->get_result();
       $row = $stmt_res->fetch_assoc();
 
-      $mesas_str = rtrim($row["mesas"], ",");
+      if(!empty($row["mesas"])){
+        $mesas_str = rtrim($row["mesas"], ",");
 
-      if(strlen($mesas_str) > 1){
-        $sql = "SELECT *
-                FROM mesa
-                WHERE id 
-                IN ('$mesas_str')
-                LIMIT 3";
-                
-        $stmt = $mysqli->query($sql);
-          
-        $qtd = $stmt->num_rows;
-      } else {
-        $sql = "SELECT *
-                FROM mesa
-                WHERE id = $mesas_str";
+        if(strlen($mesas_str) > 1){
+          $sql = "SELECT *
+                  FROM mesa
+                  WHERE id 
+                  IN ('$mesas_str')
+                  LIMIT 3";
                   
-        $stmt = $mysqli->query($sql);
-          
-        $qtd = $stmt->num_rows;
-        }
-
-      //Renderiza os dados na forma de tabela
-      if($qtd > 0){
-        echo "<table class='table table-hover table-striped table-bordered mb-5 bg-light' style='width: 1100px; margin: auto;'>";
-        echo "<tr>";
-        echo "<th>Nome</th>";
-        echo "<th>Sistema</th>";
-        echo "<th>Sinopse</th>";
-        echo "<th>Duração</th>";
-        echo "<th>Tema</th>";
-        echo "<th>Classificação Indicativa</th>";
-        echo "<th>Vagas</th>";
-        echo "<th>Ações</th>";
-        echo "</tr>";
-        while($row = $stmt->fetch_object()){
-          echo "<tr>";
-          echo "<td>" . $row->nome_campanha . "</td>";
-          echo "<td>" . $row->sistema . "</td>";
-          echo "<td>" . $row->sinopse . "</td>";
-          echo "<td>" . $row->duracao . "</td>";
-          echo "<td>" . $row->tema . "</td>";
-          echo "<td>" . $row->classificacao_indicativa . "</td>";
-          echo "<td>" . $row->numero_vagas . "</td>";
-          echo "<td>
-                  <button class='btn btn-success' onclick=\"location.href='Mesa_dashboard.php?id=".$row->id."';\">Acesse</button>
-                </td>";        
-          echo "</tr>";
+          $stmt = $mysqli->query($sql);
+            
+          $qtd = $stmt->num_rows;
+        } else {
+          $sql = "SELECT *
+                  FROM mesa
+                  WHERE id = $mesas_str";
+                    
+          $stmt = $mysqli->query($sql);
+            
+          $qtd = $stmt->num_rows;
           }
-          echo "</table>";
+  
+        //Renderiza os dados na forma de tabela
+        if($qtd > 0){
+          echo '</div>';
+          echo '<div class="col">';
+          echo '<h2 class="p-2 text-start ms-5 mt-3 text-light">Participando</h2>';  
+          echo "<table class='table table-hover table-striped table-bordered mb-5 bg-light' style='width: 1100px; margin: auto;'>";
+          echo "<tr>";
+          echo "<th>Nome</th>";
+          echo "<th>Sistema</th>";
+          echo "<th>Sinopse</th>";
+          echo "<th>Duração</th>";
+          echo "<th>Tema</th>";
+          echo "<th>Classificação Indicativa</th>";
+          echo "<th>Vagas</th>";
+          echo "<th>Ações</th>";
+          echo "</tr>";
+          while($row = $stmt->fetch_object()){
+            echo "<tr>";
+            echo "<td>" . $row->nome_campanha . "</td>";
+            echo "<td>" . $row->sistema . "</td>";
+            echo "<td>" . $row->sinopse . "</td>";
+            echo "<td>" . $row->duracao . "</td>";
+            echo "<td>" . $row->tema . "</td>";
+            echo "<td>" . $row->classificacao_indicativa . "</td>";
+            echo "<td>" . $row->numero_vagas . "</td>";
+            echo "<td>
+                    <button class='btn btn-success' onclick=\"location.href='Mesa_dashboard.php?id=".$row->id."';\">Acesse</button>
+                  </td>";        
+            echo "</tr>";
+            }
+            echo "</table>";
+        } else {
+          echo '</div>';
+          echo '<div class="col">';
+          echo '<h2 class="p-2 text-center text-light">Participando</h2>';  
+          echo "<h4 class='text-danger text-center p-2 mb-5' style='margin: auto;'>Você ainda não está inscrito em nenhuma mesa!</h4>";
+          }         
       } else {
-          echo "<p class='alert-danger'>Não encontrou resultados!</p>";
-        }         
+        echo '</div>';
+        echo '<div class="col">';
+        echo '<h2 class="p-2 text-center text-light">Participando</h2>';  
+        echo "<h4 class='text-danger text-center p-2 mb-5' style='margin: auto;'>Você ainda não está inscrito em nenhuma mesa!</h4>";
+      }
+  
       echo '</div>';
       echo '</div>';
-
-      echo "<script src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js'></script>";
+      echo '<footer class="container-fluid bg-dark p-2" style="height: 60px; display: flex;">';
+      echo '<div class="row" style="width: 100%; margin: auto;">';
+      echo '<div class="col">';
+      echo '<p class="text-light mt-2" style="margin: 0px; font-size: 1.2em;">Que a Guilda o acompanhe!</p>';
+      echo '</div>';
+      echo '<div class="col">';
+      echo '<p class="mt-2 text-end"><a href="https://www.instagram.com/aguilda_smd/" target="_blank"class="text-light mt-2" style="font-size: 1.2em;">Siga nossas redes!</a></p>';
+      echo '</div>';
+      echo '</footer>';
+      echo "<script src='../../js/bootstrap.min.js'></script>";
       echo "</body>";
       echo "</html>";
     } else if($_SESSION["admin"] == 1){
@@ -250,7 +311,7 @@
       echo "</nav>";
       echo "<h1 class='pt-5 text-light text-center'>Olá, " . $_SESSION['apelido'] . "!</h1>";
       echo "<h1 class='text-light text-center'>Este é seu perfil de administrador.</h1>";
-      echo "<script src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js'></script>";
+      echo "<script src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.js'></script>";
       echo "</body>";
       echo "</html>";
     }

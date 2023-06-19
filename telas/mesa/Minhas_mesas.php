@@ -75,7 +75,7 @@
     </div>
     <div class="row container-fluid text-center mt-4 bg-light" style="margin:auto;">
       <div class="col">
-        <h2 class="p-3 text-start">Mestrando</h2>
+        <h2 class="p-2 text-center mt-4">Mestrando</h2>
         <?php
           $id = $_SESSION["id"];
 
@@ -117,12 +117,12 @@
           }
         echo "</table>";
         } else {
-          echo "<p class='alert-danger'>Não encontrou resultados!</p>";
+          echo "<h3 class='text-danger'>Você ainda não está inscrito em nenhuma mesa!</h3>";
         }
         ?>
       </div>
       <div class="col">
-        <h2 class="p-3 text-start">Participando</h2>
+        <h2 class="p-2 text-center mt-4">Participando</h2>
         <?php
         
           $sql = "SELECT mesas
@@ -135,58 +135,60 @@
           $stmt_res = $stmt->get_result();
           $row = $stmt_res->fetch_assoc();
 
-          $mesas_str = rtrim($row["mesas"], ",");
+          if(!empty($row["mesas"])){
+            $mesas_str = rtrim($row["mesas"], ",");
 
-          if(strlen($mesas_str) > 1){
-            $sql = "SELECT *
-                    FROM mesa
-                    WHERE id 
-                    IN ('$mesas_str')";
-                
-            $stmt = $mysqli->query($sql);
-          
-            $qtd = $stmt->num_rows;
-          } else {
-            $sql = "SELECT *
-                    FROM mesa
-                    WHERE id = $mesas_str";
+            if(strlen($mesas_str) > 1){
+              $sql = "SELECT *
+                      FROM mesa
+                      WHERE id 
+                      IN ('$mesas_str')";
                   
-            $stmt = $mysqli->query($sql);
-          
-            $qtd = $stmt->num_rows;
-          }
-
-          //Renderiza os dados na forma de tabela
-          if($qtd > 0){
-            echo "<table class='table table-hover table-striped table-bordered'>";
-            echo "<tr>";
-            echo "<th>Nome</th>";
-            echo "<th>Sistema</th>";
-            echo "<th>Sinopse</th>";
-            echo "<th>Duração</th>";
-            echo "<th>Tema</th>";
-            echo "<th>Classificação Indicativa</th>";
-            echo "<th>Vagas</th>";
-            echo "<th>Ações</th>";
-            echo "</tr>";
-          while($row = $stmt->fetch_object()){
-            echo "<tr>";
-            echo "<td>" . $row->nome_campanha . "</td>";
-            echo "<td>" . $row->sistema . "</td>";
-            echo "<td>" . $row->sinopse . "</td>";
-            echo "<td>" . $row->duracao . "</td>";
-            echo "<td>" . $row->tema . "</td>";
-            echo "<td>" . $row->classificacao_indicativa . "</td>";
-            echo "<td>" . $row->numero_vagas . "</td>";
-            echo "<td>
-                    <button class='btn btn-success' onclick=\"location.href='Mesa_dashboard.php?id=".$row->id."';\">Acesse</button>
-                  </td>";        
-            echo "</tr>";
-          }
-            echo "</table>";
+              $stmt = $mysqli->query($sql);
+            
+              $qtd = $stmt->num_rows;
+            } else {
+              $sql = "SELECT *
+                      FROM mesa
+                      WHERE id = $mesas_str";
+                    
+              $stmt = $mysqli->query($sql);
+            
+              $qtd = $stmt->num_rows;
+            }
+  
+            //Renderiza os dados na forma de tabela
+            if($qtd > 0){
+              echo "<table class='table table-hover table-striped table-bordered'>";
+              echo "<tr>";
+              echo "<th>Nome</th>";
+              echo "<th>Sistema</th>";
+              echo "<th>Sinopse</th>";
+              echo "<th>Duração</th>";
+              echo "<th>Tema</th>";
+              echo "<th>Classificação Indicativa</th>";
+              echo "<th>Vagas</th>";
+              echo "<th>Ações</th>";
+              echo "</tr>";
+            while($row = $stmt->fetch_object()){
+              echo "<tr>";
+              echo "<td>" . $row->nome_campanha . "</td>";
+              echo "<td>" . $row->sistema . "</td>";
+              echo "<td>" . $row->sinopse . "</td>";
+              echo "<td>" . $row->duracao . "</td>";
+              echo "<td>" . $row->tema . "</td>";
+              echo "<td>" . $row->classificacao_indicativa . "</td>";
+              echo "<td>" . $row->numero_vagas . "</td>";
+              echo "<td>
+                      <button class='btn btn-success' onclick=\"location.href='Mesa_dashboard.php?id=".$row->id."';\">Acesse</button>
+                    </td>";        
+              echo "</tr>";
+            }
+              echo "</table>";
+          }      
           } else {
-              echo "<p class='alert-danger'>Não encontrou resultados!</p>";
-          }         
+            echo "<h3 class='text-danger'>Você ainda não está inscrito em nenhuma mesa!</h3>";
+          }   
         ?>
       </div>
     </div>
