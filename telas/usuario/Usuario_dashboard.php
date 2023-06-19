@@ -336,7 +336,7 @@
       $sql = "SELECT foto, nome_campanha, sinopse
               FROM mesa
               WHERE anuncio = 1
-              ORDER BY data
+              ORDER BY timestamp DESC
               LIMIT 3
               ";
 
