@@ -73,6 +73,18 @@
       echo "</nav>";
 
       //Anúncios
+
+      $sql = "SELECT foto, nome_campanha, sinopse
+              FROM mesa
+              WHERE anuncio = 1
+              ORDER BY data
+              LIMIT 3
+              ";
+
+      $stmt = $mysqli->prepare($sql);
+      $stmt->execute();
+      $stmt_res = $stmt->get_result();
+
       echo '<div class="container-fluid bg-dark p-0" style="width:100%; border-radius: 0px 0px 10px 10px;">';
       echo '<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">';
       echo '<ol class="carousel-indicators">';
@@ -84,26 +96,22 @@
       echo '</ul>';
       echo '<div class="carousel-inner">';
       echo '<div class="carousel-item active">';
-      echo '<img class="d-block w-100" style="height: 500px; margin: auto;" src="../../assets/bg-1.jpg" alt="First slide">';
-      echo '<div class="carousel-caption text-start mb-4">';
-      echo '<h1>Terra Mágica</h1>';
-      echo '<h3>Onde sua aventura mágica começa!</h3>';
-      echo '</div>';
-      echo '</div>';
-      echo '<div class="carousel-item">';
-      echo '<img class="d-block w-100" style="height: 500px;" src="../../assets/bg-2.png" alt="Second slide">';
-      echo '<div class="carousel-caption text-start mb-4">';
-      echo '<h1>Trupe Guerreira</h1>';
-      echo '<h3>Junte seus amigos nessa aventura atrapalhada!</h3>';
-      echo '</div>';
-      echo '</div>';
-      echo '<div class="carousel-item">';
-      echo '<img class="d-block w-100" style="height: 500px;" src="../../assets/bg-3.jpg" alt="Third slide">';
-      echo '<div class="carousel-caption text-start mb-4">';
-      echo '<h1>Amatsu</h1>';
-      echo '<h3>Conheça a misteriosa cidade Amatsu e suas lindas flores!</h3>';
-      echo '</div>';
-      echo '</div>';
+      
+      $cont = 0;
+
+      while ($row = $stmt_res->fetch_assoc()) {
+        $cont++;
+        echo '<img class="d-block w-100" style="height: 500px; margin: auto;" src="' .$row['foto']. '" alt="First slide">';
+        echo '<div class="carousel-caption text-start mb-4">';
+        echo '<h1>' .$row["nome_campanha"]. '</h1>';
+        echo '<h3>' .$row["sinopse"]. '</h3>';
+        echo '</div>';
+        echo '</div>';
+        if($cont < 3){
+          echo '<div class="carousel-item">';
+        } else {};
+      }
+      
       echo '</div>';
       echo  '<a class="carousel-control-prev" style="background: linear-gradient(to left, #21252900, #212529);" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">';
       echo '<span class="carousel-control-prev-icon" aria-hidden="true"></span>';
@@ -272,6 +280,12 @@
       echo "<nav class='navbar bg-light sticky-top'>";
       echo "<div class='container-fluid'>";
       echo "<a class='navbar-brand text-dark' href='Usuario_dashboard.php'>Taverna</a>";
+      echo "<form class='form-inline' action='../pesquisar.php' method='post'>";
+      echo "<div style='display:flex;'>";
+      echo "<input class='form-control mr-sm-2' type='search' placeholder='Apelido' name='pesquisa'>";
+      echo "<button class='btn btn-outline-dark my-2 ms-2 my-sm-0' type='submit'>Pesquisar</button>";
+      echo '</div>';
+      echo '</form>';
       echo "<button class='navbar-toggler bg-light' type='button' data-bs-toggle='offcanvas' data-bs-target='#offcanvasNavbar' aria-controls='offcanvasNavbar' aria-label='Toggle navigation'>";
       echo "<span class='navbar-toggler-icon'></span>";
       echo "</button>";
@@ -316,8 +330,69 @@
       echo "</div>";
       echo "</div>";
       echo "</nav>";
-      echo "<h1 class='pt-5 text-light text-center'>Olá, " . $_SESSION['apelido'] . "!</h1>";
-      echo "<h1 class='text-light text-center'>Este é seu perfil de administrador.</h1>";
+
+      //Anúncios
+
+      $sql = "SELECT foto, nome_campanha, sinopse
+              FROM mesa
+              WHERE anuncio = 1
+              ORDER BY data
+              LIMIT 3
+              ";
+
+      $stmt = $mysqli->prepare($sql);
+      $stmt->execute();
+      $stmt_res = $stmt->get_result();
+
+      echo '<div class="container-fluid bg-dark p-0" style="width:100%; border-radius: 0px 0px 10px 10px;">';
+      echo '<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">';
+      echo '<ol class="carousel-indicators">';
+      echo '<ul style="display: flex; list-style-type: none;">';
+      echo '<li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></li>';
+      echo '<li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></li>';
+      echo '<li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></li>';
+      echo '</ol>';
+      echo '</ul>';
+      echo '<div class="carousel-inner">';
+      echo '<div class="carousel-item active">';
+      
+      $cont = 0;
+
+      while ($row = $stmt_res->fetch_assoc()) {
+        $cont++;
+        echo '<img class="d-block w-100" style="height: 500px; margin: auto;" src="' .$row['foto']. '" alt="First slide">';
+        echo '<div class="carousel-caption text-start mb-4">';
+        echo '<h1>' .$row["nome_campanha"]. '</h1>';
+        echo '<h3>' .$row["sinopse"]. '</h3>';
+        echo '</div>';
+        echo '</div>';
+        if($cont < 3){
+          echo '<div class="carousel-item">';
+        } else {};
+      }
+      
+      echo '</div>';
+      echo  '<a class="carousel-control-prev" style="background: linear-gradient(to left, #21252900, #212529);" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">';
+      echo '<span class="carousel-control-prev-icon" aria-hidden="true"></span>';
+      echo '</a>';  
+      echo '<a class="carousel-control-next" style="background: linear-gradient(to right, #21252900, #212529);" href="#carouselExampleIndicators" role="button" data-bs-slide="next">';
+      echo '<span class="carousel-control-next-icon" aria-hidden="true"></span>';
+      echo '</a>';
+      echo '</div>';
+      echo '</div>';
+
+      echo "<h1 class='pt-4 text-light text-center'>Olá, " . $_SESSION['apelido'] . "!</h1>";
+      echo "<h1 class='text-light text-center mb-5'>Este é seu perfil de administrador.</h1>";
+      echo '<footer class="container-fluid bg-light p-2" style="height: 60px; display: flex; position: relative;
+      bottom: 0;">';
+      echo '<div class="row" style="width: 100%; margin: auto;">';
+      echo '<div class="col">';
+      echo '<p class="text-dark mt-2" style="margin: 0px; font-size: 1.2em;">Que a Guilda o acompanhe!</p>';
+      echo '</div>';
+      echo '<div class="col">';
+      echo '<p class="mt-2 text-end"><a href="https://www.instagram.com/aguilda_smd/" target="_blank"class="text-dark mt-2" style="font-size: 1.2em;">Siga nossas redes!</a></p>';
+      echo '</div>';
+      echo '</footer>';
       echo "<script src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.js'></script>";
       echo "</body>";
       echo "</html>";

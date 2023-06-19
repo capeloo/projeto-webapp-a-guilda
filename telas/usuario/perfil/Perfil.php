@@ -299,6 +299,12 @@
         echo '<nav class="navbar bg-light sticky-top">';
         echo '<div class="container-fluid">';
         echo '<a class="navbar-brand text-dark" href="../Usuario_dashboard.php">Taverna</a>';
+        echo "<form class='form-inline' action='../../pesquisar.php' method='post'>";
+        echo "<div style='display:flex;'>";
+        echo "<input class='form-control mr-sm-2' type='search' placeholder='Apelido' name='pesquisa'>";
+        echo "<button class='btn btn-outline-dark my-2 ms-2 my-sm-0' type='submit'>Pesquisar</button>";
+        echo '</div>';
+        echo '</form>';
         echo '<button class="navbar-toggler bg-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">';
         echo '<span class="navbar-toggler-icon"></span>';
         echo '</button>';
@@ -316,6 +322,13 @@
         echo '<a class="nav-link" href="Lista_perfis.php">Lista de perfis</a>';
         echo '</li>';
         echo '<li class="nav-item" style="margin-top: 10px;">';
+        echo "<li class='nav-item'>";
+        echo "<strong>Mesa</strong>";
+        echo "</li>";
+        echo "<li class='nav-item'>";
+        echo "<a class='nav-link' href='../../mesa/Lista_de_mesas.php'>Lista de mesas</a>";
+        echo "</li>";
+        echo "<li class='nav-item' style='margin-top: 10px;'>";
         echo '<strong>Denúncia</strong>';
         echo '</li>';
         echo '<li class="nav-item">';

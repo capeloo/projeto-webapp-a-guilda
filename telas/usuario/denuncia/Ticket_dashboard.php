@@ -53,6 +53,12 @@
   <nav class="navbar bg-light sticky-top">
     <div class="container-fluid">
     <a class="navbar-brand text-dark" href="../Usuario_dashboard.php">Taverna</a>
+    <form class='form-inline' action='../../pesquisar.php' method='post'>
+      <div style='display:flex;'>
+        <input class='form-control mr-sm-2' type='search' placeholder='Apelido' name='pesquisa'>
+        <button class='btn btn-outline-dark my-2 ms-2 my-sm-0' type='submit'>Pesquisar</button>
+      </div>
+    </form>
     <button class="navbar-toggler bg-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
     </button>
@@ -70,6 +76,13 @@
     <a class="nav-link" href="../perfil/Lista_perfis.php">Lista de perfis</a>
     </li>
     <li class="nav-item" style="margin-top: 10px;">
+    <li class='nav-item'>
+    <strong>Mesa</strong>
+    </li>
+    <li class='nav-item'>
+    <a class='nav-link' href='../../mesa/Lista_de_mesas.php'>Lista de mesas</a>
+    </li>
+    <li class='nav-item' style='margin-top: 10px;'>
     <strong>Denúncia</strong>
     </li>
     <li class="nav-item">
