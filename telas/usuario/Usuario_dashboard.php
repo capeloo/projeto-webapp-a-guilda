@@ -289,6 +289,13 @@
       echo "<a class='nav-link' href='perfil/Lista_perfis.php'>Lista de perfis</a>";
       echo "</li>";
       echo "<li class='nav-item' style='margin-top: 10px;'>";
+      echo "<li class='nav-item'>";
+      echo "<strong>Mesa</strong>";
+      echo "</li>";
+      echo "<li class='nav-item'>";
+      echo "<a class='nav-link' href='../mesa/Lista_de_mesas.php'>Lista de mesas</a>";
+      echo "</li>";
+      echo "<li class='nav-item' style='margin-top: 10px;'>";
       echo "<strong>Denúncia</strong>";
       echo "</li>";
       echo "<li class='nav-item'>";
@@ -302,7 +309,7 @@
       echo "<a class='nav-link' href='#'>Escrever Notícia</a>";
       echo "</li>";
       echo "</ul>";
-      echo "<div class='p-4 text-center' style='margin-top:170px;'>";
+      echo "<div class='p-4 text-center' style='margin-top:100px;'>";
       echo "<a href='login/logout.php' class='btn btn-danger' style='width: 120px;'>Sair</a>";
       echo "</div>";
       echo "</div>";
