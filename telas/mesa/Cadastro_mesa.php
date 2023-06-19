@@ -74,6 +74,7 @@
             $tema = $_POST["tema"];
         }
         
+        // Aceita qualquer tipo de input, apenas retorna erro se não receber nenhum valor. (Isso serve pra nome da campanha, sistema e sinopse.)
         if (empty(trim($_POST["nome_campanha"]))) {
             $nome_campanha_erro = "Por favor, dê um nome para a sua campanha.";
         } else {
