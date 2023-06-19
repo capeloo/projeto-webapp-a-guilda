@@ -80,8 +80,17 @@
             $nome_campanha = trim($_POST["nome_campanha"]);
         }
 
-        $sistema = trim($_POST["sistema"]);
-        $sinopse = trim($_POST["sinopse"]);
+        if (empty(trim($_POST["sistema"]))) {
+            $sistema_erro = "Por favor, escolha um sistema de RPG para a sua campanha.";
+        } else {
+            $sistema = trim($_POST["sistema"]);
+        }
+
+        if(empty(trim($_POST["sinopse"]))) {
+            $sinopse_erro = "Escreva uma breve sinopse da sua campanha.";
+        } else {
+            $sinopse = trim($_POST["sinopse"]);
+        }
         $requisitos = trim($_POST["requisitos"]);
         $duracao = trim($_POST["duracao"]);
         $classificacao = trim($_POST["classificacao"]);
