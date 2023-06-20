@@ -63,8 +63,13 @@
       echo "<li class='nav-item'>";
       echo "<a class='nav-link' href='../mesa/Minhas_mesas.php'>Minhas mesas</a>";
       echo "</li>";
+      echo "<li class='nav-item' style='margin-top: 10px;'>";
+      echo "<strong>Notícias</strong>";
+      echo "<li class='nav-item'>";
+      echo "<a class='nav-link' href='noticias/Lista_de_noticias.php'>Lista de notícias</a>";
+      echo "</li>";
       echo "</ul>";
-      echo "<div class='p-4 text-center' style='margin-top:130px;'>";
+      echo "<div class='p-4 text-center' style='margin-top:50px;'>";
       echo "<a href='login/logout.php' class='btn btn-danger' style='width: 120px;'>Sair</a>";
       echo "</div>";
       echo "</div>";
@@ -320,7 +325,7 @@
       echo "<strong>Notícias</strong>";
       echo "</li>";
       echo "<li class='nav-item'>";
-      echo "<a class='nav-link' href='#'>Escrever Notícia</a>";
+      echo "<a class='nav-link' href='noticias/Escrever_noticia.php'>Escrever Notícia</a>";
       echo "</li>";
       echo "</ul>";
       echo "<div class='p-4 text-center' style='margin-top:100px;'>";

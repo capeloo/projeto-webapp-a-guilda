@@ -96,7 +96,7 @@
             echo '</div>';
             echo '</div>';
             echo '</nav>';
-            echo '<div class="container-fluid text-center mt-3">';
+            echo '<div class="container-fluid text-center bg-light">';
             echo '<h1 class="p-3">Perfil</h1>';
             echo '<form action="' .htmlspecialchars($_SERVER["PHP_SELF"]). '"method="post">';
             echo '<div class="row">';

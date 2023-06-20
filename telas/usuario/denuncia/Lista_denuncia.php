@@ -66,7 +66,7 @@
       <strong>Notícias</strong>
       </li>
       <li class='nav-item'>
-      <a class='nav-link' href='#'>Escrever Notícia</a>
+      <a class='nav-link' href='../noticias/Escrever_noticia.php'>Escrever Notícia</a>
       </li>
       </ul>
       </div>

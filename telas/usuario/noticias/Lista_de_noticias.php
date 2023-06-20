@@ -20,15 +20,15 @@
       echo '<meta charset="UTF-8">';
       echo '<meta http-equiv="X-UA-Compatible" content="IE=edge">';
       echo '<meta name="viewport" content="width=device-width, initial-scale=1.0">';
-      echo '<title>Dashboard</title>';
+      echo '<title>Lista de notícias</title>';
       echo '<link rel="shortcut icon" href="./../../assets/fav.png" type="image/x-icon">';
       echo '<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">';
       echo '</head>';
       echo '<body class="bg-light">';
       echo '<nav class="navbar bg-dark sticky-top">';
       echo '<div class="container-fluid">';
-      echo '<a class="navbar-brand text-light" href="../usuario/Usuario_dashboard.php">Taverna</a>';
-      echo "<form class='form-inline' action='../pesquisar.php' method='post'>";
+      echo '<a class="navbar-brand text-light" href="../Usuario_dashboard.php">Taverna</a>';
+      echo "<form class='form-inline' action='../../pesquisar.php' method='post'>";
       echo "<div style='display:flex;'>";
       echo "<input class='form-control mr-sm-2' type='search' placeholder='Apelido' name='pesquisa'>";
       echo "<button class='btn btn-outline-light my-2 ms-2 my-sm-0' type='submit'>Pesquisar</button>";
@@ -48,34 +48,39 @@
       echo '<strong>Perfil</strong>';
       echo '</li>';
       echo '<li class="nav-item">';
-      echo '<a class="nav-link" href="../usuario/perfil/Perfil.php">Meu perfil</a>';
+      echo '<a class="nav-link" href="../perfil/Perfil.php">Meu perfil</a>';
       echo '</li>';
       echo '<li class="nav-item">';
-      echo '<a class="nav-link" href="../usuario/perfil/Editar_perfil.php">Editar perfil</a>';
+      echo '<a class="nav-link" href="../perfil/Editar_perfil.php">Editar perfil</a>';
       echo '</li>';
       echo '<li class="nav-item" style="margin-top: 10px;">';
       echo '<strong>Mesas</strong>';
       echo '</li>';
       echo '<li class="nav-item">';
-      echo '<a class="nav-link" href="Lista_de_mesas.php">Lista de mesas</a>';
+      echo '<a class="nav-link" href="../../mesa/Lista_de_mesas.php">Lista de mesas</a>';
       echo '</li>';
       echo '<li class="nav-item">';
-      echo '<a class="nav-link" href="Cadastro_mesa.php">Cadastro de mesa</a>';
+      echo '<a class="nav-link" href="../../mesa/Cadastro_mesa.php">Cadastro de mesa</a>';
       echo '</li>';
       echo '<li class="nav-item">';
-      echo '<a class="nav-link" href="Minhas_mesas.php">Minhas mesas</a>';
+      echo '<a class="nav-link" href="../../mesa/Minhas_mesas.php">Minhas mesas</a>';
       echo '</li>';
+      echo "<li class='nav-item' style='margin-top: 10px;'>";
+      echo "<strong>Notícias</strong>";
+      echo "<li class='nav-item'>";
+      echo "<a class='nav-link' href='Lista_de_noticias.php'>Lista de notícias</a>";
+      echo "</li>";
       echo '</ul>';
       echo '</div>';
       echo '</div>';
       echo '</div>';
       echo '</nav>';
       echo '<div class="container-fluid text-center mt-3 bg-light" style="width: 500px;">';
-      echo '<h1 class="p-4">Lista de mesas</h1>';
+      echo '<h1 class="p-4">Lista de notícias</h1>';
       echo '</div>';
 
     //Prepara a requisição ao banco
-    $sql = "SELECT * FROM mesa";
+    $sql = "SELECT * FROM noticia";
 
     $stmt = $mysqli->query($sql);
 
@@ -83,28 +88,20 @@
 
     //Renderiza os dados na forma de tabela
     if($qtd > 0){
-        echo "<table class='table table-hover table-striped table-bordered' style='width:1230px; margin:auto;'>";
+        echo "<table class='table table-hover table-striped table-bordered' style='width:1100px; margin:auto;'>";
             echo "<tr>";
-            echo "<th>Nome</th>";
-            echo "<th>Sistema</th>";
-            echo "<th>Sinopse</th>";
-            echo "<th>Duração</th>";
-            echo "<th>Tema</th>";
-            echo "<th>Classificação Indicativa</th>";
-            echo "<th>Vagas</th>";
+            echo "<th>Autor</th>";
+            echo "<th>Título</th>";
+            echo "<th>Subtítulo</th>";
             echo "<th>Ações</th>";
             echo "</tr>";
         while($row = $stmt->fetch_object()){
             echo "<tr>";
-            echo "<td>" . $row->nome_campanha . "</td>";
-            echo "<td>" . $row->sistema . "</td>";
-            echo "<td>" . $row->sinopse . "</td>";
-            echo "<td>" . $row->duracao . "</td>";
-            echo "<td>" . $row->tema . "</td>";
-            echo "<td>" . $row->classificacao_indicativa . "</td>";
-            echo "<td>" . $row->numero_vagas . "</td>";
+            echo "<td>" . $row->apelido_admin . "</td>";
+            echo "<td>" . $row->titulo . "</td>";
+            echo "<td>" . $row->subtitulo . "</td>";
             echo "<td>
-                    <button class='btn btn-success' onclick=\"location.href='Mesa_dashboard.php?id=".$row->id."';\">Acesse</button>
+                    <button class='btn btn-success' style='width: 80px;' onclick=\"location.href='Noticia_dashboard.php?id=".$row->id."';\">Ler</button>
                   </td>";        
             echo "</tr>";
         }
@@ -227,4 +224,3 @@
     echo '</html>';
     }
 ?>
-
