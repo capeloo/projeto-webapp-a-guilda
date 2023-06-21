@@ -106,7 +106,7 @@
 
       while ($row = $stmt_res->fetch_assoc()) {
         $cont++;
-        echo '<img class="d-block w-100" style="height: 500px; margin: auto;" src="' .$row['foto']. '" alt="First slide">';
+        echo '<img class="d-block w-100" style="height: 430px; margin: auto;" src="' .$row['foto']. '" alt="First slide">';
         echo '<div class="carousel-caption text-start mb-4">';
         echo '<h1>' .$row["nome_campanha"]. '</h1>';
         echo '<h3>' .$row["sinopse"]. '</h3>';
