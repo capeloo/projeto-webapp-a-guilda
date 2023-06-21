@@ -243,6 +243,8 @@
             echo "</tr>";
             }
             echo "</table>";
+            echo '</div>';
+            echo '</div>';
         } else {
           echo '</div>';
           echo '<div class="col">';
@@ -255,10 +257,82 @@
         echo '<h2 class="p-2 text-center text-light">Participando</h2>';  
         echo "<h4 class='text-danger text-center p-2 mb-5' style='margin: auto;'>Você ainda não está inscrito em nenhuma mesa!</h4>";
       }
-  
+
+      //Notícias
+      $id = $_SESSION["id"];
+
+      //Prepara a requisição ao banco
+      $sql = "SELECT * 
+              FROM noticia
+              ORDER BY data
+              LIMIT 3";
+
+      if($stmt = $mysqli->query($sql)){
+        $qtd = $stmt->num_rows;
+
+        //Renderiza os dados na forma de tabela
+        if($qtd > 0){
+        echo '<div class="container-fluid text-center mt-4 bg-dark p-4" style="margin:auto; width: 100%;">';
+        $cont = 0;
+        while($row = $stmt->fetch_object()){
+          if($cont < 1){
+            $cont++;
+            echo '<h1 class="p-2 mt-2 text-light">Notícias</h1>';
+            echo '<div style="display: flex;">';
+            echo '<div style="width: 10%;"></div>';
+            echo '<div class="mt-5" style="width: 400px; height: 200px; background: url(../../assets/h1.png); background-size: cover; margin: auto;">';
+            echo '</div>';
+            echo '<div style="width: 0; height: 0; border-top: 25px solid transparent; border-bottom: 25px solid transparent; border-right:40px solid #F8F9FA;" class="mt-5">';
+            echo '</div>';
+            echo '<div class="bg-light p-3 mt-5 text-start ms-0 me-5" style="width: 600px; border-radius: 0px; margin: auto; margin-right: 0px;">';
+            echo '<p class="ms-3 mb-0" style="font-size: 1.1em;">' .$row->data. '</p>';
+            echo '<a href="noticias/Noticia_dashboard.php?id=' .$row->id. '" style="font-size: 1.3em;text-decoration: underline;" class="text-dark"><h1 class="ms-3">' .$row->titulo. '</h1></a>';
+            echo '<h4 class="ms-3">' .$row->subtitulo. '</h4>';
+            echo '</div>';
+            echo '<div style="width: 10%;"></div>';
+            echo '</div>';
+          } else if($cont < 2){
+            $cont++;
+            echo '<div style="display: flex;">';
+            echo '<div style="width: 10%;"></div>';
+            echo '<div class="bg-light p-3 mt-5 text-start ms-0 me-0" style="width: 600px; border-radius: 0px; margin: auto; margin-right: 0px;">';
+            echo '<p class="ms-3 mb-0" style="font-size: 1.1em;">' .$row->data. '</p>';
+            echo '<a href="noticias/Noticia_dashboard.php?id=' .$row->id. '" style="font-size: 1.3em;text-decoration: underline;" class="text-dark"><h1 class="ms-3">' .$row->titulo. '</h1></a>';
+            echo '<h4 class="ms-3">' .$row->subtitulo. '</h4>';
+            echo '</div>';
+            echo '<div style="width: 0; height: 0; border-top: 25px solid transparent; border-bottom: 25px solid transparent; border-left:40px solid #F8F9FA;" class="mt-5">';
+            echo '</div>';
+            echo '<div class="mt-5" style="width: 350px; height: 200px; background: url(../../assets/h2.png); background-size: cover; margin: auto;">';
+            echo '</div>';
+            echo '<div style="width: 10%;"></div>';
+            echo '</div>';
+          } else if($cont < 3){
+            $cont++;
+            echo '<div style="display: flex;" class="mb-4">';
+            echo '<div style="width: 10%;"></div>';
+            echo '<div class="mt-5" style="width: 400px; height: 200px; background: url(../../assets/h3.png); background-size: cover; margin: auto;">';
+            echo '</div>';
+            echo '<div style="width: 0; height: 0; border-top: 25px solid transparent; border-bottom: 25px solid transparent; border-right:40px solid #F8F9FA;" class="mt-5">';
+            echo '</div>';
+            echo '<div class="bg-light p-3 mt-5 text-start ms-0 me-5" style="width: 600px; border-radius: 0px; margin: auto; margin-right: 0px;">';
+            echo '<p class="ms-3 mb-0" style="font-size: 1.1em;">' .$row->data. '</p>';
+            echo '<a href="noticias/Noticia_dashboard.php?id=' .$row->id. '" style="font-size: 1.3em;text-decoration: underline;" class="text-dark"><h1 class="ms-3">' .$row->titulo. '</h1></a>';
+            echo '<h4 class="ms-3">' .$row->subtitulo. '</h4>';
+            echo '</div>';
+            echo '<div style="width: 10%;"></div>';
+            echo '</div>';
+          }
+          }
+    
+        } else {
+          echo '<div class="row container-fluid text-center mt-4 mb-4 bg-dark" style="margin:auto; width: 100%;">';
+          echo '<h1 class="p-2 mt-4 text-light">Minhas mesas</h1>';
+          echo '<div class="col">';
+        }
+      } 
+
       echo '</div>';
-      echo '</div>';
-      echo '<footer class="container-fluid bg-dark p-2" style="height: 60px; display: flex;">';
+      echo '<footer class="container-fluid bg-dark p-2 mt-4" style="height: 60px; display: flex;">';
       echo '<div class="row" style="width: 100%; margin: auto;">';
       echo '<div class="col">';
       echo '<p class="text-light mt-2" style="margin: 0px; font-size: 1.2em;">Que a Guilda o acompanhe!</p>';

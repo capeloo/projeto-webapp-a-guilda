@@ -93,6 +93,7 @@
             echo "<th>Autor</th>";
             echo "<th>Título</th>";
             echo "<th>Subtítulo</th>";
+            echo "<th>Data</th>";
             echo "<th>Ações</th>";
             echo "</tr>";
         while($row = $stmt->fetch_object()){
@@ -100,6 +101,7 @@
             echo "<td>" . $row->apelido_admin . "</td>";
             echo "<td>" . $row->titulo . "</td>";
             echo "<td>" . $row->subtitulo . "</td>";
+            echo "<td>" . $row->data . "</td>";
             echo "<td>
                     <button class='btn btn-success' style='width: 80px;' onclick=\"location.href='Noticia_dashboard.php?id=".$row->id."';\">Ler</button>
                   </td>";        
