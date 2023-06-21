@@ -1,0 +1,125 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: "DO David Gothic";
+    src: url("../assets/fonts/DO-David-Gothic.ttf");
+ }
+
+@font-face {
+    font-family: "Rakkas";
+    src: url("../assets/fonts/Rakkas-Regular.ttf");
+}
+
+@font-face {
+    font-family: "Montagna LTD";
+    src: url("../assets/fonts/Montagna-LTD.otf");
+}
+
+/* GENERIC STYLES */
+
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+:root{
+    --cor0: #FADEB7;
+    --cor1: #134F59;
+    --cor2: #E8E0CB;
+    --cor3: #AA6857;
+
+    --fonte-logo: "DO David Gothic";
+    --fonte-titulo: "Rakkas";
+    --fonte-texto: "Montagna LTD";
+
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+    }
+
+body {
+    background-color: var(--cor2);
+    max-width: 1366px;
+}
+
+
+div#container {
+    width: 100vw;
+    padding: 0px;
+}
+
+nav#header {
+    background-color: var(--cor2);
+}
+
+h1#logo {
+    font-family: var(--fonte-logo);
+    margin-bottom: 0px;
+    margin-left: 3vw;
+    color: var(--cor1);
+}
+
+a {
+    text-decoration: none;
+}
+
+div#entrar {
+    font-size: 1.2em;
+    font-family: var(--fonte-texto);
+    background-color: var(--cor0);
+    color: var(--cor1);
+    margin-right: 3vw;
+    padding: 8px;
+    min-width: 100px;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.477);
+}
+
+div#entrar:hover {
+    background-color: var(--cor1);
+    color: var(--cor0);
+    transition: 0.5s;
+}
+
+div#cadastrar {
+    font-size: 1.2em;
+    font-family: var(--fonte-texto);
+    background-color: var(--cor3);
+    color: var(--cor2);
+    margin-right: 3vw;
+    padding: 8px;
+    width: 250px;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.477);
+}
+
+div#cadastrar:hover {
+    background-color: var(--cor1);
+    color: var(--cor2);
+    transition: 0.5s;
+}
+
+h1.titulo {
+    font-family: var(--fonte-titulo);
+    font-size: 4em;
+    text-align: left;
+    margin-top: 15vh;
+    margin-bottom: 3vh;
+    color: var(--cor1);
+}
+
+img#bussola {
+    max-width: 500px;
+}
+
+p.texto {
+    font-family: var(--fonte-texto);
+    font-size: 1.2em;
+    text-align: left;
+    color: var(--cor1);
+    margin-bottom: 5vh;
+}
