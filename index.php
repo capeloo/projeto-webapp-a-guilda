@@ -15,27 +15,26 @@
   <!-- Barra de navegação -->
   <nav class="navbar sticky-top" id="header">
     <div class="container-fluid">
-      <a class="navbar-brand text-light" href="index.php"><h1 id="logo">A Taverna</h1></a>
+      <a class="navbar-brand" href="index.php"><div id="logo">A Taverna</div></a>
       <a href="telas/usuario/login/Login.php"><div id="entrar">Entrar</div></a>
     </div>
-  </nav>
+  </nav> 
 
 <!-- Conteúdo da página -->
-    <div class="container-fluid" id="container">
-        <div class="row">
-            <div class="col text-center ms-5 p-3">
-                <h1 class="titulo">A sua plataforma web segura e inclusiva</h1>
-                <p class="texto">
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Non corporis hic officiis soluta doloribus suscipit blanditiis sunt vero quasi optio, asperiores alias ab dolore in sit modi maiores aliquam a. Lorem ipsum dolor, sit amet  consectetur adipisicing elit.
-                </p>
-                <a href="telas/usuario/login/Login.php"><div id="cadastrar">Comece já sua aventura!</div></a>
-            </div>
-            <div class="col text-center col-6">
-                <img src="assets/images/bussola.jpg" id="bussola">
-            </div>
-        </div>
+    <div class="row w-100" style="height: 35em;">
+      <div class="col" id="col1">
+        <h1 id="titulo">O seu hub de RPG, seguro e inclusivo.</h1>
+        <p id="texto">
+          Crie ou entre em mesas, participe de conteúdos coletivos, encontre jogadores e personalize seu perfil em uma plataforma direto do seu navegador.
+        </p>
+        <a href="telas/usuario/login/Cadastro.php">
+          <div id="cadastrar">
+            Comece já sua aventura!
+          </div>
+        </a>
+      </div>
+      <div class="col" id="col2" style="background: url(assets/images/bussola.jpg); background-size: cover;"></div>
     </div>
-
     <!-- Chamando os scripts do Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
   </body>
