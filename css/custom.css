@@ -57,7 +57,7 @@ div#entrar {
     font-family: var(--fonte-texto);
     font-size: 1.2em;
 
-    padding: 10px;
+    padding: 8px;
     width: 100px;
     margin-right: 3em;
     text-align: center;
@@ -83,7 +83,7 @@ div#col1 {
 
 h1#titulo {
     font-family: var(--fonte-titulo);
-    font-size: 5em;
+    font-size: 6em;
     color: var(--cor1);
     margin-top: 0.2em;
     margin-bottom: 0.1em;
@@ -142,4 +142,37 @@ h2#texto3 {
     font-size: 5em;
     color: var(--cor1);
     margin-right: 0.6em;
+}
+
+main {
+    height: 100vh;
+}
+
+footer {
+    position:relative;
+    bottom: 0;
+
+    margin-top: 8em;
+
+    background-color: var(--cor1);
+}
+
+p#p1 {
+    font-family: var(--fonte-texto); 
+    font-size: 1.3em; 
+    width: 12em; 
+    margin-bottom: 0px; 
+    color: var(--cor2); 
+    margin: auto; 
+    margin-left: 2em;
+}
+
+p#p2 {
+    font-family: var(--fonte-texto); 
+    font-size: 1.3em; 
+    width: 12em; 
+    margin-bottom: 0px; 
+    color: var(--cor2); 
+    margin: auto; 
+    margin-right: 1.6em;
 }
