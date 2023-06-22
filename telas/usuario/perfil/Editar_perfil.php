@@ -233,7 +233,7 @@
                     </div>
                     <div class="input-group mx-auto p-2" style="width: 350px;">
                         <span class="input-group-text">Matrícula UFC</span>
-                        <input type="number" name="matricula" value="<?php echo $row["matricula"]; ?>" class="form-control <?php echo (!empty($matricula_erro)) ? 'is-invalid' : ''; ?>">
+                        <input type="number" name="matricula" value="<?php echo $row["matricula"]; ?>" class="form-control" <?php echo (!empty($matricula_erro)) ? 'is-invalid' : ''; ?>">
                         <span class="invalid-feedback"><?php echo $matricula_erro; ?></span>
                     </div>
                 </div>
