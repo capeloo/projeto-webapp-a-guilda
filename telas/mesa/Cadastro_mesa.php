@@ -88,17 +88,17 @@
         }
 
         if(empty(trim($_POST["sinopse"]))) {
-            $sinopse_erro = "Escreva uma breve sinopse da sua campanha.";
+            $sinopse_erro = "Por favor, escreva uma breve sinopse da sua campanha.";
         } else {
             $sinopse = trim($_POST["sinopse"]);
         }
         
         if(empty(trim($_POST["requisitos"]))) {
-            $requisitos_erro = "Escreva na caixa de texto quais são os requisitos necessários para se participar da sua campanha.";
+            $requisitos_erro = "Por favor, escreva na caixa de texto quais são os requisitos necessários para se participar da sua campanha.";
         } else {
             $requisitos = trim($_POST["requisitos"]);
         }
-        
+
         $duracao = trim($_POST["duracao"]);
         $classificacao = trim($_POST["classificacao"]);
         if(empty(trim($_POST["vagas"]))) {
