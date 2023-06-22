@@ -71,7 +71,7 @@
         }
 
         //Valida o celular
-        if (is_int($_POST["celular"])) {
+        if (is_numeric($_POST["celular"])) {
             $celular = $_POST["celular"];
         } else {
             $celular_erro = "Coloque um número de celular válido.";
