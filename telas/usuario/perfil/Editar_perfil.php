@@ -69,10 +69,8 @@
         } else {
             $email = trim($_POST["email"]);
         }
-<<<<<<< HEAD
+        
         $celular = $_POST["celular"];
-=======
->>>>>>> b99f581b57922098675e414c62c648e4ab830855
 
         //Valida discord
         $discord = $_POST["discord"];
