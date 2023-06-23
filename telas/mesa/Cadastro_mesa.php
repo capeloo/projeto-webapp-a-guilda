@@ -74,7 +74,7 @@
             $tema = $_POST["tema"];
         }
         
-        // Aceita qualquer tipo de input, apenas retorna erro se não receber nenhum valor. (Isso serve pra nome da campanha, sistema, sinopse e requisitos.)
+        // Aceita qualquer tipo de input, apenas retorna erro se não receber nenhum valor. (Isso serve pra nome da campanha, sistema e sinopse.)
         if (empty(trim($_POST["nome_campanha"]))) {
             $nome_campanha_erro = "Por favor, dê um nome para a sua campanha.";
         } else {
@@ -92,13 +92,7 @@
         } else {
             $sinopse = trim($_POST["sinopse"]);
         }
-        
-        if(empty(trim($_POST["requisitos"]))) {
-            $requisitos_erro = "Escreva na caixa de texto quais são os requisitos necessários para se participar da sua campanha.";
-        } else {
-            $requisitos = trim($_POST["requisitos"]);
-        }
-        
+        $requisitos = trim($_POST["requisitos"]);
         $duracao = trim($_POST["duracao"]);
         $classificacao = trim($_POST["classificacao"]);
         if(empty(trim($_POST["vagas"]))) {
