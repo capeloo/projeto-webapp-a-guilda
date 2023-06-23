@@ -83,7 +83,7 @@
         } else {
                 $nome_campanha_erro = "O nome da campanha tem caracteres inválidos.";
             }
-
+            
         $sistema = trim($_POST["sistema"]);
         $sinopse = trim($_POST["sinopse"]);
         $requisitos = trim($_POST["requisitos"]);
@@ -228,7 +228,7 @@
                     <div class="input-group mx-auto p-2" style="width: 300px;">
                         <span class="input-group-text">Nome da campanha</span>
                         <input type="text" name="nome_campanha" class="form-control <?php echo (!empty($nome_campanha_erro)) ? 'is-invalid' : ''; ?>">
-                        <span class="invalid-feedback"><?php echo $nome_campanha_erro; ?></span>
+                        <span class="invalid-feedback"><?php echo $nome_erro; ?></span>
                     </div>
                     <div class="input-group mx-auto p-2" style="width: 300px;">
                         <span class="input-group-text">Sistema</span>
