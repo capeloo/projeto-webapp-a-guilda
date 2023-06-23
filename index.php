@@ -43,7 +43,7 @@
   <footer>
     <div class="container-fluid">
       <p>&copy; A Guilda. Siga em frente!</p>
-      <p>Siga-nos:<a href="https://www.instagram.com/aguilda_smd/" target="_blank"><img src="assets/images/Ellipse.svg"></a></p>
+      <p>Siga-nos:<a href="https://www.instagram.com/aguilda_smd/" target="_blank"><img src="assets/Ellipse.svg"></a></p>
     </div>
   </footer>
     <!-- Chamando os scripts do Bootstrap -->

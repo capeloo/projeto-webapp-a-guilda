@@ -56,4 +56,21 @@
     /* /FOOTER */
 }
 
+@media screen and (min-width: 1200px) {
+    body {
+        width: 98.7vw;
+    }
+
+}
+
+@media screen and (min-width: 1375px) {
+    body {
+        width: 100vw;
+    }
+
+    footer {
+        bottom: -111px;
+    }
+}
+
 
