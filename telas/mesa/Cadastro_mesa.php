@@ -102,6 +102,7 @@
         } else {
             $vagas_erro = "Coloque um valor válido no campo de preenchimento de vagas.";
         }
+        $vagas = trim($_POST["vagas"]);
         $nivel = trim($_POST["nivel"]);
         //Refatorar a data para mostrar dd/mm/aaaa
         $data = trim($_POST["data"]);
