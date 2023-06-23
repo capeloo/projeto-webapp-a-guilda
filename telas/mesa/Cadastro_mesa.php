@@ -255,13 +255,13 @@
                     </div>
                     <div class="input-group mx-auto p-2" style="width: 300px;">
                         <span class="input-group-text">Sinopse</span>
-                        <textarea name="sinopse" class="form-control"></textarea>
-                        <span class="invalid-feedback"></span>
+                        <input type="text" name="sinopse" class="form-control <?php echo (!empty($sinopse_erro)) ? 'is-invalid' : ''; ?>">
+                        <span class="invalid-feedback"><?php echo $sinopse_erro; ?></span>
                     </div>
                     <div class="input-group mx-auto p-2" style="width: 300px;">
                         <span class="input-group-text">Requisitos</span>
-                        <textarea name="requisitos" class="form-control"></textarea>
-                        <span class="invalid-feedback"></span>
+                        <input type="text" name="requisitos" class="form-control <?php echo (!empty($requisitos_erro)) ? 'is-invalid' : ''; ?>">
+                        <span class="invalid-feedback"><?php echo $requisitos_erro; ?></span>
                     </div>
                 </div>
                 <div class="col">
