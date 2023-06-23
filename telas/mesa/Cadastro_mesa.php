@@ -95,13 +95,6 @@
         $requisitos = trim($_POST["requisitos"]);
         $duracao = trim($_POST["duracao"]);
         $classificacao = trim($_POST["classificacao"]);
-        if(empty(trim($_POST["vagas"]))) {
-            $vagas_erro = "Coloque o número de vagas da sua campanha.";
-        } else if (is_int(trim($_POST["vagas"]))) {
-            $vagas = trim($_POST["vagas"]);
-        } else {
-            $vagas_erro = "Coloque um valor válido no campo de preenchimento de vagas.";
-        }
         $vagas = trim($_POST["vagas"]);
         $nivel = trim($_POST["nivel"]);
         //Refatorar a data para mostrar dd/mm/aaaa
