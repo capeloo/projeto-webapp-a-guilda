@@ -76,10 +76,13 @@
         
         // Aceita qualquer tipo de input, apenas retorna erro se não receber nenhum valor. (Isso serve pra nome da campanha, sistema e sinopse.)
         if (empty(trim($_POST["nome_campanha"]))) {
-            $nome_campanha_erro = "Por favor, dê um nome para a sua campanha.";
+            $nome_campanha_erro = "Por favor, determine um nome para a sua campanha.";
+            // Impedindo o uso de caracteres especiais
+        } else if (preg_match('/^[a-zA-Z0-9]+/', $nome_campanha)) { 
+            $nome_campanha = trim($_POST["nome_campanha"]);
         } else {
-            $nome_campanha = $trim($_POST["nome_campanha"]);
-        }
+                $nome_campanha_erro = "O nome da campanha tem caracteres inválidos.";
+            }
 
         $sistema = trim($_POST["sistema"]);
         $sinopse = trim($_POST["sinopse"]);
