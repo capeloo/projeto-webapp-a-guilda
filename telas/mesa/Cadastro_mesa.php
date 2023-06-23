@@ -74,7 +74,7 @@
             $tema = $_POST["tema"];
         }
         
-        // Aceita qualquer tipo de input, apenas retorna erro se não receber nenhum valor. (Isso serve pra nome da campanha, sistema e sinopse.)
+        // Aceita qualquer tipo de input, apenas retorna erro se não receber nenhum valor. (Isso serve pra nome da campanha, sistema, sinopse e requisitos.)
         if (empty(trim($_POST["nome_campanha"]))) {
             $nome_campanha_erro = "Por favor, dê um nome para a sua campanha.";
         } else {
@@ -88,11 +88,17 @@
         }
 
         if(empty(trim($_POST["sinopse"]))) {
-            $sinopse_erro = "Escreva uma breve sinopse da sua campanha.";
+            $sinopse_erro = "Por favor, escreva uma breve sinopse da sua campanha.";
         } else {
             $sinopse = trim($_POST["sinopse"]);
         }
-        $requisitos = trim($_POST["requisitos"]);
+        
+        if(empty(trim($_POST["requisitos"]))) {
+            $requisitos_erro = "Por favor, escreva na caixa de texto quais são os requisitos necessários para se participar da sua campanha.";
+        } else {
+            $requisitos = trim($_POST["requisitos"]);
+        }
+
         $duracao = trim($_POST["duracao"]);
         $classificacao = trim($_POST["classificacao"]);
         if(empty(trim($_POST["vagas"]))) {
@@ -286,7 +292,7 @@
                     </div>
                     <div class="input-group mx-auto p-2" style="width: 300px;">
                         <span class="input-group-text">Número de vagas</span>
-                        <input type="number" class="form-control" name="vagas">
+                        <input type="number" min="0" class="form-control" name="vagas">
                         <span class="invalid-feedback"></span>
                     </div>
                     <div class="input-group mx-auto p-2" style="width: 300px;">
