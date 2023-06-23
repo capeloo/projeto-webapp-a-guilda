@@ -71,7 +71,7 @@
         }
 
         //Valida o celular
-        if (is_int(trim($_POST["celular"]))) {
+        if (is_numeric(trim($_POST["celular"]))) {
             $celular = $_POST["celular"];
         } else {
             $celular_erro = "Coloque um número de celular válido.";
@@ -83,8 +83,10 @@
         //Valida a matricula
         if(strlen(trim($_POST["matricula"])) < 6 && strlen(trim($_POST["matricula"]) > 8)){
             $matricula_erro = "Por favor coloque uma matrícula válida.";
-        } else {
+        } else if (is_numeric(trim($_POST["matricula"]))) {
             $matricula = trim($_POST["matricula"]);
+        } else {
+            $matricula_erro = "Por favor coloque uma matrícula válida.";
         }
 
         //Se não houver nenhum erro de validação
