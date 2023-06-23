@@ -74,7 +74,7 @@
         if (is_numeric(trim($_POST["celular"]))) {
             $celular = $_POST["celular"];
         } else if (empty(trim($_POST["celular"]))) {
-            $celular =$_POST["celular"];
+            $celular = $_POST["celular"];
         } else {
             $celular_erro = "Coloque um número de celular válido.";
         }
