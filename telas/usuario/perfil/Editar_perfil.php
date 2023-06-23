@@ -81,7 +81,7 @@
         $discord = $_POST["discord"];
 
         //Valida a matricula
-        if(strlen(trim($_POST["matricula"])) < 6 && strlen(trim($_POST["matricula"]) > 8)){
+        if(strlen(trim($_POST["matricula"])) < 6 || strlen(trim($_POST["matricula"]) > 8)){
             $matricula_erro = "Por favor coloque uma matrícula válida.";
         } else if (is_numeric(trim($_POST["matricula"]))) {
             $matricula = trim($_POST["matricula"]);
