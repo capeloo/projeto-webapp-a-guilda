@@ -73,4 +73,14 @@
     }
 }
 
+@media screen and (min-width: 1663px) {
+    body {
+        width: 99vw;
+    }
+
+    footer {
+        bottom: -111px;
+    }
+}
+
 

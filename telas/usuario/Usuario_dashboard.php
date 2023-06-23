@@ -141,7 +141,7 @@
 
         //Renderiza os dados na forma de tabela
         if($qtd > 0){
-        echo '<div class="row container-fluid text-center mt-4 mb-4 bg-dark" style="margin:auto; width: 100%;">';
+        echo '<div class="row container-fluid text-center mt-4 bg-dark" style="margin:auto; width: 100%;">';
         echo '<h1 class="p-2 mt-4 text-light">Minhas mesas</h1>';
         echo '<div class="col">';
         echo '<h2 class="p-2 text-start ms-5 mt-3 text-light">Mestrando</h2>';  
@@ -172,7 +172,7 @@
           }
         echo "</table>";
         } else {
-          echo '<div class="row container-fluid text-center mt-4 mb-4 bg-dark" style="margin:auto; width: 100%;">';
+          echo '<div class="row container-fluid text-center mt-4 bg-dark" style="margin:auto; width: 100%;">';
           echo '<h1 class="p-2 mt-4 text-light">Minhas mesas</h1>';
           echo '<div class="col">';
           echo '<h2 class="p-2 text-center text-light">Mestrando</h2>';  
@@ -250,12 +250,14 @@
           echo '<div class="col">';
           echo '<h2 class="p-2 text-center text-light">Participando</h2>';  
           echo "<h4 class='text-danger text-center p-2 mb-5' style='margin: auto;'>Você ainda não está inscrito em nenhuma mesa!</h4>";
+          echo '</div>';
           }         
       } else {
         echo '</div>';
         echo '<div class="col">';
         echo '<h2 class="p-2 text-center text-light">Participando</h2>';  
         echo "<h4 class='text-danger text-center p-2 mb-5' style='margin: auto;'>Você ainda não está inscrito em nenhuma mesa!</h4>";
+        echo "</div>";
       }
 
       //Notícias
@@ -272,12 +274,12 @@
 
         //Renderiza os dados na forma de tabela
         if($qtd > 0){
-        echo '<div class="container-fluid text-center mt-4 bg-dark p-4" style="margin:auto; width: 100%;">';
+        echo '<div class="container-fluid text-center bg-dark p-4 mt-4" style="margin:auto; width: 100%;">';
         $cont = 0;
         while($row = $stmt->fetch_object()){
           if($cont < 1){
             $cont++;
-            echo '<h1 class="p-2 mt-2 text-light">Notícias</h1>';
+            echo '<h1 class="p-2 mt-4 text-light">Notícias</h1>';
             echo '<div style="display: flex;">';
             echo '<div style="width: 10%;"></div>';
             echo '<div class="mt-5" style="width: 400px; height: 200px; background: url(../../assets/h1.png); background-size: cover; margin: auto;">';
@@ -332,10 +334,10 @@
       } 
 
       echo '</div>';
-      echo '<footer class="container-fluid bg-dark p-2 mt-4" style="height: 60px; display: flex;">';
+      echo '<footer class="container-fluid bg-dark p-2 mt-5" style="height: 60px; display: flex;">';
       echo '<div class="row" style="width: 100%; margin: auto;">';
       echo '<div class="col">';
-      echo '<p class="text-light mt-2" style="margin: 0px; font-size: 1.2em;">Que a Guilda o acompanhe!</p>';
+      echo '<p class="text-light text-start mt-2" style="margin: 0px; font-size: 1.2em;">Que a Guilda o acompanhe!</p>';
       echo '</div>';
       echo '<div class="col">';
       echo '<p class="mt-2 text-end"><a href="https://www.instagram.com/aguilda_smd/" target="_blank"class="text-light mt-2" style="font-size: 1.2em;">Siga nossas redes!</a></p>';

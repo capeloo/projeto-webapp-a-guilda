@@ -72,10 +72,8 @@
 
         //Valida o celular
         if (is_int(trim($_POST["celular"]))) {
-            $celular = $_POST["celular"];
-        } else {
-            $celular_erro = "Coloque um número de celular válido.";
-        }
+           
+        $celular = $_POST["celular"];
 
         //Valida discord
         $discord = $_POST["discord"];

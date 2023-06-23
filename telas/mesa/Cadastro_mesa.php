@@ -74,16 +74,7 @@
             $tema = $_POST["tema"];
         }
         
-        // Aceita qualquer tipo de input, apenas retorna erro se não receber nenhum valor. (Isso serve pra nome da campanha, sistema e sinopse.)
-        if (empty(trim($_POST["nome_campanha"]))) {
-            $nome_campanha_erro = "Por favor, determine um nome para a sua campanha.";
-            // Impedindo o uso de caracteres especiais
-        } else if (preg_match('/^[a-zA-Z0-9]+/', $nome_campanha)) { 
-            $nome_campanha = trim($_POST["nome_campanha"]);
-        } else {
-                $nome_campanha_erro = "O nome da campanha tem caracteres inválidos.";
-            }
-            
+        $nome_campanha = trim($_POST["nome_campanha"]);
         $sistema = trim($_POST["sistema"]);
         $sinopse = trim($_POST["sinopse"]);
         $requisitos = trim($_POST["requisitos"]);
@@ -228,7 +219,7 @@
                     <div class="input-group mx-auto p-2" style="width: 300px;">
                         <span class="input-group-text">Nome da campanha</span>
                         <input type="text" name="nome_campanha" class="form-control <?php echo (!empty($nome_campanha_erro)) ? 'is-invalid' : ''; ?>">
-                        <span class="invalid-feedback"><?php echo $nome_erro; ?></span>
+                        <span class="invalid-feedback"><?php echo $nome_campanha_erro; ?></span>
                     </div>
                     <div class="input-group mx-auto p-2" style="width: 300px;">
                         <span class="input-group-text">Sistema</span>
