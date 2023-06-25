@@ -70,7 +70,13 @@
             $email = trim($_POST["email"]);
         }
         
-        $celular = $_POST["celular"];
+        if(is_numeric(trim($_POST["celular"]))) {
+            $celular = trim($_POST["celular"]);
+        } else if (empty(trim($_POST["celular"]))) {
+            $celular = trim($_POST["celular"]);
+        } else {
+            $celular_erro = "Por favor, coloque um número de celular válido.";
+        }
 
         //Valida discord
         $discord = $_POST["discord"];
