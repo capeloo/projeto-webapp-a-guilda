@@ -69,14 +69,14 @@
         } else {
             $email = trim($_POST["email"]);
         }
-        
+        //Valida o celular
         $celular = $_POST["celular"];
 
         //Valida discord
         $discord = $_POST["discord"];
 
         //Valida a matricula
-        if(strlen(trim($_POST["matricula"])) < 6 || strlen(trim($_POST["matricula"]) > 8)){
+        if(strlen(trim($_POST["matricula"])) < 6){
             $matricula_erro = "Por favor coloque uma matrícula válida.";
         } else if (is_numeric(trim($_POST["matricula"]))) {
             $matricula = trim($_POST["matricula"]);
@@ -220,7 +220,7 @@
                     </div>
                     <div class="input-group mx-auto p-2" style="width:350px;">
                         <span class="input-group-text">Celular</span>
-                        <input type="text" name="celular" placeholder="(xx) x xxxx-xxxx" value="<?php echo $row["celular"]; ?>" class="form-control <?php echo (!empty($celular_erro)) ? 'is-invalid' : ''; ?>">
+                        <input type="text" name="celular" placeholder="xx x xxxx-xxxx" value="<?php echo $row["celular"]; ?>" class="form-control <?php echo (!empty($celular_erro)) ? 'is-invalid' : ''; ?>">
                         <span class="invalid-feedback"><?php echo $celular_erro; ?></span>
                     </div>
                     <div class="input-group mx-auto p-2" style="width: 350px;">
