@@ -1,18 +1,18 @@
 <?php 
-    //Script do editar perfil
+    // Script do editar perfil
 
-    //Inicia a sessão (necessário ter em todas as páginas que o usuário estiver logado)
+    // Inicia a sessão (necessário ter em todas as páginas que o usuário estiver logado)
     session_start();
 
-    //Traz o arquivo config.php onde foi configurado a ligação com o banco de dados
+    // Traz o arquivo config.php onde foi configurado a ligação com o banco de dados
     set_include_path('C:\xampp\htdocs\projeto-webapp-taverna\db');
     require_once 'config.php';
 
-    //Inicializa variáveis vazias
+    // Inicializa variáveis vazias
     $foto = $nome = $bio = $email = $celular = $discord = $matricula = "";
     $foto_erro = $nome_erro = $bio_erro = $email_erro = $celular_erro = $discord_erro = $matricula_erro = "";
 
-    //Preparando a requisição ao banco
+    // Preparando a requisição ao banco
     $sql = "SELECT foto, nome, bio, email, celular, discord, matricula
             FROM usuario
             WHERE id = (?)
@@ -22,7 +22,7 @@
         $stmt->bind_param("i", $param_id);
         $param_id = $_SESSION["id"];
 
-        //Executando a requisição ao banco
+        // Executando a requisição ao banco
         if($stmt->execute()){
             $stmt_res = $stmt->get_result();
 
@@ -38,7 +38,7 @@
         $stmt->close();
     }
 
-    //Ao receber os dados do formulário
+    // Ao receber os dados do formulário
     if($_SERVER["REQUEST_METHOD"] == "POST"){   
         if(isset($_FILES['foto'])){
             $arquivo = $_FILES['foto']['name'];
@@ -49,28 +49,28 @@
             move_uploaded_file($_FILES['foto']['tmp_name'], $arquivo_nome); 
         } 
 
-        //Valida o nome
+        // Valida o nome
         if (empty(trim($_POST["nome"]))) {
             $nome_erro = "Por favor coloque um nome.";
         } else {
             $nome = trim($_POST["nome"]);
         }
 
-        //Valida a bio
+        // Valida a bio
         if (empty(trim($_POST["bio"]))) {
             $bio_erro = "Por favor escreva um pouco sobre você!";
         } else {
             $bio = trim($_POST["bio"]);
         }
 
-         //Valida o email
+         // Valida o email
          if (empty(trim($_POST["email"]))) {
             $email_erro = "Por favor coloque um e-mail.";
         } else {
             $email = trim($_POST["email"]);
         }
 
-        //Valida o celular
+        // Valida o celular
         if(is_numeric(trim($_POST["celular"]))) {
             $celular = trim($_POST["celular"]);
         } else if (empty(trim($_POST["celular"]))) {
@@ -79,21 +79,21 @@
             $celular_erro = "Por favor, coloque um número de celular válido.";
         }
 
-        //Valida discord
+        // Valida discord
         $discord = $_POST["discord"];
 
-        //Valida a matricula
-        if(strlen(trim($_POST["matricula"])) < 6 || strlen(trim($_POST["matricula"] > 8))){
-            $matricula_erro = "Por favor coloque uma matrícula válida.";
-        } else if (is_numeric(trim($_POST["matricula"]))) {
+        // Valida a matricula (matrículas de alunos possuem 6 dígitos e as de professores possuem 8 dígitos)
+        if(strlen(trim($_POST["matricula"])) < 6 || strlen(trim($_POST["matricula"])) > 8) {
+            $matricula_erro = "Por favor, coloque um número de matrícula válido.";
+        } else if(is_numeric(trim($_POST["matricula"]))) {
             $matricula = trim($_POST["matricula"]);
         } else {
-            $matricula_erro = "Por favor coloque uma matrícula válida.";
+            $matricula_erro = "Por favor, coloque um número de matrícula válido.";
         }
 
-        //Se não houver nenhum erro de validação
+        // Se não houver nenhum erro de validação
         if(empty($foto_erro) && empty($nome_erro) && empty($bio_erro) && empty($email_erro) && empty($celular_erro) && empty($discord_erro) && empty($matricula_erro)){
-            //Prepara a requisição para atualizar tabela usuario no banco
+            // Prepara a requisição para atualizar tabela usuario no banco
             $sql = "UPDATE usuario
                     SET foto = (?), 
                         nome = (?), 
@@ -117,10 +117,10 @@
                 $param_matricula = $matricula;
                 $param_id = $_SESSION["id"];
             
-            //Executa a requisição
+            // Executa a requisição
             if($stmt->execute()){
                 echo "<script>alert('Edição realizada com sucesso!');</script>";
-                //Redireciona para o dashboard
+                // Redireciona para o dashboard
                 echo "<script>location.href='Perfil.php';</script>";
             } else {
                 echo "Ops! Algo deu errado. (2)";
