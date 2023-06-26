@@ -69,14 +69,21 @@
         } else {
             $email = trim($_POST["email"]);
         }
+
         //Valida o celular
-        $celular = $_POST["celular"];
+        if(is_numeric(trim($_POST["celular"]))) {
+            $celular = trim($_POST["celular"]);
+        } else if (empty(trim($_POST["celular"]))) {
+            $celular = trim($_POST["celular"]);
+        } else {
+            $celular_erro = "Por favor, coloque um número de celular válido.";
+        }
 
         //Valida discord
         $discord = $_POST["discord"];
 
         //Valida a matricula
-        if(strlen(trim($_POST["matricula"])) < 6){
+        if(strlen(trim($_POST["matricula"])) < 6 || strlen(trim($_POST["matricula"] > 8))){
             $matricula_erro = "Por favor coloque uma matrícula válida.";
         } else if (is_numeric(trim($_POST["matricula"]))) {
             $matricula = trim($_POST["matricula"]);
