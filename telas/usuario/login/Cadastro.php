@@ -125,10 +125,10 @@
     <link rel="shortcut icon" href="../../../assets/images/compass.png" type="image/x-icon">
     <!-- Chamando as folhas de estilo do Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../../../css/custom.css">
     <link rel="stylesheet" href="../../../css/media-queries.css"> 
+    <link rel="stylesheet" href="../../../css/custom.css">
 </head>
-<body>
+<body style="overflow-x: hidden;">
 <header class="sticky-top" id="header-cadastro">
     <!-- Barra de navegação -->
     <nav class="navbar">
@@ -167,10 +167,16 @@
             </p>
         </form>
         </div>
-    <div style="width: 0; height: 0; border-top: 25px solid transparent; border-bottom: 25px solid transparent; border-left:5em solid #E8E0CB; margin-top: 12em;">
+    <div style="width: 0; height: 0; border-top: 25px solid transparent; border-bottom: 25px solid transparent; border-left:5em solid #134F59; margin-top: 12em;">
     </div>
-    <div style="background-image: url(../../../assets/images/olhos.svg); background-size: contain; background-repeat: no-repeat; width: 5.2em; margin-left: 15.6em; margin-top: 12.4em;"></div>
+    <div style="background-image: url(../../../assets/images/olhos.svg); background-size: contain; background-repeat: no-repeat; width: 5.2em; margin-left: 15.9em; margin-top: 12.4em;"></div>
 </main>
+<footer id="footer-cadastro">
+    <div class="container-fluid">
+      <p>&copy; A Guilda. Siga em frente!</p>
+      <p>Siga-nos:<a href="https://www.instagram.com/aguilda_smd/" target="_blank"><img src="../../../assets/Ellipse.svg"></a></p>
+    </div>
+  </footer>
     
     <!-- Chamando os scripts do Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>

@@ -191,19 +191,24 @@ footer>div>p>a>img {
 /* Cadastro.php */
     /* HEADER */
         header#header-cadastro {
-            width: 98.7vw;
+            width: 99vw;
+            
+        }
+
+        header#header-cadastro>nav>div>div>a#button-entrar {
+            margin-right: 0.2em;
         }
     /* /HEADER */
     /* MAIN */
         main#main-cadastro {
-            width: 98.5vw; 
+            width: 99vw; 
             height: 100vh;
         
         }
 
         div#cadastro {
             display: inline-block;
-            background-color: var(--cor2);
+            background-color: var(--cor1);
             width: 25em;
             height: 25.5em;
             padding: 1em;
@@ -217,7 +222,7 @@ footer>div>p>a>img {
         h1#titulo-cadastro {
             font-family: var(--fonte-titulo);
             font-size: 2.5em;
-            color: var(--cor1);
+            color: var(--cor2);
         }
 
         button#cadastrar-cadastro {
@@ -235,8 +240,8 @@ footer>div>p>a>img {
         }
 
         button#cadastrar-cadastro:hover {
-            background-color: var(--cor1);
-            color: var(--cor2);
+            background-color: var(--cor0);
+            color: var(--cor1);
             transition: 0.5s;
         }
 
@@ -251,7 +256,7 @@ footer>div>p>a>img {
         div#cadastro>form>p {
             font-family: var(--fonte-texto);
             font-size: 1em;
-            color: var(--cor3);
+            color: var(--cor2);
         }
 
         div#cadastro>form>p>a {
@@ -260,3 +265,99 @@ footer>div>p>a>img {
             color: var(--cor3);
         }
     /* /MAIN */
+    /* FOOTER */
+        footer#footer-cadastro {
+            width: 99vw;
+        }
+    /* /FOOTER */
+/* /Cadastro.php */
+
+/* Login.php */
+    /* BODY */
+        body#body-login {
+            overflow-x: hidden;
+        }
+        /* HEADER */
+            header#header-login {
+                width: 98.7vw;
+            }
+        /* /HEADER */
+        /* MAIN */
+            main#main-login {
+                width: 98.7vw; 
+                height: 100vh;
+            }
+
+            div#login {
+                display: inline-block;
+                background-color: var(--cor1);
+                width: 25em;
+                height: 25.5em;
+                padding: 1em;
+                margin-left: 11.22em;
+                margin-right: 0px;
+                margin-top: 5em;
+                box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.486);
+            }
+
+            div#login>h1#titulo-login {
+                font-family: var(--fonte-titulo);
+                font-size: 2.5em;
+                color: var(--cor2);
+            }
+
+            button#entrar-login {
+                font-family: var(--fonte-texto);
+                font-size: 1.2em;
+                color: var(--cor2);
+                background-color: var(--cor3);
+                padding: 0.4em;
+                border-radius: 0.2em;
+                border: 0px;
+                box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.486);
+                margin-bottom: 1em;
+                text-align: center;
+                width: 14.8em;
+            }
+
+            button#entrar-login:hover {
+                background-color: var(--cor0);
+                color: var(--cor1);
+                transition: 0.5s;
+            }
+
+            div#login>form>div>input {
+                font-family: var(--fonte-texto);   
+            }
+    
+            div#login>form>div>input::placeholder {
+                color: rgb(189, 189, 189);   
+            }
+
+            main#main-login>div>form>p {
+                font-family: var(--fonte-texto);
+                font-size: 1em;
+                margin-bottom: 0.5em;
+                color: var(--cor2);
+            }
+
+            main#main-login>div>form>p>a {
+                color: var(--cor3);
+            }
+
+            main#main-login>div>form>a {
+                font-family: var(--fonte-texto);
+                font-size: 1em;
+                color: var(--cor3);
+            }
+        /* /MAIN */
+        /* FOOTER */
+            footer#footer-login {
+                width: 98.7vw;
+
+                position: relative;
+                bottom: 0;
+            }
+        /* /FOOTER */
+    /* /BODY */
+/* /Login.php */
