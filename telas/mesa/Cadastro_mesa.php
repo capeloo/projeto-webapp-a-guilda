@@ -285,7 +285,7 @@
                     </div>
                     <div class="input-group mx-auto p-2" style="width: 300px;">
                         <span class="input-group-text">Número de vagas</span>
-                        <input type="number" class="form-control" name="vagas">
+                        <input type="number" min="0" class="form-control" name="vagas">
                         <span class="invalid-feedback"></span>
                     </div>
                     <div class="input-group mx-auto p-2" style="width: 300px;">

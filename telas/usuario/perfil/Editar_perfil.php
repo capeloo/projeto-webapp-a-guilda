@@ -83,7 +83,7 @@
         $discord = $_POST["discord"];
 
         // Valida a matricula (matrículas de alunos possuem 6 dígitos e as de professores possuem 8 dígitos)
-        if(strlen(trim($_POST["matricula"])) < 6 || strlen(trim($_POST["matricula"])) > 8) {
+        if(strlen(trim($_POST["matricula"])) < 6 || strlen(trim($_POST["matricula"])) == 7 || strlen(trim($_POST["matricula"])) > 8) {
             $matricula_erro = "Por favor, coloque um número de matrícula válido.";
         } else if(is_numeric(trim($_POST["matricula"]))) {
             $matricula = trim($_POST["matricula"]);
