@@ -74,39 +74,11 @@
             $tema = $_POST["tema"];
         }
         
-        if(empty(trim($_POST["nome_campanha"]))) {
-            $nome_campanha_erro = "Por favor, dê um nome para a sua campanha.";
-        } else {
-            $nome_campanha = trim($_POST["nome_campanha"]);
-        }
-
-        if(empty(trim($_POST["sistema"]))) {
-            $sistema_erro = "Por favor, coloque um sistema de RPG de mesa válido para ser usado na sua mesa.";
-        } else {
-            $sistema = trim($_POST["sistema"]); 
-        }
-
-        if(empty(trim($_POST["sinopse"]))) {
-            $sinopse_erro = "Escreva brevemente sobre a campanha de RPG que você está organizando.";
-        } else {
-            $sinopse = trim($_POST["sinopse"]);
-        }
-
-        if(empty(trim($_POST["requisitos"]))) {
-            $requisitos_erro = "Por favor, diga quais os requisitos mínimos para participar na sua campanha.";
-        } else {
-            $requisitos = trim($_POST["requisitos"]);
-        }
-
+        $nome_campanha = trim($_POST["nome_campanha"]);
+        $sistema = trim($_POST["sistema"]);
+        $sinopse = trim($_POST["sinopse"]);
+        $requisitos = trim($_POST["requisitos"]);
         $duracao = trim($_POST["duracao"]);
-        
-        //Está funcionando, falta mostrar na tela que isso tá funcionando de verdade.
-        //if(empty($_POST["duracao"])) {
-            //$duracao_erro = "Selecione a duração da sua campanha.";
-        //} else {
-            //$duracao = trim($_POST["duracao"]);
-        //}
-
         $classificacao = trim($_POST["classificacao"]);
         $vagas = trim($_POST["vagas"]);
         $nivel = trim($_POST["nivel"]);
@@ -256,13 +228,13 @@
                     </div>
                     <div class="input-group mx-auto p-2" style="width: 300px;">
                         <span class="input-group-text">Sinopse</span>
-                        <input type="text" name="sinopse" class="form-control <?php echo (!empty($sinopse_erro)) ? 'is-invalid' : ''; ?>">
-                        <span class="invalid-feedback"><?php echo $sinopse_erro; ?></span>
+                        <textarea name="sinopse" class="form-control"></textarea>
+                        <span class="invalid-feedback"></span>
                     </div>
                     <div class="input-group mx-auto p-2" style="width: 300px;">
                         <span class="input-group-text">Requisitos</span>
-                        <input type="text" name="requisitos" class="form-control <?php echo (!empty($requisitos_erro)) ? 'is-invalid' : ''; ?>">
-                        <span class="invalid-feedback"><?php echo $requisitos_erro; ?></span>
+                        <textarea name="requisitos" class="form-control"></textarea>
+                        <span class="invalid-feedback"></span>
                     </div>
                 </div>
                 <div class="col">
