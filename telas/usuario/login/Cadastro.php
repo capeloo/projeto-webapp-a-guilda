@@ -125,64 +125,52 @@
     <link rel="shortcut icon" href="../../../assets/fav.png" type="image/x-icon">
     <!-- Chamando as folhas de estilo do Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/custom.css">
+    <link rel="stylesheet" href="../../../css/media-queries.css"> 
 </head>
-<body class="bg-light">
+<body style="width: 100vw; background: url(../../../assets/images/tela\ login.png); background-size: cover; background-position: right; background-repeat: no-repeat;">
+<header class="sticky-top">
     <!-- Barra de navegação -->
-    <nav class="navbar bg-dark sticky-top">
-        <div class="container-fluid">
-            <a class="navbar-brand text-light" href="../../../index.php">Taverna</a>
-            <!-- Offcanvas -->
-            <button class="navbar-toggler bg-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-                <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                </div>
-                <div class="offcanvas-body">
-                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                        <li class="nav-item">
-                            <a class="nav-link" href="Login.php">Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="Cadastro.php">Criar conta</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+    <nav class="navbar">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="../../../index.php" id="logo"><div>A Taverna</div></a>
+        <div>
+          <a href="telas/usuario/login/Cadastro.php" id="button-cadastrar"><div>Criar conta</div></a>
+          <a href="telas/usuario/login/Login.php" id="button-entrar"><div>Entrar</div></a>
         </div>
-    </nav>
-
+      </div>
+    </nav> 
+  </header>
     <!-- Conteúdo da página -->
-    <div class="container-fluid text-center mt-3">
-        <h1 class="p-3">Criar conta</h1>
+    <div style="display: flex;">
+    <div class="container-fluid text-center mt-5" id="cadastro">
+        <h1 class="p-3" id="titulo-cadastro">Primeira vez aqui?</h1>
         <!-- Formulário -->
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-            <div class="input-group mx-auto p-2" style="width: 300px;">
-                <span class="input-group-text">Apelido</span>
-                <input type="text" name="apelido" class="form-control <?php echo (!empty($apelido_erro)) ? 'is-invalid' : ''; ?>" value="<?php echo $apelido; ?>">
+            <div class="mx-auto p-2" style="width: 300px;">
+                <input type="text" name="apelido" class="form-control <?php echo (!empty($apelido_erro)) ? 'is-invalid' : ''; ?>" value="<?php echo $apelido; ?>" placeholder="Apelido" style="border-radius: 0.2em;">
                 <span class="invalid-feedback"><?php echo $apelido_erro; ?></span>
             </div>
-            <div class="input-group mx-auto p-2" style="width: 300px;">
-                <span class="input-group-text">Senha</span>
-                <input type="password" name="senha" class="form-control <?php echo (!empty($senha_erro)) ? 'is-invalid' : ''; ?>" value="<?php echo $senha; ?>">
+            <div class="mx-auto p-2" style="width: 300px;">
+                <input type="password" name="senha" class="form-control <?php echo (!empty($senha_erro)) ? 'is-invalid' : ''; ?>" value="<?php echo $senha; ?>" placeholder="Senha" style="border-radius: 0.2em;">
                 <span class="invalid-feedback"><?php echo $senha_erro; ?></span>
             </div>
-            <div class="input-group mx-auto p-2" style="width: 300px;">
-                <span class="input-group-text">Confirmar senha</span>
-                <input type="password" name="confirmar_senha" class="form-control <?php echo (!empty($confirmar_senha_erro)) ? 'is-invalid' : ''; ?>" value="<?php echo $confirmar_senha; ?>">
+            <div class="mx-auto p-2" style="width: 300px;">
+                <input type="password" name="confirmar_senha" class="form-control <?php echo (!empty($confirmar_senha_erro)) ? 'is-invalid' : ''; ?>" value="<?php echo $confirmar_senha; ?>" placeholder="Confirmar senha" style="border-radius: 0.2em;">
                 <span class="invalid-feedback"><?php echo $confirmar_senha_erro; ?></span>
             </div>
-            <div class="p-4">
-                <button class="btn btn-success" type="submit">Cadastrar</button>
-                <button class="btn btn-danger" type="reset">Apagar dados</button>
+            <div class="mt-4">
+                <button id="cadastrar-cadastro" type="submit">Cadastrar</button>
             </div>
             <p>
                 Já tem uma conta? <a href="Login.php">Entre aqui</a>.
             </p>
         </form>
+        </div>
+    <div style="width: 0; height: 0; border-top: 25px solid transparent; border-bottom: 25px solid transparent; border-left:5em solid #E8E0CB; margin-top: 8em;">
     </div>
+    </div>
+    
     <!-- Chamando os scripts do Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

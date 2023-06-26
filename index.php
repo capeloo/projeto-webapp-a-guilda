@@ -18,7 +18,10 @@
     <nav class="navbar">
       <div class="container-fluid">
         <a class="navbar-brand" href="index.php" id="logo"><div>A Taverna</div></a>
-        <a href="telas/usuario/login/Login.php" id="button-entrar"><div>Entrar</div></a>
+        <div>
+          <a href="telas/usuario/login/Cadastro.php" id="button-cadastrar"><div>Criar conta</div></a>
+          <a href="telas/usuario/login/Login.php" id="button-entrar"><div>Entrar</div></a>
+        </div>
       </div>
     </nav> 
   </header>
