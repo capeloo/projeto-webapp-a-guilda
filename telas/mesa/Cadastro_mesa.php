@@ -195,9 +195,6 @@
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
             <div class="row">
                 <div class="col">
-                    <!-- A fazer: 
-                            Codar para permitir a entrada de fotos no banco;
-                    -->
                     <div class="input-group mx-auto p-2" style="width: 300px;">
                         <span class="input-group-text">Foto</span>  
                         <input type="file" name="foto" class="form-control">

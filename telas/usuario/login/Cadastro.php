@@ -122,28 +122,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro</title>
-    <link rel="shortcut icon" href="../../../assets/fav.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../../../assets/images/compass.png" type="image/x-icon">
     <!-- Chamando as folhas de estilo do Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../../../css/custom.css">
     <link rel="stylesheet" href="../../../css/media-queries.css"> 
 </head>
-<body style="width: 100vw; background: url(../../../assets/images/tela\ login.png); background-size: cover; background-position: right; background-repeat: no-repeat;">
-<header class="sticky-top">
+<body>
+<header class="sticky-top" id="header-cadastro">
     <!-- Barra de navegação -->
     <nav class="navbar">
       <div class="container-fluid">
         <a class="navbar-brand" href="../../../index.php" id="logo"><div>A Taverna</div></a>
         <div>
-          <a href="telas/usuario/login/Cadastro.php" id="button-cadastrar"><div>Criar conta</div></a>
-          <a href="telas/usuario/login/Login.php" id="button-entrar"><div>Entrar</div></a>
+          <a href="Cadastro.php" id="button-cadastrar"><div>Criar conta</div></a>
+          <a href="Login.php" id="button-entrar"><div>Entrar</div></a>
         </div>
       </div>
     </nav> 
   </header>
     <!-- Conteúdo da página -->
-    <div style="display: flex;">
-    <div class="container-fluid text-center mt-5" id="cadastro">
+    <main id="main-cadastro" style="display: flex; background: url(../../../assets/images/tela\ login.png); background-size: cover; background-position: right; background-repeat: no-repeat;">
+    <div class="container-fluid text-center" id="cadastro">
         <h1 class="p-3" id="titulo-cadastro">Primeira vez aqui?</h1>
         <!-- Formulário -->
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
@@ -167,9 +167,10 @@
             </p>
         </form>
         </div>
-    <div style="width: 0; height: 0; border-top: 25px solid transparent; border-bottom: 25px solid transparent; border-left:5em solid #E8E0CB; margin-top: 8em;">
+    <div style="width: 0; height: 0; border-top: 25px solid transparent; border-bottom: 25px solid transparent; border-left:5em solid #E8E0CB; margin-top: 12em;">
     </div>
-    </div>
+    <div style="background-image: url(../../../assets/images/olhos.svg); background-size: contain; background-repeat: no-repeat; width: 5.2em; margin-left: 15.6em; margin-top: 12.4em;"></div>
+</main>
     
     <!-- Chamando os scripts do Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
