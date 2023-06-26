@@ -1,0 +1,162 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: "DO David Gothic";
+    src: url("../assets/fonts/DO-David-Gothic.ttf");
+ }
+
+@font-face {
+    font-family: "Rakkas";
+    src: url("../assets/fonts/Rakkas-Regular.ttf");
+}
+
+@font-face {
+    font-family: "Montagna LTD";
+    src: url("../assets/fonts/Montagna-LTD.otf");
+}
+
+/* GENERIC STYLES */
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+:root{
+    --cor0: #FADEB7;
+    --cor1: #134F59;
+    --cor2: #E8E0CB;
+    --cor3: #AA6857;
+
+    --fonte-logo: "DO David Gothic";
+    --fonte-titulo: "Rakkas";
+    --fonte-texto: "Montagna LTD";
+
+}
+
+body {
+    width: 98.75vw;
+    height: 100vh;
+    background-color: var(--cor2);
+}
+/* /GENERIC STYLES */
+
+/* HEADER */
+header {
+    background-color: var(--cor2);
+    box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.493);
+}
+
+a#logo {
+    font-family: var(--fonte-logo);
+    font-size: 2em;
+    color: var(--cor1);
+}
+
+a#button-entrar {
+    font-family: var(--fonte-texto);
+    font-size: 1.4em;
+    width: 4em;
+    text-align: center;
+    padding: 0.4em;
+    border-radius: 10px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.486);
+    color: var(--cor1);
+    background-color: var(--cor0);
+    text-decoration: none;
+}
+
+a#button-entrar:hover {
+    background-color: var(--cor1);
+    color: var(--cor2);
+    transition: 0.5s;
+}
+
+/* /HEADER */
+
+/* MAIN */
+    /* SECTION 0 */
+        main>section>div {
+            display: flex;
+            justify-content: center;
+            padding: 2em;
+            margin-left: 5em;
+        }
+
+        main>section>div>div {
+            width: 35em;
+        }
+
+        main>section>div>div>h1 {
+            font-family: var(--fonte-titulo);
+            font-size: 5em;
+            margin-top: 1em;
+            margin-bottom: 0.25em;
+            color: var(--cor1);
+        }
+
+        main>section>div>div>p {
+            font-family: var(--fonte-texto);
+            font-size: 1.5em;
+            margin-bottom: 1.5em;
+            color: var(--cor3);
+        }
+
+        main>section>div>div>a {
+            text-decoration: none;
+        }
+        main>section>div>div>a>div {
+            font-family: var(--fonte-texto);
+            font-size: 1.4em;
+            color: var(--cor2);
+            background-color: var(--cor1);
+            padding: 0.4em;
+            border-radius: 0.5em;
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.486);
+            margin-bottom: 1em;
+            text-align: center;
+            width: 12em;
+        }
+
+        main>section>div>div>a>div:hover {
+            background-color: var(--cor0);
+            color: var(--cor1);
+            transition: 0.5s;
+        }
+
+        div#imagem {
+            background: url(../assets/images/bussola.jpg);
+            background-size: cover;
+            margin: 0px;
+            width: 40em;
+            height: 40em;
+        }
+    /* /SECTION 0 */
+/* /MAIN */
+
+/* FOOTER */
+footer {
+    position: relative;
+    bottom: 0;
+
+    background-color: var(--cor1);
+}
+
+footer>div {
+    display: flex;
+    justify-content: space-between;
+    padding: 1.3em;
+}
+
+footer>div>p {
+    font-family: var(--fonte-texto);
+    font-size: 1.2em;
+    margin: 0px;
+    color: var(--cor2);
+}
+
+footer>div>p>a>img {
+    margin-left: 0.5em;
+    width: 1.5em;
+    height: 1.5em;
+}
+/* /FOOTER */

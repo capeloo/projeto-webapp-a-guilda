@@ -5,10 +5,8 @@
     session_start();
 
     //Traz o arquivo config.php onde foi configurado a ligação com o banco de dados
-    require_once 'C:\xampp\htdocs\projeto-webapp-taverna\db\config.php';
-
-    // A fazer:
-    //   Levar em consideração as pontuações do prof Wellington;
+    set_include_path('C:\xampp\htdocs\projeto-webapp-taverna\db');
+    require_once 'config.php';
 
     //Inicializando variáveis vazias
     $id_mestre = $email_mestre = $nome_mestre = $matricula_mestre = $celular_mestre = "";
@@ -60,9 +58,14 @@
 
         $celular_mestre = $row["celular"];
 
-        //A fazer
-        //   Descobrir como cadastrar foto no banco.
-        $foto = $_POST["foto"];
+        if(isset($_FILES['foto'])){
+            $arquivo = $_FILES['foto']['name'];
+            //Diretório para uploads 
+            $pasta_dir = '../../assets/';
+            $arquivo_nome = $pasta_dir . $arquivo; 
+            // Faz o upload da imagem
+            move_uploaded_file($_FILES['foto']['tmp_name'], $arquivo_nome); 
+        } 
         
         //errado, tá passando só o primeiro option!
         if(isset($_POST["tema"]) == null){
@@ -91,9 +94,9 @@
             $sql = "INSERT INTO mesa (id_mestre, email_mestre, nome_mestre, matricula_mestre, celular_mestre,foto, tema, nome_campanha, sistema, sinopse, requisitos, duracao, classificacao_indicativa, numero_vagas, nivel_jogadores, data, hora) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
             if($stmt = $mysqli->prepare($sql)) {
-                $stmt->bind_param("issisbsssssssisss", $id_mestre, $email_mestre, $nome_mestre, $matricula_mestre, $celular_mestre, $param_foto, $param_tema, $param_nome_campanha, $param_sistema, $param_sinopse, $param_requisitos, $param_duracao, $param_classificacao, $param_vagas, $param_nivel, $param_data, $param_hora);
+                $stmt->bind_param("ississsssssssisss", $id_mestre, $email_mestre, $nome_mestre, $matricula_mestre, $celular_mestre, $param_foto, $param_tema, $param_nome_campanha, $param_sistema, $param_sinopse, $param_requisitos, $param_duracao, $param_classificacao, $param_vagas, $param_nivel, $param_data, $param_hora);
 
-                $param_foto = $foto;
+                $param_foto = $arquivo_nome;
                 $param_tema = $tema;
                 $param_nome_campanha = $nome_campanha; 
                 $param_sistema = $sistema;
@@ -110,7 +113,7 @@
             if($stmt->execute()) {
                 echo "<script>alert('Cadastro realizado com sucesso!');</script>";
                 //Redireciona para o dashboard da mesa
-                echo "<script>location.href='Minhas_mesas.php';</script>";
+                echo "<script>location.href='../usuario/Usuario_dashboard.php';</script>";
             } else {
                 echo "Ops! Algo deu errado. (1)";
             }
@@ -142,6 +145,12 @@
     <nav class="navbar bg-dark sticky-top">
         <div class="container-fluid">
             <a class="navbar-brand text-light" href="../usuario/Usuario_dashboard.php">Taverna</a>
+            <form class='form-inline' action='../pesquisar.php' method='post'>
+                <div style='display:flex;'>
+                    <input class='form-control mr-sm-2' type='search' placeholder='Apelido' name='pesquisa'>
+                    <button class='btn btn-outline-light my-2 ms-2 my-sm-0' type='submit'>Pesquisar</button>
+                </div>
+            </form>
             <!-- Offcanvas -->
             <button class="navbar-toggler bg-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -157,7 +166,7 @@
                             <strong>Perfil</strong>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../usuario/perfil/Meu_perfil.php">Meu perfil</a>
+                            <a class="nav-link" href="../usuario/perfil/Perfil.php">Meu perfil</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="../usuario/perfil/Editar_perfil.php">Editar perfil</a>
@@ -183,7 +192,7 @@
     <div class="container-fluid text-center mt-3">
         <h1 class="p-3">Criar uma nova mesa</h1>
         <!-- Formulário -->
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
             <div class="row">
                 <div class="col">
                     <!-- A fazer: 
@@ -210,7 +219,7 @@
                     <div class="input-group mx-auto p-2" style="width: 300px;">
                         <span class="input-group-text">Nome da campanha</span>
                         <input type="text" name="nome_campanha" class="form-control <?php echo (!empty($nome_campanha_erro)) ? 'is-invalid' : ''; ?>">
-                        <span class="invalid-feedback"><?php echo $nome_erro; ?></span>
+                        <span class="invalid-feedback"><?php echo $nome_campanha_erro; ?></span>
                     </div>
                     <div class="input-group mx-auto p-2" style="width: 300px;">
                         <span class="input-group-text">Sistema</span>

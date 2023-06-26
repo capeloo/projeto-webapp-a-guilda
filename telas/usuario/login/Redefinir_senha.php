@@ -2,7 +2,8 @@
     // Script do redefinir_senha
 
     // Traz o arquivo config.php onde foi configurado a ligação com o banco de dados
-    require_once "config.php";
+    set_include_path('C:\xampp\htdocs\projeto-webapp-taverna\db');
+    require_once 'config.php';
 
     // Validação para caso o usuário acesse o link gerado mais de uma vez
     // Guarda a requisição em uma variável

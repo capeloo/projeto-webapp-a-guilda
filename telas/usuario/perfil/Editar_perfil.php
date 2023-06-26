@@ -5,7 +5,8 @@
     session_start();
 
     //Traz o arquivo config.php onde foi configurado a ligação com o banco de dados
-    require_once 'C:\xampp\htdocs\projeto-webapp-taverna\db\config.php';
+    set_include_path('C:\xampp\htdocs\projeto-webapp-taverna\db');
+    require_once 'config.php';
 
     //Inicializa variáveis vazias
     $foto = $nome = $bio = $email = $celular = $discord = $matricula = "";
@@ -39,10 +40,14 @@
 
     //Ao receber os dados do formulário
     if($_SERVER["REQUEST_METHOD"] == "POST"){   
-        //A fazer: 
-        //  Descobrir como armazenar fotos no banco;
-        //  Validar a foto (ex: tamanho máximo)
-        $foto = $_POST["foto"];
+        if(isset($_FILES['foto'])){
+            $arquivo = $_FILES['foto']['name'];
+            //Diretório para uploads 
+            $pasta_dir = '../../../assets/';
+            $arquivo_nome = $pasta_dir . $arquivo; 
+            // Faz o upload da imagem
+            move_uploaded_file($_FILES['foto']['tmp_name'], $arquivo_nome); 
+        } 
 
         //Valida o nome
         if (empty(trim($_POST["nome"]))) {
@@ -64,7 +69,6 @@
         } else {
             $email = trim($_POST["email"]);
         }
-
         //Valida o celular
         $celular = $_POST["celular"];
 
@@ -74,8 +78,10 @@
         //Valida a matricula
         if(strlen(trim($_POST["matricula"])) < 6){
             $matricula_erro = "Por favor coloque uma matrícula válida.";
-        } else {
+        } else if (is_numeric(trim($_POST["matricula"]))) {
             $matricula = trim($_POST["matricula"]);
+        } else {
+            $matricula_erro = "Por favor coloque uma matrícula válida.";
         }
 
         //Se não houver nenhum erro de validação
@@ -94,8 +100,8 @@
 
 
             if($stmt = $mysqli->prepare($sql)){
-                $stmt->bind_param("bsssssii", $param_foto, $param_nome, $param_bio, $param_email,   $param_celular, $param_discord, $param_matricula, $param_id);
-                $param_foto = $foto;
+                $stmt->bind_param("ssssssii", $param_foto, $param_nome, $param_bio, $param_email,   $param_celular, $param_discord, $param_matricula, $param_id);
+                $param_foto = $arquivo_nome;
                 $param_nome = $nome;
                 $param_bio = $bio;
                 $param_email = $email;
@@ -108,7 +114,7 @@
             if($stmt->execute()){
                 echo "<script>alert('Edição realizada com sucesso!');</script>";
                 //Redireciona para o dashboard
-                echo "<script>location.href='../Usuario_dashboard.php';</script>";
+                echo "<script>location.href='Perfil.php';</script>";
             } else {
                 echo "Ops! Algo deu errado. (2)";
             }
@@ -138,6 +144,12 @@
     <nav class="navbar bg-dark sticky-top">
         <div class="container-fluid">
             <a class="navbar-brand text-light" href="../Usuario_dashboard.php">Taverna</a>
+            <form class='form-inline' action='../../pesquisar.php' method='post'>
+                <div style='display:flex;'>
+                    <input class='form-control mr-sm-2' type='search' placeholder='Apelido' name='pesquisa'>
+                    <button class='btn btn-outline-light my-2 ms-2 my-sm-0' type='submit'>Pesquisar</button>
+                </div>
+            </form>
             <!-- Offcanvas -->
             <button class="navbar-toggler bg-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -153,7 +165,7 @@
                             <strong>Perfil</strong>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="Meu_perfil.php">Meu perfil</a>
+                            <a class="nav-link" href="Perfil.php">Meu perfil</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="Editar_perfil.php">Editar perfil</a>
@@ -179,50 +191,52 @@
         <!-- Conteúdo da página -->
         <h1 class="p-3">Editar perfil</h1>
         <!-- Formulário -->
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
             <div class="row">
                 <div class="col">
-                    <div class="input-group mx-auto p-2" style="width: 500px;">
+                    <div class="input-group mx-auto p-2" style="width: 400px;">
                         <span class="input-group-text">Foto</span>  
                         <input type="file" name="foto" class="form-control">
                         <span class="invalid-feedback"></span>
                     </div>
-                    <div class="input-group mx-auto p-2" style="width: 500px;">   
+                    <div class="input-group mx-auto p-2" style="width: 400px;">   
                         <span class="input-group-text">Nome Completo</span>
                         <input type="text" name="nome" value="<?php echo $row["nome"]; ?>" class="form-control <?php echo (!empty($nome_erro)) ? 'is-invalid' : ''; ?>">
                         <span class="invalid-feedback"><?php echo $nome_erro; ?></span>
                     </div>
-                    <div class="input-group mx-auto p-2" style="width: 500px;">
+                </div>
+                <div class="col">
+                    <div class="input-group mx-auto p-2" style="width: 400px;">
                         <span class="input-group-text">Bio</span>
                         <textarea name="bio" cols="30" rows="10" class="form-control <?php echo (!empty($bio_erro)) ? 'is-invalid' : ''; ?>"><?php echo $row["bio"]; ?></textarea>
                         <span class="invalid-feedback"><?php echo $bio_erro; ?></span>
                     </div>
                 </div>
                 <div class="col">
-                    <div class="input-group mx-auto p-2" style="width: 500px;">
+                    <div class="input-group mx-auto p-2" style="width: 350px;">
                         <span class="input-group-text">E-mail</span>
                         <input type="email" name="email" value="<?php echo $row["email"]; ?>" class="form-control <?php echo (!empty($email_erro)) ? 'is-invalid' : ''; ?>">
                         <span class="invalid-feedback"><?php echo $email_erro; ?></span>
                     </div>
-                    <div class="input-group mx-auto p-2" style="width: 500px;">
+                    <div class="input-group mx-auto p-2" style="width:350px;">
                         <span class="input-group-text">Celular</span>
-                        <input type="text" name="celular" placeholder="(xx) x xxxx-xxxx" value="<?php echo $row["celular"]; ?>" class="form-control <?php echo (!empty($celular_erro)) ? 'is-invalid' : ''; ?>">
+                        <input type="text" name="celular" placeholder="xx x xxxx-xxxx" value="<?php echo $row["celular"]; ?>" class="form-control <?php echo (!empty($celular_erro)) ? 'is-invalid' : ''; ?>">
                         <span class="invalid-feedback"><?php echo $celular_erro; ?></span>
                     </div>
-                    <div class="input-group mx-auto p-2" style="width: 500px;">
+                    <div class="input-group mx-auto p-2" style="width: 350px;">
                         <span class="input-group-text">Discord</span>
                         <input type="text" name="discord" placeholder="nome#xxxx" value="<?php echo $row["discord"]; ?>" class="form-control">
                         <span class="invalid-feedback"><?php echo $discord_erro; ?></span>
                     </div>
-                    <div class="input-group mx-auto p-2" style="width: 500px;">
+                    <div class="input-group mx-auto p-2" style="width: 350px;">
                         <span class="input-group-text">Matrícula UFC</span>
-                        <input type="number" name="matricula" value="<?php echo $row["matricula"]; ?>" class="form-control <?php echo (!empty($matricula_erro)) ? 'is-invalid' : ''; ?>">
+                        <input type="text" name="matricula" value="<?php echo $row["matricula"]; ?>" class="form-control <?php echo (!empty($matricula_erro)) ? 'is-invalid' : ''; ?>">
                         <span class="invalid-feedback"><?php echo $matricula_erro; ?></span>
                     </div>
                 </div>
             </div>   
             <div class="p-4">
-                <button class="btn btn-success" style="width: 150px;" type="submit">Salvar</button>
+                <button class="btn btn-success" style="width: 120px;" type="submit">Salvar</button>
             </div>
         </form>
     </div>

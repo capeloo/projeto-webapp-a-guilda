@@ -11,7 +11,8 @@
     }
 
     //Traz o arquivo config.php onde foi configurado a ligação com o banco de dados
-    require_once 'C:\xampp\htdocs\projeto-webapp-taverna\db\config.php';
+    set_include_path('C:\xampp\htdocs\projeto-webapp-taverna\db');
+    require_once 'config.php';
 
     //Inicializa variáveis vazias
     $apelido = $senha = "";
@@ -43,7 +44,7 @@
         // Caso não tenha dado erro algum, inicia a requisição ao banco
         if(empty($apelido_erro) && empty($senha_erro)){
             // 1. Guarda a requisição em uma variável
-            $sql = "SELECT id, apelido, senha FROM usuario WHERE apelido = (?)";
+            $sql = "SELECT id, admin, apelido, senha FROM usuario WHERE apelido = (?)";
 
             // 2. Prepara a requisição
             if($stmt = $mysqli->prepare($sql)){
@@ -62,6 +63,7 @@
                             $id = $row["id"];
                             $apelido = $row["apelido"];
                             $hashed_senha = $row["senha"];
+                            $admin = $row["admin"];
                     // 7. Verificação da senha
                             if(password_verify($senha, $hashed_senha)){
                                 // 8. Inicia a sessão e atribui valores as variáveis da sessão
@@ -70,6 +72,7 @@
                                 $_SESSION["loggedIn"] = true;
                                 $_SESSION["id"] = $id;
                                 $_SESSION["apelido"] = $apelido;
+                                $_SESSION["admin"] = $admin;
 
                                 // 9. Redireciona para o dashboard
                                 header("location: ../Usuario_dashboard.php");
