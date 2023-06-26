@@ -102,15 +102,15 @@
         $classificacao = trim($_POST["classificacao"]);
         $vagas = trim($_POST["vagas"]);
         $nivel = trim($_POST["nivel"]);
-        //Refatorar a data para mostrar dd/mm/aaaa
+        // Refatorar a data para mostrar dd/mm/aaaa
         $data = trim($_POST["data"]);
         $hora = trim($_POST["hora"]);
 
-        //Caso nenhum erro ocorra na validação
+        // Caso nenhum erro ocorra na validação
         if(empty($foto_erro) && empty($tema_erro) && empty($nome_campanha_erro) && empty($sistema_erro) && empty($sinopse_erro) && empty($requisitos_erro) && empty($duracao_erro) && empty($classificacao_erro) && empty($vagas_erro) && empty($nivel_erro) && empty($data_erro) && empty($hora_erro)) {
             // A fazer:
-            //  1. Incluir os dados do mestre na query;
-            //Prepara a requisição ao banco
+            // 1. Incluir os dados do mestre na query;
+            // Prepara a requisição ao banco
             $sql = "INSERT INTO mesa (id_mestre, email_mestre, nome_mestre, matricula_mestre, celular_mestre,foto, tema, nome_campanha, sistema, sinopse, requisitos, duracao, classificacao_indicativa, numero_vagas, nivel_jogadores, data, hora) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
             if($stmt = $mysqli->prepare($sql)) {
@@ -285,7 +285,7 @@
                     </div>
                     <div class="input-group mx-auto p-2" style="width: 300px;">
                         <span class="input-group-text">Número de vagas</span>
-                        <input type="number" min="0" class="form-control" name="vagas">
+                        <input type="number" min="1" class="form-control" name="vagas">
                         <span class="invalid-feedback"></span>
                     </div>
                     <div class="input-group mx-auto p-2" style="width: 300px;">

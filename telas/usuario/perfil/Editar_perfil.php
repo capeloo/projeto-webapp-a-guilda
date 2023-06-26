@@ -83,7 +83,7 @@
         $discord = $_POST["discord"];
 
         // Valida a matricula (matrículas de alunos possuem 6 dígitos e as de professores possuem 8 dígitos)
-        if(strlen(trim($_POST["matricula"])) < 6 || strlen(trim($_POST["matricula"])) == 7 || strlen(trim($_POST["matricula"])) > 8) {
+        if(strlen(trim($_POST["matricula"])) < 6 || strlen(trim($_POST["matricula"])) > 8) {
             $matricula_erro = "Por favor, coloque um número de matrícula válido.";
         } else if(is_numeric(trim($_POST["matricula"]))) {
             $matricula = trim($_POST["matricula"]);
@@ -237,7 +237,15 @@
                     </div>
                     <div class="input-group mx-auto p-2" style="width: 350px;">
                         <span class="input-group-text">Matrícula UFC</span>
-                        <input type="text" name="matricula" value="<?php echo $row["matricula"]; ?>" class="form-control <?php echo (!empty($matricula_erro)) ? 'is-invalid' : ''; ?>">
+                        <input type="text" name="matricula" 
+                                value="<?php
+                                    if ($row["matricula"] != 0) {
+                                        echo $row["matricula"]; 
+                                    } else {
+                                        echo "";
+                                    }
+                                    
+                                ?>" class="form-control <?php echo (!empty($matricula_erro)) ? 'is-invalid' : ''; ?>">
                         <span class="invalid-feedback"><?php echo $matricula_erro; ?></span>
                     </div>
                 </div>
