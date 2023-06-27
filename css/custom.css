@@ -210,13 +210,12 @@ footer>div>p>a>img {
             display: inline-block;
             background-color: var(--cor1);
             width: 25em;
-            height: 25.5em;
+            height: 29em;
             padding: 1em;
             margin-left: 12em;
             margin-right: 0px;
             margin-top: 5em;
             box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.486);
-            
         }
 
         h1#titulo-cadastro {
@@ -245,12 +244,21 @@ footer>div>p>a>img {
             transition: 0.5s;
         }
 
+        main#main-cadastro>div#cadastro>form {
+            padding-bottom: ;
+        }
+
         div#cadastro>form>div>input {
             font-family: var(--fonte-texto);   
         }
 
         div#cadastro>form>div>input::placeholder {
             color: rgb(189, 189, 189);   
+        }
+
+        div#cadastro>form>div>span {
+            font-family: var(--fonte-texto);  
+            margin-top: 0.5em; 
         }
 
         div#cadastro>form>p {
@@ -292,7 +300,7 @@ footer>div>p>a>img {
                 display: inline-block;
                 background-color: var(--cor1);
                 width: 25em;
-                height: 25.5em;
+                height: 26em;
                 padding: 1em;
                 margin-left: 11.22em;
                 margin-right: 0px;
@@ -334,6 +342,11 @@ footer>div>p>a>img {
                 color: rgb(189, 189, 189);   
             }
 
+            div#login>form>div>span {
+                font-family: var(--fonte-texto);  
+                margin-top: 0.5em; 
+            }
+
             main#main-login>div>form>p {
                 font-family: var(--fonte-texto);
                 font-size: 1em;
@@ -361,3 +374,16 @@ footer>div>p>a>img {
         /* /FOOTER */
     /* /BODY */
 /* /Login.php */
+
+/* Usuario_dashboard.php */
+    /* BODY */
+        body#body-userDash {
+            overflow-x: hidden;
+        }
+        /* HEADER */
+            header#header-userDash {
+                width: 98.7vw;
+            }
+    /* /HEADER */
+    /* /BODY */
+/* /Usuario_dashboard.php */

@@ -159,7 +159,7 @@
                 <input type="password" name="confirmar_senha" class="form-control <?php echo (!empty($confirmar_senha_erro)) ? 'is-invalid' : ''; ?>" value="<?php echo $confirmar_senha; ?>" placeholder="Confirmar senha" style="border-radius: 0.2em;">
                 <span class="invalid-feedback"><?php echo $confirmar_senha_erro; ?></span>
             </div>
-            <div class="mt-4">
+            <div class="mt-2">
                 <button id="cadastrar-cadastro" type="submit">Cadastrar</button>
             </div>
             <p>

@@ -141,7 +141,7 @@
                 <input type="password" name="senha" class="form-control <?php echo (!empty($senha_erro)) ? 'is-invalid' : ''; ?>" value="<?php echo $senha; ?>" placeholder="Senha" style="border-radius: 0.2em;">
                 <span class="invalid-feedback"><?php echo $senha_erro; ?></span>
             </div>
-            <div class="mt-4">
+            <div class="mt-2">
                 <button id="entrar-login" type="submit">Entrar</button>
             </div>
             <p>Não tem uma conta? <a href="Cadastro.php">Inscreva-se agora</a>.</p>
