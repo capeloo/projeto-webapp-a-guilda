@@ -339,7 +339,7 @@ footer>div>p>a>img {
             }
     
             div#login>form>div>input::placeholder {
-                color: rgb(189, 189, 189);   
+                color: #bdbdbd;   
             }
 
             div#login>form>div>span {
@@ -384,6 +384,10 @@ footer>div>p>a>img {
             header#header-userDash {
                 width: 98.7vw;
             }
-    /* /HEADER */
+
+            header#header-userDash>nav>div>div>form>div>input::placeholder {
+                color: #bdbdbd;   
+            }
+        /* /HEADER */
     /* /BODY */
 /* /Usuario_dashboard.php */
