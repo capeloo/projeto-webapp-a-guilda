@@ -103,7 +103,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="shortcut icon" href="../../../assets/images/compass.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../../../assets/images/favicon.png" type="image/x-icon">
     <!-- Chamando as folhas de estilo do Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../../../css/media-queries.css"> 
@@ -117,7 +117,7 @@
         <a class="navbar-brand" href="../../../index.php" id="logo"><div>A Taverna</div></a>
         <div>
           <a href="Cadastro.php" id="button-cadastrar"><div>Criar conta</div></a>
-          <a href="Login.php" id="button-entrar"><div>Entrar</div></a>
+          <a href="Login.php" id="button-entrar-login"><div>Entrar</div></a>
         </div>
       </div>
     </nav> 
@@ -149,14 +149,14 @@
         </form>
         </div>
         <div style="width: 0; height: 0; border-top: 25px solid transparent; border-bottom: 25px solid transparent; border-left:5em solid #134F59; margin-top: 12em;"></div>
-        <div style="background-image: url(../../../assets/images/olhos.svg); background-size: contain; background-repeat: no-repeat; width: 5.2em; margin-left: 15.8em; margin-top: 12.4em;"></div>
+        <div style="background-image: url(../../../assets/images/olhos.svg); background-size: contain; background-repeat: no-repeat; width: 5.2em; margin-left: 16.5em; margin-top: 12.4em;"></div>
         
     </div>
         </main>
         <footer id="footer-login">
     <div class="container-fluid">
       <p>&copy; A Guilda. Siga em frente!</p>
-      <p>Siga-nos:<a href="https://www.instagram.com/aguilda_smd/" target="_blank"><img src="../../../assets/Ellipse.svg"></a></p>
+      <p>Siga-nos:<a href="https://www.instagram.com/aguilda_smd/" target="_blank"><img src="../../../assets/images/insta-icon.png"></a></p>
     </div>
   </footer>
     <!-- Chamando os scripts do Bootstrap -->

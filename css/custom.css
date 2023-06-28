@@ -35,173 +35,171 @@
 }
 
 body {
-    width: 98.75vw;
+    width: 100vw;
     height: 100vh;
     background-color: var(--cor2);
 }
 /* /GENERIC STYLES */
 
-/* HEADER */
-header {
-    background-color: var(--cor2);
-    box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.493);
-}
+/* index.php */
+    /* HEADER */
+        header {
+            background-color: var(--cor2);
+            box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.493);
+        }
 
-header>nav>div>div {
-    display: flex;
-}
-
-a#logo {
-    font-family: var(--fonte-logo);
-    font-size: 2em;
-    color: var(--cor1);
-}
-
-a#button-entrar {
-    font-family: var(--fonte-texto);
-    font-size: 1.2em;
-    width: 4em;
-    text-align: center;
-    padding: 0.4em;
-    border-radius: 0.2em;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.315);
-    color: var(--cor1);
-    background-color: var(--cor0);
-    text-decoration: none;
-}
-
-a#button-entrar:hover {
-    background-color: var(--cor1);
-    color: var(--cor2);
-    transition: 0.5s;
-}
-
-a#button-cadastrar {
-    font-family: var(--fonte-texto);
-    font-size: 1.2em;
-    width: 6em;
-    margin-right: 0.5em;
-    text-align: center;
-    padding: 0.4em;
-    border-radius: 0.2em;
-    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.384);
-    color: var(--cor2);
-    background-color: var(--cor3);
-    text-decoration: none;
-}
-
-a#button-cadastrar:hover {
-    background-color: var(--cor1);
-    color: var(--cor2);
-    transition: 0.5s;
-}
-
-/* /HEADER */
-
-/* MAIN */
-    /* SECTION 0 */
-        main>section>div {
+        header>nav>div>div {
             display: flex;
-            justify-content: center;
-            padding: 2em;
-            margin-left: 5em;
         }
 
-        main>section>div>div {
-            width: 35em;
-        }
-
-        main>section>div>div>h1 {
-            font-family: var(--fonte-titulo);
-            font-size: 4em;
-            line-height: 0.9em;
-            margin-top: 3em;
-            margin-bottom: 0.4em;
+        a#logo {
+            font-family: var(--fonte-logo);
+            font-size: 2em;
             color: var(--cor1);
         }
 
-        main>section>div>div>p {
+        a#button-entrar {
             font-family: var(--fonte-texto);
-            font-size: 1.5em;
-            margin-bottom: 1.6em;
-            color: var(--cor1);
-        }
-
-        main>section>div>div>a {
-            text-decoration: none;
-        }
-        main>section>div>div>a>div {
-            font-family: var(--fonte-texto);
-            font-size: 1.4em;
-            color: var(--cor2);
-            background-color: var(--cor3);
+            font-size: 1.2em;
+            width: 4em;
+            text-align: center;
             padding: 0.4em;
             border-radius: 0.2em;
-            box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.384);
-            margin-bottom: 1em;
-            text-align: center;
-            width: 12em;
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.315);
+            color: var(--cor1);
+            background-color: var(--cor0);
+            text-decoration: none;
         }
 
-        main>section>div>div>a>div:hover {
+        a#button-entrar:hover {
             background-color: var(--cor1);
             color: var(--cor2);
             transition: 0.5s;
         }
 
-        div#imagem {
-            background: url(../assets/images/bussola.jpg);
-            background-size: cover;
-            margin: 0px;
-            width: 40em;
-            height: 40em;
+        a#button-cadastrar {
+            font-family: var(--fonte-texto);
+            font-size: 1.2em;
+            width: 6em;
+            margin-right: 0.5em;
+            text-align: center;
+            padding: 0.4em;
+            border-radius: 0.2em;
+            box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.384);
+            color: var(--cor2);
+            background-color: var(--cor3);
+            text-decoration: none;
         }
-    /* /SECTION 0 */
-/* /MAIN */
 
-/* FOOTER */
-footer {
-    position: relative;
-    bottom: 0;
+        a#button-cadastrar:hover {
+            background-color: var(--cor1);
+            color: var(--cor2);
+            transition: 0.5s;
+        }
+    /* /HEADER */
+    /* MAIN */
+        /* SECTION 0 */
+            main>section>div {
+                display: flex;
+                justify-content: center;
+                padding: 2em;
+                margin-left: 5em;
+            }
 
-    background-color: var(--cor1);
-}
+            main>section>div>div {
+                width: 35em;
+            }
 
-footer>div {
-    display: flex;
-    justify-content: space-between;
-    padding: 1.3em;
-}
+            main>section>div>div>h1 {
+                font-family: var(--fonte-titulo);
+                font-size: 4em;
+                line-height: 0.9em;
+                margin-top: 3em;
+                margin-bottom: 0.4em;
+                color: var(--cor1);
+            }
 
-footer>div>p {
-    font-family: var(--fonte-texto);
-    font-size: 1.2em;
-    margin: 0px;
-    color: var(--cor2);
-}
+            main>section>div>div>p {
+                font-family: var(--fonte-texto);
+                font-size: 1.5em;
+                margin-bottom: 1.6em;
+                color: var(--cor1);
+            }
 
-footer>div>p>a>img {
-    margin-left: 0.5em;
-    width: 1.5em;
-    height: 1.5em;
-}
-/* /FOOTER */
+            main>section>div>div>a {
+                text-decoration: none;
+            }
+            main>section>div>div>a>div {
+                font-family: var(--fonte-texto);
+                font-size: 1.4em;
+                color: var(--cor2);
+                background-color: var(--cor3);
+                padding: 0.4em;
+                border-radius: 0.2em;
+                box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.384);
+                margin-bottom: 1em;
+                text-align: center;
+                width: 12em;
+            }
 
+            main>section>div>div>a>div:hover {
+                background-color: var(--cor1);
+                color: var(--cor2);
+                transition: 0.5s;
+            }
+
+            div#imagem {
+                background: url(../assets/images/bussola.jpg);
+                background-size: cover;
+                margin: 0px;
+                width: 40em;
+                height: 40em;
+            }
+        /* /SECTION 0 */
+    /* /MAIN */
+    /* FOOTER */
+        footer {
+            position: relative;
+            bottom: 0;
+
+            background-color: var(--cor1);
+        }
+
+        footer>div {
+            display: flex;
+            justify-content: space-between;
+            padding: 1.3em;
+        }
+
+        footer>div>p {
+            font-family: var(--fonte-texto);
+            font-size: 1.2em;
+            margin: 0px;
+            color: var(--cor2);
+        }
+
+        footer>div>p>a>img {
+            margin-left: 0.3em;
+            width: 1.6em;
+            height: 1.6em;
+        }
+    /* /FOOTER */
+/* /index.php */
 
 /* Cadastro.php */
     /* HEADER */
         header#header-cadastro {
-            width: 99vw;
+            width: 100vw;
             
         }
 
         header#header-cadastro>nav>div>div>a#button-entrar {
-            margin-right: 0.2em;
+            margin-right: 0.88em;
         }
     /* /HEADER */
     /* MAIN */
         main#main-cadastro {
-            width: 99vw; 
+            width: 100vw; 
             height: 100vh;
         
         }
@@ -244,10 +242,6 @@ footer>div>p>a>img {
             transition: 0.5s;
         }
 
-        main#main-cadastro>div#cadastro>form {
-            padding-bottom: ;
-        }
-
         div#cadastro>form>div>input {
             font-family: var(--fonte-texto);   
         }
@@ -275,7 +269,11 @@ footer>div>p>a>img {
     /* /MAIN */
     /* FOOTER */
         footer#footer-cadastro {
-            width: 99vw;
+            width: 100vw;
+        }
+
+        footer#footer-cadastro>div>p>a {
+            margin-right: 1em;
         }
     /* /FOOTER */
 /* /Cadastro.php */
@@ -287,12 +285,32 @@ footer>div>p>a>img {
         }
         /* HEADER */
             header#header-login {
-                width: 98.7vw;
+                width: 100vw;
+            }
+
+            a#button-entrar-login {
+                font-family: var(--fonte-texto);
+                font-size: 1.2em;
+                width: 4em;
+                text-align: center;
+                padding: 0.4em;
+                border-radius: 0.2em;
+                box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.315);
+                color: var(--cor1);
+                background-color: var(--cor0);
+                text-decoration: none;
+                margin-right: 0.88em;
+            }
+        
+            a#button-entrar-login:hover {
+                background-color: var(--cor1);
+                color: var(--cor2);
+                transition: 0.5s;
             }
         /* /HEADER */
         /* MAIN */
             main#main-login {
-                width: 98.7vw; 
+                width: 100vw; 
                 height: 100vh;
             }
 
@@ -366,10 +384,14 @@ footer>div>p>a>img {
         /* /MAIN */
         /* FOOTER */
             footer#footer-login {
-                width: 98.7vw;
+                width: 100vw;
 
                 position: relative;
                 bottom: 0;
+            }
+
+            footer#footer-login>div>p>a {
+                margin-right: 1em;
             }
         /* /FOOTER */
     /* /BODY */
@@ -382,12 +404,64 @@ footer>div>p>a>img {
         }
         /* HEADER */
             header#header-userDash {
-                width: 98.7vw;
+                width: 100vw;
+            }
+
+            header#header-userDash>nav>div>a#logo {
+                margin-left: 0.5em;
             }
 
             header#header-userDash>nav>div>div>form>div>input::placeholder {
                 color: #bdbdbd;   
             }
         /* /HEADER */
+        /* ANÚNCIOS */
+            div#userDash-carousel-item {
+                height: 30em;
+                display: inline;
+            }    
+            
+            div#userDash-carousel-item-2 {
+                height: 30em;
+            }  
+
+            div#userDash-carousel-caption {
+                background-color: #212529bd; 
+                position: relative; 
+                left: 0; 
+                top: -8.5em;
+                padding: 0;
+            }
+
+            div#userDash-carousel-caption>div>div>div>p {
+                background-color: black;
+                font-family: var(--fonte-texto);
+                font-size: 0.7em;
+                width: 6.5em;
+                border-radius: 0.3em;
+                padding: 0.2em;
+                margin-top: 0.5em;
+            }
+
+            div#body-hx {
+                padding: 1em;
+                flex-grow: 2;
+            }
+
+            h1#userDash-h1 {
+                font-family: var(--fonte-texto);
+            }
+
+            h3#userDash-h3 {
+                font-family: var(--fonte-texto);
+            }
+
+            img#taverneiro {
+                height: 15em;
+                position: relative;
+                top: -5em;
+            }
+
+        /* /ANÚNCIOS */
     /* /BODY */
 /* /Usuario_dashboard.php */

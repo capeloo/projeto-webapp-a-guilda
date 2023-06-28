@@ -18,8 +18,8 @@
       echo "<meta charset='UTF-8'>";
       echo "<meta http-equiv='X-UA-Compatible' content='IE=edge'>";
       echo "<meta name='viewport' content='width=device-width, initial-scale=1.0'>";
-      echo "<title>Dashboard</title>";
-      echo "<link rel='shortcut icon' href='./../../assets/fav.png' type='image/x-icon'>";
+      echo "<title>A Taverna</title>";
+      echo "<link rel='shortcut icon' href='../../assets/images/favicon.png' type='image/x-icon'>";
       echo "<link href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css' rel='stylesheet'>";
       echo '<link rel="stylesheet" href="../../css/media-queries.css">';
       echo '<link rel="stylesheet" href="../../css/custom.css">';
@@ -36,7 +36,7 @@
       echo "</div>";
       echo "</form>";
       echo '<div class="dropdown">';
-      echo '<button class="btn dropdown-toggle" data-bs-toggle="dropdown"><img src="../../assets/images/mesa.png"></button>';
+      echo '<button class="btn dropdown-toggle" data-bs-toggle="dropdown"><img src="../../assets/images/mesa.png" style="width: 2.8em;"></button>';
       echo '<div class="dropdown-menu">';
       echo '<a class="dropdown-item" href="../mesa/Lista_de_mesas.php">Lista de mesas</a>';
       echo '<a class="dropdown-item" href="../mesa/Minhas_mesas.php">Minhas mesas</a>';
@@ -44,13 +44,13 @@
       echo '</div>';
       echo '</div>';
       echo '<div class="dropdown">';
-      echo '<button class="btn dropdown-toggle" data-bs-toggle="dropdown"><img src="../../assets/images/noticias.png"></button>';
+      echo '<button class="btn dropdown-toggle" data-bs-toggle="dropdown"><img src="../../assets/images/noticias.png" style="width: 2.8em;"></button>';
       echo '<div class="dropdown-menu dropdown-menu-lg-end">';
       echo '<a class="dropdown-item" href="../noticias/Lista_de_noticias.php">Feed de notícias</a>';
       echo '</div>';
       echo '</div>';
       echo '<div class="dropdown">';
-      echo '<button class="btn dropdown-toggle" data-bs-toggle="dropdown"><img src="../../assets/images/pessoa.png"></button>';
+      echo '<button class="btn dropdown-toggle" data-bs-toggle="dropdown"><img src="../../assets/images/pessoa.png" style="width: 2.8em;"></button>';
       echo '<div class="dropdown-menu dropdown-menu-lg-end">';
       echo '<a class="dropdown-item" href="perfil/Perfil.php">Meu perfil</a>';
       echo '<a class="dropdown-item" href="perfil/Editar_perfil.php">Editar perfil</a>';
@@ -65,7 +65,7 @@
 
       //Anúncios
 
-      $sql = "SELECT foto, nome_campanha, sinopse
+      $sql = "SELECT foto, nome_campanha, data, duracao, sistema, nivel_jogadores, classificacao_indicativa
               FROM mesa
               WHERE anuncio = 1
               ORDER BY data
@@ -83,31 +83,55 @@
       echo '<li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></li>';
       echo '<li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></li>';
       echo '<li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></li>';
-      echo '</ol>';
       echo '</ul>';
+      echo '</ol>';
       echo '<div class="carousel-inner">';
-      echo '<div class="carousel-item active">';
+      echo '<div class="carousel-item active" id="userDash-carousel-item">';
       
       $cont = 0;
 
       while ($row = $stmt_res->fetch_assoc()) {
         $cont++;
         echo '<img class="d-block w-100" style="height: 480px; margin: auto;" src="' .$row['foto']. '" alt="First slide">';
-        echo '<div class="carousel-caption text-start mb-4">';
-        echo '<h1>' .$row["nome_campanha"]. '</h1>';
-        echo '<h3>' .$row["sinopse"]. '</h3>';
+        echo '<div class="carousel-caption text-start" id="userDash-carousel-caption">';
+        echo '<div style="display: flex;">';
+        echo '<img src="../../assets/images/daddy 1.png" id="taverneiro">';
+        echo '<div id="body-hx">';
+        echo '<h1 id="userDash-h1">' .$row["nome_campanha"]. '</h1>';
+        echo '<h3 id="userDash-h3">' .$row["data"]. '</h3>';
+        echo '</div>';
+        echo '<div style="padding: 1em; display: flex;">';
+        echo '<div style="text-align:center; margin-right: 0.5em;">';
+        echo '<img src="../../assets/images/icons8-hourglass-100.png" style="width:3em; margin-top: 0.7em;">';
+        echo '<p>'.$row["duracao"].'</p>';
+        echo '</div>';
+        echo '<div style="text-align:center; margin-right: 0.5em;">';
+        echo '<img src="../../assets/images/icons8-year-of-dragon-100.png" style="width:3em;margin-top: 0.7em;">';
+        echo '<p>'.$row["sistema"].'</p>';
+        echo '</div>';
+        echo '<div style="text-align:center; margin-right: 0.5em;">';
+        echo '<img src="../../assets/images/icons8-battle-100.png" style="width:3em;
+        margin-top: 0.7em;">';
+        echo '<p>'.$row["nivel_jogadores"].'</p>';
+        echo '</div>';
+        echo '<div style="text-align:center; margin-right: 1.5em;">';
+        echo '<img src="../../assets/images/classificacao-'.$row["classificacao_indicativa"].'-anos-logo.png" style="width: 3em; margin-top: 0.7em; border-radius: 0.85em;">';
+        echo '<p>'.$row["classificacao_indicativa"].'</p>';
+        echo '</div>';
+        echo '</div>';
+        echo '</div>';
         echo '</div>';
         echo '</div>';
         if($cont < 3){
-          echo '<div class="carousel-item">';
+          echo '<div class="carousel-item" id="userDash-carousel-item-2">';
         } else {};
       }
       
       echo '</div>';
-      echo  '<a class="carousel-control-prev" style="background: linear-gradient(to left, #21252900, #212529);" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">';
+      echo  '<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">';
       echo '<span class="carousel-control-prev-icon" aria-hidden="true"></span>';
       echo '</a>';  
-      echo '<a class="carousel-control-next" style="background: linear-gradient(to right, #21252900, #212529);" href="#carouselExampleIndicators" role="button" data-bs-slide="next">';
+      echo '<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-bs-slide="next">';
       echo '<span class="carousel-control-next-icon" aria-hidden="true"></span>';
       echo '</a>';
       echo '</div>';
