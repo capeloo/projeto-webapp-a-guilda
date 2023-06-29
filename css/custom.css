@@ -449,11 +449,11 @@ body {
             }
 
             h1#userDash-h1 {
-                font-family: var(--fonte-texto);
+                font-family: var(--fonte-titulo);
             }
 
             h3#userDash-h3 {
-                font-family: var(--fonte-texto);
+                font-family: var(--fonte-titulo);
             }
 
             img#taverneiro {
@@ -461,7 +461,47 @@ body {
                 position: relative;
                 top: -5em;
             }
-
         /* /ANÚNCIOS */
+        /* MINHAS MESAS */
+            div#userDash-minhasMesas {
+                background-image: url("../assets/images/placa.svg");
+                margin:auto; 
+                width: 100%;
+                position: relative;
+                top: -3em;
+                z-index: -1;
+            }
+
+            div#userDash-minhasMesas>h1 {
+                font-family: var(--fonte-titulo);
+                font-size: 3.5em;
+                color: var(--cor3);
+            }
+
+            div#userDash-minhasMesas>div>h2 {
+                font-family: var(--fonte-titulo);
+                font-size: 2.5em;
+                color: var(--cor3);
+            }
+        /* /MINHAS MESAS */
+        /* NOTICIAS */    
+        div#userDash-noticias {
+            margin:auto;
+            width: 100%;
+            position: relative;
+            top: -6em;
+        }
+
+        div#userDash-noticias>h1 {
+            font-family: var(--fonte-titulo);
+            font-size: 3.5em;
+            color: var(--cor3);
+        }
+        /* /NOTICIAS */
+        /* FOOTER */
+            footer#userDash-footer>div>p>a {
+                margin-right: 1em;
+            }
+        /* /FOOTER */
     /* /BODY */
 /* /Usuario_dashboard.php */
