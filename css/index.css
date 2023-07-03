@@ -85,16 +85,6 @@ body {
             transition: 0.5s;
         }*/
 
-        div#borda-left {
-            background: url(../assets/images/borda-left.png);
-            background-size: contain;
-            background-repeat: no-repeat;
-            width: 3.4em;
-            position: relative;
-            left: 1.5em;
-            
-        }
-
         a#button-cadastrar {
             font-family: var(--fonte-texto);
             font-size: 1.2em;

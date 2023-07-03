@@ -126,7 +126,7 @@
     <!-- Chamando as folhas de estilo do Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../../../css/media-queries.css"> 
-    <link rel="stylesheet" href="../../../css/custom.css">
+    <link rel="stylesheet" href="../../../css/index.css">
 </head>
 <body style="overflow-x: hidden;">
 <header class="sticky-top" id="header-cadastro">

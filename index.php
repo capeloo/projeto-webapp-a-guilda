@@ -9,7 +9,7 @@
     <link rel="shortcut icon" href="assets/images/faviconnn.png" type="image/x-icon">
     <!-- Chamando as folhas de estilo do Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/media-queries.css">
 </head>
 <body>
@@ -19,7 +19,6 @@
       <div class="container-fluid">
         <a class="navbar-brand" href="index.php"><div id="logo"></div></a>
         <div>
-          <div id="borda-left"></div>
           <a href="telas/usuario/login/Cadastro.php" id="button-cadastrar"><div>Criar conta</div></a>
           <a href="telas/usuario/login/Login.php" id="button-entrar"><div>Entrar</div></a>
         </div>
