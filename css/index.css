@@ -99,10 +99,6 @@ body {
             text-decoration: none;
         }
 
-        a#button-cadastrar>div {
-            padding-left: 1em;
-        }
-
         /*a#button-cadastrar:hover {
             background-color: var(--cor1);
             color: var(--cor2);
