@@ -1,0 +1,40 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: "DO David Gothic";
+    src: url("../assets/fonts/DO-David-Gothic.ttf");
+ }
+
+@font-face {
+    font-family: "Rakkas";
+    src: url("../assets/fonts/Rakkas-Regular.ttf");
+}
+
+@font-face {
+    font-family: "Montagna LTD";
+    src: url("../assets/fonts/Montagna-LTD.otf");
+}
+
+/* GENERIC STYLES */
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+:root{
+    --cor0: #FADEB7;
+    --cor1: #134F59;
+    --cor2: #E8E0CB;
+    --cor3: #AA6857;
+
+    --fonte-logo: "DO David Gothic";
+    --fonte-titulo: "Rakkas";
+    --fonte-texto: "Montagna LTD";
+
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
+}

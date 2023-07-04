@@ -22,7 +22,8 @@
       echo "<link rel='shortcut icon' href='../../assets/images/favicon.png' type='image/x-icon'>";
       echo "<link href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css' rel='stylesheet'>";
       echo '<link rel="stylesheet" href="../../css/media-queries.css">';
-      echo '<link rel="stylesheet" href="../../css/custom.css">';
+      echo '<link rel="stylesheet" href="../../css/standard.css">';
+      echo '<link rel="stylesheet" href="../../css/index.css">';
       echo "</head>";
       echo "<body id='body-userDash'>";
       echo '<header class="sticky-top" id="header-userDash">';

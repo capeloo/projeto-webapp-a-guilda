@@ -1,46 +1,3 @@
-@charset "UTF-8";
-
-@font-face {
-    font-family: "DO David Gothic";
-    src: url("../assets/fonts/DO-David-Gothic.ttf");
- }
-
-@font-face {
-    font-family: "Rakkas";
-    src: url("../assets/fonts/Rakkas-Regular.ttf");
-}
-
-@font-face {
-    font-family: "Montagna LTD";
-    src: url("../assets/fonts/Montagna-LTD.otf");
-}
-
-/* GENERIC STYLES */
-*{
-    margin: 0px;
-    padding: 0px;
-}
-
-:root{
-    --cor0: #FADEB7;
-    --cor1: #134F59;
-    --cor2: #E8E0CB;
-    --cor3: #AA6857;
-    --cor4: #8FBEAE;
-
-    --fonte-logo: "DO David Gothic";
-    --fonte-titulo: "Rakkas";
-    --fonte-texto: "Montagna LTD";
-
-}
-
-body {
-    width: 100vw;
-    height: 100vh;
-    overflow-x: hidden;
-}
-/* /GENERIC STYLES */
-
 /* index.php */
     /* HEADER */
         header {
@@ -195,12 +152,12 @@ body {
         footer>div {
             display: flex;
             justify-content: space-between;
-            padding: 1.3em;
+            padding: 1em;
         }
 
         footer>div>p {
             font-family: var(--fonte-texto);
-            font-size: 1.2em;
+            font-size: 1em;
             margin: 0px;
             color: var(--cor2);
         }
@@ -213,98 +170,6 @@ body {
         }
     /* /FOOTER */
 /* /index.php */
-
-/* Cadastro.php */
-    /* HEADER */
-        header#header-cadastro {
-            width: 100vw;
-            
-        }
-
-        header#header-cadastro>nav>div>div>a#button-entrar {
-            margin-right: 0.88em;
-        }
-    /* /HEADER */
-    /* MAIN */
-        main#main-cadastro {
-            width: 100vw; 
-            height: 100vh;
-        
-        }
-
-        div#cadastro {
-            display: inline-block;
-            background-color: var(--cor1);
-            width: 25em;
-            height: 29em;
-            padding: 1em;
-            margin-left: 12em;
-            margin-right: 0px;
-            margin-top: 5em;
-            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.486);
-        }
-
-        h1#titulo-cadastro {
-            font-family: var(--fonte-titulo);
-            font-size: 2.5em;
-            color: var(--cor2);
-        }
-
-        button#cadastrar-cadastro {
-            font-family: var(--fonte-texto);
-            font-size: 1.2em;
-            color: var(--cor2);
-            background-color: var(--cor3);
-            padding: 0.4em;
-            border-radius: 0.2em;
-            border: 0px;
-            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.486);
-            margin-bottom: 1em;
-            text-align: center;
-            width: 14.8em;
-        }
-
-        button#cadastrar-cadastro:hover {
-            background-color: var(--cor0);
-            color: var(--cor1);
-            transition: 0.5s;
-        }
-
-        div#cadastro>form>div>input {
-            font-family: var(--fonte-texto);   
-        }
-
-        div#cadastro>form>div>input::placeholder {
-            color: rgb(189, 189, 189);   
-        }
-
-        div#cadastro>form>div>span {
-            font-family: var(--fonte-texto);  
-            margin-top: 0.5em; 
-        }
-
-        div#cadastro>form>p {
-            font-family: var(--fonte-texto);
-            font-size: 1em;
-            color: var(--cor2);
-        }
-
-        div#cadastro>form>p>a {
-            font-family: var(--fonte-texto);
-            font-size: 1em;
-            color: var(--cor3);
-        }
-    /* /MAIN */
-    /* FOOTER */
-        footer#footer-cadastro {
-            width: 100vw;
-        }
-
-        footer#footer-cadastro>div>p>a {
-            margin-right: 1em;
-        }
-    /* /FOOTER */
-/* /Cadastro.php */
 
 /* Login.php */
     /* BODY */
