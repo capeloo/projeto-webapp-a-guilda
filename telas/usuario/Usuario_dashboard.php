@@ -23,13 +23,13 @@
       echo "<link href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css' rel='stylesheet'>";
       echo '<link rel="stylesheet" href="../../css/media-queries.css">';
       echo '<link rel="stylesheet" href="../../css/standard.css">';
-      echo '<link rel="stylesheet" href="../../css/index.css">';
+      echo '<link rel="stylesheet" href="../../css/usuario_dashboard.css">';
       echo "</head>";
       echo "<body id='body-userDash'>";
       echo '<header class="sticky-top" id="header-userDash">';
       echo "<nav class='navbar'>";
       echo "<div class='container-fluid'>";
-      echo "<a class='navbar-brand' id='logo' href='Usuario_dashboard.php'> A Taverna</a>";
+      echo "<a class='navbar-brand' href='Usuario_dashboard.php'><div id='logo'></div></a>";
       echo '<div>';
       echo "<form class='form-inline' action='../pesquisar.php' method='post' style='margin-top:0.85em;'>";
       echo "<div style='display:flex;'>";
@@ -104,20 +104,20 @@
         echo '</div>';
         echo '<div style="padding: 1em; display: flex;">';
         echo '<div style="text-align:center; margin-right: 0.5em;">';
-        echo '<img src="../../assets/images/icons8-hourglass-100.png" style="width:3em; margin-top: 0.7em;">';
+        echo '<img src="../../assets/images/icons8-hourglass-100.png" style="width:4.5em; height: 3em; margin-top: 0.7em;">';
         echo '<p>'.$row["duracao"].'</p>';
         echo '</div>';
         echo '<div style="text-align:center; margin-right: 0.5em;">';
-        echo '<img src="../../assets/images/icons8-year-of-dragon-100.png" style="width:3em;margin-top: 0.7em;">';
+        echo '<img src="../../assets/images/icons8-year-of-dragon-100.png" style="width:4.5em; height: 3em;margin-top: 0.7em;">';
         echo '<p>'.$row["sistema"].'</p>';
         echo '</div>';
         echo '<div style="text-align:center; margin-right: 0.5em;">';
-        echo '<img src="../../assets/images/icons8-battle-100.png" style="width:3em;
+        echo '<img src="../../assets/images/icons8-battle-100.png" style="width:4.5em; height: 3em;
         margin-top: 0.7em;">';
         echo '<p>'.$row["nivel_jogadores"].'</p>';
         echo '</div>';
         echo '<div style="text-align:center; margin-right: 1.5em;">';
-        echo '<img src="../../assets/images/classificacao-'.$row["classificacao_indicativa"].'-anos-logo.png" style="width: 3em; margin-top: 0.7em; border-radius: 0.85em;">';
+        echo '<img src="../../assets/images/classificacao-'.$row["classificacao_indicativa"].'-anos-logo.png" style="width:4.5em; height: 3em; margin-top: 0.7em; border-radius: 0.85em;">';
         echo '<p>'.$row["classificacao_indicativa"].'</p>';
         echo '</div>';
         echo '</div>';
@@ -153,7 +153,7 @@
 
         //Renderiza os dados na forma de tabela
         if($qtd > 0){
-        echo '<img  src="../../assets/images/borda-horizontal.png" style=" background-color: transparent;width: 79em; height: 3em; position: relative; top: -1em;">';
+        echo '<img  src="../../assets/images/borda-horizontal.png" style=" background-color: transparent;width: 84.3em; height: 3em; position: relative; top: -1em;">';
         echo '<div class="row container-fluid text-center" id="userDash-minhasMesas">';
         echo '<h1 class="p-2 mt-5">Minhas mesas</h1>';
         echo '<div class="col">';
@@ -283,7 +283,7 @@
 
         //Renderiza os dados na forma de tabela
         if($qtd > 0){
-        echo '<img  src="../../assets/images/borda-horizontal.png" style=" background-color: transparent;width: 79em; height: 3em; position: relative; top: -4em;">';
+        echo '<img  src="../../assets/images/borda-horizontal.png" style=" background-color: transparent;width: 84.3em; height: 3em; position: relative; top: -4em;">';
         echo '<div class="container-fluid text-center p-4" id="userDash-noticias">';
         $cont = 0;
         while($row = $stmt->fetch_object()){
@@ -346,7 +346,7 @@
       echo '<footer id="userDash-footer">';
       echo '<div class="container-fluid">';
       echo '<p>&copy; A Guilda. Siga em frente!</p>';
-      echo '<p>Siga-nos:<a href="https://www.instagram.com/aguilda_smd/" target="_blank"><img src="../../assets/images/insta-icon.png"></a></p>';
+      echo '<p>Siga-nos:<a href="https://www.instagram.com/aguilda_smd/" target="_blank"><img src="../../assets/images/insta-icon (3).png"></a></p>';
       echo '</div>';
       echo '</footer>';
       echo '<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>';

@@ -2,12 +2,69 @@
     /* HEADER */
     header#header-cadastro {
         width: 100vw;
-        
+        background-color: var(--cor2);
+        /*box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.493);*/
+    }
+
+    header>nav>div>div {
+        display: flex;
     }
 
     header#header-cadastro>nav>div>div>a#button-entrar {
         margin-right: 0.88em;
     }
+
+    div#logo {
+        background-image: url(../assets/images/logo-teste.png); 
+        background-size: cover;
+        background-repeat: no-repeat;
+        width: 6.1em;
+        height: 3.5em;
+
+        /*font-family: var(--fonte-logo);
+        font-size: 2em;
+        color: var(--cor1);*/
+    }
+
+    a#button-entrar {
+        font-family: var(--fonte-texto);
+        font-size: 1.2em;
+        width: 4em;
+        text-align: center;
+        padding: 0.4em;
+        border-radius: 0.2em;
+        /*box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.315);*/
+        color: var(--cor2);
+        background-color: var(--cor1);
+        text-decoration: none;
+        margin-right: 0.88em;
+    }
+
+    /*a#button-entrar:hover {
+        background-color: var(--cor3);
+        color: var(--cor2);
+        transition: 0.5s;
+    }*/
+
+    a#button-cadastrar {
+        font-family: var(--fonte-texto);
+        font-size: 1.2em;
+        width: 6.5em;
+        margin-right: 0.5em;
+        text-align: center;
+        padding: 0.4em;
+        border-radius: 0.2em;
+        /*box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.384);*/
+        color: var(--cor2);
+        background-color: var(--cor3);
+        text-decoration: none;
+    }
+
+    /*a#button-cadastrar:hover {
+        background-color: var(--cor1);
+        color: var(--cor2);
+        transition: 0.5s;
+    }*/
 /* /HEADER */
 /* MAIN */
     main#main-cadastro {
@@ -42,17 +99,17 @@
         padding: 0.4em;
         border-radius: 0.2em;
         border: 0px;
-        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.486);
+        /*box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.486);*/
         margin-bottom: 1em;
         text-align: center;
         width: 14.8em;
     }
 
-    button#cadastrar-cadastro:hover {
+    /*button#cadastrar-cadastro:hover {
         background-color: var(--cor0);
         color: var(--cor1);
         transition: 0.5s;
-    }
+    }*/
 
     div#cadastro>form>div>input {
         font-family: var(--fonte-texto);   
@@ -80,12 +137,38 @@
     }
 /* /MAIN */
 /* FOOTER */
-    footer#footer-cadastro {
+    footer {
+        position: relative;
+        bottom: 0;
+
         width: 100vw;
+
+        background-color: var(--cor1);
+    }
+
+    footer>div {
+        display: flex;
+        justify-content: space-between;
+        padding: 1em;
+    }
+
+    footer>div>p {
+        font-family: var(--fonte-texto);
+        font-size: 1em;
+        margin: 0px;
+        color: var(--cor2);
+    }
+
+    footer>div>p>a>img {
+        margin-left: 0.3em;
+        margin-right: 1em;
+        width: 1.6em;
+        height: 1.6em;
     }
 
     footer#footer-cadastro>div>p>a {
         margin-right: 1em;
     }
+
 /* /FOOTER */
 /* /Cadastro.php */
