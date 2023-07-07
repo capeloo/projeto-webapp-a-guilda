@@ -19,7 +19,7 @@
       echo "<meta http-equiv='X-UA-Compatible' content='IE=edge'>";
       echo "<meta name='viewport' content='width=device-width, initial-scale=1.0'>";
       echo "<title>A Taverna</title>";
-      echo "<link rel='shortcut icon' href='../../assets/images/favicon.png' type='image/x-icon'>";
+      echo "<link rel='shortcut icon' href='../../assets/images/faviconnn.png' type='image/x-icon'>";
       echo "<link href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css' rel='stylesheet'>";
       echo '<link rel="stylesheet" href="../../css/media-queries.css">';
       echo '<link rel="stylesheet" href="../../css/standard.css">';
@@ -27,11 +27,11 @@
       echo "</head>";
       echo "<body id='body-userDash'>";
       echo '<header class="sticky-top" id="header-userDash">';
-      echo "<nav class='navbar'>";
+      echo "<a class='navbar-brand' href='Usuario_dashboard.php'><div id='logo'>A Taverna</div></a>";
+      echo "<nav>";
       echo "<div class='container-fluid'>";
-      echo "<a class='navbar-brand' href='Usuario_dashboard.php'><div id='logo'></div></a>";
       echo '<div>';
-      echo "<form class='form-inline' action='../pesquisar.php' method='post' style='margin-top:0.85em;'>";
+      echo "<form class='form-inline' action='../pesquisar.php' method='post' style='margin-top:0.6em;'>";
       echo "<div style='display:flex;'>";
       echo "<input class='form-control mr-sm-2' type='search' placeholder='Pesquisar' name='pesquisa' style='border-radius: 0.25em; margin-right:0.5em; font-family: Montagna LTD;'>";
       echo "</div>";
@@ -93,7 +93,7 @@
 
       while ($row = $stmt_res->fetch_assoc()) {
         $cont++;
-        echo '<img class="d-block w-100" style="height: 480px; margin: auto;" src="' .$row['foto']. '" alt="First slide">';
+        echo '<img class="d-block w-100" style="height: 550px; margin: auto;" src="' .$row['foto']. '" alt="First slide">';
         echo '<div class="carousel-caption text-start" id="userDash-carousel-caption">';
         echo '<div style="display: flex;">';
         echo '<img src="../../assets/images/daddy 1.png" id="taverneiro">';
@@ -104,20 +104,20 @@
         echo '</div>';
         echo '<div style="padding: 1em; display: flex;">';
         echo '<div style="text-align:center; margin-right: 0.5em;">';
-        echo '<img src="../../assets/images/icons8-hourglass-100.png" style="width:4.5em; height: 3em; margin-top: 0.7em;">';
+        echo '<img src="../../assets/images/icons8-hourglass-100.png" style="width:3.5em; height: 3em; margin-top: 0.7em;">';
         echo '<p>'.$row["duracao"].'</p>';
         echo '</div>';
         echo '<div style="text-align:center; margin-right: 0.5em;">';
-        echo '<img src="../../assets/images/icons8-year-of-dragon-100.png" style="width:4.5em; height: 3em;margin-top: 0.7em;">';
+        echo '<img src="../../assets/images/icons8-year-of-dragon-100.png" style="width:3.5em; height: 3em;margin-top: 0.7em;">';
         echo '<p>'.$row["sistema"].'</p>';
         echo '</div>';
         echo '<div style="text-align:center; margin-right: 0.5em;">';
-        echo '<img src="../../assets/images/icons8-battle-100.png" style="width:4.5em; height: 3em;
+        echo '<img src="../../assets/images/icons8-battle-100.png" style="width:3.5em; height: 3em;
         margin-top: 0.7em;">';
         echo '<p>'.$row["nivel_jogadores"].'</p>';
         echo '</div>';
         echo '<div style="text-align:center; margin-right: 1.5em;">';
-        echo '<img src="../../assets/images/classificacao-'.$row["classificacao_indicativa"].'-anos-logo.png" style="width:4.5em; height: 3em; margin-top: 0.7em; border-radius: 0.85em;">';
+        echo '<img src="../../assets/images/classificacao-'.$row["classificacao_indicativa"].'-anos-logo.png" style="width:3.5em; height: 3em; margin-top: 0.7em; border-radius: 0.85em;">';
         echo '<p>'.$row["classificacao_indicativa"].'</p>';
         echo '</div>';
         echo '</div>';
@@ -158,36 +158,35 @@
         echo '<h1 class="p-2 mt-5">Minhas mesas</h1>';
         echo '<div class="col">';
         echo '<h2 class="p-2 text-center mt-3">Mestrando</h2>';  
-        echo "<table class='table table-hover table-striped table-bordered bg-light' style='width: 500px;margin: auto; margin-bottom: 4em;'>";
+        echo "<table class='table table-hover table-striped table-bordered' style='width: 350px;margin: auto; margin-bottom: 1em; position: relative; left: -2em; border-radius: 0.5em;'>";
         echo "<tr>";
         echo "<th>Nome</th>";
         echo "<th>Sistema</th>";
         echo "<th>Duração</th>";
-        echo "<th>Tema</th>";
-        echo "<th>Classificação Indicativa</th>";
         echo "<th>Vagas</th>";
-        echo "<th>Ações</th>";
+        echo "<th>Ação</th>";
         echo "</tr>";
         while($row = $stmt->fetch_object()){
           echo "<tr>";
           echo "<td>" . $row->nome_campanha . "</td>";
           echo "<td>" . $row->sistema . "</td>";
           echo "<td>" . $row->duracao . "</td>";
-          echo "<td>" . $row->tema . "</td>";
-          echo "<td>" . $row->classificacao_indicativa . "</td>";
           echo "<td>" . $row->numero_vagas . "</td>";
           echo "<td>
-                  <button class='btn btn-success' onclick=\"location.href='../mesa/Mesa_dashboard.php?id=".$row->id."';\">Acesse</button>
+                  <button class='btn' style='background-color: #134F59; color: white;' onclick=\"location.href='../mesa/Mesa_dashboard.php?id=".$row->id."';\">+</button>
                 </td>";        
           echo "</tr>";
           }
         echo "</table>";
+        echo "<button class='btn' style='background-color: #134F59; color: white; position: relative; left: -2.3em;' onclick=\"location.href='../mesa/Minhas_mesas.php';\">Veja mais</button>";
         } else {
-          echo '<div class="row container-fluid text-center mt-4 bg-dark" style="margin:auto; width: 100%;">';
-          echo '<h1 class="p-2 mt-4 text-light">Minhas mesas</h1>';
+          echo '<img  src="../../assets/images/borda-horizontal.png" style=" background-color: transparent;width: 84.3em; height: 3em; position: relative; top: -1em;">';
+          echo '<div class="row container-fluid text-center" id="userDash-minhasMesas" style="padding: 0px;">';
+          echo '<h1 class="p-2 mt-5">Minhas mesas</h1>';
           echo '<div class="col">';
-          echo '<h2 class="p-2 text-center text-light">Mestrando</h2>';  
-          echo "<h4 class='text-danger text-center p-2 mb-5' style='margin: auto;'>Você ainda não está inscrito em nenhuma mesa!</h4>";
+          echo '<h2 class="p-2 text-center" style="margin-top: 3.5em;">Mestrando</h2>'; 
+          echo "<h4>Você ainda não é mestre de nenhuma mesa!</h4>";
+          echo "<button class='btn' style='background-color: #134F59; color: white; position: relative; left: -2.3em; margin-bottom: 21em;' onclick=\"location.href='../mesa/Cadastro_mesa.php';\">Mestrar!</button>";
         }
       } 
         
@@ -228,13 +227,11 @@
           echo '</div>';
           echo '<div class="col">';
           echo '<h2 class="p-2 text-center mt-3">Participando</h2>';  
-          echo "<table class='table table-hover table-striped table-bordered mb-5 bg-light' style='width: 500px; margin: auto;'>";
+          echo "<table class='table table-hover table-striped table-bordered' style='width: 350px; margin: auto; margin-bottom: 1em; position: relative; left: -2em; border-radius: 0.5em;'>";
           echo "<tr>";
           echo "<th>Nome</th>";
           echo "<th>Sistema</th>";
           echo "<th>Duração</th>";
-          echo "<th>Tema</th>";
-          echo "<th>Classificação Indicativa</th>";
           echo "<th>Vagas</th>";
           echo "<th>Ações</th>";
           echo "</tr>";
@@ -243,15 +240,14 @@
             echo "<td>" . $row->nome_campanha . "</td>";
             echo "<td>" . $row->sistema . "</td>";
             echo "<td>" . $row->duracao . "</td>";
-            echo "<td>" . $row->tema . "</td>";
-            echo "<td>" . $row->classificacao_indicativa . "</td>";
             echo "<td>" . $row->numero_vagas . "</td>";
             echo "<td>
-                    <button class='btn btn-success' onclick=\"location.href='../mesa/Mesa_dashboard.php?id=".$row->id."';\">Acesse</button>
+                    <button class='btn' style='background-color: #134F59; color: white;' onclick=\"location.href='../mesa/Mesa_dashboard.php?id=".$row->id."';\">+</button>
                   </td>";        
             echo "</tr>";
             }
             echo "</table>";
+            echo "<button class='btn' style='background-color: #134F59; color: white; position: relative; left: -2.3em;' onclick=\"location.href='../mesa/Minhas_mesas.php';\">Veja mais</button>";
             echo '</div>';
             echo '</div>';
         } else {
@@ -264,8 +260,9 @@
       } else {
         echo '</div>';
         echo '<div class="col">';
-        echo '<h2 class="p-2 text-center text-light">Participando</h2>';  
-        echo "<h4 class='text-danger text-center p-2 mb-5' style='margin: auto;'>Você ainda não está inscrito em nenhuma mesa!</h4>";
+        echo '<h2 class="p-2 text-center" style="margin-top: 3.5em;">Participando</h2>';  
+        echo "<h4 class='text-center' style='margin: auto; margin-bottom: 1em;'>Você ainda não está em nenhuma mesa!</h4>";
+        echo "<button class='btn' style='background-color: #134F59; color: white; position: relative; left: -2.3em; margin-bottom: 21em;' onclick=\"location.href='../mesa/Lista_de_mesas.php';\">Inscrever-se!</button>";
         echo "</div>";
       }
 
@@ -289,10 +286,10 @@
         while($row = $stmt->fetch_object()){
           if($cont < 1){
             $cont++;
-            echo '<h1 class="p-2 mt-4">Notícias</h1>';
+            echo '<h1>Notícias</h1>';
             echo '<div style="display: flex;">';
             echo '<div style="width: 10%;"></div>';
-            echo '<div class="mt-5" style="width: 400px; height: 200px; background: url(../../assets/h1.png); background-size: cover;background-repeat: no-repeat; margin: auto;"></div>';
+            echo '<div class="mt-5" style="width: 280px; height: 280px; background: url(../../assets/images/char1.png); background-size: cover;background-repeat: no-repeat; margin: auto;"></div>';
             echo '<div style="width: 0; height: 0; border-top: 25px solid transparent; border-bottom: 25px solid transparent; border-right:40px solid #AA6857;" class="mt-5">';
             echo '</div>';
             echo '<div class="p-3 mt-5 text-start ms-0 me-5" style="width: 600px; border-radius: 0px; margin: auto; margin-right: 0px; background-color: #AA6857;">';
@@ -313,7 +310,7 @@
             echo '</div>';
             echo '<div style="width: 0; height: 0; border-top: 25px solid transparent; border-bottom: 25px solid transparent; border-left:40px solid #AA6857;" class="mt-5">';
             echo '</div>';
-            echo '<div class="mt-5" style="width: 350px; height: 200px; background: url(../../assets/h2.png); background-size: cover; margin: auto;">';
+            echo '<div class="mt-5" style="width: 280px; height: 280px; background: url(../../assets/images/char2.png); background-size: cover; margin: auto;">';
             echo '</div>';
             echo '<div style="width: 10%;"></div>';
             echo '</div>';
@@ -321,7 +318,7 @@
             $cont++;
             echo '<div style="display: flex;" class="mb-4">';
             echo '<div style="width: 10%;"></div>';
-            echo '<div class="mt-5" style="width: 400px; height: 200px; background: url(../../assets/h3.png); background-size: cover; margin: auto;">';
+            echo '<div class="mt-5" style="width: 280px; height: 280px; background: url(../../assets/images/char3.png); background-size: cover; margin: auto;">';
             echo '</div>';
             echo '<div style="width: 0; height: 0; border-top: 25px solid transparent; border-bottom: 25px solid transparent; border-right:40px solid #AA6857;" class="mt-5">';
             echo '</div>';
