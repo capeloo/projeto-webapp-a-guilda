@@ -15,7 +15,7 @@
     if($_SESSION["admin"] == 0){
         if(!empty($_GET["id"])){
             //Preparando a requisição ao banco
-            $sql = "SELECT foto, apelido, bio, email, celular, discord, matricula
+            $sql = "SELECT foto, nome, apelido, bio, email, celular, discord, matricula
                     FROM usuario
                     WHERE id = (?)
                     LIMIT 1";
@@ -83,43 +83,41 @@
             echo '<a class="dropdown-item" href="Perfil.php">Meu perfil</a>';
             echo '<a class="dropdown-item" href="Editar_perfil.php">Editar perfil</a>';
             echo '<hr class="dropdown-divider">';
-            echo '<a class="dropdown-item" href="login/logout.php">Sair</a>';
+            echo '<a class="dropdown-item" href="../login/logout.php">Sair</a>';
             echo '</div>';
             echo '</div>';
             echo "</div>";
             echo '</div>';
             echo "</nav>";
             echo '</header>';
-            echo '<main>';
-            echo '<div class="container-fluid text-center bg-light">';
-            echo '<h1 class="p-3">Perfil</h1>';
+            echo '<main style="background-image: url(../../../assets/images/perfill.png); background-size: cover; background-repeat: no-repeat;">';
+            echo '<div class="container-fluid text-center">';
             echo '<form action="' .htmlspecialchars($_SERVER["PHP_SELF"]). '"method="post">';
             echo '<div class="row">';
             echo '<div class="col">';  
-            echo '<div class="input-group mx-auto p-2" style="width: 350px;">';      
-            echo '<span class="input-group-text" style="width: 350px; border-radius: 5px 5px 0px 0px;">Foto</span> '; 
-            echo '<img src="' .$row["foto"]. '"alt="foto-perfil" name="foto" class="img" width="400px" height="260px" style="border-radius: 0px 0px 5px 5px;">'; 
+            echo '<div class="mx-auto p-2" style="width: 350px;">';      
+            echo '<img src="' .$row["foto"]. '"alt="foto-perfil" name="foto" class="img" width="280px" height="280px" >'; 
             echo '</div>'; 
             echo '</div>'; 
             echo '<div class="col">'; 
-            echo '<div class="input-group mx-auto p-2" style="width: 400px;">'; 
-            echo '<span class="input-group-text">Apelido</span>'; 
-            echo '<input type="text" name="nome" value="' .$row["apelido"]. '"class="form-control" disabled>'; 
+            echo '<div class="mx-auto p-2" style="width: 400px;">';  
+            echo '<h2 id="apelido">'.$row["apelido"].'</h2>'; 
             echo '</div>'; 
-            echo '<div class="input-group mx-auto p-2" style="width: 400px;">'; 
-            echo '<span class="input-group-text">Bio</span>';
-            echo '<textarea name="bio" cols="30" rows="10" class="form-control" disabled>' .$row["bio"].'</textarea>';
+            echo '<div class="mx-auto p-2" style="width: 400px;">';  
+            echo '<h2 id="nome">'.$row["nome"].'</h2>'; 
+            echo '</div>'; 
+            echo '<div class="mx-auto p-2" style="width: 400px;">'; 
+            echo '<h2 id="bio">'.$row["bio"].'</h2>';
             echo '</div>';
             echo '</div>';
             echo '<div class="col">';
-            echo '<div class="input-group mx-auto p-2" style="width: 350px;">';
-            echo '<span class="input-group-text">Discord</span>';
-            echo '<input type="text" name="discord" placeholder="nome#xxxx" value="' .$row["discord"]. '"class="form-control" disabled>';
+            echo '<div class="mx-auto p-2" style="width: 350px;">';
+            echo '<h2 id="discord">'.$row["discord"].'</h2>';
             echo '</div>';
             echo '</div>';
             echo '</div>';
             echo '</form>';
-            echo '<a href="../denuncia/Abrir_ticket.php?id='.$_GET["id"].'"class="btn btn-warning mt-4" style="width: 120px;">Denunciar</a>';
+            echo '<a href="../denuncia/Abrir_ticket.php?id='.$_GET["id"].'"class="btn mt-4" style="width: 120px; position: relative; top: 26em; left: 30em; background-color: #AA6857; font-family: Montagna LTD; color: #E8E0CB;">Denunciar</a>';
             echo '</div>';  
             echo '</main>';
             echo '<footer>';

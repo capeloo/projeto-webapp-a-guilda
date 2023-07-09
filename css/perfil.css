@@ -33,9 +33,50 @@
     /* MAIN */
     main {
         width: 100vw; 
-        height: 100vh;
-    
+        height: 140vh;
+        
     }    
+
+    main>div>form>div>div>div>img {
+        border-radius: 500px 500px 500px 500px;
+        position: relative;
+        left: 2.9em;
+        top: 8em;
+    }
+
+    main>div>form>div>div>div>h2#nome {
+        font-family: Rakkas;
+        color: #134F59;
+        position: relative;
+        left: -2em;
+        top: 1.9em;
+    }
+
+    main>div>form>div>div>div>h2#apelido {
+        font-family: Rakkas;
+        color: #134F59;
+        position: relative;
+        left: -11.8em;
+        top: 15.3em;
+    }
+
+    main>div>form>div>div>div>h2#bio {
+        font-family: Rakkas;
+        color: #134F59;
+        position: relative;
+        left: 6em;
+        top: 5em;
+    }
+
+    main>div>form>div>div>div>h2#discord {
+        font-family: Rakkas;
+        color: #134F59;
+        position: relative;
+        left: -25em;
+        top: 19.5em;
+    }
+
+   
     /* /MAIN */
     /* FOOTER */
     footer {
