@@ -153,12 +153,12 @@
 
         //Renderiza os dados na forma de tabela
         if($qtd > 0){
-        echo '<img  src="../../assets/images/borda-horizontal.png" style=" background-color: transparent;width: 84.3em; height: 3em; position: relative; top: -1em;">';
-        echo '<div class="row container-fluid text-center" id="userDash-minhasMesas">';
+        echo '<img  src="../../assets/images/borda-horizontal.png" style=" background-color: transparent;width: 79em; height: 3em; position: relative; top: -1em;">';
+        echo '<div class="row text-center" id="userDash-minhasMesas">';
         echo '<h1 class="p-2 mt-5">Minhas mesas</h1>';
         echo '<div class="col">';
         echo '<h2 class="p-2 text-center mt-3">Mestrando</h2>';  
-        echo "<table class='table table-hover table-striped table-bordered' style='width: 350px;margin: auto; margin-bottom: 1em; position: relative; left: -2em; border-radius: 0.5em;'>";
+        echo "<table class='table table-hover table-striped table-bordered' style='width: 350px;margin: auto; margin-bottom: 1em; position: relative; left: -3em; border-radius: 0.5em;'>";
         echo "<tr>";
         echo "<th>Nome</th>";
         echo "<th>Sistema</th>";
@@ -280,7 +280,7 @@
 
         //Renderiza os dados na forma de tabela
         if($qtd > 0){
-        echo '<img  src="../../assets/images/borda-horizontal.png" style=" background-color: transparent;width: 84.3em; height: 3em; position: relative; top: -4em;">';
+        echo '<img  src="../../assets/images/borda-horizontal.png" style=" background-color: transparent;width: 79em; height: 3em; position: relative; top: -4em;">';
         echo '<div class="container-fluid text-center p-4" id="userDash-noticias">';
         $cont = 0;
         while($row = $stmt->fetch_object()){
@@ -294,7 +294,7 @@
             echo '</div>';
             echo '<div class="p-3 mt-5 text-start ms-0 me-5" style="width: 600px; border-radius: 0px; margin: auto; margin-right: 0px; background-color: #AA6857;">';
             echo '<p class="ms-3 mb-0" style="font-size: 1.1em; font-family: Montagna LTD; color: #E8E0CB;">' .$row->data. '</p>';
-            echo '<a href="noticias/Noticia_dashboard.php?id=' .$row->id. '" style="text-decoration: underline; font-family: Rakkas; color: #E8E0CB;"><h1 class="ms-3" style="font-size: 3em;">' .$row->titulo. '</h1></a>';
+            echo '<a href="../noticias/Noticia_dashboard.php?id=' .$row->id. '" style="text-decoration: underline; font-family: Rakkas; color: #E8E0CB;"><h1 class="ms-3" style="font-size: 3em;">' .$row->titulo. '</h1></a>';
             echo '<h4 class="ms-3" style="font-size: 1.3em; font-family: Montagna LTD; color: #E8E0CB;">' .$row->subtitulo. '</h4>';
             echo '</div>';
             echo '<div style="width: 10%;"></div>';
@@ -305,7 +305,7 @@
             echo '<div style="width: 10%;"></div>';
             echo '<div class="p-3 mt-5 text-start ms-0 me-0" style="width: 600px; border-radius: 0px; margin: auto; margin-right: 0px; background-color: #AA6857;">';
             echo '<p class="ms-3 mb-0" style="font-size: 1.1em; font-family: Montagna LTD; color: #E8E0CB;">' .$row->data. '</p>';
-            echo '<a href="noticias/Noticia_dashboard.php?id=' .$row->id. '" style="text-decoration: underline; font-family: Rakkas; color: #E8E0CB;"><h1 class="ms-3" style="font-size: 3em;">' .$row->titulo. '</h1></a>';
+            echo '<a href="../noticias/Noticia_dashboard.php?id=' .$row->id. '" style="text-decoration: underline; font-family: Rakkas; color: #E8E0CB;"><h1 class="ms-3" style="font-size: 3em;">' .$row->titulo. '</h1></a>';
             echo '<h4 class="ms-3" style="font-size: 1.3em; font-family: Montagna LTD; color: #E8E0CB;">' .$row->subtitulo. '</h4>';
             echo '</div>';
             echo '<div style="width: 0; height: 0; border-top: 25px solid transparent; border-bottom: 25px solid transparent; border-left:40px solid #AA6857;" class="mt-5">';
@@ -324,7 +324,7 @@
             echo '</div>';
             echo '<div class="p-3 mt-5 text-start ms-0 me-5" style="width: 600px; border-radius: 0px; margin: auto; margin-right: 0px; background-color: #AA6857;">';
             echo '<p class="ms-3 mb-0" style="font-size: 1.1em; font-family: Montagna LTD; color: #E8E0CB;">' .$row->data. '</p>';
-            echo '<a href="noticias/Noticia_dashboard.php?id=' .$row->id. '" style="text-decoration: underline; font-family: Rakkas; color: #E8E0CB;"><h1 class="ms-3" style="font-size: 3em;">' .$row->titulo. '</h1></a>';
+            echo '<a href="../noticias/Noticia_dashboard.php?id=' .$row->id. '" style="text-decoration: underline; font-family: Rakkas; color: #E8E0CB;"><h1 class="ms-3" style="font-size: 3em;">' .$row->titulo. '</h1></a>';
             echo '<h4 class="ms-3" style="font-size: 1.3em; font-family: Montagna LTD; color: #E8E0CB;">' .$row->subtitulo. '</h4>';
             echo '</div>';
             echo '<div style="width: 10%;"></div>';

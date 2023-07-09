@@ -130,53 +130,48 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Esqueceu a senha</title>
-    <link rel="shortcut icon" href="../../../assets/fav.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../../../assets/images/faviconnn.png" type="image/x-icon">
     <!-- Chamando as folhas de estilo do Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/standard.css">
+    <link rel="stylesheet" href="../../../css/esqueceu_senha.css">
 </head>
-<body class="bg-light">
-    <!-- Barra de navegação -->
-    <nav class="navbar bg-dark sticky-top">
-        <div class="container-fluid">
-            <a class="navbar-brand text-light" href="../../../index.php">Taverna</a>
-            <!-- Offcanvas -->
-            <button class="navbar-toggler bg-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-            <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+<body>
+    <header class="sticky-top">
+        <!-- Barra de navegação -->
+        <nav class="navbar">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="../../../index.php"><div id="logo"></div></a>
+                <div>
+                    <a href="Cadastro.php" id="button-cadastrar"><div>Criar conta</div></a>
+                    <a href="Login.php" id="button-entrar"><div>Entrar</div></a>
+                </div>
             </div>
-            <div class="offcanvas-body">
-                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                    <li class="nav-item">
-                        <a class="nav-link" href="Login.php">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="Cadastro.php">Criar conta</a>
-                    </li>
-                </ul>
-            </div>
+        </nav> 
+    </header>
+    <main>
+        <!-- Conteúdo da página -->
+        <div class="container-fluid text-center">
+            <h1>Encontre sua conta</h1>
+            <p>Por favor, preencha o campo para receber um link de redefinição de senha por e-mail.</p>
+            <!-- Formulário -->
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                <div class="mx-auto p-2">
+                    <input type="email" name="email" class="<?php echo (!empty($email_erro)) ? 'is-invalid' : ''; ?>" value="<?php echo $email; ?>" placeholder="E-mail" style="border-radius: 0.2em;">
+                    <span class="invalid-feedback"><?php echo $email_erro; ?></span>
+                </div>
+                <div class="p-4">
+                    <button type="submit">Enviar</button>
+                </div>
+            </form>
         </div>
-    </div>
-</nav>
-    <!-- Conteúdo da página -->
-    <div class="container-fluid text-center mt-3">
-        <h1 class="p-3">Encontre sua conta</h1>
-        <p>Por favor, preencha o campo para receber um link de redefinição de senha por e-mail.</p>
-        <!-- Formulário -->
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-            <div class="input-group mx-auto p-2" style="width: 300px;">
-                <span class="input-group-text">E-mail</span>
-                <input type="email" name="email" class="form-control <?php echo (!empty($email_erro)) ? 'is-invalid' : ''; ?>" value="<?php echo $email; ?>">
-                <span class="invalid-feedback"><?php echo $email_erro; ?></span>
-            </div>
-            <div class="p-4">
-                <button class="btn btn-success" type="submit">Enviar</button>
-            </div>
-        </form>
-    </div>
+    </main>
+    <footer>
+        <div class="container-fluid">
+            <p>&copy; A Guilda. Siga em frente!</p>
+            <p>Siga-nos:<a href="https://www.instagram.com/aguilda_smd/" target="_blank"><img src="../../../assets/images/insta-icon (3).png"></a></p>
+        </div>
+    </footer>
     <!-- Chamando os scripts do Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

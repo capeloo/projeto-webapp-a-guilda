@@ -16,7 +16,7 @@
         if(isset($_FILES['foto'])){
             $arquivo = $_FILES['foto']['name'];
             //Diretório para uploads 
-            $pasta_dir = '../../../assets/';
+            $pasta_dir = '../../assets/';
             $arquivo_nome = $pasta_dir . $arquivo; 
             // Faz o upload da imagem
             move_uploaded_file($_FILES['foto']['tmp_name'], $arquivo_nome); 

@@ -1,0 +1,69 @@
+/* Perfil.php */
+    /* BODY */
+    body {
+        overflow-x: hidden;
+    }
+    /* HEADER */
+        header {
+            width: 100vw;
+            height: 3.7em;
+            background-color: var(--cor2);
+            display: flex;
+            justify-content: space-between;
+            overflow-y: visible;
+        }
+
+        header>nav>div>div {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        div#logo {
+            font-family: var(--fonte-logo);
+            font-size: 2em;
+            margin-top: 0.2em;
+            margin-left: 0.3em;
+            color: var(--cor1);
+        }
+
+        header#h>nav>div>div>form>div>input::placeholder {
+            color: #bdbdbd;   
+        }
+    /* /HEADER */
+    /* MAIN */
+    main {
+        width: 100vw; 
+        height: 100vh;
+    
+    }    
+    /* /MAIN */
+    /* FOOTER */
+    footer {
+        position: relative;
+        bottom: 0;
+
+        width: 100vw;
+
+        background-color: var(--cor1);
+    }
+
+    footer>div {
+        display: flex;
+        justify-content: space-between;
+        padding: 1em;
+    }
+
+    footer>div>p {
+        font-family: var(--fonte-texto);
+        font-size: 1em;
+        margin: 0px;
+        color: var(--cor2);
+    }
+
+    footer>div>p>a>img {
+        margin-left: 0.3em;
+        margin-right: 1em;
+        width: 1.6em;
+        height: 1.6em;
+    }
+    /* /FOOTER */

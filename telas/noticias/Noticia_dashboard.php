@@ -46,7 +46,7 @@
   echo '<body class="bg-light">';
   echo '<nav class="navbar bg-dark sticky-top">';
   echo '<div class="container-fluid">';
-  echo '<a class="navbar-brand text-light" href="../Usuario_dashboard.php">Taverna</a>';
+  echo '<a class="navbar-brand text-light" href="../usuario/Usuario_dashboard.php">Taverna</a>';
   echo "<div style='display:flex;'>";
   echo "<input class='form-control mr-sm-2' type='search' placeholder='Apelido' name='pesquisa'>";
   echo "<button class='btn btn-outline-light my-2 ms-2 my-sm-0' type='submit'>Pesquisar</button>";

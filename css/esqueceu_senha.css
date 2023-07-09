@@ -1,0 +1,157 @@
+/* Esqueceu_senha.php */
+    /* HEADER */
+    header {
+        width: 100vw;
+        background-color: var(--cor2);
+        /*box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.493);*/
+    }
+
+    header>nav>div>div {
+        display: flex;
+    }
+
+    header#header-cadastro>nav>div>div>a#button-entrar {
+        margin-right: 0.88em;
+    }
+
+    div#logo {
+        background-image: url(../assets/images/logo-teste.png); 
+        background-size: cover;
+        background-repeat: no-repeat;
+        width: 6.1em;
+        height: 3.5em;
+
+        /*font-family: var(--fonte-logo);
+        font-size: 2em;
+        color: var(--cor1);*/
+    }
+
+    a#button-entrar {
+        font-family: var(--fonte-texto);
+        font-size: 1.2em;
+        width: 4em;
+        text-align: center;
+        padding: 0.4em;
+        border-radius: 0.2em;
+        /*box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.315);*/
+        color: var(--cor2);
+        background-color: var(--cor1);
+        text-decoration: none;
+        margin-right: 0.88em;
+    }
+
+    /*a#button-entrar:hover {
+        background-color: var(--cor3);
+        color: var(--cor2);
+        transition: 0.5s;
+    }*/
+
+    a#button-cadastrar {
+        font-family: var(--fonte-texto);
+        font-size: 1.2em;
+        width: 6.5em;
+        margin-right: 0.5em;
+        text-align: center;
+        padding: 0.4em;
+        border-radius: 0.2em;
+        /*box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.384);*/
+        color: var(--cor2);
+        background-color: var(--cor3);
+        text-decoration: none;
+    }
+
+    /*a#button-cadastrar:hover {
+        background-color: var(--cor1);
+        color: var(--cor2);
+        transition: 0.5s;
+    }*/
+/* /HEADER */
+/* MAIN */
+main {
+    width: 100vw; 
+    height: 100vh;
+}
+
+main>div {
+    background-image: url(../assets/images/fundo-teste.png);
+    height: 100vh;
+}
+
+main>div>h1 {
+    padding-top: 2em;
+    font-family: var(--fonte-titulo);
+    font-size: 3em;
+    color: var(--cor1);
+}
+
+main>div>p {
+    font-family: var(--fonte-texto);
+    font-size: 1.5em;
+    color: var(--cor1);
+}
+
+main>div>form>div>input {
+    font-family: var(--fonte-texto); 
+    font-size: 1.2em;
+    padding-left: 1em;
+    width: 20em;
+    height: 2em;
+    border: 0;
+}
+
+div>form>div>input::placeholder {
+    color: rgb(189, 189, 189);
+       
+}
+
+button {
+    font-family: var(--fonte-texto);
+    font-size: 1.2em;
+    width: 6.5em;
+    margin-right: 0.5em;
+    text-align: center;
+    padding: 0.4em;
+    border: 0;
+    border-radius: 0.2em;
+    /*box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.384);*/
+    color: var(--cor2);
+    background-color: var(--cor3);
+    text-decoration: none;
+}
+/* /MAIN */
+/* FOOTER */
+footer {
+    position: relative;
+    bottom: 0;
+
+    width: 100vw;
+
+    background-color: var(--cor1);
+}
+
+footer>div {
+    display: flex;
+    justify-content: space-between;
+    padding: 1em;
+}
+
+footer>div>p {
+    font-family: var(--fonte-texto);
+    font-size: 1em;
+    margin: 0px;
+    color: var(--cor2);
+}
+
+footer>div>p>a>img {
+    margin-left: 0.3em;
+    margin-right: 1em;
+    width: 1.6em;
+    height: 1.6em;
+}
+
+footer>div>p>a {
+    margin-right: 1em;
+}
+
+/* /FOOTER */
+/* /Esqueceu_senha.php */
