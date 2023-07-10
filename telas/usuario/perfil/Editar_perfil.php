@@ -9,11 +9,11 @@
     require_once 'config.php';
 
     //Inicializa variáveis vazias
-    $foto = $nome = $bio = $email = $celular = $discord = $matricula = "";
-    $foto_erro = $nome_erro = $bio_erro = $email_erro = $celular_erro = $discord_erro = $matricula_erro = "";
+    $foto = $apelido = $nome = $bio = $email = $celular = $discord = $matricula = "";
+    $foto_erro = $apelido_erro = $nome_erro = $bio_erro = $email_erro = $celular_erro = $discord_erro = $matricula_erro = "";
 
     //Preparando a requisição ao banco
-    $sql = "SELECT foto, nome, bio, email, celular, discord, matricula
+    $sql = "SELECT foto, apelido, nome, bio, email, celular, discord, matricula
             FROM usuario
             WHERE id = (?)
             LIMIT 1";
@@ -48,6 +48,13 @@
             // Faz o upload da imagem
             move_uploaded_file($_FILES['foto']['tmp_name'], $arquivo_nome); 
         } 
+
+        //Valida o apelido
+        if (empty(trim($_POST["apelido"]))) {
+            $apelido_erro = "Por favor coloque um nome.";
+        } else {
+            $apelido = trim($_POST["apelido"]);
+        }
 
         //Valida o nome
         if (empty(trim($_POST["nome"]))) {
@@ -88,7 +95,8 @@
         if(empty($foto_erro) && empty($nome_erro) && empty($bio_erro) && empty($email_erro) && empty($celular_erro) && empty($discord_erro) && empty($matricula_erro)){
             //Prepara a requisição para atualizar tabela usuario no banco
             $sql = "UPDATE usuario
-                    SET foto = (?), 
+                    SET foto = (?),
+                        apelido = (?), 
                         nome = (?), 
                         bio = (?), 
                         email = (?), 
@@ -100,8 +108,9 @@
 
 
             if($stmt = $mysqli->prepare($sql)){
-                $stmt->bind_param("ssssssii", $param_foto, $param_nome, $param_bio, $param_email,   $param_celular, $param_discord, $param_matricula, $param_id);
+                $stmt->bind_param("sssssssii", $param_foto, $param_apelido, $param_nome, $param_bio, $param_email,   $param_celular, $param_discord, $param_matricula, $param_id);
                 $param_foto = $arquivo_nome;
+                $param_apelido = $apelido;
                 $param_nome = $nome;
                 $param_bio = $bio;
                 $param_email = $email;
@@ -135,111 +144,106 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar perfil</title>
-    <link rel="shortcut icon" href="../../../assets/fav.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../../../assets/images/faviconnn.png" type="image/x-icon">
     <!-- Chamando as folhas de estilo do Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../css/standard.css" rel="stylesheet">
+    <link href="../../../css/editar_perfil.css" rel="stylesheet">
 </head>
 <body>
-    <!-- Barra de navegação -->
-    <nav class="navbar bg-dark sticky-top">
-        <div class="container-fluid">
-            <a class="navbar-brand text-light" href="../Usuario_dashboard.php">Taverna</a>
-            <form class='form-inline' action='../../pesquisar.php' method='post'>
-                <div style='display:flex;'>
-                    <input class='form-control mr-sm-2' type='search' placeholder='Apelido' name='pesquisa'>
-                    <button class='btn btn-outline-light my-2 ms-2 my-sm-0' type='submit'>Pesquisar</button>
-                </div>
+<header class="sticky-top" id="h">
+            <a class='navbar-brand' href='../Usuario_dashboard.php'><div id='logo'>A Taverna</div></a>
+            <nav>
+            <div class='container-fluid'>
+            <div>
+            <form class='form-inline' action='../../pesquisar.php' method='post' style='margin-top:0.6em;'>
+            <div style='display:flex;'>
+            <input class='form-control mr-sm-2' type='search' placeholder='Pesquisar' name='pesquisa' style='border-radius: 0.25em; margin-right:0.5em; font-family: Montagna LTD;'>
+            </div>
             </form>
-            <!-- Offcanvas -->
-            <button class="navbar-toggler bg-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-                <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                </div>
-                <div class="offcanvas-body">
-                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                        <li class="nav-item">
-                            <strong>Perfil</strong>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="Perfil.php">Meu perfil</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="Editar_perfil.php">Editar perfil</a>
-                        </li>
-                        <li class="nav-item" style="margin-top: 10px;">
-                            <strong>Mesas</strong>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="../../mesa/Lista_de_mesas.php">Lista de mesas</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="../../mesa/Cadastro_mesa.php">Cadastro de mesa</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="../../mesa/Minhas_mesas.php">Minhas mesas</a>
-                        </li>
-                    </ul>
-                </div>
+            <div class="dropdown">
+            <button class="btn dropdown-toggle" data-bs-toggle="dropdown"><img src="../../../assets/images/mesa.png" style="width: 2.8em;"></button>
+            <div class="dropdown-menu">
+            <a class="dropdown-item" href="../../mesa/Lista_de_mesas.php">Lista de mesas</a>
+            <a class="dropdown-item" href="../../mesa/Minhas_mesas.php">Minhas mesas</a>
+            <a class="dropdown-item" href="../../mesa/Cadastro_mesa.php">Cadastrar mesa</a>
             </div>
-        </div>
-    </nav>
-    <div class="container-fluid text-center mt-3">
-        <!-- Conteúdo da página -->
-        <h1 class="p-3">Editar perfil</h1>
-        <!-- Formulário -->
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
-            <div class="row">
-                <div class="col">
-                    <div class="input-group mx-auto p-2" style="width: 400px;">
-                        <span class="input-group-text">Foto</span>  
-                        <input type="file" name="foto" class="form-control">
-                        <span class="invalid-feedback"></span>
-                    </div>
-                    <div class="input-group mx-auto p-2" style="width: 400px;">   
-                        <span class="input-group-text">Nome Completo</span>
-                        <input type="text" name="nome" value="<?php echo $row["nome"]; ?>" class="form-control <?php echo (!empty($nome_erro)) ? 'is-invalid' : ''; ?>">
-                        <span class="invalid-feedback"><?php echo $nome_erro; ?></span>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="input-group mx-auto p-2" style="width: 400px;">
-                        <span class="input-group-text">Bio</span>
-                        <textarea name="bio" cols="30" rows="10" class="form-control <?php echo (!empty($bio_erro)) ? 'is-invalid' : ''; ?>"><?php echo $row["bio"]; ?></textarea>
-                        <span class="invalid-feedback"><?php echo $bio_erro; ?></span>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="input-group mx-auto p-2" style="width: 350px;">
-                        <span class="input-group-text">E-mail</span>
-                        <input type="email" name="email" value="<?php echo $row["email"]; ?>" class="form-control <?php echo (!empty($email_erro)) ? 'is-invalid' : ''; ?>">
-                        <span class="invalid-feedback"><?php echo $email_erro; ?></span>
-                    </div>
-                    <div class="input-group mx-auto p-2" style="width:350px;">
-                        <span class="input-group-text">Celular</span>
-                        <input type="text" name="celular" placeholder="xx x xxxx-xxxx" value="<?php echo $row["celular"]; ?>" class="form-control <?php echo (!empty($celular_erro)) ? 'is-invalid' : ''; ?>">
-                        <span class="invalid-feedback"><?php echo $celular_erro; ?></span>
-                    </div>
-                    <div class="input-group mx-auto p-2" style="width: 350px;">
-                        <span class="input-group-text">Discord</span>
-                        <input type="text" name="discord" placeholder="nome#xxxx" value="<?php echo $row["discord"]; ?>" class="form-control">
-                        <span class="invalid-feedback"><?php echo $discord_erro; ?></span>
-                    </div>
-                    <div class="input-group mx-auto p-2" style="width: 350px;">
-                        <span class="input-group-text">Matrícula UFC</span>
-                        <input type="text" name="matricula" value="<?php echo $row["matricula"]; ?>" class="form-control <?php echo (!empty($matricula_erro)) ? 'is-invalid' : ''; ?>">
-                        <span class="invalid-feedback"><?php echo $matricula_erro; ?></span>
-                    </div>
-                </div>
-            </div>   
-            <div class="p-4">
-                <button class="btn btn-success" style="width: 120px;" type="submit">Salvar</button>
             </div>
-        </form>
-    </div>
+            <div class="dropdown">
+            <button class="btn dropdown-toggle" data-bs-toggle="dropdown"><img src="../../../assets/images/noticias.png" style="width: 2.8em;"></button>
+            <div class="dropdown-menu dropdown-menu-lg-end">
+            <a class="dropdown-item" href="../../noticias/Lista_de_noticias.php">Feed de notícias</a>
+            </div>
+            </div>
+            <div class="dropdown">
+            <button class="btn dropdown-toggle" data-bs-toggle="dropdown"><img src="../../../assets/images/pessoa.png" style="width: 2.8em;"></button>
+            <div class="dropdown-menu dropdown-menu-lg-end">
+            <a class="dropdown-item" href="Perfil.php">Meu perfil</a>
+            <a class="dropdown-item" href="Editar_perfil.php">Editar perfil</a>
+            <hr class="dropdown-divider">
+            <a class="dropdown-item" href="../login/logout.php">Sair</a>
+            </div>
+            </div>
+            </div>
+            </div>
+            </nav>
+            </header>
+        <main style="background-image: url(../../../assets/images/editar-perfil.png); background-size: cover; background-repeat: no-repeat;">
+            <div class="container-fluid text-center">
+                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="col"> 
+                            <div class="mx-auto p-2" style="width: 350px;">    
+                                <input type="file" id="foto" name="foto">
+                                <img src="<?php echo $row["foto"]; ?> "alt="foto-perfil" name="foto" class="img" width="280px" height="280px" >
+                                <!--<span class="invalid-feedback"></span>-->
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="mx-auto p-2" style="width: 250px;">
+                                <input type="text" name="apelido" id="apelido" value="<?php echo $row["apelido"]; ?>" placeholder="Apelido" class="form-control <?php echo (!empty($apelido_erro)) ? 'is-invalid' : ''; ?>">
+                                <!--<span class="invalid-feedback"><?php echo $apelido_erro; ?></span>-->
+                            </div>
+                            <div class="mx-auto p-2" style="width: 400px;"> 
+                                <input type="text" name="nome" id="nome" value="<?php echo $row["nome"]; ?>" placeholder="Nome" class="form-control <?php echo (!empty($nome_erro)) ? 'is-invalid' : ''; ?>">
+                                <!--<span class="invalid-feedback"><?php echo $nome_erro; ?></span>-->
+                            </div>
+                            <div class="mx-auto p-2" style="width: 400px;">
+                                <input type="email" name="email" id="email" value="<?php echo $row["email"]; ?>" placeholder="E-mail" class="form-control <?php echo (!empty($email_erro)) ? 'is-invalid' : ''; ?>">
+                                <!--<span class="invalid-feedback"><?php echo $email_erro; ?></span>-->
+                            </div>
+                            <div class="mx-auto p-2" style="width: 400px;">
+                                <textarea name="bio" id="bio" placeholder="Bio" cols="30" rows="10" class="form-control <?php echo (!empty($bio_erro)) ? 'is-invalid' : ''; ?>"><?php echo $row["bio"]; ?></textarea>
+                                <!--<span class="invalid-feedback"><?php echo $bio_erro; ?></span>-->
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="mx-auto p-2" style="width: 250px;">
+                                <input type="text" name="discord" id="discord" placeholder="Discord" value="<?php echo $row["discord"]; ?>" class="form-control <?php echo (!empty($discord_erro)) ? 'is-invalid' : ''; ?>">
+                                <!--<span class="invalid-feedback"><?php echo $discord_erro; ?></span>-->
+                            </div>
+                            <div class="mx-auto p-2" style="width: 250px;">
+                                <input type="text" name="celular" id="celular" placeholder="Celular" value="<?php echo $row["celular"]; ?>" class="form-control <?php echo (!empty($celular_erro)) ? 'is-invalid' : ''; ?>">
+                                <!--<span class="invalid-feedback"><?php echo $celular_erro; ?></span>-->
+                            </div>
+                            <div class="mx-auto p-2" style="width: 250px;">
+                                <input type="text" name="matricula" id="matricula" value="<?php echo $row["matricula"]; ?>" placeholder="Matrícula" class="form-control <?php echo (!empty($matricula_erro)) ? 'is-invalid' : ''; ?>">
+                                <!--<span class="invalid-feedback"><?php echo $matricula_erro; ?></span>-->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-4" id="btn">
+                        <button class="btn btn-success" style="width: 120px;" type="submit">Salvar</button>
+                    </div>
+                </form>
+            </div>
+        </main>
+            <footer>
+            <div class="container-fluid">
+            <p>&copy; A Guilda. Siga em frente!</p>
+            <p>Siga-nos:<a href="https://www.instagram.com/aguilda_smd/" target="_blank"><img src="../../../assets/images/insta-icon (3).png"></a></p>
+            </div>
+            </footer>
     <!-- Chamando os scripts do Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

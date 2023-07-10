@@ -180,7 +180,7 @@
         echo "</table>";
         echo "<button class='btn' style='background-color: #134F59; color: white; position: relative; left: -2.3em;' onclick=\"location.href='../mesa/Minhas_mesas.php';\">Veja mais</button>";
         } else {
-          echo '<img  src="../../assets/images/borda-horizontal.png" style=" background-color: transparent;width: 84.3em; height: 3em; position: relative; top: -1em;">';
+          echo '<img  src="../../assets/images/borda-horizontal.png" style=" background-color: transparent; width: 79em; height: 3em; position: relative; top: -1em;">';
           echo '<div class="row container-fluid text-center" id="userDash-minhasMesas" style="padding: 0px;">';
           echo '<h1 class="p-2 mt-5">Minhas mesas</h1>';
           echo '<div class="col">';
@@ -280,7 +280,7 @@
 
         //Renderiza os dados na forma de tabela
         if($qtd > 0){
-        echo '<img  src="../../assets/images/borda-horizontal.png" style=" background-color: transparent;width: 79em; height: 3em; position: relative; top: -4em;">';
+        echo '<img  src="../../assets/images/borda-horizontal.png" style=" background-color: transparent;width: 79em; height: 3em; position: relative; top: -4em; padding: 0;">';
         echo '<div class="container-fluid text-center p-4" id="userDash-noticias">';
         $cont = 0;
         while($row = $stmt->fetch_object()){

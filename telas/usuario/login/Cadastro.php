@@ -6,11 +6,13 @@
     require_once 'config.php';
 
     //Inicializa variáveis vazias
-    $apelido = $senha = $confirmar_senha = "";
+    $foto = $apelido = $senha = $confirmar_senha = "";
     $apelido_erro = $senha_erro = $confirmar_senha_erro = "";
 
     //Ao receber os dados do formulário
     if($_SERVER["REQUEST_METHOD"] == "POST"){
+        $foto = "../../../assets/images/placeholder.jpg";
+
         // 1. Validação do apelido
         // 1.1 Caso o usuário não coloque um apelido
         if(empty(trim($_POST["apelido"]))){
@@ -86,12 +88,13 @@
         // Caso não tenha dado erro algum, inicia a requisição ao banco
         if(empty($apelido_erro) && empty($senha_erro) && empty($confirmar_senha_erro)){
             // 1. Guarda a requisição em uma variável
-            $sql = "INSERT INTO usuario (apelido, senha) VALUES (?, ?)";
+            $sql = "INSERT INTO usuario (foto, apelido, senha) VALUES (?, ?, ?)";
 
             // 2. Prepara a requisição
             if($stmt = $mysqli->prepare($sql)){
                 // 2.1 Valida o input do usuário (Evita injeção de código sql no banco) 
-                $stmt->bind_param("ss", $param_apelido, $param_senha);
+                $stmt->bind_param("sss", $param_foto, $param_apelido, $param_senha);
+                $param_foto = $foto;
                 $param_apelido = $apelido;
                 // 2.2 Criptografia da senha
                 $param_senha = password_hash($senha, PASSWORD_DEFAULT);
