@@ -1,4 +1,4 @@
-/* Lista_de_noticias.css */
+/* Noticia_dashboard.css */
     /* BODY */
     body {
         overflow-x: hidden;
@@ -30,19 +30,6 @@
             color: #bdbdbd;   
         }
     /* /HEADER */
-    /* MAIN */
-    main {
-        width: 100vw; 
-        height: 140vh;
-        
-    }    
-
-    h1#titulo {
-        font-family: Rakkas;
-        color: #134F59;
-    }
-    
-    /* /MAIN */
     /* FOOTER */
     footer {
         position: relative;
@@ -73,4 +60,4 @@
         height: 1.6em;
     }
     /* /FOOTER */
-/* /lista_de_noticias.css */
+    /* /BODY */

@@ -24,7 +24,7 @@
       echo '<link rel="shortcut icon" href="../../assets/images/faviconnn.png" type="image/x-icon">';
       echo '<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">';
       echo '<link href="../../css/standard.css" rel="stylesheet">';
-            echo '<link href="../../css/lista_de_noticias.css" rel="stylesheet">';
+      echo '<link href="../../css/lista_de_noticias.css" rel="stylesheet">';
       echo '</head>';
       echo '<body class="bg-light">';
       echo '<header class="sticky-top" id="h">';
@@ -65,12 +65,12 @@
             echo "</nav>";
             echo '</header>';
       echo '<main style="background-image: url(../../assets/images/fundo-lista-noticiass.png); background-size: cover; background-repeat: no-repeat;">';
-      echo '<div class="container-fluid text-center" style="width: 500px;">';
+      echo '<div class="container-fluid text-center" style="width: 500px; position: relative; top: 6em;">';
       echo '<h1 class="p-4" id="titulo">Feed de notícias</h1>';
       echo '</div>';
 
     //Prepara a requisição ao banco
-    $sql = "SELECT * FROM noticia";
+    $sql = "SELECT * FROM noticia LIMIT 5";
 
     $stmt = $mysqli->query($sql);
 
@@ -78,7 +78,7 @@
 
     //Renderiza os dados na forma de tabela
     if($qtd > 0){
-        echo "<table class='table table-hover table-striped table-bordered' style='width:800px; margin:auto;'>";
+        echo "<table class='table table-hover table-striped table-bordered' style='width:800px; margin:auto; position: relative; top: 6em;'>";
             echo "<tr>";
             echo "<th>Autor</th>";
             echo "<th>Título</th>";
@@ -93,7 +93,7 @@
             echo "<td>" . $row->subtitulo . "</td>";
             echo "<td>" . $row->data . "</td>";
             echo "<td>
-                    <button class='btn btn-success' style='width: 80px;' onclick=\"location.href='Noticia_dashboard.php?id=".$row->id."';\">Ler</button>
+            <button class='btn' style='background-color: #134F59; color: white;' onclick=\"location.href='Noticia_dashboard.php?id=".$row->id."';\">+</button>
                   </td>";        
             echo "</tr>";
         }
