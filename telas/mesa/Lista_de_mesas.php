@@ -26,7 +26,7 @@
       echo '<link href="../../css/standard.css" rel="stylesheet">';
   echo '<link href="../../css/lista_de_mesas.css" rel="stylesheet">';
       echo '</head>';
-      echo '<body class="bg-light">';
+      echo '<body>';
       echo '<header class="sticky-top" id="h">';
             echo "<a class='navbar-brand' href='../usuario/Usuario_dashboard.php'><div id='logo'>A Taverna</div></a>";
             echo "<nav>";
@@ -64,12 +64,13 @@
             echo '</div>';
             echo "</nav>";
             echo '</header>';
-      echo '<div class="container-fluid text-center mt-3" style="width: 500px;">';
-      echo '<h1 class="p-4">Lista de mesas</h1>';
+            echo '<main style="background-image: url(../../assets/images/fundo-lista-noticiass.png); background-size: cover; background-repeat: no-repeat;">';
+      echo '<div class="container-fluid text-center" style="width: 500px; position: relative; top: 6em;">';
+      echo '<h1 class="p-4" id="titulo">Lista de Mesas</h1>';
       echo '</div>';
 
     //Prepara a requisição ao banco
-    $sql = "SELECT * FROM mesa";
+    $sql = "SELECT * FROM mesa ORDER BY timestamp desc LIMIT 5";
 
     $stmt = $mysqli->query($sql);
 
@@ -77,7 +78,7 @@
 
     //Renderiza os dados na forma de tabela
     if($qtd > 0){
-        echo "<table class='table table-hover table-striped table-bordered mb-5' style='width:1230px; margin:auto;'>";
+        echo "<table class='table table-hover table-striped table-bordered' style='width:800px; margin:auto; position: relative; top: 6em;'>";
             echo "<tr>";
             echo "<th>Nome</th>";
             echo "<th>Sistema</th>";
@@ -98,21 +99,24 @@
             echo "<td>" . $row->classificacao_indicativa . "</td>";
             echo "<td>" . $row->numero_vagas . "</td>";
             echo "<td>
-                    <button class='btn btn-success' onclick=\"location.href='Mesa_dashboard.php?id=".$row->id."';\">Acesse</button>
+            <button class='btn' style='background-color: #134F59; color: white;' onclick=\"location.href='Mesa_dashboard.php?id=".$row->id."';\">+</button>
                   </td>";        
             echo "</tr>";
         }
         echo "</table>";
-        echo '<footer>';
+    } else {
+        echo "<p class='alert-danger'>Não encontrou resultados!</p>";
+    }
+
+    
+    echo '<a href="#"><h2>Próxima página</h2></a>';
+    echo '</main>';
+    echo '<footer>';
             echo '<div class="container-fluid">';
             echo '<p>&copy; A Guilda. Siga em frente!</p>';
             echo '<p>Siga-nos:<a href="https://www.instagram.com/aguilda_smd/" target="_blank"><img src="../../assets/images/insta-icon (3).png"></a></p>';
             echo '</div>';
             echo '</footer>';
-    } else {
-        echo "<p class='alert-danger'>Não encontrou resultados!</p>";
-    }
-  
     echo '<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>';
     echo '</body>';
     echo '</html>';

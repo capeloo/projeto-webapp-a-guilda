@@ -15,6 +15,11 @@
     src: url("../assets/fonts/Montagna-LTD.otf");
 }
 
+@font-face {
+    font-family: "Ysabeau";
+    src: url("../assets/fonts/YsabeauInfant-Regular.ttf");
+}
+
 /* GENERIC STYLES */
 *{
     margin: 0px;

@@ -30,10 +30,45 @@
             color: #bdbdbd;   
         }
     /* /HEADER */
+    main {
+        width: 100vw; 
+        background-image: url(../assets/images/papel.png);
+    }    
+
+    h1#titulo {
+        font-family: Rakkas;
+        font-size: 3em;
+        color: #134F59;
+        text-align: center;
+        margin-top: 1em;
+    }
+    
+    h3 {
+        font-family: Rakkas;
+        font-size: 2em;
+        color: #134F59;
+        text-align: center;
+        
+    }
+
+    div#i>p {
+        font-family: Rakkas;
+        font-size: 1em;
+        color: #134F59;
+        text-align: center;
+    }
+
+    p {
+        font-family: Ysabeau;
+        color: #134F59;
+        margin: auto;
+    }
+    
+    /* /MAIN */
     /* FOOTER */
     footer {
         position: relative;
-        bottom: 0;
+        bottom: 15px;
 
         width: 100vw;
 

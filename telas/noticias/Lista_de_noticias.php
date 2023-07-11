@@ -66,11 +66,11 @@
             echo '</header>';
       echo '<main style="background-image: url(../../assets/images/fundo-lista-noticiass.png); background-size: cover; background-repeat: no-repeat;">';
       echo '<div class="container-fluid text-center" style="width: 500px; position: relative; top: 6em;">';
-      echo '<h1 class="p-4" id="titulo">Feed de notícias</h1>';
+      echo '<h1 class="p-4" id="titulo">Feed de Notícias</h1>';
       echo '</div>';
 
     //Prepara a requisição ao banco
-    $sql = "SELECT * FROM noticia LIMIT 5";
+    $sql = "SELECT * FROM noticia LIMIT 6";
 
     $stmt = $mysqli->query($sql);
 
@@ -102,6 +102,7 @@
         echo "<p class='alert-danger'>Não encontrou resultados!</p>";
     }
 
+    echo '<a href="#"><h2>Próxima página</h2></a>';
     echo '</main>';
     echo '<footer>';
             echo '<div class="container-fluid">';

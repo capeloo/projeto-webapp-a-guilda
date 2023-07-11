@@ -30,6 +30,29 @@
             color: #bdbdbd;   
         }
     /* /HEADER */
+    /* MAIN */
+    main {
+        width: 100vw; 
+        height: 140vh;
+        
+    }    
+
+    h1#titulo {
+        font-family: Rakkas;
+        color: #134F59;
+    }
+
+    h2 {
+        font-family: Rakkas;
+        font-size: 1.8em;
+        color: #134F59;
+        position: relative;
+        top: 4.2em;
+        left: 18.7em;
+        text-decoration: underline;
+    }
+    
+    /* /MAIN */
     /* FOOTER */
     footer {
         position: relative;
