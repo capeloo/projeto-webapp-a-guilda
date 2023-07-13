@@ -40,65 +40,119 @@
         
     }    
 
-    div#sinopse {
+    div#content {
+        display: flex;
+    }
 
+    div#section-1 {
+        width: 600px;
+        margin-left: 7em;
+        position: relative;
+        top: -2em;
+    }
+
+    div#sinopse {
+        flex-direction: column; 
+        text-align: left;
     }
 
     div#sinopse>h1 {
         font-family: Rakkas;
         color: #134F59;
-        position: relative;
-        top: 11.5em;
-        left: -18.8em;
+    
     }
 
     div#sinopse>p {
         font-family: Montagna LTD;
         font-size: 1em;
-        position: relative;
-        top: 32.5em;
-        left: -54.8em;
+        height: 100px;
         color: #134F59;
+        margin-bottom: 0.5em;
     }
 
     div#requisitos {
-
+        flex-direction: column;
+        text-align: left;
     }
 
     div#requisitos>h1{
         font-family: Rakkas;
         color: #134F59;
-        position: relative;
-        top: 13em;
-        left: -18.8em;
+
     }
 
     div#requisitos>p {
         font-family: Montagna LTD;
         font-size: 1em;
-        position: relative;
-        top: 32.6em;
-        left: -47em;
+        height: 80px;
         color: #134F59;
     }
 
     div#titulo {
-        background-color: black;
+        background-color: #212529bd;
+        width: 1125px;
+        position: relative;
+        top: -8.2em;
+        left: 4em;
+        
     }
 
     div#titulo>div>div>h1 {
         font-family: Rakkas;
-        color: #134F59;
+        color: white;
         margin: 0px;
         
     }
 
     div#titulo>div>div>h2 {
         font-family: Rakkas;
-        color: #134F59;
+        color: white;
         margin: 0px;
         margin-right: 0.5em;
         
+    }
+
+    div#titulo>div>div>p {
+        background-color: black;
+        color: white;
+        font-family: var(--fonte-texto);
+        font-size: 0.7em;
+        width: 6.5em;
+        border-radius: 0.3em;
+        padding: 0.2em;
+        margin-top: 0.5em;
+    }
+
+    div#section-2>div>h1 {
+        font-family: Rakkas;
+        color: #134F59;
+        margin-right: 3em;
+        position: relative;
+        top: -0.7em;
+        left: 1.2em;
+    }
+
+    div#section-2>div>div {
+        background-color: #134F59;
+        width: 384px;
+        height: 40px;
+        padding: 0.5em;
+        border-radius: 0.2em;
+        margin-bottom: 0.5em;
+        position: relative;
+        left: 3em;
+
+    }
+
+    div#section-2>div>div>p {
+        font-family: Rakkas;
+        color: white;
+    }
+
+    div#section-2>div>a {
+        position: relative;
+        top: 9em;
+        left: -0.5em;
     }
     /* /MAIN */
     /* FOOTER */
