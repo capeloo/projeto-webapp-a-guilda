@@ -70,7 +70,14 @@
       echo '</div>';
 
     //Prepara a requisição ao banco
-    $sql = "SELECT * FROM noticia LIMIT 6";
+    if(isset($_POST["botao"])){ 
+        $sql = "SELECT * FROM noticia WHERE id > 5  ORDER BY id LIMIT 5 ";
+    } else{
+        $sql = "SELECT * FROM noticia ORDER BY id LIMIT 5";
+    }
+    if(isset($_POST["botaoVoltar"])){ 
+        $sql = "SELECT * FROM noticia WHERE id  ORDER BY id LIMIT 5 ";
+    } 
 
     $stmt = $mysqli->query($sql);
 
@@ -102,7 +109,14 @@
         echo "<p class='alert-danger'>Não encontrou resultados!</p>";
     }
 
-    echo '<a href="#"><h2>Próxima página</h2></a>';
+    echo '<div style="display: flex; justify-content: space-between;">';
+    echo '<form action="" method="post">';
+    echo '<input type="submit" value="Voltar" name="botaoVoltar">';
+    echo '</form>';
+    echo '<form action="" method="post">';
+    echo '<input type="submit" value="Próxima Página" style="margin: 0px; margin-top: 1em; margin-right: 0.1em;" name="botao">';
+    echo '</form>';
+    echo '</div>';
     echo '</main>';
     echo '<footer>';
             echo '<div class="container-fluid">';
