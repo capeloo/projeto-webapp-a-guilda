@@ -37,6 +37,17 @@
         
     }    
 
+    main>div>div>form>input {
+        font-family: Rakkas;
+        font-size: 1.8em;
+        color: #134F59;
+        margin-top: 1em;
+        margin-right: 2em;
+        text-decoration: underline;
+        background-color: transparent;
+        border: 0px; 
+    }
+
     h1#titulo {
         font-family: Rakkas;
         color: #134F59;
@@ -50,17 +61,6 @@
         top: 4.2em;
         left: 18.7em;
         text-decoration: underline;
-    }
-    input{
-        font-family: Rakkas;
-        font-size: 1.8em;
-        color: #134F59;
-        position: relative;
-        top: 4.2em;
-        left: 18.7em;
-        text-decoration: underline;
-        background-color: transparent;
-        border: 0px; 
     }
     
     /* /MAIN */

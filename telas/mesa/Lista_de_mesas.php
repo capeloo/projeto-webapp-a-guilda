@@ -67,9 +67,10 @@
             echo "</nav>";
             echo '</header>';
             echo '<main style="background-image: url(../../assets/images/fundo-lista-noticiass.png); background-size: cover; background-repeat: no-repeat; background-position: center;">';
-      echo '<div class="container-fluid text-center" style="width: 500px; position: relative; top: 6em;">';
+      echo '<div class="text-center" style="width: 800px; height: 550px; position: relative; top: 6em; margin: auto;">';
       echo '<h1 class="p-4" id="titulo">Lista de Mesas</h1>';
-      echo '</div>';
+      
+
     if(isset($_POST["botao"])){ 
         $sql = "SELECT * FROM mesa WHERE id > 5  ORDER BY id LIMIT 5 ";
     } else{
@@ -85,11 +86,10 @@
 
     //Renderiza os dados na forma de tabela
     if($qtd > 0){
-        echo "<table class='table table-hover table-striped table-bordered' style='width:800px; margin:auto; position: relative; top: 6em;'>";
+        echo "<table class='table table-hover table-striped table-bordered' style='width:800px; margin:auto;'>";
             echo "<tr>";
             echo "<th>Nome</th>";
             echo "<th>Sistema</th>";
-            echo "<th>Sinopse</th>";
             echo "<th>Duração</th>";
             echo "<th>Tema</th>";
             echo "<th>Classificação Indicativa</th>";
@@ -100,7 +100,6 @@
             echo "<tr>";
             echo "<td>" . $row->nome_campanha . "</td>";
             echo "<td>" . $row->sistema . "</td>";
-            echo "<td>" . $row->sinopse . "</td>";
             echo "<td>" . $row->duracao . "</td>";
             echo "<td>" . $row->tema . "</td>";
             echo "<td>" . $row->classificacao_indicativa . "</td>";
@@ -111,16 +110,19 @@
             echo "</tr>";
         }
         echo "</table>";
+        echo '<div style="display: flex; justify-content: space-between;">';
+        echo '<form action="" method="post">';
+        echo '<input type="submit" value="Voltar" name="botaoVoltar">';
+        echo '</form>';
+        echo '<form action="" method="post">';
+        echo '<input type="submit" value="Próxima Página" style="margin: 0px; margin-top: 1em; margin-right: 0.1em;" name="botao">';
+        echo '</form>';
+        echo '</div>';
+        echo '</div>';
     } else {
         echo "<p class='alert-danger'>Não encontrou resultados!</p>";
     }
 
-    echo '<form action="" method="post">';
-    echo '<input type="submit" value="Próxima Página" name="botao">';
-    echo '</form>';
-    echo '<form action="" method="post">';
-    echo '<input type="submit" value="Voltar" name="botaoVoltar">';
-    echo '</form>';
     echo '</main>';
     echo '<footer>';
             echo '<div class="container-fluid">';
