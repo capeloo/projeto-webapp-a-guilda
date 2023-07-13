@@ -51,6 +51,17 @@
         left: 18.7em;
         text-decoration: underline;
     }
+    input{
+        font-family: Rakkas;
+        font-size: 1.8em;
+        color: #134F59;
+        position: relative;
+        top: 4.2em;
+        left: 18.7em;
+        text-decoration: underline;
+        background-color: transparent;
+        border: 0px; 
+    }
     
     /* /MAIN */
     /* FOOTER */

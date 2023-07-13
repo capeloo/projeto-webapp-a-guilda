@@ -1,4 +1,6 @@
 <?php 
+    global $id;
+
     //Script da lista de mesas
 
     //Inicia a sessão (necessário ter em todas as páginas que o usuário estiver logado)
@@ -68,9 +70,14 @@
       echo '<div class="container-fluid text-center" style="width: 500px; position: relative; top: 6em;">';
       echo '<h1 class="p-4" id="titulo">Lista de Mesas</h1>';
       echo '</div>';
-
-    //Prepara a requisição ao banco
-    $sql = "SELECT * FROM mesa ORDER BY timestamp desc LIMIT 5";
+    if(isset($_POST["botao"])){ 
+        $sql = "SELECT * FROM mesa WHERE id > 5  ORDER BY id LIMIT 5 ";
+    } else{
+        $sql = "SELECT * FROM mesa ORDER BY id LIMIT 5";
+    }
+    if(isset($_POST["botaoVoltar"])){ 
+        $sql = "SELECT * FROM mesa WHERE id  ORDER BY id LIMIT 5 ";
+    } 
 
     $stmt = $mysqli->query($sql);
 
@@ -108,8 +115,12 @@
         echo "<p class='alert-danger'>Não encontrou resultados!</p>";
     }
 
-    
-    echo '<a href="#"><h2>Próxima página</h2></a>';
+    echo '<form action="" method="post">';
+    echo '<input type="submit" value="Próxima Página" name="botao">';
+    echo '</form>';
+    echo '<form action="" method="post">';
+    echo '<input type="submit" value="Voltar" name="botaoVoltar">';
+    echo '</form>';
     echo '</main>';
     echo '<footer>';
             echo '<div class="container-fluid">';
