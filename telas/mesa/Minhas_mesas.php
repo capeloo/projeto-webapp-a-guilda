@@ -17,72 +17,63 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Minhas mesas</title>
-    <link rel="shortcut icon" href="./../../assets/fav.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../../assets/images/faviconnn.png" type="image/x-icon">
     <!-- Chamando as folhas de estilo do Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../css/standard.css" rel="stylesheet">
+    <link href="../../css/minhas_mesas.css" rel="stylesheet">
 </head>
-<body class="bg-light">
-  <!-- Barra de navegação -->
-  <nav class="navbar bg-dark sticky-top">
-    <div class="container-fluid">
-      <a class="navbar-brand text-light" href="../usuario/Usuario_dashboard.php">Taverna</a>
-      <form class='form-inline' action='../pesquisar.php' method='post'>
-        <div style='display:flex;'>
-          <input class='form-control mr-sm-2' type='search' placeholder='Apelido' name='pesquisa'>
-          <button class='btn btn-outline-light my-2 ms-2 my-sm-0' type='submit'>Pesquisar</button>
+<body>
+<header class="sticky-top" id="h">
+  <a class='navbar-brand' href='../usuario/Usuario_dashboard.php'><div id='logo'>A Taverna</div></a>
+  <nav>
+    <div class='container-fluid'>
+      <div>
+        <form class='form-inline' action='../pesquisar.php' method='post' style='margin-top:0.6em;'>
+          <div style='display:flex;'>
+            <input class='form-control mr-sm-2' type='search' placeholder='Pesquisar' name='pesquisa' style='border-radius: 0.25em; margin-right:0.5em; font-family: Montagna LTD;'>
+          </div>
+        </form>
+        <div class="dropdown">
+          <button class="btn dropdown-toggle" data-bs-toggle="dropdown"><img src="../../assets/images/mesa.png" style="width: 2.8em;"></button>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="Lista_de_mesas.php">Lista de mesas</a>
+            <a class="dropdown-item" href="Minhas_mesas.php">Minhas mesas</a>
+            <a class="dropdown-item" href="Cadastro_mesa.php">Cadastrar mesa</a>
+          </div>
         </div>
-      </form>
-      <!-- Offcanvas -->
-      <button class="navbar-toggler bg-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-        <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        <div class="dropdown">
+          <button class="btn dropdown-toggle" data-bs-toggle="dropdown"><img src="../../assets/images/noticias.png" style="width: 2.8em;"></button>
+          <div class="dropdown-menu dropdown-menu-lg-end">
+            <a class="dropdown-item" href="../noticias/Lista_de_noticias.php">Feed de notícias</a>
+          </div>
         </div>
-        <div class="offcanvas-body">
-          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-            <li class="nav-item">
-              <strong>Perfil</strong>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="../usuario/perfil/Perfil.php">Meu perfil</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="../usuario/perfil/Editar_perfil.php">Editar perfil</a>
-            </li>
-            <li class="nav-item" style="margin-top: 10px;">
-              <strong>Mesas</strong>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="Lista_de_mesas.php">Lista de mesas</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="Cadastro_mesa.php">Cadastro de mesa</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="Minhas_mesas.php">Minhas mesas</a>
-            </li>
-          </ul>
+        <div class="dropdown">
+          <button class="btn dropdown-toggle" data-bs-toggle="dropdown"><img src="../../assets/images/pessoa.png" style="width: 2.8em;"></button>
+          <div class="dropdown-menu dropdown-menu-lg-end">
+            <a class="dropdown-item" href="../usuario/perfil/Perfil.php">Meu perfil</a>
+            <a class="dropdown-item" href="../usuario/perfil/Editar_perfil.php">Editar perfil</a>
+            <hr class="dropdown-divider">
+            <a class="dropdown-item" href="../usuario/login/logout.php">Sair</a>
+          </div>
         </div>
       </div>
     </div>
   </nav>
+</header>
+<main style="background-image: url(../../assets/images/minhas-mesas-fundooo.png); background-size: cover; background-repeat: no-repeat; background-position: top center;">
     <!-- Conteúdo da página -->
-    <div class="container-fluid text-center mt-4 bg-light" style="width: 450px;">
-      <h1 class="p-2">Minhas mesas</h1>
-    </div>
-    <div class="row container-fluid text-center mt-4 bg-light" style="margin:auto;">
+    <div class="row container-fluid text-center" style="margin:auto;">
       <div class="col">
-        <h2 class="p-2 text-center mt-4">Mestrando</h2>
+        <h1 class="p-2 text-center mb-4">Mestrando</h1>
         <?php
           $id = $_SESSION["id"];
 
           //Prepara a requisição ao banco
           $sql = "SELECT * 
                   FROM mesa
-                  WHERE id_mestre = $id";
+                  WHERE id_mestre = $id
+                  LIMIT 6";
 
           $stmt = $mysqli->query($sql);
 
@@ -90,7 +81,7 @@
 
           //Renderiza os dados na forma de tabela
           if($qtd > 0){
-            echo "<table class='table table-hover table-striped table-bordered'>";
+            echo "<table class='table table-hover table-striped table-bordered' style='width:800px; margin:auto;'>";
             echo "<tr>";
             echo "<th>Nome</th>";
             echo "<th>Sistema</th>";
@@ -111,7 +102,7 @@
             echo "<td>" . $row->classificacao_indicativa . "</td>";
             echo "<td>" . $row->numero_vagas . "</td>";
             echo "<td>
-                    <button class='btn btn-success' onclick=\"location.href='Mesa_dashboard.php?id=".$row->id."';\">Acesse</button>
+                    <button class='btn' style='background-color: #134F59; color: white;' onclick=\"location.href='Mesa_dashboard.php?id=".$row->id."';\">+</button>
                   </td>";        
             echo "</tr>";
           }
@@ -121,13 +112,14 @@
         }
         ?>
       </div>
-      <div class="col">
-        <h2 class="p-2 text-center mt-4">Participando</h2>
+      <div class="col" style="height: 50em; margin-top: 4em;">
+        <h1 class="p-2 text-center mt-4 mb-4">Participando</h1>
         <?php
         
           $sql = "SELECT mesas
                   FROM usuario
                   WHERE id = $id
+                  LIMIT 6
                   ";
 
           $stmt = $mysqli->prepare($sql);
@@ -159,7 +151,7 @@
   
             //Renderiza os dados na forma de tabela
             if($qtd > 0){
-              echo "<table class='table table-hover table-striped table-bordered'>";
+              echo "<table class='table table-hover table-striped table-bordered' style='width:800px; margin:auto;'>";
               echo "<tr>";
               echo "<th>Nome</th>";
               echo "<th>Sistema</th>";
@@ -180,7 +172,7 @@
               echo "<td>" . $row->classificacao_indicativa . "</td>";
               echo "<td>" . $row->numero_vagas . "</td>";
               echo "<td>
-                      <button class='btn btn-success' onclick=\"location.href='Mesa_dashboard.php?id=".$row->id."';\">Acesse</button>
+                      <button class='btn' style='background-color: #134F59; color: white;' onclick=\"location.href='Mesa_dashboard.php?id=".$row->id."';\">+</button>
                     </td>";        
               echo "</tr>";
             }
@@ -192,6 +184,13 @@
         ?>
       </div>
     </div>
+</main>
+<footer>
+  <div class="container-fluid">
+    <p>&copy; A Guilda. Siga em frente!</p>
+    <p>Siga-nos:<a href="https://www.instagram.com/aguilda_smd/" target="_blank"><img src="../../assets/images/insta-icon (3).png"></a></p>
+  </div>
+</footer>
     <!-- Chamando os scripts do Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

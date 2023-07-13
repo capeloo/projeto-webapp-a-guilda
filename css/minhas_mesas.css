@@ -1,4 +1,4 @@
-/* Lista_de_mesas.php */
+/* minhas_mesas.php */
     /* BODY */
     body {
         overflow-x: hidden;
@@ -33,36 +33,19 @@
     /* MAIN */
     main {
         width: 100vw; 
-        height: 140vh;
+        height: 110em;
         
-    }    
-
-    h1#titulo {
-        font-family: Rakkas;
-        color: #134F59;
-    }
-
-    h2 {
-        font-family: Rakkas;
-        font-size: 1.8em;
-        color: #134F59;
-        position: relative;
-        top: 4.2em;
-        left: 18.7em;
-        text-decoration: underline;
-    }
-    input{
-        font-family: Rakkas;
-        font-size: 1.8em;
-        color: #134F59;
-        position: relative;
-        top: 4.2em;
-        left: 18.7em;
-        text-decoration: underline;
-        background-color: transparent;
-        border: 0px; 
+    }  
+    
+    main>div>div {
+        height: 55em;
     }
     
+    main>div>div>h1 {
+        font-family: Rakkas;
+        color: #134F59;
+        margin-top: 3em;
+    }
     /* /MAIN */
     /* FOOTER */
     footer {

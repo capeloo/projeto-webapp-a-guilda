@@ -66,7 +66,7 @@
             echo '</div>';
             echo "</nav>";
             echo '</header>';
-            echo '<main style="background-image: url(../../assets/images/fundo-lista-noticiass.png); background-size: cover; background-repeat: no-repeat;">';
+            echo '<main style="background-image: url(../../assets/images/fundo-lista-noticiass.png); background-size: cover; background-repeat: no-repeat; background-position: center;">';
       echo '<div class="container-fluid text-center" style="width: 500px; position: relative; top: 6em;">';
       echo '<h1 class="p-4" id="titulo">Lista de Mesas</h1>';
       echo '</div>';
@@ -140,7 +140,7 @@
       echo '<meta http-equiv="X-UA-Compatible" content="IE=edge">';
       echo '<meta name="viewport" content="width=device-width, initial-scale=1.0">';
       echo '<title>Dashboard</title>';
-      echo '<link rel="shortcut icon" href="./../../assets/fav.png" type="image/x-icon">';
+      echo '<link rel="shortcut icon" href="../../assets/images/faviconnn.png" type="image/x-icon">';
       echo '<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">';
       echo '</head>';
       echo '<body class="bg-dark">';

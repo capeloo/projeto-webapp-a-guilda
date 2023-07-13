@@ -90,7 +90,7 @@
             echo '</div>';
             echo "</nav>";
             echo '</header>';
-            echo '<main style="background-image: url(../../../assets/images/perfilll.png); background-size: cover; background-repeat: no-repeat;">';
+            echo '<main style="background-image: url(../../../assets/images/perfilll.png); background-size: cover; background-repeat: no-repeat; background-position: center;">';
             echo '<div class="container-fluid text-center">';
             echo '<form action="' .htmlspecialchars($_SERVER["PHP_SELF"]). '"method="post">';
             echo '<div class="row">';
@@ -206,7 +206,7 @@
             echo '</div>';
             echo "</nav>";
             echo '</header>';
-            echo '<main style="background-image: url(../../../assets/images/perfilll.png); background-size: cover; background-repeat: no-repeat;">';
+            echo '<main style="background-image: url(../../../assets/images/perfilll.png); background-size: cover; background-repeat: no-repeat; background-position: center;">';
             echo '<div class="container-fluid text-center">';
             echo '<form action="' .htmlspecialchars($_SERVER["PHP_SELF"]). '"method="post">';
             echo '<div class="row">';

@@ -188,7 +188,7 @@
             </div>
             </nav>
             </header>
-        <main style="background-image: url(../../../assets/images/editar-perfil.png); background-size: cover; background-repeat: no-repeat;">
+        <main style="background-image: url(../../../assets/images/editar-perfil.png); background-size: cover; background-repeat: no-repeat; background-position: center;">
             <div class="container-fluid text-center">
                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
                     <div class="row">
