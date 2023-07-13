@@ -1,0 +1,134 @@
+/* Mesa_dashboard.css */
+    /* BODY */
+    body {
+        overflow-x: hidden;
+    }
+    /* HEADER */
+        header {
+            width: 100vw;
+            height: 3.7em;
+            background-color: var(--cor2);
+            display: flex;
+            justify-content: space-between;
+            overflow-y: visible;
+        }
+
+        header>nav>div>div {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        div#logo {
+            font-family: var(--fonte-logo);
+            font-size: 2em;
+            margin-top: 0.2em;
+            margin-left: 0.3em;
+            color: var(--cor1);
+        }
+
+        header#h>nav>div>div>form>div>input::placeholder {
+            color: #bdbdbd;   
+        }
+    /* /HEADER */
+    main {
+        width: 100vw; 
+        height: 70em;
+        background-image: url(../assets/images/mesa-fundo-dash.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        
+    }    
+
+    div#sinopse {
+
+    }
+
+    div#sinopse>h1 {
+        font-family: Rakkas;
+        color: #134F59;
+        position: relative;
+        top: 11.5em;
+        left: -18.8em;
+    }
+
+    div#sinopse>p {
+        font-family: Montagna LTD;
+        font-size: 1em;
+        position: relative;
+        top: 32.5em;
+        left: -54.8em;
+        color: #134F59;
+    }
+
+    div#requisitos {
+
+    }
+
+    div#requisitos>h1{
+        font-family: Rakkas;
+        color: #134F59;
+        position: relative;
+        top: 13em;
+        left: -18.8em;
+    }
+
+    div#requisitos>p {
+        font-family: Montagna LTD;
+        font-size: 1em;
+        position: relative;
+        top: 32.6em;
+        left: -47em;
+        color: #134F59;
+    }
+
+    div#titulo {
+        background-color: black;
+    }
+
+    div#titulo>div>div>h1 {
+        font-family: Rakkas;
+        color: #134F59;
+        margin: 0px;
+        
+    }
+
+    div#titulo>div>div>h2 {
+        font-family: Rakkas;
+        color: #134F59;
+        margin: 0px;
+        margin-right: 0.5em;
+        
+    }
+    /* /MAIN */
+    /* FOOTER */
+    footer {
+        position: relative;
+        bottom: 0;
+
+        width: 100vw;
+
+        background-color: var(--cor1);
+    }
+
+    footer>div {
+        display: flex;
+        justify-content: space-between;
+        padding: 1em;
+    }
+
+    footer>div>p {
+        font-family: var(--fonte-texto);
+        font-size: 1em;
+        margin: 0px;
+        color: var(--cor2);
+    }
+
+    footer>div>p>a>img {
+        margin-left: 0.3em;
+        margin-right: 1em;
+        width: 1.6em;
+        height: 1.6em;
+    }
+    /* /FOOTER */
+    /* /BODY */
