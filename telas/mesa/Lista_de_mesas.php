@@ -243,6 +243,5 @@
     echo '</body>';
     echo '</html>';
     }
-    echo "teste";
 ?>
 
