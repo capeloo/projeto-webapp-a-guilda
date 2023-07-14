@@ -64,7 +64,7 @@
             echo "</div>";
             echo "</form>";
             echo '<div class="dropdown">';
-            echo '<button class="btn dropdown-toggle" data-bs-toggle="dropdown"><img src="../../../assets/images/mesa.png" style="width: 2.8em;"></button>';
+            echo '<button class="btn dropdown-toggle" data-bs-toggle="dropdown"><img src="../../../assets/images/icons8-mesa-100.png" style="width: 2.8em;"></button>';
             echo '<div class="dropdown-menu">';
             echo '<a class="dropdown-item" href="../../mesa/Lista_de_mesas.php">Lista de mesas</a>';
             echo '<a class="dropdown-item" href="../../mesa/Minhas_mesas.php">Minhas mesas</a>';
@@ -180,7 +180,7 @@
             echo "</div>";
             echo "</form>";
             echo '<div class="dropdown">';
-            echo '<button class="btn dropdown-toggle" data-bs-toggle="dropdown"><img src="../../../assets/images/mesa.png" style="width: 2.8em;"></button>';
+            echo '<button class="btn dropdown-toggle" data-bs-toggle="dropdown"><img src="../../../assets/images/icons8-mesa-100.png" style="width: 2.8em;"></button>';
             echo '<div class="dropdown-menu">';
             echo '<a class="dropdown-item" href="../../mesa/Lista_de_mesas.php">Lista de mesas</a>';
             echo '<a class="dropdown-item" href="../../mesa/Minhas_mesas.php">Minhas mesas</a>';

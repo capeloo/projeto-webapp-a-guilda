@@ -24,7 +24,7 @@
                         </div>
                     </form>
                     <div class="dropdown">
-                        <button class="btn dropdown-toggle" data-bs-toggle="dropdown"><img src="../../../assets/images/mesa.png" style="width: 2.8em;"></button>
+                        <button class="btn dropdown-toggle" data-bs-toggle="dropdown"><img src="../../../assets/images/icons8-mesa-100.png" style="width: 2.8em;"></button>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="../../mesa/Lista_de_mesas.php">Lista de mesas</a>
                             <a class="dropdown-item" href="../../mesa/Minhas_mesas.php">Minhas mesas</a>
