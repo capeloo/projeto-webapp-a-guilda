@@ -36,22 +36,24 @@
         height: 140vh;
         
     }    
-
-    main>div>div>form>input {
+    #inputMesa{
         font-family: Rakkas;
         font-size: 1.8em;
         color: #134F59;
-        margin-top: 1em;
-        margin-right: 2em;
+        position: relative;
+        top: 4.2em;
+        left: 18.7em;
         text-decoration: underline;
         background-color: transparent;
         border: 0px; 
     }
-
+    do
+    
     h1#titulo {
         font-family: Rakkas;
         color: #134F59;
     }
+    
 
     h2 {
         font-family: Rakkas;
