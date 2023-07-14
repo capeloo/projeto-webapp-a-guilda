@@ -153,7 +153,7 @@
 
         //Renderiza os dados na forma de tabela
         if($qtd > 0){
-        echo '<img  src="../../assets/images/borda-horizontal.png" style=" background-color: transparent;width: 79em; height: 3em; position: relative; top: -1em;">';
+        echo '<img  src="../../assets/images/borda-horizontal.png" style=" background-color: transparent;width: 100vw; height: 3em; position: relative; top: -1em;">';
         echo '<div class="row text-center" id="userDash-minhasMesas">';
         echo '<h1 class="p-2 mt-5">Minhas mesas</h1>';
         echo '<div class="col">';
@@ -227,7 +227,7 @@
           echo '</div>';
           echo '<div class="col">';
           echo '<h2 class="p-2 text-center mt-3">Participando</h2>';  
-          echo "<table class='table table-hover table-striped table-bordered' style='width: 350px; margin: auto; margin-bottom: 1em; position: relative; left: -2em; border-radius: 0.5em;'>";
+          echo "<table class='table table-hover table-striped table-bordered' style='width: 350px; margin: auto; margin-bottom: 1em; position: relative; left: -1.5em; border-radius: 0.5em;'>";
           echo "<tr>";
           echo "<th>Nome</th>";
           echo "<th>Sistema</th>";
@@ -280,7 +280,7 @@
 
         //Renderiza os dados na forma de tabela
         if($qtd > 0){
-        echo '<img  src="../../assets/images/borda-horizontal.png" style=" background-color: transparent;width: 79em; height: 3em; position: relative; top: -4em; padding: 0;">';
+        echo '<img  src="../../assets/images/borda-horizontal.png" style=" background-color: transparent;width: 100vw; height: 3em; position: relative; top: -4em; padding: 0;">';
         echo '<div class="container-fluid text-center p-4" id="userDash-noticias">';
         $cont = 0;
         while($row = $stmt->fetch_object()){
