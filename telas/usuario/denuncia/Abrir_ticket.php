@@ -56,7 +56,7 @@
             <h1>Ticket de Denúncia</h1>
             <!-- Formulário -->
             <form action="denunciar.php?id=<?php echo $_GET["id"]?>" method="post">
-                <div class="container-fluid" style="width: 90%; display:flex; flex-direction: column;">
+                <div class="container-fluid" style="width: 100vw; display:flex; flex-direction: column;">
                     <div id="content-header">
                         <h1 style="font-size: 2em;">Por que deseja denunciar esse usuário?</h1>
                         <p style="font-size: 1.2em;">Lamentamos que você precise passar por esse tipo de situação, ajudaremos da melhor forma possível.</p>
@@ -84,11 +84,11 @@
                         </div>
                     </div>
                     <div id="content-2">
-                        <div class="input-group mx-auto p-2" style="width: 65.9em;">
+                        <div class="input-group mx-auto p-2" style="width: 62.7em;">
                             <input type="text" name="titulo" class="form-control" placeholder="Título">
                         </div>
                         <div>
-                            <textarea name="comentario" placeholder="Escreva sua denúncia aqui!" class="form-control mb-2" cols="30" row="10" style="width: 65em; height: 200px; margin: auto;"></textarea>
+                            <textarea name="comentario" placeholder="Escreva sua denúncia aqui!" class="form-control mb-2" cols="30" row="10" style="width: 61.8em; height: 200px; margin: auto;"></textarea>
                         </div> 
                         <div class="p-4 text-center">
                             <button class="btn btn-success" style="width: 120px;" type="submit">Enviar</button>

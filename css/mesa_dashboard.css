@@ -93,7 +93,7 @@
         width: 71.4em;
         position: relative;
         top: -8.4em;
-        left: 4em;
+        left: 3em;
         border-radius: 0.4em;
         
     }
@@ -130,7 +130,7 @@
         margin-right: 3em;
         position: relative;
         top: -0.7em;
-        left: 1.9em;
+        left: 1.2em;
     }
 
     div#section-2>div>div {
@@ -141,7 +141,7 @@
         border-radius: 0.2em;
         margin-bottom: 0.5em;
         position: relative;
-        left: 4.6em;
+        left: 3em;
 
     }
 
@@ -153,7 +153,6 @@
     div#section-2>div>a {
         position: relative;
         top: 9em;
-        left: 0.5em;
     }
     /* /MAIN */
     /* FOOTER */

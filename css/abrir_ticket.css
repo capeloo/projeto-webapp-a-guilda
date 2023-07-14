@@ -50,8 +50,8 @@
 
     main>div>form>div>div#content-header {
         width: 650px;
-        margin-left: 25.5em;
-        margin-top: 3.5em;
+        margin-left: 28em;
+        margin-top: 3em;
         text-align: left;
         font-family: Rakkas;
         color: white;
@@ -62,7 +62,7 @@
     }
 
     main>div>form>div>div#content {
-       margin-left: 23.8em;
+       margin-left: 26.3em;
        font-family: Ysabeau Infant;
        color: white;
        padding-bottom: 2em;
