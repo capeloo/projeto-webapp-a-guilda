@@ -134,168 +134,148 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de mesa</title>
-    <link rel="shortcut icon" href="../../assets/fav.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../../assets/images/faviconnn.png" type="image/x-icon">
     <!-- Chamando as folhas de estilo do Bootstrap -->
     <link href="../../css/bootstrap.min.css" rel="stylesheet">
     <!-- Folha do multi-select-tag -->
     <link href="../../css/multi-select-tag.css" rel="stylesheet">
+    <link href="../../css/standard.css" rel="stylesheet">
+    <link href="../../css/cadastro_mesa.css" rel="stylesheet">
 </head>
 <body>
-    <!-- Barra de navegação -->
-    <nav class="navbar bg-dark sticky-top">
-        <div class="container-fluid">
-            <a class="navbar-brand text-light" href="../usuario/Usuario_dashboard.php">Taverna</a>
-            <form class='form-inline' action='../pesquisar.php' method='post'>
-                <div style='display:flex;'>
-                    <input class='form-control mr-sm-2' type='search' placeholder='Apelido' name='pesquisa'>
-                    <button class='btn btn-outline-light my-2 ms-2 my-sm-0' type='submit'>Pesquisar</button>
-                </div>
-            </form>
-            <!-- Offcanvas -->
-            <button class="navbar-toggler bg-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-                <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                </div>
-                <div class="offcanvas-body">
-                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                        <li class="nav-item">
-                            <strong>Perfil</strong>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="../usuario/perfil/Perfil.php">Meu perfil</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="../usuario/perfil/Editar_perfil.php">Editar perfil</a>
-                        </li>
-                        <li class="nav-item" style="margin-top: 10px;">
-                            <strong>Mesas</strong>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="Lista_de_mesas.php">Lista de mesas</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="Cadastro_mesa.php">Cadastro de mesa</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="Minhas_mesas.php">Minhas mesas</a>
-                        </li>
-                    </ul>
+    <header class="sticky-top" id="h">
+        <a class='navbar-brand' href='../usuario/Usuario_dashboard.php'><div id='logo'>A Taverna</div></a>
+        <nav>
+            <div class='container-fluid'>
+                <div>
+                    <form class='form-inline' action='../pesquisar.php' method='post' style='margin-top:0.6em;'>
+                        <div style='display:flex;'>
+                            <input class='form-control mr-sm-2' type='search' placeholder='Pesquisar' name='pesquisa' style='border-radius: 0.25em; margin-right:0.5em; font-family: Montagna LTD;'>
+                        </div>
+                    </form>
+                    <div class="dropdown">
+                        <button class="btn dropdown-toggle" data-bs-toggle="dropdown"><img src="../../assets/images/mesa.png" style="width: 2.8em;"></button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="Lista_de_mesas.php">Lista de mesas</a>
+                            <a class="dropdown-item" href="Minhas_mesas.php">Minhas mesas</a>
+                            <a class="dropdown-item" href="Cadastro_mesa.php">Cadastrar mesa</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn dropdown-toggle" data-bs-toggle="dropdown"><img src="../../assets/images/noticias.png" style="width: 2.8em;"></button>
+                        <div class="dropdown-menu dropdown-menu-lg-end">
+                            <a class="dropdown-item" href="../noticias/Lista_de_noticias.php">Feed de notícias</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn dropdown-toggle" data-bs-toggle="dropdown"><img src="../../assets/images/pessoa.png" style="width: 2.8em;"></button>
+                        <div class="dropdown-menu dropdown-menu-lg-end">
+                            <a class="dropdown-item" href="../usuario/perfil/Perfil.php">Meu perfil</a>
+                            <a class="dropdown-item" href="../usuario/perfil/Editar_perfil.php">Editar perfil</a>
+                            <hr class="dropdown-divider">
+                            <a class="dropdown-item" href="../usuario/login/logout.php">Sair</a>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </header>
+    <main>
     <!-- Conteúdo da página -->
-    <div class="container-fluid text-center mt-3">
-        <h1 class="p-3">Criar uma nova mesa</h1>
-        <!-- Formulário -->
+        <section class="text-center">
+            <h1 class="p-3">Cadastrar mesa</h1>
+        </section>
+            <!-- Formulário -->
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
             <div class="row">
                 <div class="col">
                     <div class="input-group mx-auto p-2" style="width: 300px;">
-                        <span class="input-group-text">Foto</span>  
-                        <input type="file" name="foto" class="form-control">
+                        <input type="file" name="foto">
                         <span class="invalid-feedback"></span>
                     </div>
-                    <div class="input-group mx-auto p-2" style="width: 300px;">
-                        <span class="input-group-text" style="width: 283px; border-radius: 5px;justify-content:center;">Tema</span>
-                        <select name="tema" id="theme" multiple>
-                            <option>Ação</option>
-                            <option>Aventura</option>
-                            <option>Horror</option>
-                            <option>Mistério</option>
-                            <option>Body Building</option>
-                        </select>
-                        <span class="invalid-feedback"></span>
+                    <div class="input-group mx-auto p-2" style="width: 350px; height: 300px; background-size: contain; background-repeat: no-repeat; background-image: url(../../assets/images/quadro.png);">
                     </div>
                 </div>
-                <div class="col">
-                    <div class="input-group mx-auto p-2" style="width: 300px;">
-                        <span class="input-group-text">Nome da campanha</span>
-                        <input type="text" name="nome_campanha" class="form-control <?php echo (!empty($nome_campanha_erro)) ? 'is-invalid' : ''; ?>">
-                        <span class="invalid-feedback"><?php echo $nome_campanha_erro; ?></span>
+                    <div class="col">
+                        <div class="input-group mx-auto p-2" style="width: 350px;">
+                            <input type="text" id="nome-campanha" name="nome_campanha" class="form-control <?php echo (!empty($nome_campanha_erro)) ? 'is-invalid' : ''; ?>" placeholder="Noma da Campanha" style="background-color: #8FBEAE; border-radius: 0.2em;">
+                            <span class="invalid-feedback"><?php echo $nome_campanha_erro; ?></span>
+                        </div>
+                        <div class="input-group mx-auto p-2" style="width: 350px;">
+                            <input type="text" id="sistema" name="sistema" class="form-control <?php echo (!empty($sistema_erro)) ? 'is-invalid' : ''; ?>" placeholder="Sistema" style="background-color: #8FBEAE; border-radius: 0.2em;">
+                            <span class="invalid-feedback"><?php echo $sistema_erro; ?></span>
+                        </div>
+                        <div class="input-group mx-auto p-2" style="width: 350px; height: 150px;">
+                            <textarea name="sinopse" id="sinopse" class="form-control" style="background-color: #8FBEAE; border-radius: 0.2em;" placeholder="Sinopse"></textarea>
+                            <span class="invalid-feedback"></span>
+                        </div>
+                        <div class="input-group mx-auto p-2" style="width: 350px;">
+                            <textarea name="requisitos" id="requisitos" class="form-control" style="background-color: #8FBEAE; border-radius: 0.2em;" placeholder="Requisitos Mínimos"></textarea>
+                            <span class="invalid-feedback"></span>
+                        </div>
                     </div>
-                    <div class="input-group mx-auto p-2" style="width: 300px;">
-                        <span class="input-group-text">Sistema</span>
-                        <input type="text" name="sistema" class="form-control <?php echo (!empty($sistema_erro)) ? 'is-invalid' : ''; ?>">
-                        <span class="invalid-feedback"><?php echo $sistema_erro; ?></span>
+                    <div class="col">
+                        <div class="input-group mx-auto p-2" style="width: 300px;">
+                            <select name="duracao" id="select" class="form-control" style="background-color: #8FBEAE; border-radius: 0.2em;">
+                                <option>Duração</option>
+                                <option>One-shot</option>
+                                <option>Curta</option>
+                                <option>Média</option>
+                                <option>Longa</option>
+                                <option>Odisseia</option>
+                            </select>
+                            <span class="invalid-feedback"></span>
+                        </div>
+                        <div class="input-group mx-auto p-2" style="width: 300px;">
+                            <select name="classificacao" id="select1" class="form-control" style="background-color: #8FBEAE; border-radius: 0.2em;">
+                                <option>Classificação Indicativa</option>
+                                <option>L</option>
+                                <option>10</option>
+                                <option>12</option>
+                                <option>14</option>
+                                <option>16</option>
+                                <option>18</option>
+                            </select>
+                            <span class="invalid-feedback"></span>
+                        </div>
+                        <div class="input-group mx-auto p-2" style="width: 300px;">
+                            <input type="number" id="vagas" class="form-control" name="vagas" placeholder="Vagas" style="background-color: #8FBEAE; border-radius: 0.2em;">
+                            <span class="invalid-feedback"></span>
+                        </div>
+                        <div class="input-group mx-auto p-2" style="width: 300px;">
+                            <select name="nivel" id="select2" class="form-control" style="background-color: #8FBEAE; border-radius: 0.2em;">
+                                <option>Nível dos Jogadores</option>
+                                <option>Livre</option>
+                                <option>Iniciante</option>
+                                <option>Intermediário</option>
+                                <option>Avançado</option>
+                                <option>Mestre</option>
+                            </select>
+                            <span class="invalid-feedback"></span>
+                        </div>
+                        <div class="input-group mx-auto p-2" style="width: 300px;">
+                            <input type="date" id="data" class="form-control" name="data" placeholder="Data" style="background-color: #8FBEAE; color: #134F59;  border-radius: 0.2em;">
+                            <span class="invalid-feedback"></span>
+                        </div>
+                        <div class="input-group mx-auto p-2" style="width: 300px;">
+                            <input type="time" class="form-control" name="hora" placeholder="Hora"style="background-color: #8FBEAE; color: #134F59;  border-radius: 0.2em;">
+                            <span class="invalid-feedback"></span>
+                        </div>
                     </div>
-                    <div class="input-group mx-auto p-2" style="width: 300px;">
-                        <span class="input-group-text">Sinopse</span>
-                        <textarea name="sinopse" class="form-control"></textarea>
-                        <span class="invalid-feedback"></span>
-                    </div>
-                    <div class="input-group mx-auto p-2" style="width: 300px;">
-                        <span class="input-group-text">Requisitos</span>
-                        <textarea name="requisitos" class="form-control"></textarea>
-                        <span class="invalid-feedback"></span>
-                    </div>
+                </div>  
+                <div class="p-4 text-center">
+                    <button class="btn" style="font-family: Rakkas; font-size: 1.2em; background-color: #134F59; color: white; width: 120px;" type="submit">Cadastrar</button>
                 </div>
-                <div class="col">
-                    <div class="input-group mx-auto p-2" style="width: 300px;">
-                        <span class="input-group-text">Duração</span>
-                        <select name="duracao" class="form-control">
-                            <option></option>
-                            <option>One-shot</option>
-                            <option>Curta</option>
-                            <option>Média</option>
-                            <option>Longa</option>
-                            <option>Odisseia</option>
-                        </select>
-                        <span class="invalid-feedback"></span>
-                    </div>
-                    <div class="input-group mx-auto p-2" style="width: 300px;">
-                        <span class="input-group-text">Classificação Indicativa</span>
-                        <select name="classificacao" class="form-control">
-                            <option></option>
-                            <option>L</option>
-                            <option>10</option>
-                            <option>12</option>
-                            <option>14</option>
-                            <option>16</option>
-                            <option>18</option>
-                        </select>
-                        <span class="invalid-feedback"></span>
-                    </div>
-                    <div class="input-group mx-auto p-2" style="width: 300px;">
-                        <span class="input-group-text">Número de vagas</span>
-                        <input type="number" class="form-control" name="vagas">
-                        <span class="invalid-feedback"></span>
-                    </div>
-                    <div class="input-group mx-auto p-2" style="width: 300px;">
-                        <span class="input-group-text">Nível dos jogadores</span>
-                        <select name="nivel" class="form-control">
-                            <option></option>
-                            <option>Livre</option>
-                            <option>Iniciante</option>
-                            <option>Intermediário</option>
-                            <option>Avançado</option>
-                            <option>Mestre</option>
-                        </select>
-                        <span class="invalid-feedback"></span>
-                    </div>
-                    <div class="input-group mx-auto p-2" style="width: 300px;">
-                        <span class="input-group-text">Data</span>
-                        <input type="date" class="form-control" name="data">
-                        <span class="invalid-feedback"></span>
-                    </div>
-                    <div class="input-group mx-auto p-2" style="width: 300px;">
-                        <span class="input-group-text">Hora</span>
-                        <input type="time" class="form-control" name="hora">
-                        <span class="invalid-feedback"></span>
-                    </div>
-                </div>
-            </div>  
-            <div class="p-4">
-                <button class="btn btn-success" type="submit">Cadastrar</button>
-            </div>
-        </form>
-    </div>
+            </form>
+    </main>
+    <footer>
+        <div class="container-fluid">
+            <p>&copy; A Guilda. Siga em frente!</p>
+            <p>Siga-nos:<a href="https://www.instagram.com/aguilda_smd/" target="_blank"><img src="../../assets/images/insta-icon (3).png"></a></p>
+        </div>
+    </footer>
     <!-- Chamando os scripts do Bootstrap -->
-    <script src="../../js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Script do multi-select-tag -->
     <script src="../../js/multi-select-tag.js"></script>
     <script>

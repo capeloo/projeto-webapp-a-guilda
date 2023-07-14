@@ -65,9 +65,8 @@
             echo "</nav>";
             echo '</header>';
       echo '<main style="background-image: url(../../assets/images/fundo-lista-noticiass.png); background-size: cover; background-repeat: no-repeat; background-position: center;">';
-      echo '<div class="container-fluid text-center" style="width: 500px; position: relative; top: 6em;">';
+      echo '<div class="container-fluid text-center" style="width: 900px; position: relative; top: 6em;">';
       echo '<h1 class="p-4" id="titulo">Feed de Notícias</h1>';
-      echo '</div>';
 
     //Prepara a requisição ao banco
     if(isset($_POST["botao"])){ 
@@ -85,7 +84,7 @@
 
     //Renderiza os dados na forma de tabela
     if($qtd > 0){
-        echo "<table class='table table-hover table-striped table-bordered' style='width:800px; margin:auto; position: relative; top: 6em;'>";
+        echo "<table class='table table-hover table-striped table-bordered' style='width:800px; margin:auto;'>";
             echo "<tr>";
             echo "<th>Autor</th>";
             echo "<th>Título</th>";
@@ -106,16 +105,17 @@
         }
         echo "</table>";
     } else {
-        echo "<p class='alert-danger'>Não encontrou resultados!</p>";
+        echo "<p class='alert-danger' id='error'>Não encontrou resultados!</p>";
     }
 
-    echo '<div style="display: flex; justify-content: space-between;">';
+    echo '<div style="display: flex; justify-content: space-between; width: 800px; margin-left: 2.3em;">';
     echo '<form action="" method="post">';
     echo '<input type="submit" value="Voltar" name="botaoVoltar">';
     echo '</form>';
     echo '<form action="" method="post">';
     echo '<input type="submit" value="Próxima Página" style="margin: 0px; margin-top: 1em; margin-right: 0.1em;" name="botao">';
     echo '</form>';
+    echo '</div>';
     echo '</div>';
     echo '</main>';
     echo '<footer>';

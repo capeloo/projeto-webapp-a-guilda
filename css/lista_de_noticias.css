@@ -52,7 +52,7 @@
         text-decoration: underline;
     }
     
-    main>div>form>input {
+    main>div>div>form>input {
         font-family: Rakkas;
         font-size: 1.8em;
         color: #134F59;
@@ -63,6 +63,11 @@
         border: 0px; 
     }
 
+    p#error {
+        font-family: Rakkas;
+        font-size: 2.5em;
+        color: red;
+    }
     /* /MAIN */
     /* FOOTER */
     footer {
