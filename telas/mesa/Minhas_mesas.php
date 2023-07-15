@@ -63,8 +63,8 @@
 </header>
 <main style="background-image: url(../../assets/images/minhas-mesas-fundooo.png); background-size: cover; background-repeat: no-repeat; background-position: top center;">
     <!-- Conteúdo da página -->
-    <div class="row container-fluid text-center" style="margin:auto;">
-      <div class="col">
+    <div class="text-center" style="margin:auto;">
+      <div>
         <h1 class="p-2 text-center mb-4">Mestrando</h1>
         <?php
           $id = $_SESSION["id"];
@@ -112,15 +112,14 @@
         }
         ?>
       </div>
-      <div class="col" style="height: 50em; margin-top: 4em;">
-        <h1 class="p-2 text-center mt-4 mb-4">Participando</h1>
+      <div style="height: 50em; padding-top: 5em;">
+        <h1 class="p-2 text-center mb-4">Participando</h1>
         <?php
         
           $sql = "SELECT mesas
                   FROM usuario
                   WHERE id = $id
-                  LIMIT 6
-                  ";
+                  LIMIT 6";
 
           $stmt = $mysqli->prepare($sql);
           $stmt->execute();
@@ -177,7 +176,9 @@
               echo "</tr>";
             }
               echo "</table>";
-          }      
+          } else {
+            echo "<h3 class='text-danger'>Não achamos nenhum resultado!</h3>";
+          }     
           } else {
             echo "<h3 class='text-danger'>Você ainda não está inscrito em nenhuma mesa!</h3>";
           }   

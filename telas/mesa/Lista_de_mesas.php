@@ -109,8 +109,10 @@
                 </td>";  
             }else if($_SESSION["admin"] == 1){
                 echo "<td>
-                <button class='btn' style='background-color: #134F59; color: white;' onclick=\"location.href='Mesa_dashboard.php?id=".$row->id."';\">+</button>
+                <div style='display: flex;'>
+                <button class='btn' style='background-color: #134F59; color: white; margin-right: 0.5em;' onclick=\"location.href='Mesa_dashboard.php?id=".$row->id."';\">+</button>
                 <button class='btn btn-danger' onclick=\"location.href='lista_de_mesas.php?name=$row->id';\">Excluir</button>
+                <div>
 
                 </td>";
             }

@@ -107,6 +107,11 @@
             color: var(--cor3);
         }
 
+        section#minhas_mesas>div>div>h2#part {
+            position: relative;
+            left: 0em;
+        }
+
 
         section#minhas_mesas>div>div>h4 {
             position: relative;

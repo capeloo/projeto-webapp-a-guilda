@@ -230,8 +230,8 @@
         if($qtd > 0){
           echo '</div>';
           echo '<div class="col">';
-          echo '<h2 class="p-2 text-center mt-3">Participando</h2>';  
-          echo "<table class='table table-hover table-striped table-bordered' style='width: 350px; margin: auto; margin-bottom: 1em; position: relative; left: -1.5em; border-radius: 0.5em;'>";
+          echo '<h2 class="p-2 text-center mt-3" id="part">Participando</h2>';  
+          echo "<table class='table table-hover table-striped table-bordered' style='width: 350px; margin: auto; margin-bottom: 1em; border-radius: 0.5em;'>";
           echo "<tr>";
           echo "<th>Nome</th>";
           echo "<th>Sistema</th>";
@@ -252,7 +252,7 @@
             }
             echo "</table>";
             echo '<div>';
-            echo "<button class='btn' style='background-color: #134F59; color: white; position: relative; left: -2.3em;' onclick=\"location.href='../mesa/Minhas_mesas.php';\">Veja mais</button>";
+            echo "<button class='btn' style='background-color: #134F59; color: white;' onclick=\"location.href='../mesa/Minhas_mesas.php';\">Veja mais</button>";
             echo '</div>';
             echo '</section>';
         } else {
@@ -290,8 +290,8 @@
 
         //Renderiza os dados na forma de tabela
         if($qtd > 0){
-        echo '<section id="noticias" class="container-fluid text-center p-4">';
-        
+        echo '<section id="noticias" class="container-fluid text-center p-4">';  
+        echo '<img  src="../../assets/images/borda-horizontal.png" style=" background-color: transparent; padding: 0; width: 100vw; height: 3em; position: relative; top: -3em; left: -2em; z-index: 2;">';
         $cont = 0;
         while($row = $stmt->fetch_object()){
           if($cont < 1){
