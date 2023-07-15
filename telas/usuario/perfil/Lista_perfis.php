@@ -9,61 +9,51 @@
     <link rel="shortcut icon" href="./../../assets/fav.png" type="image/x-icon">
     <!-- Chamando as folhas de estilo do Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../css/standard.css" rel="stylesheet">
+    <link href="../../../css/lista_de_perfis.css" rel="stylesheet">
 </head>
-<body class="bg-dark">
-    <!-- Barra de navegação -->
-    <nav class='navbar bg-light sticky-top'>
-      <div class='container-fluid'>
-      <a class='navbar-brand text-dark' href='../Usuario_dashboard.php'>Taverna</a>
-      <form class='form-inline' action='../../pesquisar.php' method='post'>
-        <div style='display:flex;'>
-            <input class='form-control mr-sm-2' type='search' placeholder='Apelido' name='pesquisa'>
-            <button class='btn btn-outline-dark my-2 ms-2 my-sm-0' type='submit'>Pesquisar</button>
-        </div>
-      </form>
-      <button class='navbar-toggler bg-light' type='button' data-bs-toggle='offcanvas' data-bs-target='#offcanvasNavbar' aria-controls='offcanvasNavbar' aria-label='Toggle navigation'>
-      <span class='navbar-toggler-icon'></span>
-      </button>
-      <div class='offcanvas offcanvas-end' tabindex='-1' id='offcanvasNavbar' aria-labelledby='offcanvasNavbarLabel'>
-      <div class='offcanvas-header'>
-      <h5 class='offcanvas-title' id='offcanvasNavbarLabel'>Menu</h5>
-      <button type='button' class='btn-close' data-bs-dismiss='offcanvas' aria-label='Close'></button>
-      </div>
-      <div class='offcanvas-body'>
-      <ul class='navbar-nav justify-content-end flex-grow-1 pe-3'>
-      <li class='nav-item'>
-      <strong>Perfil</strong>
-      </li>
-      <li class='nav-item'>
-      <a class='nav-link' href='perfil/Lista_perfis.php'>Lista de perfis</a>
-      </li>
-      <li class='nav-item' style='margin-top: 10px;'>
-      <li class='nav-item'>
-      <strong>Mesa</strong>
-      </li>
-      <li class='nav-item'>
-      <a class='nav-link' href='../../mesa/Lista_de_mesas.php'>Lista de mesas</a>
-      </li>
-      <li class='nav-item' style='margin-top: 10px;'>
-      <strong>Denúncia</strong>
-      </li>
-      <li class='nav-item'>
-      <a class='nav-link' href='../denuncia/Lista_denuncia.php'>Tickets de Denúncia</a>
-      </li>
-      <li class='nav-item'>
-      <li class='nav-item' style='margin-top: 10px;'>
-      <strong>Notícias</strong>
-      </li>
-      <li class='nav-item'>
-      <a class='nav-link' href='../noticias/Escrever_noticia.php'>Escrever Notícia</a>
-      </li>
-      </ul>
-      </div>
-      </div>
-      </div>
-      </nav>
+<body>
+<header class="sticky-top" id="h">
+             <a class='navbar-brand' href='../usuario/Usuario_dashboard.php'><div id='logo'>A Taverna</div></a>
+            <nav>
+            <div class='container-fluid'>
+            <div>
+            <form class='form-inline' action='../pesquisar.php' method='post' style='margin-top:0.6em;'>
+            <div style='display:flex;'>
+            <input class='form-control mr-sm-2' type='search' placeholder='Pesquisar' name='pesquisa' style='border-radius: 0.25em; margin-right:0.5em; font-family: Montagna LTD;'>
+            </div>
+            </form>
+            <div class="dropdown">
+            <button class="btn dropdown-toggle" data-bs-toggle="dropdown"><img src="../../../assets/images/icons8-mesa-100.png" style="width: 2.8em;"></button>
+            <div class="dropdown-menu">
+            <a class="dropdown-item" href="Lista_de_mesas.php">Lista de mesas</a>
+            <a class="dropdown-item" href="Minhas_mesas.php">Minhas mesas</a>
+            <a class="dropdown-item" href="Cadastro_mesa.php">Cadastrar mesa</a>
+            </div>
+            </div>
+            <div class="dropdown">
+            <button class="btn dropdown-toggle" data-bs-toggle="dropdown"><img src="../../../assets/images/noticias.png" style="width: 2.8em;"></button>
+            <div class="dropdown-menu dropdown-menu-lg-end">
+            <a class="dropdown-item" href="../noticias/Lista_de_noticias.php">Feed de notícias</a>
+            </div>
+            </div>
+            <div class="dropdown">
+            <button class="btn dropdown-toggle" data-bs-toggle="dropdown"><img src="../../../assets/images/pessoa.png" style="width: 2.8em;"></button>
+            <div class="dropdown-menu dropdown-menu-lg-end">
+            <a class="dropdown-item" href="../usuario/perfil/Perfil.php">Meu perfil</a>
+            <a class="dropdown-item" href="../usuario/perfil/Editar_perfil.php">Editar perfil</a>
+            <hr class="dropdown-divider">
+            <a class="dropdown-item" href="../usuario/login/logout.php">Sair</a>
+            </div>
+            </div>
+            </div>
+            </div>
+            </nav>
+            </header>
     <!-- Conteúdo da página -->
-    <h1 class="pt-5 pb-4 text-light text-center">Lista de perfis</h1>
+    <main style="background-image: url(../../../assets/images/fundo-lista-noticiass.png); background-size: cover; background-repeat: no-repeat; background-position: center;">
+    <div class="text-center" style="width: 800px; height: 550px; position: relative; top: 6em; margin: auto;">
+    <h1 class="p-4" id="titulo">Lista de Perfis</h1>
     
     <?php 
     //Script da lista de perfis
@@ -75,8 +65,14 @@
     set_include_path('C:\xampp\htdocs\projeto-webapp-taverna\db');
     require_once 'config.php';
 
-    //Prepara a requisição ao banco
-    $sql = "SELECT * FROM usuario";
+    if(isset($_POST["botao"])){ 
+        $sql = "SELECT * FROM usuario WHERE id > 5  ORDER BY id LIMIT 5 ";
+    } else{
+        $sql = "SELECT * FROM usuario ORDER BY id LIMIT 5";
+    }
+    if(isset($_POST["botaoVoltar"])){ 
+        $sql = "SELECT * FROM usuario WHERE id  ORDER BY id LIMIT 5 ";
+    } 
 
     $stmt = $mysqli->query($sql);
 
@@ -84,7 +80,7 @@
 
     //Renderiza os dados na forma de tabela
     if($qtd > 0){
-        echo "<table class='table table-hover table-striped table-bordered bg-light mb-5' style='width:1100px; margin:auto;'>";
+        echo "<table class='table table-hover table-striped table-bordered' style='width:800px; margin:auto;'>";
             echo "<tr>";
             echo "<th>Nome</th>";
             echo "<th>Apelido</th>";
@@ -112,11 +108,25 @@
                  </td>";
             echo "</tr>";
         }
+        if(isset($_GET["name"])){
+            $name = $_GET["name"];
+            $sql = "DELETE FROM mesa WHERE id = $name";
+            $stmt = $mysqli->query($sql);
+        }
         echo "</table>";
-    } else {
+        echo '<div style="display: flex; justify-content: space-between;">';
+        echo '<form action="" method="post">';
+        echo '<input type="submit" value="Voltar" name="botaoVoltar">';
+        echo '</form>';
+        echo '<form action="" method="post">';
+        echo '<input type="submit" value="Próxima Página" style="margin: 0px; margin-top: 1em; margin-right: 0.1em;" name="botao">';
+        echo '</form>';
+        echo '</div>';
+    } 
+    else {
         echo "<p class='alert-danger'>Não encontrou resultados!</p>";
-    }
-    ?>
+        }?>
+    </div>
     <!-- Chamando os scripts do Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
