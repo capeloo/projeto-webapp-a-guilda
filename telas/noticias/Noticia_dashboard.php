@@ -51,6 +51,7 @@
             echo "<nav>";
             echo "<div class='container-fluid'>";
             echo '<div>';
+            echo '<img src="../../assets/images/icons8-lupa-50.png" style="width: 2em; height: 2em; margin-top: 0.8em; position: relative; left: 11.5em;">';
             echo "<form class='form-inline' action='../pesquisar.php' method='post' style='margin-top:0.6em;'>";
             echo "<div style='display:flex;'>";
             echo "<input class='form-control mr-sm-2' type='search' placeholder='Pesquisar' name='pesquisa' style='border-radius: 0.25em; margin-right:0.5em; font-family: Montagna LTD;'>";

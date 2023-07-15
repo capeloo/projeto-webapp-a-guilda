@@ -29,6 +29,7 @@
   <nav>
     <div class='container-fluid'>
       <div>
+        <img src="../../assets/images/icons8-lupa-50.png" style="width: 2em; height: 2em; margin-top: 0.8em; position: relative; left: 11.5em;">
         <form class='form-inline' action='../pesquisar.php' method='post' style='margin-top:0.6em;'>
           <div style='display:flex;'>
             <input class='form-control mr-sm-2' type='search' placeholder='Pesquisar' name='pesquisa' style='border-radius: 0.25em; margin-right:0.5em; font-family: Montagna LTD;'>
