@@ -39,7 +39,8 @@
 
     main>div>form>div>div>div>img {
         border-radius: 500px 500px 500px 500px;
-        
+        margin-top: 8em;
+        margin-left: 6em;
     }
 
     main>div>form>div>div>div>h2#nome {
@@ -51,25 +52,29 @@
     main>div>form>div>div>div>h2#name{
         font-family: Rakkas;
         color: #134F59;
-        
+        margin-top: 3.8em;
+        margin-right: 1em;
     }
 
     main>div>form>div>div>div>h2#apelido {
         font-family: Rakkas;
         color: #134F59;
-        
+        margin-top: 2.2em;
+        margin-right: 3.8em;
     }
 
     main>div>form>div>div>div>h2#bio {
         font-family: Rakkas;
         color: #134F59;
-        
+        margin-top: 2.5em;
+        margin-right: 1em;
     }
 
     main>div>form>div>div>div>h2#discord {
         font-family: Rakkas;
         color: #134F59;
-        
+        margin-top: 2.2em;
+        margin-right: 3.8em;
     }
 
    
