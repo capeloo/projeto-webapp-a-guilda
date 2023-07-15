@@ -14,11 +14,11 @@
 </head>
 <body>
 <header class="sticky-top" id="h">
-             <a class='navbar-brand' href='../usuario/Usuario_dashboard.php'><div id='logo'>A Taverna</div></a>
+             <a class='navbar-brand' href='../Usuario_dashboard.php'><div id='logo'>A Taverna</div></a>
             <nav>
             <div class='container-fluid'>
             <div>
-            <form class='form-inline' action='../pesquisar.php' method='post' style='margin-top:0.6em;'>
+            <form class='form-inline' action='../../pesquisar.php' method='post' style='margin-top:0.6em;'>
             <div style='display:flex;'>
             <input class='form-control mr-sm-2' type='search' placeholder='Pesquisar' name='pesquisa' style='border-radius: 0.25em; margin-right:0.5em; font-family: Montagna LTD;'>
             </div>
@@ -26,24 +26,24 @@
             <div class="dropdown">
             <button class="btn dropdown-toggle" data-bs-toggle="dropdown"><img src="../../../assets/images/icons8-mesa-100.png" style="width: 2.8em;"></button>
             <div class="dropdown-menu">
-            <a class="dropdown-item" href="Lista_de_mesas.php">Lista de mesas</a>
-            <a class="dropdown-item" href="Minhas_mesas.php">Minhas mesas</a>
-            <a class="dropdown-item" href="Cadastro_mesa.php">Cadastrar mesa</a>
+            <a class="dropdown-item" href="../../mesa/Lista_de_mesas.php">Lista de mesas</a>
+            <a class="dropdown-item" href="../../mesa/Minhas_mesas.php">Minhas mesas</a>
+            <a class="dropdown-item" href="../../mesa/Cadastro_mesa.php">Cadastrar mesa</a>
             </div>
             </div>
             <div class="dropdown">
             <button class="btn dropdown-toggle" data-bs-toggle="dropdown"><img src="../../../assets/images/noticias.png" style="width: 2.8em;"></button>
             <div class="dropdown-menu dropdown-menu-lg-end">
-            <a class="dropdown-item" href="../noticias/Lista_de_noticias.php">Feed de notícias</a>
+            <a class="dropdown-item" href="../../noticias/Lista_de_noticias.php">Feed de notícias</a>
             </div>
             </div>
             <div class="dropdown">
             <button class="btn dropdown-toggle" data-bs-toggle="dropdown"><img src="../../../assets/images/pessoa.png" style="width: 2.8em;"></button>
             <div class="dropdown-menu dropdown-menu-lg-end">
-            <a class="dropdown-item" href="../usuario/perfil/Perfil.php">Meu perfil</a>
-            <a class="dropdown-item" href="../usuario/perfil/Editar_perfil.php">Editar perfil</a>
+            <a class="dropdown-item" href="../perfil/Perfil.php">Meu perfil</a>
+            <a class="dropdown-item" href="../perfil/Editar_perfil.php">Editar perfil</a>
             <hr class="dropdown-divider">
-            <a class="dropdown-item" href="../usuario/login/logout.php">Sair</a>
+            <a class="dropdown-item" href="../login/logout.php">Sair</a>
             </div>
             </div>
             </div>
