@@ -39,7 +39,7 @@
             //Executa a requisição
             if($stmt->execute()){
                 echo "<script>alert('Notícia publicada com sucesso!');</script>";
-                echo "<script>location.href='../Usuario_dashboard.php';</script>";
+                echo "<script>location.href='../usuario/Usuario_dashboard.php';</script>";
             } else {
                 echo "Ops! Algo deu errado. Por favor, tente novamente mais tarde.";
             }
