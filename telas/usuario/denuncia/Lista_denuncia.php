@@ -72,13 +72,19 @@
         <?php
           $id = $_SESSION["id"];
 
-          if(isset($_POST["botao"])){ 
-            $sql = "SELECT * FROM denuncia WHERE id > 3  ORDER BY id LIMIT 3 ";
+          if(isset($_GET["id"])){ 
+            $sql = "SELECT * FROM denuncia WHERE id > {$_GET["id"]}  ORDER BY id LIMIT 5 ";
           } else{
-            $sql = "SELECT * FROM denuncia ORDER BY id LIMIT 3";
+            $sql = "SELECT * FROM denuncia ORDER BY id LIMIT 5";
           }
-          if(isset($_POST["botaoVoltar"])){ 
-            $sql = "SELECT * FROM denuncia WHERE id  ORDER BY id LIMIT 3";
+          if(isset($_GET["idVoltar"])){ 
+            if($_GET["idVoltar"] == ""){
+                $sql = "SELECT * FROM denuncia ORDER BY id LIMIT 5";
+            }else{
+                $idfirst = $_GET["idVoltar"] - 4;
+                $idLimit = $idfirst - 6;
+                $sql = "SELECT * FROM denuncia WHERE id < {$idfirst} AND id > {$idLimit}  ORDER BY id  LIMIT 5 ";
+            }
           } 
 
           $stmt = $mysqli->query($sql);
@@ -103,6 +109,7 @@
             echo "<td>" . $row->apelido_denunciante . "</td>";
             echo "<td>" . $row->apelido_denunciado . "</td>";
             echo "<td>" . $row->motivo . "</td>";
+            $id = $row->id;
             echo "<td>
                     <button class='btn' style='background-color: #134F59; color: white;' onclick=\"location.href='Ticket_dashboard.php?id=".$row->id."';\">+</button>
                   </td>";        
@@ -112,15 +119,12 @@
         } else {
           echo "<p class='alert-danger'>Não encontrou resultados!</p>";
         }
+        echo '<div style="display: flex; justify-content: space-between;">';
+        echo "<button id='botaoControle' onclick=\"location.href='Lista_denuncia.php?id=$id';\">Próxima Página</button>";
+        echo "<button id='botaoControle' onclick=\"location.href='Lista_denuncia.php?idVoltar=$id';\">Voltar</button>";
+        echo "</div>";
         ?>
-        <div style="display: flex; justify-content: space-between;">
-          <form action="" method="post">
-            <input type="submit" value="Voltar" name="botaoVoltar">
-          </form>
-          <form action="" method="post">
-            <input type="submit" value="Próxima Página" style="margin: 0px; margin-top: 1em; margin-right: 0.1em;" name="botao">
-          </form>
-        </div>
+        
     </div>
     </main>
     <footer>

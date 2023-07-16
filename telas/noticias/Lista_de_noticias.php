@@ -8,6 +8,9 @@
     set_include_path('C:\xampp\htdocs\projeto-webapp-taverna\db');
     require_once 'config.php';
 
+    error_reporting(E_ALL ^ E_WARNING);
+    ini_set("display_errors", 1 );
+
     //Validação para impedir que o usuário que não logou entre no dashboard
     if(empty($_SESSION)){
         echo "<script>location.href='login/Login.php';</script>";
@@ -69,13 +72,19 @@
       echo '<h1 class="p-4" id="titulo">Feed de Notícias</h1>';
 
     //Prepara a requisição ao banco
-    if(isset($_POST["botao"])){ 
-        $sql = "SELECT * FROM noticia WHERE id > 5  ORDER BY id LIMIT 5 ";
+    if(isset($_GET["id"])){ 
+        $sql = "SELECT * FROM noticia WHERE id > {$_GET["id"]}  ORDER BY id LIMIT 5 ";
     } else{
         $sql = "SELECT * FROM noticia ORDER BY id LIMIT 5";
     }
-    if(isset($_POST["botaoVoltar"])){ 
-        $sql = "SELECT * FROM noticia WHERE id  ORDER BY id LIMIT 5 ";
+    if(isset($_GET["idVoltar"])){ 
+        if($_GET["idVoltar"] == ""){
+            $sql = "SELECT * FROM noticia ORDER BY id LIMIT 5";
+        }else{
+            $idfirst = $_GET["idVoltar"] - 4;
+            $idLimit = $idfirst - 6;
+            $sql = "SELECT * FROM noticia WHERE id < {$idfirst} AND id > {$idLimit}  ORDER BY id  LIMIT 5 ";
+        }
     } 
 
     $stmt = $mysqli->query($sql);
@@ -98,6 +107,7 @@
             echo "<td>" . $row->titulo . "</td>";
             echo "<td>" . $row->subtitulo . "</td>";
             echo "<td>" . $row->data . "</td>";
+            $id = $row -> id;
         if($_SESSION["admin"] == 0){
             echo "<td>
             <button class='btn' style='background-color: #134F59; color: white;' onclick=\"location.href='Noticia_dashboard.php?id=".$row->id."';\">+</button>
@@ -122,12 +132,8 @@
     
 
     echo '<div style="display: flex; justify-content: space-between; width: 800px; margin-left: 2.3em;">';
-    echo '<form action="" method="post">';
-    echo '<input type="submit" value="Voltar" name="botaoVoltar">';
-    echo '</form>';
-    echo '<form action="" method="post">';
-    echo '<input type="submit" value="Próxima Página" style="margin: 0px; margin-top: 1em; margin-right: 0.1em;" name="botao">';
-    echo '</form>';
+    echo "<button id='botaoControle' onclick=\"location.href='Lista_de_noticias.php?id=$id';\">Próxima Página</button>";
+    echo "<button id='botaoControle' onclick=\"location.href='Lista_de_noticias.php?idVoltar=$id';\">Voltar</button>";
     echo '</div>';
     echo '</div>';
     echo '</main>';

@@ -51,8 +51,10 @@
         left: 18.7em;
         text-decoration: underline;
     }
-    
-    main>div>div>form>input {
+    #botaoControle{
+        margin: 0px; 
+        margin-top: 1em; 
+        margin-right: 0.1em;
         font-family: Rakkas;
         font-size: 1.8em;
         color: #134F59;
@@ -62,6 +64,7 @@
         background-color: transparent;
         border: 0px; 
     }
+
 
     p#error {
         font-family: Rakkas;
