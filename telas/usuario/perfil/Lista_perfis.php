@@ -69,14 +69,22 @@
     set_include_path('C:\xampp\htdocs\projeto-webapp-taverna\db');
     require_once 'config.php';
 
-    if(isset($_POST["botao"])){ 
-        $sql = "SELECT * FROM usuario WHERE id > 5  ORDER BY id LIMIT 5 ";
+    if(isset($_GET["id"])){ 
+        $sql = "SELECT * FROM usuario WHERE id > {$_GET["id"]}  ORDER BY id LIMIT 5 ";
     } else{
         $sql = "SELECT * FROM usuario ORDER BY id LIMIT 5";
     }
-    if(isset($_POST["botaoVoltar"])){ 
-        $sql = "SELECT * FROM usuario WHERE id  ORDER BY id LIMIT 5 ";
+    if(isset($_GET["idVoltar"])){ 
+        if($_GET["idVoltar"] == ""){
+            $sql = "SELECT * FROM usuario ORDER BY id LIMIT 5";
+        }else{
+            $idfirst = $_GET["idVoltar"] - 4;
+            $idLimit = $idfirst - 6;
+            $sql = "SELECT * FROM usuario WHERE id < {$idfirst} AND id > {$idLimit}  ORDER BY id  LIMIT 5 ";
+        }
     } 
+
+    
 
     $stmt = $mysqli->query($sql);
 
@@ -100,8 +108,10 @@
             echo "<td>" . $row->email . "</td>";
             echo "<td>" . $row->discord . "</td>";
             echo "<td>" . $row->matricula . "</td>";
+            $id = $row->id;
+
             echo "<td>
-        <button class='btn' style='background-color: #134F59; color: white;' onclick=\"location.href='Perfil.php?id=".$row->id."';\">+</button>
+                <button class='btn' style='background-color: #134F59; color: white;' onclick=\"location.href='Perfil.php?id=".$row->id."';\">+</button>
                   </td>";     
             echo "<td>
                     <button onclick=\"if(confirm('Tem certeza que deseja banir esta conta?')){location.href='excluir.php?id=".$row->id."';}else{false;}\" class='btn btn-danger'>Banir</button>
@@ -115,12 +125,8 @@
         }
         echo "</table>";
         echo '<div style="display: flex; justify-content: space-between;">';
-        echo '<form action="" method="post">';
-        echo '<input type="submit" value="Voltar" name="botaoVoltar">';
-        echo '</form>';
-        echo '<form action="" method="post">';
-        echo '<input type="submit" value="Próxima Página" style="margin: 0px; margin-top: 1em; margin-right: 0.1em;" name="botao">';
-        echo '</form>';
+        echo "<button id='botaoControle' onclick=\"location.href='Lista_perfis.php?id=$id';\">Próxima Página</button>";
+        echo "<button id='botaoControle' onclick=\"location.href='Lista_perfis.php?idVoltar=$id';\">Voltar</button>";
         echo '</div>';
     } 
     else {

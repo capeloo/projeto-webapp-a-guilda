@@ -6,6 +6,9 @@
     //Inicia a sessão (necessário ter em todas as páginas que o usuário estiver logado)
     session_start();
 
+    error_reporting(E_ALL ^ E_WARNING);
+    ini_set("display_errors", 1 );
+
     //Traz o arquivo config.php onde foi configurado a ligação com o banco de dados
     set_include_path('C:\xampp\htdocs\projeto-webapp-taverna\db');
     require_once 'config.php';
@@ -115,13 +118,19 @@
       echo '<h1 class="p-4" id="titulo">Lista de Mesas</h1>';
       
 
-    if(isset($_POST["botao"])){ 
-        $sql = "SELECT * FROM mesa WHERE id > 5  ORDER BY id LIMIT 5 ";
+      if(isset($_GET["id"])){ 
+        $sql = "SELECT * FROM mesa WHERE id > {$_GET["id"]}  ORDER BY id LIMIT 5 ";
     } else{
         $sql = "SELECT * FROM mesa ORDER BY id LIMIT 5";
     }
-    if(isset($_POST["botaoVoltar"])){ 
-        $sql = "SELECT * FROM mesa WHERE id  ORDER BY id LIMIT 5 ";
+    if(isset($_GET["idVoltar"])){ 
+        if($_GET["idVoltar"] == ""){
+            $sql = "SELECT * FROM mesa ORDER BY id LIMIT 5";
+        }else{
+            $idfirst = $_GET["idVoltar"] - 4;
+            $idLimit = $idfirst - 6;
+            $sql = "SELECT * FROM mesa WHERE id < {$idfirst} AND id > {$idLimit}  ORDER BY id  LIMIT 5 ";
+        }
     } 
 
     $stmt = $mysqli->query($sql);
@@ -148,6 +157,7 @@
             echo "<td>" . $row->tema . "</td>";
             echo "<td>" . $row->classificacao_indicativa . "</td>";
             echo "<td>" . $row->numero_vagas . "</td>";
+            $id = $row->id;
             if($_SESSION["admin"] == 0){
                 echo "<td>
                 <button class='btn' style='background-color: #134F59; color: white;' onclick=\"location.href='Mesa_dashboard.php?id=".$row->id."';\">+</button>
@@ -171,12 +181,9 @@
             $stmt = $mysqli->query($sql);
         }
         echo '<div style="display: flex; justify-content: space-between;">';
-        echo '<form action="" method="post">';
-        echo '<input type="submit" value="Voltar" name="botaoVoltar">';
-        echo '</form>';
-        echo '<form action="" method="post">';
-        echo '<input type="submit" value="Próxima Página" style="margin: 0px; margin-top: 1em; margin-right: 0.1em;" name="botao">';
-        echo '</form>';
+        echo "<button id='botaoControle' onclick=\"location.href='lista_de_mesas.php?id=$id';\">Próxima Página</button>";
+        echo "<button id='botaoControle' onclick=\"location.href='lista_de_mesas.php?idVoltar=$id';\">Voltar</button>";
+
         echo '</div>';
         echo '</div>';
     } else {

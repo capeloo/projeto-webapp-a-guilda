@@ -45,13 +45,10 @@
         
     } 
 
-    main>div>h1 {
-        font-family: Rakkas;
-        color: #134F59;
-        padding: 2em;
-    }
-
-    main>div>div>form>input {
+    main>div>div>button{
+        margin: 0px; 
+        margin-top: 1em; 
+        margin-right: 0.1em;
         font-family: Rakkas;
         font-size: 1.8em;
         color: #134F59;
@@ -61,6 +58,14 @@
         background-color: transparent;
         border: 0px; 
     }
+
+
+    main>div>h1 {
+        font-family: Rakkas;
+        color: #134F59;
+        padding: 2em;
+    }
+
      /* /MAIN */  
     /* FOOTER */
     footer {
