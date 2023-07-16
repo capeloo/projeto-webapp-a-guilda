@@ -17,73 +17,69 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tickets de Denúncia</title>
-    <link rel="shortcut icon" href="./../../assets/fav.png" type="image/x-icon">
-    <!-- Chamando as folhas de estilo do Bootstrap -->
+    <link rel="shortcut icon" href="../../../assets/images/faviconnn.png" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../css/standard.css" rel="stylesheet">
+    <link href="../../../css/lista_denuncia.css" rel="stylesheet">
 </head>
-<body class="bg-dark">
-    <!-- Barra de navegação -->
-    <nav class='navbar bg-light sticky-top'>
+<body>
+  <header class="sticky-top" id="h">
+    <a class='navbar-brand' href='../Usuario_dashboard.php'><div id='logo'>A Taverna</div></a>
+    <nav>
       <div class='container-fluid'>
-      <a class='navbar-brand text-dark' href='../Usuario_dashboard.php'>Taverna</a>
-      <form class='form-inline' action='../../pesquisar.php' method='post'>
+      <div>
+      <img src="../../../assets/images/icons8-lupa-50.png" style="width: 2em; height: 2em; margin-top: 0.8em; position: relative; left: 11.5em;">
+      <form class='form-inline' action='../../pesquisar.php' method='post' style='margin-top:0.6em;'>
       <div style='display:flex;'>
-      <input class='form-control mr-sm-2' type='search' placeholder='Apelido' name='pesquisa'>
-      <button class='btn btn-outline-dark my-2 ms-2 my-sm-0' type='submit'>Pesquisar</button>
+      <input class='form-control mr-sm-2' type='search' placeholder='Pesquisar' name='pesquisa' style='border-radius: 0.25em; margin-right:0.5em; font-family: Montagna LTD;'>
       </div>
       </form>
-      <button class='navbar-toggler bg-light' type='button' data-bs-toggle='offcanvas' data-bs-target='#offcanvasNavbar' aria-controls='offcanvasNavbar' aria-label='Toggle navigation'>
-      <span class='navbar-toggler-icon'></span>
-      </button>
-      <div class='offcanvas offcanvas-end' tabindex='-1' id='offcanvasNavbar' aria-labelledby='offcanvasNavbarLabel'>
-      <div class='offcanvas-header'>
-      <h5 class='offcanvas-title' id='offcanvasNavbarLabel'>Menu</h5>
-      <button type='button' class='btn-close' data-bs-dismiss='offcanvas' aria-label='Close'></button>
+      <div class="dropdown">
+      <button class="btn dropdown-toggle" data-bs-toggle="dropdown"><img src="../../../assets/images/icons8-mesa-100.png" style="width: 2.8em;"></button>
+      <div class="dropdown-menu">
+      <a class="dropdown-item" href="../../mesa/Lista_de_mesas.php">Lista de mesas</a>
       </div>
-      <div class='offcanvas-body'>
-      <ul class='navbar-nav justify-content-end flex-grow-1 pe-3'>
-      <li class='nav-item'>
-      <strong>Perfil</strong>
-      </li>
-      <li class='nav-item'>
-      <a class='nav-link' href='../perfil/Lista_perfis.php'>Lista de perfis</a>
-      </li>
-      <li class='nav-item' style='margin-top: 10px;'>
-      <li class='nav-item'>
-      <strong>Mesa</strong>
-      </li>
-      <li class='nav-item'>
-      <a class='nav-link' href='../../mesa/Lista_de_mesas.php'>Lista de mesas</a>
-      </li>
-      <li class='nav-item' style='margin-top: 10px;'>
-      <strong>Denúncia</strong>
-      </li>
-      <li class='nav-item'>
-      <a class='nav-link' href='Lista_denuncia.php'>Tickets de Denúncia</a>
-      </li>
-      <li class='nav-item'>
-      <li class='nav-item' style='margin-top: 10px;'>
-      <strong>Notícias</strong>
-      </li>
-      <li class='nav-item'>
-      <a class='nav-link' href='../noticias/Escrever_noticia.php'>Escrever Notícia</a>
-      </li>
-      </ul>
+      </div>
+      <div class="dropdown">
+      <button class="btn dropdown-toggle" data-bs-toggle="dropdown"><img src="../../../assets/images/noticias.png" style="width: 2.8em;"></button>
+      <div class="dropdown-menu dropdown-menu-lg-end">
+      <a class="dropdown-item" href="../../noticias/Escrever_noticia.php">Escrever notícia</a>
+      </div>
+      </div>
+      <div class="dropdown">
+      <button class="btn dropdown-toggle" data-bs-toggle="dropdown"><img src="../../../assets/images/icons8-identificação-não-verificada-100.png" style="width: 2.8em;"></button>
+      <div class="dropdown-menu dropdown-menu-lg-end">
+      <a class="dropdown-item" href="Lista_denuncia.php">Tickets de denúncia</a>
+      </div>
+      </div>
+      <div class="dropdown">
+      <button class="btn dropdown-toggle" data-bs-toggle="dropdown"><img src="../../../assets/images/pessoa.png" style="width: 2.8em;"></button>
+      <div class="dropdown-menu dropdown-menu-lg-end">
+      <a class="dropdown-item" href="../perfil/Lista_perfis.php">Lista de perfis</a>
+      <hr class="dropdown-divider">
+      <a class="dropdown-item" href="../login/logout.php">Sair</a>
+      </div>
       </div>
       </div>
       </div>
       </nav>
+      </header>
     <!-- Conteúdo da página -->
-    <div class="container-fluid text-center mt-4 bg-dark" style="width: 450px;">
-      <h1 class="p-2 text-light">Tickets de Denúncia</h1>
-    </div>
-    <div class="container-fluid text-start mt-4 bg-dark" style="margin:auto;">
+    <main>
+    <div class="text-center" style="width: 800px; position: relative; top: 7em; margin: auto;">
+      <h1 class="p-2">Tickets de Denúncia</h1>
+
         <?php
           $id = $_SESSION["id"];
 
-          //Prepara a requisição ao banco
-          $sql = "SELECT * 
-                  FROM denuncia";
+          if(isset($_POST["botao"])){ 
+            $sql = "SELECT * FROM denuncia WHERE id > 3  ORDER BY id LIMIT 3 ";
+          } else{
+            $sql = "SELECT * FROM denuncia ORDER BY id LIMIT 3";
+          }
+          if(isset($_POST["botaoVoltar"])){ 
+            $sql = "SELECT * FROM denuncia WHERE id  ORDER BY id LIMIT 3";
+          } 
 
           $stmt = $mysqli->query($sql);
 
@@ -91,7 +87,7 @@
 
           //Renderiza os dados na forma de tabela
           if($qtd > 0){
-            echo "<table class='table table-hover table-striped table-bordered bg-light mb-5' style='width: 1100px; margin: auto;'>";
+            echo "<table class='table table-hover table-striped table-bordered' style='width: 800px;'>";
             echo "<tr>";
             echo "<th>ID</th>";
             echo "<th>Título</th>";
@@ -117,6 +113,22 @@
           echo "<p class='alert-danger'>Não encontrou resultados!</p>";
         }
         ?>
+        <div style="display: flex; justify-content: space-between;">
+          <form action="" method="post">
+            <input type="submit" value="Voltar" name="botaoVoltar">
+          </form>
+          <form action="" method="post">
+            <input type="submit" value="Próxima Página" style="margin: 0px; margin-top: 1em; margin-right: 0.1em;" name="botao">
+          </form>
+        </div>
+    </div>
+    </main>
+    <footer>
+      <div class="container-fluid">
+        <p>&copy; A Guilda. Siga em frente!</p>
+        <p>Siga-nos:<a href="https://www.instagram.com/aguilda_smd/" target="_blank"><img src="../../../assets/images/insta-icon (3).png"></a></p>
+      </div>
+    </footer>
     <!-- Chamando os scripts do Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

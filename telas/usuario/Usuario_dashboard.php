@@ -21,7 +21,6 @@
       echo "<title>A Taverna</title>";
       echo "<link rel='shortcut icon' href='../../assets/images/faviconnn.png' type='image/x-icon'>";
       echo "<link href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css' rel='stylesheet'>";
-      echo '<link rel="stylesheet" href="../../css/media-queries.css">';
       echo '<link rel="stylesheet" href="../../css/standard.css">';
       echo '<link rel="stylesheet" href="../../css/usuario_dashboard.css">';
       echo "</head>";
@@ -369,70 +368,61 @@
       echo "<meta http-equiv='X-UA-Compatible' content='IE=edge'>";
       echo "<meta name='viewport' content='width=device-width, initial-scale=1.0'>";
       echo "<title>Dashboard</title>";
-      echo "<link rel='shortcut icon' href='./../../assets/fav.png' type='image/x-icon'>";
+      echo "<link rel='shortcut icon' href='../../assets/images/faviconnn.png' type='image/x-icon'>";
       echo "<link href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css' rel='stylesheet'>";
+      echo '<link rel="stylesheet" href="../../css/standard.css">';
+      echo '<link rel="stylesheet" href="../../css/usuario_dashboard.css">';
       echo "</head>";
       echo "<body class='bg-dark'>";
-      echo "<nav class='navbar bg-light sticky-top'>";
+      echo '<header class="sticky-top" id="header-userDash">';
+      echo "<a class='navbar-brand' href='Usuario_dashboard.php'><div id='logo'>A Taverna</div></a>";
+      echo "<nav>";
       echo "<div class='container-fluid'>";
-      echo "<a class='navbar-brand text-dark' href='Usuario_dashboard.php'>Taverna</a>";
-      echo "<form class='form-inline' action='../pesquisar.php' method='post'>";
+      echo '<div>';
+      echo '<img src="../../assets/images/icons8-lupa-50.png" style="width: 2em; height: 2em; margin-top: 0.8em; position: relative; left: 11.5em;">';
+      echo "<form class='form-inline' action='../pesquisar.php' method='post' style='margin-top:0.6em;'>";
       echo "<div style='display:flex;'>";
-      echo "<input class='form-control mr-sm-2' type='search' placeholder='Apelido' name='pesquisa'>";
-      echo "<button class='btn btn-outline-dark my-2 ms-2 my-sm-0' type='submit'>Pesquisar</button>";
+      echo "<input class='form-control mr-sm-2' type='search' placeholder='Pesquisar' name='pesquisa' style='border-radius: 0.25em; margin-right:0.5em; font-family: Montagna LTD;'>";
+      echo "</div>";
+      echo "</form>";
+      echo '<div class="dropdown">';
+      echo '<button class="btn dropdown-toggle" data-bs-toggle="dropdown"><img src="../../assets/images/icons8-mesa-100.png" style="width: 2.8em;"></button>';
+      echo '<div class="dropdown-menu">';
+      echo '<a class="dropdown-item" href="../mesa/Lista_de_mesas.php">Lista de mesas</a>';
       echo '</div>';
-      echo '</form>';
-      echo "<button class='navbar-toggler bg-light' type='button' data-bs-toggle='offcanvas' data-bs-target='#offcanvasNavbar' aria-controls='offcanvasNavbar' aria-label='Toggle navigation'>";
-      echo "<span class='navbar-toggler-icon'></span>";
-      echo "</button>";
-      echo "<div class='offcanvas offcanvas-end' tabindex='-1' id='offcanvasNavbar' aria-labelledby='offcanvasNavbarLabel'>";
-      echo "<div class='offcanvas-header'>";
-      echo "<h5 class='offcanvas-title' id='offcanvasNavbarLabel'>Menu</h5>";
-      echo "<button type='button' class='btn-close' data-bs-dismiss='offcanvas' aria-label='Close'></button>";
+      echo '</div>';
+      echo '<div class="dropdown">';
+      echo '<button class="btn dropdown-toggle" data-bs-toggle="dropdown"><img src="../../assets/images/noticias.png" style="width: 2.8em;"></button>';
+      echo '<div class="dropdown-menu dropdown-menu-lg-end">';
+      echo '<a class="dropdown-item" href="../noticias/Escrever_noticia.php">Escrever notícia</a>';
+      echo '</div>';
+      echo '</div>';
+      echo '<div class="dropdown">';
+      echo '<button class="btn dropdown-toggle" data-bs-toggle="dropdown"><img src="../../assets/images/icons8-identificação-não-verificada-100.png" style="width: 2.8em;"></button>';
+      echo '<div class="dropdown-menu dropdown-menu-lg-end">';
+      echo '<a class="dropdown-item" href="denuncia/Lista_denuncia.php">Tickets de denúncia</a>';
+      echo '</div>';
+      echo '</div>';
+      echo '<div class="dropdown">';
+      echo '<button class="btn dropdown-toggle" data-bs-toggle="dropdown"><img src="../../assets/images/pessoa.png" style="width: 2.8em;"></button>';
+      echo '<div class="dropdown-menu dropdown-menu-lg-end">';
+      echo '<a class="dropdown-item" href="perfil/Lista_perfis.php">Lista de perfis</a>';
+      echo '<hr class="dropdown-divider">';
+      echo '<a class="dropdown-item" href="login/logout.php">Sair</a>';
+      echo '</div>';
+      echo '</div>';
       echo "</div>";
-      echo "<div class='offcanvas-body'>";
-      echo "<ul class='navbar-nav justify-content-end flex-grow-1 pe-3'>";
-      echo "<li class='nav-item'>";
-      echo "<strong>Perfil</strong>";
-      echo "</li>";
-      echo "<li class='nav-item'>";
-      echo "<a class='nav-link' href='perfil/Lista_perfis.php'>Lista de perfis</a>";
-      echo "</li>";
-      echo "<li class='nav-item' style='margin-top: 10px;'>";
-      echo "<li class='nav-item'>";
-      echo "<strong>Mesa</strong>";
-      echo "</li>";
-      echo "<li class='nav-item'>";
-      echo "<a class='nav-link' href='../mesa/Lista_de_mesas.php'>Lista de mesas</a>";
-      echo "</li>";
-      echo "<li class='nav-item' style='margin-top: 10px;'>";
-      echo "<strong>Denúncia</strong>";
-      echo "</li>";
-      echo "<li class='nav-item'>";
-      echo "<a class='nav-link' href='denuncia/Lista_denuncia.php'>Tickets de Denúncia</a>";
-      echo "</li>";
-      echo "<li class='nav-item'>";
-      echo "<li class='nav-item' style='margin-top: 10px;'>";
-      echo "<strong>Notícias</strong>";
-      echo "</li>";
-      echo "<li class='nav-item'>";
-      echo "<a class='nav-link' href='noticias/Escrever_noticia.php'>Escrever Notícia</a>";
-      echo "</li>";
-      echo "</ul>";
-      echo "<div class='p-4 text-center' style='margin-top:100px;'>";
-      echo "<a href='login/logout.php' class='btn btn-danger' style='width: 120px;'>Sair</a>";
-      echo "</div>";
-      echo "</div>";
-      echo "</div>";
-      echo "</div>";
+      echo '</div>';
       echo "</nav>";
+      echo '</header>';
 
+      echo '<main>';
       //Anúncios
 
-      $sql = "SELECT foto, nome_campanha, sinopse
+      $sql = "SELECT foto, nome_campanha, data, duracao, sistema, nivel_jogadores, classificacao_indicativa
               FROM mesa
               WHERE anuncio = 1
-              ORDER BY timestamp DESC
+              ORDER BY data
               LIMIT 3
               ";
 
@@ -440,56 +430,81 @@
       $stmt->execute();
       $stmt_res = $stmt->get_result();
 
-      echo '<div class="container-fluid bg-dark p-0" style="width:100%; border-radius: 0px 0px 10px 10px;">';
+      $stmt = $mysqli->prepare($sql);
+      $stmt->execute();
+      $stmt_res = $stmt->get_result();
+
+      echo '<section id="anuncios" class="container-fluid p-0" style="width:100vw;">';
       echo '<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">';
       echo '<ol class="carousel-indicators">';
       echo '<ul style="display: flex; list-style-type: none;">';
       echo '<li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></li>';
       echo '<li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></li>';
       echo '<li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></li>';
-      echo '</ol>';
       echo '</ul>';
+      echo '</ol>';
       echo '<div class="carousel-inner">';
-      echo '<div class="carousel-item active">';
+      echo '<div class="carousel-item active" id="userDash-carousel-item">';
       
       $cont = 0;
 
       while ($row = $stmt_res->fetch_assoc()) {
         $cont++;
-        echo '<img class="d-block w-100" style="height: 500px; margin: auto;" src="' .$row['foto']. '" alt="First slide">';
-        echo '<div class="carousel-caption text-start mb-4">';
-        echo '<h1>' .$row["nome_campanha"]. '</h1>';
-        echo '<h3>' .$row["sinopse"]. '</h3>';
+        echo '<img class="d-block w-100" style="height: 550px; margin: auto;" src="' .$row['foto']. '" alt="First slide">';
+        echo '<div class="carousel-caption text-start" id="userDash-carousel-caption">';
+        echo '<div style="display: flex;">';
+        echo '<img src="../../assets/images/daddy 1.png" id="taverneiro">';
+        echo '<div style="width: 0; height: 0; border-top: 25px solid transparent; border-bottom: 0px solid #212529bd; border-left: 70px solid #212529bd;  rotate: 0deg; position: relative; top: -1.55em; left: -4em;"></div>';
+        echo '<div id="body-hx">';
+        echo '<h1 id="userDash-h1">' .$row["nome_campanha"]. '</h1>';
+        echo '<h3 id="userDash-h3">' .$row["data"]. '</h3>';
+        echo '</div>';
+        echo '<div style="padding: 1em; display: flex;">';
+        echo '<div style="text-align:center; margin-right: 0.5em;">';
+        echo '<img src="../../assets/images/icons8-hourglass-100.png" style="width:3.5em; height: 3em; margin-top: 0.7em;">';
+        echo '<p>'.$row["duracao"].'</p>';
+        echo '</div>';
+        echo '<div style="text-align:center; margin-right: 0.5em;">';
+        echo '<img src="../../assets/images/icons8-year-of-dragon-100.png" style="width:3.5em; height: 3em;margin-top: 0.7em;">';
+        echo '<p>'.$row["sistema"].'</p>';
+        echo '</div>';
+        echo '<div style="text-align:center; margin-right: 0.5em;">';
+        echo '<img src="../../assets/images/icons8-battle-100.png" style="width:3.5em; height: 3em;
+        margin-top: 0.7em;">';
+        echo '<p>'.$row["nivel_jogadores"].'</p>';
+        echo '</div>';
+        echo '<div style="text-align:center; margin-right: 1.5em;">';
+        echo '<img src="../../assets/images/classificacao-'.$row["classificacao_indicativa"].'-anos-logo.png" style="width:3.5em; height: 3em; margin-top: 0.7em; border-radius: 0.85em;">';
+        echo '<p>'.$row["classificacao_indicativa"].'</p>';
+        echo '</div>';
+        echo '</div>';
+        echo '</div>';
         echo '</div>';
         echo '</div>';
         if($cont < 3){
-          echo '<div class="carousel-item">';
+          echo '<div class="carousel-item" id="userDash-carousel-item-2">';
         } else {};
       }
       
       echo '</div>';
-      echo  '<a class="carousel-control-prev" style="background: linear-gradient(to left, #21252900, #212529);" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">';
+      echo  '<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">';
       echo '<span class="carousel-control-prev-icon" aria-hidden="true"></span>';
       echo '</a>';  
-      echo '<a class="carousel-control-next" style="background: linear-gradient(to right, #21252900, #212529);" href="#carouselExampleIndicators" role="button" data-bs-slide="next">';
+      echo '<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-bs-slide="next">';
       echo '<span class="carousel-control-next-icon" aria-hidden="true"></span>';
       echo '</a>';
       echo '</div>';
-      echo '</div>';
-
+      echo '</section>';
       echo "<h1 class='pt-4 text-light text-center'>Olá, " . $_SESSION['apelido'] . "!</h1>";
       echo "<h1 class='text-light text-center mb-5'>Este é seu perfil de administrador.</h1>";
-      echo '<footer class="container-fluid bg-light p-2" style="height: 60px; display: flex; position: relative;
-      bottom: 0;">';
-      echo '<div class="row" style="width: 100%; margin: auto;">';
-      echo '<div class="col">';
-      echo '<p class="text-dark mt-2" style="margin: 0px; font-size: 1.2em;">Que a Guilda o acompanhe!</p>';
-      echo '</div>';
-      echo '<div class="col">';
-      echo '<p class="mt-2 text-end"><a href="https://www.instagram.com/aguilda_smd/" target="_blank"class="text-dark mt-2" style="font-size: 1.2em;">Siga nossas redes!</a></p>';
+      echo '</main>';
+      echo '<footer>';
+      echo '<div class="container-fluid">';
+      echo '<p>&copy; A Guilda. Siga em frente!</p>';
+      echo '<p>Siga-nos:<a href="https://www.instagram.com/aguilda_smd/" target="_blank"><img src="../../assets/images/insta-icon (3).png"></a></p>';
       echo '</div>';
       echo '</footer>';
-      echo "<script src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.js'></script>";
+      echo '<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>';
       echo "</body>";
       echo "</html>";
     }

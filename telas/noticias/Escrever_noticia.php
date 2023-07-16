@@ -61,91 +61,88 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Escrever Notícia</title>
-    <link rel="shortcut icon" href="../../../assets/fav.png" type="image/x-icon">
-    <!-- Chamando as folhas de estilo do Bootstrap -->
+    <link rel="shortcut icon" href="../../assets/images/faviconnn.png" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../css/multi-select-tag.css" rel="stylesheet">
+    <link href="../../css/standard.css" rel="stylesheet">
+    <link href="../../css/escrever_noticia.css" rel="stylesheet">
 </head>
 <body class="bg-dark">
     <!-- Barra de navegação -->
-    <nav class='navbar bg-light sticky-top'>
-        <div class='container-fluid'>
-            <a class='navbar-brand text-dark' href='../Usuario_dashboard.php'>Taverna</a>
-            <form class='form-inline' action='../../pesquisar.php' method='post'>
-                <div style='display:flex;'>
-                    <input class='form-control mr-sm-2' type='search' placeholder='Apelido' name='pesquisa'>
-                    <button class='btn btn-outline-dark my-2 ms-2 my-sm-0' type='submit'>Pesquisar</button>
-                </div>
-            </form>
-            <button class='navbar-toggler bg-light' type='button' data-bs-toggle='offcanvas' data-bs-target='#offcanvasNavbar' aria-controls='offcanvasNavbar' aria-label='Toggle navigation'>
-                <span class='navbar-toggler-icon'></span>
-            </button>
-            <div class='offcanvas offcanvas-end' tabindex='-1' id='offcanvasNavbar' aria-labelledby='offcanvasNavbarLabel'>
-                <div class='offcanvas-header'>
-                    <h5 class='offcanvas-title' id='offcanvasNavbarLabel'>Menu</h5>
-                    <button type='button' class='btn-close' data-bs-dismiss='offcanvas' aria-label='Close'></button>
-                </div>
-            <div class='offcanvas-body'>
-                <ul class='navbar-nav justify-content-end flex-grow-1 pe-3'>
-                    <li class='nav-item'>
-                        <strong>Perfil</strong>
-                    </li>
-                    <li class='nav-item'>
-                        <a class='nav-link' href='../perfil/Lista_perfis.php'>Lista de perfis</a>
-                    </li>
-                    <li class='nav-item' style='margin-top: 10px;'>
-                    <li class='nav-item'>
-                        <strong>Mesa</strong>
-                    </li>
-                    <li class='nav-item'>
-                        <a class='nav-link' href='../../mesa/Lista_de_mesas.php'>Lista de mesas</a>
-                    </li>
-                    <li class='nav-item' style='margin-top: 10px;'>
-                        <strong>Denúncia</strong>
-                    </li>
-                    <li class='nav-item'>
-                        <a class='nav-link' href='../denuncia/Lista_denuncia.php'>Tickets de Denúncia</a>
-                    </li>
-                    <li class='nav-item'>
-                    <li class='nav-item' style='margin-top: 10px;'>
-                        <strong>Notícias</strong>
-                    </li>
-                    <li class='nav-item'>
-                        <a class='nav-link' href='Escrever_noticia.php'>Escrever Notícia</a>
-                    </li>
-                </ul>
-                </div>
-            </div>
-        </div>
-    </nav>
+    <header class="sticky-top" id="h">
+      <a class='navbar-brand' href='../usuario/Usuario_dashboard.php'><div id='logo'>A Taverna</div></a>
+      <nav>
+      <div class='container-fluid'>
+      <div>
+      <img src="../../assets/images/icons8-lupa-50.png" style="width: 2em; height: 2em; margin-top: 0.8em; position: relative; left: 11.5em;">
+      <form class='form-inline' action='../pesquisar.php' method='post' style='margin-top:0.6em;'>
+      <div style='display:flex;'>
+      <input class='form-control mr-sm-2' type='search' placeholder='Pesquisar' name='pesquisa' style='border-radius: 0.25em; margin-right:0.5em; font-family: Montagna LTD;'>
+      </div>
+      </form>
+      <div class="dropdown">
+      <button class="btn dropdown-toggle" data-bs-toggle="dropdown"><img src="../../assets/images/icons8-mesa-100.png" style="width: 2.8em;"></button>
+      <div class="dropdown-menu">
+      <a class="dropdown-item" href="../mesa/Lista_de_mesas.php">Lista de mesas</a>
+      </div>
+      </div>
+      <div class="dropdown">
+      <button class="btn dropdown-toggle" data-bs-toggle="dropdown"><img src="../../assets/images/noticias.png" style="width: 2.8em;"></button>
+      <div class="dropdown-menu dropdown-menu-lg-end">
+      <a class="dropdown-item" href="../noticias/Escrever_noticia.php">Escrever notícia</a>
+      </div>
+      </div>
+      <div class="dropdown">
+      <button class="btn dropdown-toggle" data-bs-toggle="dropdown"><img src="../../assets/images/icons8-identificação-não-verificada-100.png" style="width: 2.8em;"></button>
+      <div class="dropdown-menu dropdown-menu-lg-end">
+      <a class="dropdown-item" href="../usuario/denuncia/Lista_denuncia.php">Tickets de denúncia</a>
+      </div>
+      </div>
+      <div class="dropdown">
+      <button class="btn dropdown-toggle" data-bs-toggle="dropdown"><img src="../../assets/images/pessoa.png" style="width: 2.8em;"></button>
+      <div class="dropdown-menu dropdown-menu-lg-end">
+      <a class="dropdown-item" href="../usuario/perfil/Lista_perfis.php">Lista de perfis</a>
+      <hr class="dropdown-divider">
+      <a class="dropdown-item" href="../usuario/login/logout.php">Sair</a>
+      </div>
+      </div>
+      </div>
+      </div>
+      </nav>
+      </header>
 
     <!-- Conteúdo da página -->
-    <div class="container-fluid text-center mt-3">
-        <h1 class="p-3 text-light">Escrever Notícia</h1>
+    <main>
+    <div class="container-fluid text-center">
+        <h1 class="pt-5 pb-3">Escrever Notícia</h1>
         <!-- Formulário -->
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
             <div class="container-fluid">
                 <div class="input-group mx-auto p-2" style="width: 400px;">
-                    <span class="input-group-text" style="font-size: 1.2em;">Título</span>
-                    <input type="text" name="titulo" class="form-control">
+                    <input type="text" name="titulo" id="i1" class="form-control" placeholder="Título" style="background-color: #8FBEAE;">
                 </div> 
                 <div class="input-group mx-auto p-2" style="width: 800px;">
-                    <span class="input-group-text" style="font-size: 1.2em;">Subtítulo</span>
-                    <input type="text" name="subtitulo" class="form-control">
+                    <input type="text" name="subtitulo" id="i2" class="form-control" placeholder="Subtítulo" style="background-color: #8FBEAE;">
                 </div>
-                <div class="input-group mx-auto p-2" style="width: 800px;">
-                    <span class="input-group-text" style="font-size: 1.2em;">Imagem</span>  
-                    <input type="file" name="foto" style="font-size: 1.2em;" class="form-control">
+                <div class="input-group mx-auto p-2" style="width: 800px;">  
+                    <input type="file" name="foto">
                 </div>
                 <div class="input-group mx-auto p-2" style="width: 800px; height: 600px;">
-                    <span class="input-group-text" style="font-size: 1.2em;">Texto</span>
-                    <textarea name="texto" class="form-control" cols="30" row="10" style="width: 600px; height: 600px;"></textarea> 
-                    <div class="p-4" style="width: 800px;">
-                        <button class="btn btn-success" type="submit" style="width: 120px;">Publicar</button>
-                    </div> 
+                    <textarea name="texto" class="form-control" id="t1" cols="30" row="10" style="width: 600px; height: 600px; background-color: #8FBEAE;" placeholder="Escreva aqui!"></textarea> 
                 <div>  
+            </div> 
+            <div class="p-4" style="width: 800px;">
+                <button class="btn" type="submit" style="width: 120px; background-color:#134F59; font-family: Montagna LTD; color: white;">Publicar</button>
             </div>  
         </form>
     </div>
+    </main>
+    <footer>
+        <div class="container-fluid">
+        <p>&copy; A Guilda. Siga em frente!</p>
+        <p>Siga-nos:<a href="https://www.instagram.com/aguilda_smd/" target="_blank"><img src="../../assets/images/insta-icon (3).png"></a></p>
+        </div>
+    </footer>
     <!-- Chamando os scripts do Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

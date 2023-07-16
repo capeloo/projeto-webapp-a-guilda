@@ -29,6 +29,10 @@
         header#h>nav>div>div>form>div>input::placeholder {
             color: #bdbdbd;   
         }
+
+        header#header-userDash>nav>div>div>form>div>input::placeholder {
+            color: #bdbdbd;   
+        }
     /* /HEADER */
     /* MAIN */
     main {

@@ -1,4 +1,4 @@
-/* Perfil.php */
+/* Escrever_noticia.php */
     /* BODY */
     body {
         overflow-x: hidden;
@@ -26,59 +26,45 @@
             color: var(--cor1);
         }
 
-        header#header-userDash>nav>div>div>form>div>input::placeholder {
+        header#h>nav>div>div>form>div>input::placeholder {
             color: #bdbdbd;   
         }
-        
     /* /HEADER */
     /* MAIN */
     main {
         width: 100vw; 
-        height: 140vh;
-        
-    }    
-
-    main>div>form>div>div>div>img {
-        border-radius: 500px 500px 500px 500px;
-        margin-top: 8em;
-        margin-left: 6em;
+        height: 172vh;
+        background-image: url(../assets/images/papel.png);
+    }   
+    
+    main>div>h1 {
+        font-family: Rakkas;
+        color: #134F59;
     }
 
-    main>div>form>div>div>div>h2#nome {
-        font-family: Rakkas;
+    main>div>form>div>div>input {
+        font-family: Montagna LTD;
         color: #134F59;
         
     }
 
-    main>div>form>div>div>div>h2#name{
-        font-family: Rakkas;
+    main>div>form>div>div>textarea {
+        font-family: Montagna LTD;
         color: #134F59;
-        margin-top: 3.8em;
-        margin-right: 1em;
+        
     }
 
-    main>div>form>div>div>div>h2#apelido {
-        font-family: Rakkas;
+    input#i1::placeholder{
         color: #134F59;
-        margin-top: 2.2em;
-        margin-right: 3.8em;
     }
 
-    main>div>form>div>div>div>h2#bio {
-        font-family: Rakkas;
+    textarea#t1::placeholder{
         color: #134F59;
-        margin-top: 2.5em;
-        margin-right: 1em;
     }
 
-    main>div>form>div>div>div>h2#discord {
-        font-family: Rakkas;
+    input#i2::placeholder{
         color: #134F59;
-        margin-top: 2.2em;
-        margin-right: 3.8em;
     }
-
-   
     /* /MAIN */
     /* FOOTER */
     footer {
@@ -110,3 +96,4 @@
         height: 1.6em;
     }
     /* /FOOTER */
+/* /BODY */

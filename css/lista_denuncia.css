@@ -1,4 +1,4 @@
-/* Perfil.php */
+/* Lista_denuncia.php */
     /* BODY */
     body {
         overflow-x: hidden;
@@ -26,60 +26,42 @@
             color: var(--cor1);
         }
 
+        header#h>nav>div>div>form>div>input::placeholder {
+            color: #bdbdbd;   
+        }
+
         header#header-userDash>nav>div>div>form>div>input::placeholder {
             color: #bdbdbd;   
         }
-        
     /* /HEADER */
     /* MAIN */
     main {
         width: 100vw; 
         height: 140vh;
+        background-image: url(../assets/images/fundo-lista-noticiass.png); 
+        background-size: cover; 
+        background-repeat: no-repeat; 
+        background-position: center;
         
-    }    
+    } 
 
-    main>div>form>div>div>div>img {
-        border-radius: 500px 500px 500px 500px;
-        margin-top: 8em;
-        margin-left: 6em;
-    }
-
-    main>div>form>div>div>div>h2#nome {
+    main>div>h1 {
         font-family: Rakkas;
         color: #134F59;
-        
+        padding: 2em;
     }
 
-    main>div>form>div>div>div>h2#name{
+    main>div>div>form>input {
         font-family: Rakkas;
+        font-size: 1.8em;
         color: #134F59;
-        margin-top: 3.8em;
-        margin-right: 1em;
+        margin-top: 1em;
+        margin-right: 2em;
+        text-decoration: underline;
+        background-color: transparent;
+        border: 0px; 
     }
-
-    main>div>form>div>div>div>h2#apelido {
-        font-family: Rakkas;
-        color: #134F59;
-        margin-top: 2.2em;
-        margin-right: 3.8em;
-    }
-
-    main>div>form>div>div>div>h2#bio {
-        font-family: Rakkas;
-        color: #134F59;
-        margin-top: 2.5em;
-        margin-right: 1em;
-    }
-
-    main>div>form>div>div>div>h2#discord {
-        font-family: Rakkas;
-        color: #134F59;
-        margin-top: 2.2em;
-        margin-right: 3.8em;
-    }
-
-   
-    /* /MAIN */
+     /* /MAIN */  
     /* FOOTER */
     footer {
         position: relative;
@@ -110,3 +92,4 @@
         height: 1.6em;
     }
     /* /FOOTER */
+/* /BODY */
