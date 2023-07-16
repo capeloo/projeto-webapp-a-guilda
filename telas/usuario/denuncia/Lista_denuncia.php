@@ -104,7 +104,7 @@
             echo "<td>" . $row->apelido_denunciado . "</td>";
             echo "<td>" . $row->motivo . "</td>";
             echo "<td>
-                    <button class='btn btn-success' onclick=\"location.href='Ticket_dashboard.php?id=".$row->id."';\">Acesse</button>
+                    <button class='btn' style='background-color: #134F59; color: white;' onclick=\"location.href='Ticket_dashboard.php?id=".$row->id."';\">+</button>
                   </td>";        
             echo "</tr>";
           }
