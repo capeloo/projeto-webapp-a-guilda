@@ -99,7 +99,6 @@
             echo "<th>Título</th>";
             echo "<th>Denunciante</th>";
             echo "<th>Denunciado</th>";
-            echo "<th>Motivo</th>";
             echo "<th colspan='2'>Ações</th>";
             echo "</tr>";
           while($row = $stmt->fetch_object()){
@@ -108,7 +107,6 @@
             echo "<td>" . $row->titulo . "</td>";
             echo "<td>" . $row->apelido_denunciante . "</td>";
             echo "<td>" . $row->apelido_denunciado . "</td>";
-            echo "<td>" . $row->motivo . "</td>";
             $id = $row->id;
             echo "<td>
                     <button class='btn' style='background-color: #134F59; color: white;' onclick=\"location.href='Ticket_dashboard.php?id=".$row->id."';\">+</button>
@@ -116,13 +114,19 @@
             echo "</tr>";
           }
         echo "</table>";
-        } else {
-          echo "<p class='alert-danger'>Não encontrou resultados!</p>";
-        }
         echo '<div style="display: flex; justify-content: space-between;">';
-        echo "<button id='botaoControle' onclick=\"location.href='Lista_denuncia.php?id=$id';\">Próxima Página</button>";
-        echo "<button id='botaoControle' onclick=\"location.href='Lista_denuncia.php?idVoltar=$id';\">Voltar</button>";
-        echo "</div>";
+        echo "<button id='botaoControle' onclick=\"location.href='lista_denuncia.php?idVoltar=$id';\">Voltar</button>";
+        echo "<button id='botaoControle' onclick=\"location.href='lista_denuncia.php?id=$id';\">Próxima Página</button>";
+        echo '</div>';
+        echo '</div>';
+        } else {
+          echo "<h3 class='text-danger'>Não encontrou resultados!</h3>";
+        echo '<div style="display: flex; justify-content: space-between;">';
+        echo "<button id='botaoControle' onclick=\"location.href='lista_denuncia.php?idVoltar=$id';\">Voltar</button>";
+        echo "<button id='botaoControle' onclick=\"location.href='lista_denuncia.php?id=$id';\">Próxima Página</button>";
+        echo '</div>';
+        echo '</div>';
+        }
         ?>
         
     </div>

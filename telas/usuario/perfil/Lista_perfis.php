@@ -125,14 +125,20 @@
         }
         echo "</table>";
         echo '<div style="display: flex; justify-content: space-between;">';
-        echo "<button id='botaoControle' onclick=\"location.href='Lista_perfis.php?id=$id';\">Próxima Página</button>";
         echo "<button id='botaoControle' onclick=\"location.href='Lista_perfis.php?idVoltar=$id';\">Voltar</button>";
+        echo "<button id='botaoControle' onclick=\"location.href='Lista_perfis.php?id=$id';\">Próxima Página</button>";
+        echo '</div>';
         echo '</div>';
     } 
     else {
-        echo "<p class='alert-danger'>Não encontrou resultados!</p>";
-        }?>
-    </div>
+        echo "<h3 class='text-danger'>Não encontrou resultados!</h3>";
+        echo '<div style="display: flex; justify-content: space-between;">';
+        echo "<button id='botaoControle' onclick=\"location.href='Lista_perfis.php?idVoltar=$id';\">Voltar</button>";
+        echo "<button id='botaoControle' onclick=\"location.href='Lista_perfis.php?id=$id';\">Próxima Página</button>";
+        echo '</div>';
+        echo '</div>';
+        }
+        ?>
     <!-- Chamando os scripts do Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
