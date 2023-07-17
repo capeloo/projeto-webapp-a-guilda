@@ -23,6 +23,32 @@ Link de acesso rápido: http://localhost/projeto-webapp-taverna/
 ## Desenvolvedores:
 - Caio Henrique Capêlo (full stack)
 - José Matheus Alvino (back-end)
+
+## Requisitos funcionais
+| Requisitos | Status | Código |
+|----------|----------|----------|
+| Escolher matriz curricular considerada. | Não implementado |  |
+| Selecionar disciplinas obrigatórias cursadas. | Implementado   | [tabs.html](pages/tabs.html), [scriptDisciplinas.js](js/scriptDisciplinas.js), [multi-select-dropdown.js](js/multi-select-dropdown.js) |
+| Selecionar disciplinas eletivas cursadas. | Implementado | [tabs.html](pages/tabs.html), [scriptDisciplinas.js](js/scriptDisciplinas.js), [multi-select-dropdown.js](js/multi-select-dropdown.js)  |
+| Selecionar disciplinas optativas cursadas. | Implementado   | [tabs.html](pages/tabs.html), [scriptDisciplinas.js](js/scriptDisciplinas.js), [multi-select-dropdown.js](js/multi-select-dropdown.js)  |
+| Informar horas complementares realizadas. | Implementado   | [tabs.html](pages/tabs.html), [scriptActivities.js](js/scriptActivities.js)  |
+| Exibir disciplinas obrigatórias e eletivas que faltam para conclusão do curso. | Em andamento   | [report.html](pages/report.html)  |
+| Exibir horas complementares restantes necessárias para conclusão do curso. | Implementado   | [report.html](pages/report.html)  |
+| Exportar dados (disciplinas e horas complementares restantes) exibidos pela calculadora. | Não implementado   |  |
+| Exibir infográfico interativo-descritivo. | Implementado   | [info.html](pages/info.html), [grade-curricular.html](pages/grade-curricular.html), [trilhas.html](pages/trilhas.html), [horas-complementares.html](pages/horas-complementares.html)  |
+| Exibir e explicar o que são as trilhas e como funcionam.  | Implementado   | [trilhas.html](pages/trilhas.html) |
+| Exibir e explicar o que são as horas complementares. | Implementado   | [horas-complementares.html](pages/horas-complementares.html) |
+| Exibir e explicar o que são as disciplinas obrigatórias e eletivas. | Implementado   | [grade-curricular.html](pages/grade-curricular.html) |
+| Disponibilizar acesso aos dados da matriz curricular  | Implementado   | [MatrizcurricularController.php get( )](api_meuDiploma/src/controllers/MatrizcurricularController.php)  | 
+| Disponibilizar acesso aos dados das disciplinas | Implementado   | [DisciplinaController.php get( )](api_meuDiploma/src/controllers/DisciplinaController.php) |
+| Alterar registro na tabela de matriz curriculares | Implementado   | [MatrizcurricularController.php update( )](api_meuDiploma/src/controllers/MatrizcurricularController.php) |
+| Excluir registro da tabela de matriz curriculares | Implementado   | [MatrizcurricularController.php detele( )](api_meuDiploma/src/controllers/MatrizcurricularController.php) |
+| Integrar sistema ao banco  | Implementado   | [scriptDisciplinas.js](js/scriptDisciplinas.js) |
+| Incluir registro na tabela de disciplinas  | Implementado   | [DisciplinaController.php insert( )](api_meuDiploma/src/controllers/DisciplinaController.php) |
+| Alterar registro na tabela de disciplinas | Implementado   | [DisciplinaController.php update( )](api_meuDiploma/src/controllers/DisciplinaController.php) |
+| Excluir registro da tabela de disciplinas  | Implementado   | [DisciplinaController.php delet( )](api_meuDiploma/src/controllers/DisciplinaController.php) |
+| Incluir registro na tabela de requisitos | Implementado   | [DisciplinaController.php insertR( )](api_meuDiploma/src/controllers/DisciplinaController.php) |
+| Excluir registro da tabela de requisitos | Implementado   | [DisciplinaController.php deleteR( )](api_meuDiploma/src/controllers/DisciplinaController.php) |
   
 Aqui está uma breve descrição de cada pasta e arquivo:
 
