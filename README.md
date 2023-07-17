@@ -54,7 +54,7 @@ Link de acesso rápido: http://localhost/projeto-webapp-taverna/
 
 ## Estrutura
 -# projeto-webapp-taverna
-
+-
 - **assets**
     - fonts
     - images
@@ -67,6 +67,7 @@ Link de acesso rápido: http://localhost/projeto-webapp-taverna/
     - **mesa**
     - **noticias**
     - **usuario**
+        - **denuncia**    
         - **login**
         - **perfil**
         - Usuario_dashboard.php
