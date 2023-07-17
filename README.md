@@ -23,6 +23,12 @@ Link de acesso rápido: http://localhost/projeto-webapp-taverna/
 ## Desenvolvedores:
 - Caio Henrique Capêlo (full stack)
 - José Matheus Alvino (back-end)
+- Samuel de Castro Falcão (back-end)
+- Hosana Maria Carvalho (front-end)
+
+## Designers:
+- Dailane de Souza Florencio (design)
+- Isadora Souza Granato (design)
 
 ## Requisitos funcionais
 | Requisitos | Status | Código |
