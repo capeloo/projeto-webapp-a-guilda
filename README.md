@@ -1,6 +1,6 @@
 # Equipe CEOS 
 
-## Projeto A Taverna ![A taverna](https://github.com/capeloo/projeto-webapp-taverna/assets/108996602/6c426716-77af-4c3b-be3e-ce8d2767368e)
+## Projeto A Taverna 
 Este projeto é desenvolvido por estudantes da Universidade Federal do Ceará, para a disciplina de Projeto Integrado I, com o intuito de unir jogadores e mestres de RPG de mesa em um ambiente seguro e inclusivo. 
 
 ## Instalação
