@@ -1,5 +1,6 @@
 # Equipe CEOS 
-<img align="center" alt="Caio-HTML" height="45" width="40" src="(https://github.com/capeloo/projeto-webapp-taverna/assets/108996602/b6cc17cc-e5a4-4aef-9f12-4cc6cab28879">
+
+<img align="center" alt="Caio-HTML" height="45" width="40" src="(![A taverna](https://github.com/capeloo/projeto-webapp-taverna/assets/108996602/d8f8e17d-9cc7-4ad5-b5d5-0bf7a0218801)">
 
 ## Projeto A Taverna <img align="center" alt="Caio-HTML" height="45" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg">
 Este projeto é desenvolvido por estudantes da Universidade Federal do Ceará, para a disciplina de Projeto Integrado I, com o intuito de unir jogadores e mestres de RPG de mesa em um ambiente seguro e inclusivo. 
