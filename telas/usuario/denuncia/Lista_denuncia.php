@@ -70,6 +70,8 @@
       <h1 class="p-2">Tickets de Denúncia</h1>
 
         <?php
+          error_reporting(E_ALL ^ E_WARNING);
+          ini_set("display_errors", 1 );
           $id = $_SESSION["id"];
 
           if(isset($_GET["id"])){ 
@@ -123,7 +125,6 @@
           echo "<h3 class='text-danger'>Não encontrou resultados!</h3>";
         echo '<div style="display: flex; justify-content: space-between;">';
         echo "<button id='botaoControle' onclick=\"location.href='lista_denuncia.php?idVoltar=$id';\">Voltar</button>";
-        echo "<button id='botaoControle' onclick=\"location.href='lista_denuncia.php?id=$id';\">Próxima Página</button>";
         echo '</div>';
         echo '</div>';
         }

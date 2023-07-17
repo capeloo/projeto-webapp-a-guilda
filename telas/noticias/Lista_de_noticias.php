@@ -136,7 +136,6 @@
         echo "<h3 class='text-danger'>Não encontrou resultados!</h3>";
         echo '<div style="display: flex; justify-content: space-between;">';
         echo "<button id='botaoControle' onclick=\"location.href='lista_de_noticias.php?idVoltar=$id';\">Voltar</button>";
-        echo "<button id='botaoControle' onclick=\"location.href='lista_de_noticias.php?id=$id';\">Próxima Página</button>";
         echo '</div>';
         echo '</div>';
     }
