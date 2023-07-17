@@ -27,8 +27,8 @@ Link de acesso rápido: http://localhost/projeto-webapp-taverna/
 - Hosana Maria Carvalho (front-end)
 
 ## Designers:
-- Dailane de Souza Florencio (design)
-- Isadora Souza Granato (design)
+- Dailane de Souza Florencio 
+- Isadora Souza Granato
 
 ## Requisitos funcionais
 | Requisitos | Status | Código |
