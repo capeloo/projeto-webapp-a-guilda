@@ -27,28 +27,30 @@ Link de acesso rápido: http://localhost/projeto-webapp-taverna/
 ## Requisitos funcionais
 | Requisitos | Status | Código |
 |----------|----------|----------|
-| Mostrar dashboard do admin. | Implementado | [Usuario_dashboard.php](telas/usuario/Usuario_dashboard.php) |
-| Selecionar disciplinas obrigatórias cursadas. | Implementado   | [tabs.html](pages/tabs.html), [scriptDisciplinas.js](js/scriptDisciplinas.js), [multi-select-dropdown.js](js/multi-select-dropdown.js) |
-| Selecionar disciplinas eletivas cursadas. | Implementado | [tabs.html](pages/tabs.html), [scriptDisciplinas.js](js/scriptDisciplinas.js), [multi-select-dropdown.js](js/multi-select-dropdown.js)  |
-| Selecionar disciplinas optativas cursadas. | Implementado   | [tabs.html](pages/tabs.html), [scriptDisciplinas.js](js/scriptDisciplinas.js), [multi-select-dropdown.js](js/multi-select-dropdown.js)  |
-| Informar horas complementares realizadas. | Implementado   | [tabs.html](pages/tabs.html), [scriptActivities.js](js/scriptActivities.js)  |
-| Exibir disciplinas obrigatórias e eletivas que faltam para conclusão do curso. | Em andamento   | [report.html](pages/report.html)  |
-| Exibir horas complementares restantes necessárias para conclusão do curso. | Implementado   | [report.html](pages/report.html)  |
-| Exportar dados (disciplinas e horas complementares restantes) exibidos pela calculadora. | Não implementado   |  |
-| Exibir infográfico interativo-descritivo. | Implementado   | [info.html](pages/info.html), [grade-curricular.html](pages/grade-curricular.html), [trilhas.html](pages/trilhas.html), [horas-complementares.html](pages/horas-complementares.html)  |
-| Exibir e explicar o que são as trilhas e como funcionam.  | Implementado   | [trilhas.html](pages/trilhas.html) |
-| Exibir e explicar o que são as horas complementares. | Implementado   | [horas-complementares.html](pages/horas-complementares.html) |
-| Exibir e explicar o que são as disciplinas obrigatórias e eletivas. | Implementado   | [grade-curricular.html](pages/grade-curricular.html) |
-| Disponibilizar acesso aos dados da matriz curricular  | Implementado   | [MatrizcurricularController.php get( )](api_meuDiploma/src/controllers/MatrizcurricularController.php)  | 
-| Disponibilizar acesso aos dados das disciplinas | Implementado   | [DisciplinaController.php get( )](api_meuDiploma/src/controllers/DisciplinaController.php) |
-| Alterar registro na tabela de matriz curriculares | Implementado   | [MatrizcurricularController.php update( )](api_meuDiploma/src/controllers/MatrizcurricularController.php) |
-| Excluir registro da tabela de matriz curriculares | Implementado   | [MatrizcurricularController.php detele( )](api_meuDiploma/src/controllers/MatrizcurricularController.php) |
-| Integrar sistema ao banco  | Implementado   | [scriptDisciplinas.js](js/scriptDisciplinas.js) |
-| Incluir registro na tabela de disciplinas  | Implementado   | [DisciplinaController.php insert( )](api_meuDiploma/src/controllers/DisciplinaController.php) |
-| Alterar registro na tabela de disciplinas | Implementado   | [DisciplinaController.php update( )](api_meuDiploma/src/controllers/DisciplinaController.php) |
-| Excluir registro da tabela de disciplinas  | Implementado   | [DisciplinaController.php delet( )](api_meuDiploma/src/controllers/DisciplinaController.php) |
-| Incluir registro na tabela de requisitos | Implementado   | [DisciplinaController.php insertR( )](api_meuDiploma/src/controllers/DisciplinaController.php) |
-| Excluir registro da tabela de requisitos | Implementado   | [DisciplinaController.php deleteR( )](api_meuDiploma/src/controllers/DisciplinaController.php) |
+| Mostrar dashboard do usuário. | Implementado | [Usuario_dashboard.php](telas/usuario/Usuario_dashboard.php) |
+| Editar perfil. | Implementado | [Editar_perfil.php](telas/usuario/perfil/Editar_perfil.php) |
+| Pesquisar perfil. | Implementado | [pesquisar.php](telas/pesquisar.php) |
+| Cadastrar mesa. | Implementado | [Cadastro_mesa.php](telas/mesa/Cadastro_mesa.php) |
+| Listar as mesas. | Implementado | [Lista_de_mesas.php](telas/mesa/Lista_de_mesas.php) |
+| Mostrar as mesas do usuário. | Implementado | [Minhas_mesas.php](telas/mesa/Minhas_mesas.php) |
+| Mostrar dashboard da mesa. | Implementado | [Mesa_dashboard.php](telas/mesa/Mesa_dashboard.php) |
+| Inscrever-se na mesa. | Implementado | [inscrever.php](telas/mesa/inscrever.php) |
+| Mostrar tela de feedback. | Não implementado | 
+| Mostrar tela de denúncia.  | Implementado | [Ticket_dashboard.php](telas/usuario/denuncia/Ticket_dashboard.php) |
+| Curtir perfil de terceiros. | Não implementado | 
+| Abrir ticket de denúncia. | Implementado | [Abrir_ticket.php](telas/usuario/denuncia/Abrir_ticket.php) |
+| Escrever notícias.  | Implementado | [Escrever_noticia.php](telas/noticias/Escrever_noticia.php) | 
+| Excluir perfil próprio. | Implementado | [excluir.php](telas/usuario/perfil/excluir.php) |
+| Excluir perfil de terceiros. | Implementado | [excluir.php](telas/usuario/perfil/excluir.php) |
+| Mostrar notícias. | Implementado | [Lista_de_noticias.php](telas/noticias/Lista_de_noticias.php) |
+| Listar perfis. | Implementado | [Lista_perfis.php](telas/usuario/perfil/Lista_perfis.php) |
+| Mostrar dashboard do admin.  | Implementado | [Usuário_dashboard.php](telas/usuario/Usuario_dashboard.php) |
+| Mostrar tickets de denúncia. | Implementado | [Lista_denuncia.php](telas/usuario/denuncia/Lista_denuncia.php) |
+| Anunciar mesa. | Implementado | [anunciar.php](telas/mesa/anunciar.php) |
+| Retirar anúncio de mesa. | Implementado | [retirar_anuncio.php](telas/mesa/retirar_anuncio.php) |
+| Cadastrar usuário.| Implementado | [Cadastro.php](telas/usuario/login/Cadastro.php) |
+| Logar na aplicação.| Implementado | [Login.php](telas/usuario/login/Login.php) |
+| Redefinição de senha.| Implementado | [Esqueceu_senha.php](telas/usuario/login/Esqueceu_senha.php), [Redefinir_senha.php](telas/usuario/login/Redefinir_senha.php) |
   
 Aqui está uma breve descrição de cada pasta e arquivo:
 
