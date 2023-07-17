@@ -1,43 +1,28 @@
-## Descrição
+# Equipe CEOS
 
-- **assets**
-    - imagens
-- **css**
-    - bootstrap.min.css
-    - multi-select-tag.css
-- **db**
-    - config.php
-- **js**
-    - bootstrap.min.js
-    - multi-select-tag.js
-- **php**
-    - info.php
-- **PHPMailer**
-    - **PHPMailer**
-        - **src**
-            - PHPMailer.php
-- **telas**
-    - **mesa**
-        - Cadastro_mesa.php
-        - inscrever.php
-        - Lista_de_mesas.php
-        - Mesa_dashboard.php
-        - Minhas_mesas.php
-    - **usuario**
-        - **login**
-            - Cadastro.php
-            - Esqueceu_senha.php
-            - Login.php
-            - logout.php
-            - Redefinir_senha.php
-        - **perfil**
-            - Editar_perfil.php
-            - Meu_perfil.php
-        - Usuario_dashboard.php
-- **index.php**
+## Projeto A Taverna
+Este projeto é desenvolvido por estudantes da Universidade Federal do Ceará, para a disciplina de Projeto Integrado I, com o intuito de unir jogadores e mestres de RPG de mesa em um ambiente seguro e inclusivo. 
 
-- 
+## Instalação
 
+### Requisitos:
+Para rodar o projeto é necessário ter em sua maquina um servidor web (o php instalado nele) e o banco de dados MySQL, tudo isso pode ser usado através do software [XAMPP] (https://www.apachefriends.org/), bastando instalá-lo e configurá-lo em sua maquina.
+
+### Guia:
+Você pode clonar este repositório ou baixar o .zip. Caso baixado o .zip, extraia na pasta htdocs do xampp. Cuidado! Ao extrair, automaticamente será criado projeto-webapp-taverna/projeto-webapp-taverna-main, recorte os arquivos e cole na pasta projeto-webapp-taverna e exclua a pasta projeto-webapp-taverna-main para a aplicação rodar sem problemas.
+
+## Banco de Dados
+Abra o PHPmyadmin por meio do XAMPP, crie um banco de dados com o nome "taverna" e importe o arquivo taverna.sql que está na pasta do projeto. 
+
+## Uso
+Abra o XAMPP e ligue o APACHE e o MySQL. Após isso, vá ao seu navegador e acesse seu localhost. 
+
+Link de acesso rápido: http://localhost/projeto-webapp-taverna/
+
+## Desenvolvedores:
+- Caio Henrique Capêlo (full stack)
+- José Matheus Alvino (back-end)
+  
 Aqui está uma breve descrição de cada pasta e arquivo:
 
 assets/: Esta pasta contém as imagens do projeto. Seja foto de perfil, favicon ou background.
