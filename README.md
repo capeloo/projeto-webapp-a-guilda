@@ -53,29 +53,25 @@ Link de acesso rápido: http://localhost/projeto-webapp-taverna/
 | Redefinição de senha.| Implementado | [Esqueceu_senha.php](telas/usuario/login/Esqueceu_senha.php), [Redefinir_senha.php](telas/usuario/login/Redefinir_senha.php) |
 
 ## Estrutura
--projeto-webapp-taverna
-  -assets
-    -fonts
-    -images
-  -css
-  -db
-  -js
-  -php
-  -PHPMailer
-  -telas
-    -mesa
-    -noticias
-    -usuario
-      -denuncia
-      -login
-      -perfil
-    Usuario_dashboard.php
-  pesquisar.php
-.gitattributes
-.gitignore
-index.php
-LICENSE
-README.mds
+-# projeto-webapp-taverna
+
+- **assets**
+    - fonts
+    - images
+- **css**
+- **db**
+- **js**
+- **php**
+- **PHPMailer**
+- **telas**
+    - **mesa**
+    - **noticias**
+    - **usuario**
+        - **login**
+        - **perfil**
+        - Usuario_dashboard.php
+    - pesquisar.php
+- **index.php**
   
 Aqui está uma breve descrição de cada pasta e arquivo:
 
