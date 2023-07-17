@@ -101,7 +101,7 @@
 1. Baixe o Xampp gratuitamente - https://www.apachefriends.org/pt_br/index.html
 2. Clone o repositório
    ```sh
-   git clone https://github.com/github_username/repo_name.git
+   git clone https://github.com/capeloo/projeto-webapp-taverna.git
    ```
 3. Coloque a pasta do projeto na pasta htds do Xampp 
 4. Habilite o Apache e o MySQL no aplicativo Xampp
