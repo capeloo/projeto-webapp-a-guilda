@@ -51,6 +51,31 @@ Link de acesso rápido: http://localhost/projeto-webapp-taverna/
 | Cadastrar usuário.| Implementado | [Cadastro.php](telas/usuario/login/Cadastro.php) |
 | Logar na aplicação.| Implementado | [Login.php](telas/usuario/login/Login.php) |
 | Redefinição de senha.| Implementado | [Esqueceu_senha.php](telas/usuario/login/Esqueceu_senha.php), [Redefinir_senha.php](telas/usuario/login/Redefinir_senha.php) |
+
+## Estrutura
+>projeto-webapp-taverna
+  >assets
+    >fonts
+    >images
+  >css
+  >db
+  >js
+  >php
+  >PHPMailer
+  >telas
+    >mesa
+    >noticias
+    >usuario
+      >denuncia
+      >login
+      >perfil
+    Usuario_dashboard.php
+  pesquisar.php
+.gitattributes
+.gitignore
+index.php
+LICENSE
+README.mds
   
 Aqui está uma breve descrição de cada pasta e arquivo:
 
