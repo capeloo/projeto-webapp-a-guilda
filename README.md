@@ -20,7 +20,7 @@ Abra o XAMPP e ligue o APACHE e o MySQL. Após isso, vá ao seu navegador e aces
 
 Link de acesso rápido: http://localhost/projeto-webapp-taverna/
 
-## Disclaimer
+## Aviso
 A aplicação não está responsiva e foi codificada para telas pequenas de desktop, logo redimensionar para 1190x637 ou 1319x572 para melhor experiência.
 
 ## Desenvolvedores:
