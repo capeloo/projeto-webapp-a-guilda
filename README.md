@@ -27,7 +27,7 @@ Link de acesso rápido: http://localhost/projeto-webapp-taverna/
 ## Requisitos funcionais
 | Requisitos | Status | Código |
 |----------|----------|----------|
-| Escolher matriz curricular considerada. | Não implementado |  |
+| Mostrar dashboard do admin. | Implementado | [Usuario_dashboard.php](telas/usuario/Usuario_dashboard.php) |
 | Selecionar disciplinas obrigatórias cursadas. | Implementado   | [tabs.html](pages/tabs.html), [scriptDisciplinas.js](js/scriptDisciplinas.js), [multi-select-dropdown.js](js/multi-select-dropdown.js) |
 | Selecionar disciplinas eletivas cursadas. | Implementado | [tabs.html](pages/tabs.html), [scriptDisciplinas.js](js/scriptDisciplinas.js), [multi-select-dropdown.js](js/multi-select-dropdown.js)  |
 | Selecionar disciplinas optativas cursadas. | Implementado   | [tabs.html](pages/tabs.html), [scriptDisciplinas.js](js/scriptDisciplinas.js), [multi-select-dropdown.js](js/multi-select-dropdown.js)  |
