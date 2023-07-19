@@ -7,7 +7,7 @@
 
 ### Sumário: [Sobre](#Sobre) • [Instalação](##Instalação) • [Uso](##Uso) • [Aviso](##Aviso) • [Desenvolvedores](##Desenvolvedores) • [Designers](##Designers) • [Requisitos Funcionais](##Requisitos) • [Estrutura](##Estrutura) 
 
-## Sobre 
+# Sobre 
 A Taverna foi desenvolvido por estudantes da Universidade Federal do Ceará, para a disciplina de Projeto Integrado I, com o intuito de unir jogadores e mestres de RPG de mesa em um ambiente seguro e inclusivo. 
 
 ## Instalação
