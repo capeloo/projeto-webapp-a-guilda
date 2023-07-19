@@ -2,7 +2,7 @@
 
 
 <div align="center" name="inicio">
-  <a href="https://github.com/capeloo/projeto-webapp-taverna"><img title="Taverna" src="assets/images/logo-readme-1.png" style="width: 300px;" /></a>
+  <a href="https://github.com/capeloo/projeto-webapp-taverna"><img title="Taverna" src="assets/images/logo-readme-1.png" style="width: 1000px;" /></a>
 </div>
 
 ### Sumário: [Sobre](#sobre) • [Instalação](#instalação) • [Uso](#uso) • [Aviso](#aviso) • [Desenvolvedores](#desenvolvedores) • [designers](#Designers) • [Requisitos Funcionais](#requisitos-funcionais) • [Estrutura](#estrutura) 
