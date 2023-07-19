@@ -112,7 +112,7 @@ index.php/: Porta de entrada da aplicação.
   - Fazer as media queries (responsividade).
   - Fazer as validações dos inputs.
   - Deixar o sistema auditável por meio de status no usuário.
-  - Tratar os dados com a data.
+  - Tratar os dados como a data.
 
 <p align="right">(<a href="#readme-top">Voltar para o topo</a>)</p>
 
