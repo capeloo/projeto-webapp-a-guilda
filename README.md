@@ -1,6 +1,3 @@
-# Equipe CEOS 
-
-
 <div align="center" name="inicio">
   <a href="https://github.com/capeloo/projeto-webapp-taverna"><img title="Taverna" src="assets/images/logo-readme-1.png" style="width: 1000px;" /></a>
 </div>
