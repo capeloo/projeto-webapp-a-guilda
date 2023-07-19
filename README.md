@@ -5,7 +5,7 @@
   <a href="https://github.com/capeloo/projeto-webapp-taverna"><img title="Taverna" src="assets/images/logo-teste.png" style="width: 300px;" /></a>
 </div>
 
-### Sumário: [Sobre](#Sobre) • [Instalação](##Instalação) • [Uso](##Uso) • [Aviso](##Aviso) • [Desenvolvedores](##Desenvolvedores) • [Designers](##Designers) • [Requisitos Funcionais](##Requisitos) • [Estrutura](##Estrutura) 
+### Sumário: [Sobre](#sobre) • [Instalação](##Instalação) • [Uso](##Uso) • [Aviso](##Aviso) • [Desenvolvedores](##Desenvolvedores) • [Designers](##Designers) • [Requisitos Funcionais](##Requisitos) • [Estrutura](##Estrutura) 
 
 # Sobre 
 A Taverna foi desenvolvido por estudantes da Universidade Federal do Ceará, para a disciplina de Projeto Integrado I, com o intuito de unir jogadores e mestres de RPG de mesa em um ambiente seguro e inclusivo. 
