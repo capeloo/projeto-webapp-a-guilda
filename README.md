@@ -106,6 +106,14 @@ telas/: Aqui você tem as telas do projeto divididas em categorias. Utilizamos u
 
 index.php/: Porta de entrada da aplicação.
 
+## Atualizações Futuras
+  - Trocar os alerts por modals.
+  - Reorganizar os redirecionamentos.
+  - Fazer as media queries (responsividade).
+  - Fazer as validações dos inputs.
+  - Deixar o sistema auditável por meio de status no usuário.
+  - Tratar os dados com a data.
+
 <p align="right">(<a href="#readme-top">Voltar para o topo</a>)</p>
 
 **Com amor, equipe CEOS <3**
