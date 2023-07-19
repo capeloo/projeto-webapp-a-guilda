@@ -5,12 +5,12 @@
   <a href="https://github.com/capeloo/projeto-webapp-taverna"><img title="Taverna" src="assets/images/logo-teste.png" style="width: 300px;" /></a>
 </div>
 
-### Sumário: [Sobre](#sobre) • [Instalação](##instalação) • [Uso](##uso) • [Aviso](##aviso) • [Desenvolvedores](##desenvolvedores) • [designers](##Designers) • [Requisitos Funcionais](##requisitos) • [Estrutura](##estrutura) 
+### Sumário: [Sobre](#sobre) • [Instalação](#instalação) • [Uso](#uso) • [Aviso](#aviso) • [Desenvolvedores](#desenvolvedores) • [designers](#Designers) • [Requisitos Funcionais](#requisitos) • [Estrutura](#estrutura) 
 
 # Sobre 
 A Taverna foi desenvolvido por estudantes da Universidade Federal do Ceará, para a disciplina de Projeto Integrado I, com o intuito de unir jogadores e mestres de RPG de mesa em um ambiente seguro e inclusivo. 
 
-## Instalação
+# Instalação
 
 ### Requisitos:
 Para rodar o projeto é necessário ter em sua maquina um servidor web (o php instalado nele) e o banco de dados MySQL, tudo isso pode ser usado através do software [XAMPP] (https://www.apachefriends.org/), bastando instalá-lo e configurá-lo em sua maquina.
@@ -21,26 +21,26 @@ Você pode clonar este repositório ou baixar o .zip. Caso baixado o .zip, extra
 ### Banco de Dados:
 Abra o PHPmyadmin por meio do XAMPP, crie um banco de dados com o nome "taverna" e importe o arquivo taverna.sql que está na pasta do projeto. 
 
-## Uso
+# Uso
 
 Abra o XAMPP e ligue o APACHE e o MySQL. Após isso, vá ao seu navegador e acesse seu localhost. 
 
 Link de acesso rápido: http://localhost/projeto-webapp-taverna/
 
-## Aviso
+# Aviso
 A aplicação não está responsiva e foi codificada para telas pequenas de desktop, logo redimensionar para 1190x637 ou 1319x572 para melhor experiência.
 
-## Desenvolvedores:
+# Desenvolvedores:
 - Caio Henrique Capêlo (full stack)
 - José Matheus Alvino (back-end)
 - Samuel de Castro Falcão (back-end)
 - Hosana Maria Carvalho (front-end)
 
-## Designers:
+# Designers:
 - Dailane de Souza Florencio 
 - Isadora Souza Granato
 
-## Requisitos
+# Requisitos
 | Requisitos | Status | Código |
 |----------|----------|----------|
 | Mostrar dashboard do usuário. | Implementado | [Usuario_dashboard.php](telas/usuario/Usuario_dashboard.php) |
@@ -68,7 +68,7 @@ A aplicação não está responsiva e foi codificada para telas pequenas de desk
 | Logar na aplicação.| Implementado | [Login.php](telas/usuario/login/Login.php) |
 | Redefinição de senha.| Implementado | [Esqueceu_senha.php](telas/usuario/login/Esqueceu_senha.php), [Redefinir_senha.php](telas/usuario/login/Redefinir_senha.php) |
 
-## Estrutura
+# Estrutura
 
 - **assets**
     - fonts
