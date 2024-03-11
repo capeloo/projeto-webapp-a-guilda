@@ -5,11 +5,11 @@
 ### Sumário: [Sobre](#sobre) • [Instalação](#instalação) • [Uso](#uso) • [Aviso](#aviso) • [Desenvolvedores](#desenvolvedores) • [Designers](#designers) • [Requisitos Funcionais](#requisitos-funcionais) • [Estrutura](#estrutura) • [Atualizações Futuras](#atualizações-futuras)
 
 # Sobre 
-A Taverna é um projeto desenvolvido por estudantes da Universidade Federal do Ceará, na disciplina de Projeto Integrado I, para A Guilda, um grupo com o compromisso de unir mestres e jogadores com interesses parecidos e intermediar as sessões para uma maior segurança. 
+A Taverna é um projeto desenvolvido por estudantes da Universidade Federal do Ceará, na disciplina de Projeto Integrado I, para A Guilda, um grupo com o compromisso de unir mestres e jogadores de RPG com interesses parecidos e intermediar as sessões para uma maior segurança. 
 # Instalação
 
 ### Requisitos:
-Para rodar o projeto é necessário ter em sua maquina um servidor web (o php instalado nele) e o banco de dados MySQL, tudo isso pode ser usado através do software [XAMPP] (https://www.apachefriends.org/), bastando instalá-lo e configurá-lo em sua maquina.
+Para rodar o projeto é necessário ter em sua maquina um servidor web (o php instalado nele) e o banco de dados MySQL, tudo isso pode ser usado através do software [XAMPP] (https://www.apachefriends.org/), bastando instalá-lo e configurá-lo em sua máquina.
 
 ### Guia:
 Você pode clonar este repositório ou baixar o .zip. Caso baixado o .zip, extraia na pasta htdocs do xampp. Cuidado! Ao extrair, automaticamente será criado projeto-webapp-taverna/projeto-webapp-taverna-main, recorte os arquivos e cole na pasta projeto-webapp-taverna e exclua a pasta projeto-webapp-taverna-main para a aplicação rodar sem problemas.
