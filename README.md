@@ -5,7 +5,7 @@
 ### Sumário: [Sobre](#sobre) • [Instalação](#instalação) • [Uso](#uso) • [Aviso](#aviso) • [Desenvolvedores](#desenvolvedores) • [Designers](#designers) • [Requisitos Funcionais](#requisitos-funcionais) • [Estrutura](#estrutura) • [Atualizações Futuras](#atualizações-futuras)
 
 # Sobre 
-A Taverna é um projeto desenvolvido por estudantes da Universidade Federal do Ceará, na disciplina de Projeto Integrado I, para A Guilda, um grupo com o compromisso de unir mestres e jogadores de RPG com interesses parecidos e intermediar as sessões para uma maior segurança. 
+A Taverna é um projeto desenvolvido por estudantes da Universidade Federal do Ceará, na disciplina de Projeto Integrado I, para A Guilda, um grupo de extensão compromissados a unir mestres e jogadores de RPG com interesses parecidos e intermediar as sessões para uma maior segurança. 
 # Instalação
 
 ### Requisitos:
